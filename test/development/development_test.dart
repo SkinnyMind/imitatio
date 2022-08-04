@@ -49,5 +49,21 @@ void main() {
         expect(major >= 2020 && major <= 2022, true);
       },
     );
+
+    test('returns programming language', () {
+      expect(
+        DevelopmentData.programmingLanguages
+            .contains(dev.programmingLanguage()),
+        true,
+      );
+    });
+
+    test('returns os', () {
+      expect(DevelopmentData.os.contains(dev.os()), true);
+    });
+
+    test('returns boolean value', () {
+      expect(dev.boolean(), isA<bool>());
+    });
   });
 }

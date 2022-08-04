@@ -46,4 +46,18 @@ class Development {
 
     return version;
   }
+
+  /// Get a random programming language from the list.
+  String programmingLanguage() {
+    return DevelopmentData.programmingLanguages[
+        Random().nextInt(DevelopmentData.programmingLanguages.length)];
+  }
+
+  /// Get a random operating system or distributive name.
+  String os() {
+    return DevelopmentData.os[Random().nextInt(DevelopmentData.os.length)];
+  }
+
+  /// Get a random boolean value.
+  bool boolean() => Random().nextBool();
 }
