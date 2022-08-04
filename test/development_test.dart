@@ -65,5 +65,13 @@ void main() {
     test('returns boolean value', () {
       expect(dev.boolean(), isA<bool>());
     });
+
+    test('returns PostgreSQL DSN', () {
+      final result = dev.postgresDSN();
+      expect(
+        result.startsWith('postgres://') || result.startsWith('postgresql://'),
+        true,
+      );
+    });
   });
 }
