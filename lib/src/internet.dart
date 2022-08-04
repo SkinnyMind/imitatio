@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:imitatio/src/data/person.dart';
+import 'package:imitatio/src/data/int/person.dart';
 
 /// Provides data related to internet.
 class Internet {

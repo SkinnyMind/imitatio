@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:imitatio/imitatio.dart';
-import 'package:imitatio/src/data/development.dart';
+import 'package:imitatio/src/data/int/development.dart';
 import 'package:imitatio/src/rng.dart';
 
 /// Data related to the development.
