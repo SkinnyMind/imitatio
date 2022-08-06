@@ -5,10 +5,10 @@ import 'package:imitatio/src/data/int/file.dart';
 
 /// File data provider.
 class File {
-  /// Class for generating data related to files.
+  /// Creates data related to files.
   const File();
 
-  /// Get a random mime type.
+  /// Returns a random mime type.
   ///
   /// [type] is optional [MimeType] group.
   String mimeType({MimeType? type}) {

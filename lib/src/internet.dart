@@ -6,10 +6,10 @@ import 'package:imitatio/src/data/int/person.dart';
 
 /// Provides data related to internet.
 class Internet {
-  /// Class for generating data related to the internet.
+  /// Creates data related to the internet.
   const Internet();
 
-  /// Get a random HTTP content type.
+  /// Returns a random HTTP content type.
   ///
   /// [mimeType] is optional [MimeType] group.
   String contentType({MimeType? mimeType}) {
@@ -17,30 +17,30 @@ class Internet {
     return 'Content-Type: $format';
   }
 
-  /// Get a random HTTP status message.
+  /// Returns a random HTTP status message.
   String httpStatusMessage() {
     return InternetData.httpStatusMessages[
         Random().nextInt(InternetData.httpStatusMessages.length)];
   }
 
-  /// Get a random HTTP status code.
+  /// Returns a random HTTP status code.
   int httpStatusCode() {
     return InternetData
         .httpStatusCodes[Random().nextInt(InternetData.httpStatusCodes.length)];
   }
 
-  /// Get a random HTTP method.
+  /// Returns a random HTTP method.
   String httpMethod() {
     return InternetData
         .httpMethods[Random().nextInt(InternetData.httpMethods.length)];
   }
 
-  /// Get a random emoji shortcut code.
+  /// Returns a random emoji shortcut code.
   String emoji() {
     return InternetData.emoji[Random().nextInt(InternetData.emoji.length)];
   }
 
-  /// Generate a list of hashtags.
+  /// Returns a list of hashtags.
   ///
   /// [quantity] is optional number of hashtags (default is 4).
   ///
@@ -57,12 +57,12 @@ class Internet {
     return [for (var i = 0; i < quantity; i++) '#${text.word()}'];
   }
 
-  /// Generate a random hostname without scheme.
+  /// Returns a random hostname without scheme.
   String hostname() {
     return PersonData.usernames[Random().nextInt(PersonData.usernames.length)];
   }
 
-  /// Generate arbitrary query parameters.
+  /// Returns arbitrary query parameters.
   ///
   /// [count] is optional number of parameters (default is between 1 and 10,
   /// maximum is 32).
@@ -87,7 +87,7 @@ class Internet {
     return Map.fromIterables(keys, values);
   }
 
-  /// Generate arbitrary query string.
+  /// Returns arbitrary query string.
   ///
   /// [count] is optional number of parameters (default is between 1 and 10,
   /// maximum is 32).
@@ -97,7 +97,7 @@ class Internet {
     return Uri(queryParameters: queryParameters(count: count)).query;
   }
 
-  /// Generates random top level domain.
+  /// Returns random top level domain.
   ///
   /// [type] is optional [TLDType] group.
   String topLevelDomain({TLDType? type}) {
@@ -106,13 +106,13 @@ class Internet {
     return domains[Random().nextInt(domains.length)];
   }
 
-  /// Get a random user agent.
+  /// Returns a random user agent.
   String userAgent() {
     return InternetData
         .userAgents[Random().nextInt(InternetData.userAgents.length)];
   }
 
-  /// Generate a random slug of given parts count.
+  /// Returns a random slug of given parts count.
   ///
   /// [parts] is optional number of slug's parts (default is between 2 and 12,
   /// minimum is 2, maximum is 12).

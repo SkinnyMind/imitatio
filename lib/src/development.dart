@@ -6,20 +6,20 @@ import 'package:imitatio/src/rng.dart';
 
 /// Data related to the development.
 class Development {
-  /// Class for getting fake data for Developers.
+  /// Creates fake data for Developers.
   const Development();
 
-  /// Get a random software license.
+  /// Returns a random software license.
   String softwareLicense() {
     return DevelopmentData
         .licenses[Random().nextInt(DevelopmentData.licenses.length)];
   }
 
-  /// Generate version number.
+  /// Returns version number.
   ///
-  /// [calVer] whether should be in Calendar Versioning format.
+  /// [calVer] is optional Calendar Versioning format (default is false).
   ///
-  /// [preRelease] whether should be pre-release.
+  /// [preRelease] is optional pre-release suffix (default is false).
   String version({bool calVer = false, bool preRelease = false}) {
     late final int major;
     late final int minor;
@@ -49,21 +49,21 @@ class Development {
     return version;
   }
 
-  /// Get a random programming language from the list.
+  /// Returns a random programming language from the list.
   String programmingLanguage() {
     return DevelopmentData.programmingLanguages[
         Random().nextInt(DevelopmentData.programmingLanguages.length)];
   }
 
-  /// Get a random operating system or distributive name.
+  /// Returns a random operating system or distributive name.
   String os() {
     return DevelopmentData.os[Random().nextInt(DevelopmentData.os.length)];
   }
 
-  /// Get a random boolean value.
+  /// Returns a random boolean value.
   bool boolean() => Random().nextBool();
 
-  /// Get a random PostgreSQL DSN (postgres://user:password@host:port).
+  /// Returns a random PostgreSQL DSN (postgres://user:password@host:port).
   String postgresDSN() {
     final schemeDesignator =
         Random().nextBool() ? 'postgres://' : 'postgresql://';
