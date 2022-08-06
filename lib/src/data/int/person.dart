@@ -2,7 +2,7 @@
 class PersonData {
   const PersonData._();
 
-  static const usernames = [
+  static const usernames = <String>[
     "aaa",
     "aaron",
     "abandoned",

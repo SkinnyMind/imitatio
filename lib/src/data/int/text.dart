@@ -2,7 +2,7 @@
 class TextData {
   const TextData._();
 
-  static const wordsNormal = [
+  static const wordsNormal = <String>[
     "aa",
     "aaron",
     "ab",

@@ -2,7 +2,7 @@
 class DevelopmentData {
   const DevelopmentData._();
 
-  static const licenses = [
+  static const licenses = <String>[
     "Apache License, 2.0 (Apache-2.0)",
     "The BSD 3-Clause License",
     "The BSD 2-Clause License",
@@ -14,7 +14,7 @@ class DevelopmentData {
     "Eclipse Public License (EPL-1.0)",
   ];
 
-  static const programmingLanguages = [
+  static const programmingLanguages = <String>[
     "ASP",
     "Assembly",
     "AutoIt",
@@ -77,7 +77,7 @@ class DevelopmentData {
     "Z shell",
   ];
 
-  static const os = [
+  static const os = <String>[
     "Arch",
     "CentOS",
     "Debian",
@@ -105,7 +105,7 @@ class DevelopmentData {
     "openSUSE",
   ];
 
-  static const projectNames = [
+  static const projectNames = <String>[
     "aardonyx",
     "abelisaurus",
     "achelousaurus",

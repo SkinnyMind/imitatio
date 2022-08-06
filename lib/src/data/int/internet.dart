@@ -2,7 +2,7 @@
 class InternetData {
   const InternetData._();
 
-  static const httpMethods = [
+  static const httpMethods = <String>[
     "GET",
     "POST",
     "PUT",
@@ -12,7 +12,7 @@ class InternetData {
     "HEAD",
   ];
 
-  static const httpStatusCodes = [
+  static const httpStatusCodes = <int>[
     100,
     101,
     102,
@@ -76,7 +76,7 @@ class InternetData {
     511,
   ];
 
-  static const httpStatusMessages = [
+  static const httpStatusMessages = <String>[
     "100 Continue",
     "101 Switching Protocols",
     "102 Processing",
@@ -140,7 +140,7 @@ class InternetData {
     "511 Network Authentication Required",
   ];
 
-  static const tld = {
+  static const tld = <String, List<String>>{
     "cctld": [
       ".ac",
       ".ad",
@@ -1028,7 +1028,7 @@ class InternetData {
     ]
   };
 
-  static const emoji = [
+  static const emoji = <String>[
     ":bowtie:",
     ":smile:",
     ":laughing:",
@@ -1907,7 +1907,7 @@ class InternetData {
     ":shipit:",
   ];
 
-  static const userAgents = [
+  static const userAgents = <String>[
     "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0; de) Opera 8.0",
     "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0; de) Opera 8.02",
     "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0; en) Opera 8.0",

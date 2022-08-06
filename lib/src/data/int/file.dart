@@ -2,7 +2,7 @@
 class FileData {
   const FileData._();
 
-  static const mimeTypes = {
+  static const mimeTypes = <String, List<String>>{
     "application": [
       "application/1d-interleaved-parityfec",
       "application/3gpdash-qoe-report+xml",
