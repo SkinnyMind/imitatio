@@ -15,3 +15,6 @@ enum PortRange {
   final int min;
   final int max;
 }
+
+/// URL schemes.
+enum URLScheme { ws, wss, ftp, sftp, http, https }

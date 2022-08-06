@@ -110,5 +110,20 @@ void main() {
         expect(result >= range.min && result <= range.max, true);
       }
     });
+
+    test('returns URL', () {
+      expect(net.url().startsWith(URLScheme.https.name), true);
+
+      for (final scheme in URLScheme.values) {
+        expect(net.url(urlScheme: scheme).startsWith(scheme.name), true);
+      }
+
+      for (final range in PortRange.values) {
+        final port = int.parse(
+          net.url(portRange: range).split(':').last.replaceFirst('/', ''),
+        );
+        expect(port >= range.min && port <= range.max, true);
+      }
+    });
   });
 }

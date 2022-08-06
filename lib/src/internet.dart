@@ -79,6 +79,35 @@ class Internet {
     return host.toString();
   }
 
+  /// Returns random URL.
+  ///
+  /// [urlScheme] is one of [URLScheme]'s (default is [URLScheme.https]).
+  ///
+  /// [portRange] is optional [PortRange] group.
+  ///
+  /// [tldType] is optional [TLDType] group.
+  ///
+  /// [subdomains] is optional list of subdomains.
+  String url({
+    URLScheme urlScheme = URLScheme.https,
+    PortRange? portRange,
+    TLDType? tldType,
+    List<String>? subdomains,
+  }) {
+    final host = hostname(tldType: tldType, subdomains: subdomains);
+
+    final url = StringBuffer();
+    url.write('${urlScheme.name}://$host');
+
+    if (portRange != null) {
+      url.write(':${port(range: portRange)}');
+    }
+
+    url.write('/');
+
+    return url.toString();
+  }
+
   /// Returns arbitrary query parameters.
   ///
   /// [count] is optional number of parameters (default is between 1 and 10,
