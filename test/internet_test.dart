@@ -103,5 +103,12 @@ void main() {
       expect(result >= 2 && result <= 12, true);
       expect(net.slug(parts: 5).split('-').length, 5);
     });
+
+    test('returns port number', () {
+      for (final range in PortRange.values) {
+        final result = net.port(range: range);
+        expect(result >= range.min && result <= range.max, true);
+      }
+    });
   });
 }

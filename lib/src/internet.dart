@@ -129,6 +129,13 @@ class Internet {
         .userAgents[Random().nextInt(InternetData.userAgents.length)];
   }
 
+  /// Returns random port.
+  ///
+  /// [range] is [PortRange] group (default is [PortRange.all]).
+  int port({PortRange range = PortRange.all}) {
+    return Random().nextInt(range.max - range.min) + range.min;
+  }
+
   /// Returns a random slug of given parts count.
   ///
   /// [parts] is optional number of slug's parts (default is between 2 and 12,
