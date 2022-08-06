@@ -8,7 +8,12 @@ void main() {
     const net = Internet();
 
     test('returns hostname', () {
-      expect(net.hostname(), isA<String>());
+      expect(net.hostname().split('.').length, 2);
+
+      final subdomains = ['api', 'admin'];
+      final hostname = net.hostname(subdomains: subdomains).split('.');
+      expect(hostname.length, 3);
+      expect(subdomains.contains(hostname.first), true);
     });
 
     test('returns content type', () {

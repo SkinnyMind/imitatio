@@ -58,8 +58,25 @@ class Internet {
   }
 
   /// Returns a random hostname without scheme.
-  String hostname() {
-    return PersonData.usernames[Random().nextInt(PersonData.usernames.length)];
+  ///
+  /// [tldType] is optional [TLDType] group.
+  ///
+  /// [subdomains] is optional list of subdomains.
+  String hostname({TLDType? tldType, List<String>? subdomains}) {
+    final host = StringBuffer();
+    final tld = topLevelDomain(type: tldType);
+
+    if (subdomains != null) {
+      host.write('${subdomains[Random().nextInt(subdomains.length)]}.');
+    }
+
+    host.write(
+      PersonData.usernames[Random().nextInt(PersonData.usernames.length)],
+    );
+
+    host.write(tld);
+
+    return host.toString();
   }
 
   /// Returns arbitrary query parameters.
