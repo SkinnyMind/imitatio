@@ -138,5 +138,17 @@ void main() {
       );
       expect(result.startsWith(URLScheme.http.name), true);
     });
+
+    test('returns an IPv4', () {
+      final result = net.ipv4().split('.');
+      expect(result.length, 4);
+      for (final octet in result) {
+        expect(int.tryParse(octet), isA<int>());
+      }
+
+      final port =
+          int.parse(net.ipv4(portRange: PortRange.all).split(':').last);
+      expect(port >= PortRange.all.min && port <= PortRange.all.max, true);
+    });
   });
 }

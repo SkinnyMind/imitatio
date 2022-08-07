@@ -221,4 +221,20 @@ class Internet {
 
     return const Text().words(quantity: count).join('-');
   }
+
+  /// Returns a random IPv4.
+  ///
+  /// [portRange] is optional [PortRange] group.
+  String ipv4({PortRange? portRange}) {
+    final result = StringBuffer();
+    final octets =
+        [for (var i = 0; i < 4; i++) Random().nextInt(256)].join('.');
+    result.write(octets);
+
+    if (portRange != null) {
+      result.write(':${port(range: portRange)}');
+    }
+
+    return result.toString();
+  }
 }
