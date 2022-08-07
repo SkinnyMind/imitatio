@@ -139,7 +139,7 @@ void main() {
       expect(result.startsWith(URLScheme.http.name), true);
     });
 
-    test('returns an IPv4', () {
+    test('returns an IPv4 address', () {
       final result = net.ipv4().split('.');
       expect(result.length, 4);
       for (final octet in result) {
@@ -149,6 +149,12 @@ void main() {
       final port =
           int.parse(net.ipv4(portRange: PortRange.all).split(':').last);
       expect(port >= PortRange.all.min && port <= PortRange.all.max, true);
+    });
+
+    test('returns an IPv6 address', () {
+      final result = net.ipv6();
+      expect(RegExp('[0-9a-fA-F]{1,4}').hasMatch(result), true);
+      expect(result.split(':').length, 8);
     });
   });
 }

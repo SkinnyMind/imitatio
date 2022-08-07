@@ -222,7 +222,7 @@ class Internet {
     return const Text().words(quantity: count).join('-');
   }
 
-  /// Returns a random IPv4.
+  /// Returns a random IPv4 address.
   ///
   /// [portRange] is optional [PortRange] group.
   String ipv4({PortRange? portRange}) {
@@ -236,5 +236,13 @@ class Internet {
     }
 
     return result.toString();
+  }
+
+  /// Returns a random IPv6 address.
+  String ipv6() {
+    return [
+      for (var i = 0; i < 8; i++)
+        Random().nextInt(65536).toRadixString(16).padLeft(4, '0')
+    ].join(':');
   }
 }
