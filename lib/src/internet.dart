@@ -108,6 +108,37 @@ class Internet {
     return url.toString();
   }
 
+  /// Returns a random URI.
+  ///
+  /// [urlScheme] is one of [URLScheme]'s (default is [URLScheme.https]).
+  ///
+  /// [tldType] is optional [TLDType] group.
+  ///
+  /// [subdomains] is optional list of subdomains.
+  ///
+  /// [queryParameters] is optional number of query parameters.
+  String uri({
+    URLScheme urlScheme = URLScheme.https,
+    TLDType? tldType,
+    List<String>? subdomains,
+    int? queryParameters,
+  }) {
+    final directory = const Date().date(start: 2010).replaceAll('-', '/');
+    final url = this.url(
+      urlScheme: urlScheme,
+      tldType: tldType,
+      subdomains: subdomains,
+    );
+    final uri = StringBuffer();
+    uri.write('$url$directory/${slug()}');
+
+    if (queryParameters != null) {
+      uri.write('?${queryString(count: queryParameters)}');
+    }
+
+    return uri.toString();
+  }
+
   /// Returns arbitrary query parameters.
   ///
   /// [count] is optional number of parameters (default is between 1 and 10,

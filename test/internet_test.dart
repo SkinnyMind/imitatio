@@ -125,5 +125,18 @@ void main() {
         expect(port >= range.min && port <= range.max, true);
       }
     });
+
+    test('returns URI', () {
+      expect(net.uri().startsWith(URLScheme.https.name), true);
+
+      final urlScheme = URLScheme.http;
+      final result = net.uri(
+        urlScheme: urlScheme,
+        tldType: TLDType.gtld,
+        subdomains: ['test', 'dev', 'app'],
+        queryParameters: 5,
+      );
+      expect(result.startsWith(URLScheme.http.name), true);
+    });
   });
 }
