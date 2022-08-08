@@ -1,7 +1,7 @@
 import 'dart:math';
 
 class Util {
-  const Util._();
+  const Util._(); // coverage:ignore-line
 
   /// Returns a list of randomly picked strings.
   ///

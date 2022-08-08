@@ -4,7 +4,7 @@ import 'package:imitatio/src/util.dart';
 
 /// Implements various helpers.
 class Rng {
-  const Rng._();
+  const Rng._(); // coverage:ignore-line
 
   /// Returns a random string value.
   ///

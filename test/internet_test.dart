@@ -104,6 +104,11 @@ void main() {
       expect(net.slug(parts: 5).split('-').length, 5);
     });
 
+    test('throws when trying to return slug with wrong number of parts', () {
+      expect(() => net.slug(parts: 1), throwsA(isA<ArgumentError>()));
+      expect(() => net.slug(parts: 13), throwsA(isA<ArgumentError>()));
+    });
+
     test('returns port number', () {
       for (final range in PortRange.values) {
         final result = net.port(range: range);

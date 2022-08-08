@@ -1,3 +1,5 @@
+// coverage:ignore-file
+
 /// Provides all the data related to the text.
 class TextData {
   const TextData._();

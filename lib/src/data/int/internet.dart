@@ -1,3 +1,5 @@
+// coverage:ignore-file
+
 /// Provides all the data related to the internet.
 class InternetData {
   const InternetData._();
