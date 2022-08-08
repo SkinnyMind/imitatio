@@ -88,6 +88,11 @@ void main() {
     );
 
     test('returns top level domain', () {
+      expect(
+        InternetData.tld[TLDType.cctld.name]!.contains(net.topLevelDomain()),
+        true,
+      );
+
       for (final type in TLDType.values) {
         final result = net.topLevelDomain(type: type);
         expect(InternetData.tld[type.name]!.contains(result), true);

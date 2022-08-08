@@ -64,7 +64,8 @@ class Internet {
   /// [subdomains] is optional list of subdomains.
   String hostname({TLDType? tldType, List<String>? subdomains}) {
     final host = StringBuffer();
-    final tld = topLevelDomain(type: tldType);
+    final tld =
+        tldType != null ? topLevelDomain(type: tldType) : topLevelDomain();
 
     if (subdomains != null) {
       host.write('${subdomains[Random().nextInt(subdomains.length)]}.');
@@ -176,10 +177,9 @@ class Internet {
 
   /// Returns random top level domain.
   ///
-  /// [type] is optional [TLDType] group.
-  String topLevelDomain({TLDType? type}) {
-    final key = type ?? TLDType.values[Random().nextInt(TLDType.values.length)];
-    final domains = InternetData.tld[key.name]!;
+  /// [type] is [TLDType] group (default is [TLDType.cctld]).
+  String topLevelDomain({TLDType type = TLDType.cctld}) {
+    final domains = InternetData.tld[type.name]!;
     return domains[Random().nextInt(domains.length)];
   }
 
