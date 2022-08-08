@@ -15,5 +15,12 @@ void main() {
       expect(result1 != result2, true);
       expect(result1.length, 8);
     });
+
+    test('returns unique random string', () {
+      final result = [
+        for (var i = 0; i < 1000; i++) Rng.randomString(unique: true)
+      ];
+      expect(result.length, result.toSet().length);
+    });
   });
 }
