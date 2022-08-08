@@ -13,10 +13,11 @@ class Date {
   ///
   /// [end] is optional end year (default is current year).
   String date({int start = 2000, int? end}) {
+    final random = Random();
     final endYear = end ?? DateTime.now().year;
-    final year = Random().nextInt(endYear + 1 - start) + start;
-    final month = Random().nextInt(12) + 1;
-    final day = Random().nextInt(Util.daysInMonth(year, month)) + 1;
+    final year = random.nextInt(endYear + 1 - start) + start;
+    final month = random.nextInt(12) + 1;
+    final day = random.nextInt(Util.daysInMonth(year, month)) + 1;
     return '$year-$month-$day';
   }
 }
