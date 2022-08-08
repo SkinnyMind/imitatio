@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:imitatio/imitatio.dart';
 import 'package:imitatio/src/data/int/development.dart';
-import 'package:imitatio/src/rng.dart';
 
 /// Data related to the development.
 class Development {
@@ -63,15 +62,21 @@ class Development {
   /// Returns a random boolean value.
   bool boolean() => Random().nextBool();
 
-  /// Returns a random PostgreSQL DSN (postgres://user:password@host:port).
-  String postgresDSN() {
-    final schemeDesignator =
-        Random().nextBool() ? 'postgres://' : 'postgresql://';
-    final hostname = const Internet().hostname();
-    final password = Rng.randomString(length: 8);
-    final username = DevelopmentData
-        .projectNames[Random().nextInt(DevelopmentData.projectNames.length)];
+  /// Returns a random DSN (Data Source Name).
+  ///
+  /// [dsnType] is optional [DSNType] group.
+  ///
+  /// [tldType] is optional [TLDType] group.
+  ///
+  /// [subdomains] is optional list of subdomains.
+  String dsn({DSNType? dsnType, TLDType? tldType, List<String>? subdomains}) {
+    final hostname = const Internet().hostname(
+      tldType: tldType,
+      subdomains: subdomains,
+    );
+    final dsn =
+        dsnType ?? DSNType.values[Random().nextInt(DSNType.values.length)];
 
-    return '$schemeDesignator$username:$password@$hostname:5432';
+    return '${dsn.scheme}://$hostname:${dsn.port}';
   }
 }

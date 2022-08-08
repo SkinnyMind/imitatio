@@ -66,12 +66,18 @@ void main() {
       expect(dev.boolean(), isA<bool>());
     });
 
-    test('returns PostgreSQL DSN', () {
-      final result = dev.postgresDSN();
-      expect(
-        result.startsWith('postgres://') || result.startsWith('postgresql://'),
-        true,
-      );
+    test('returns DSN', () {
+      final result = dev.dsn();
+      final schemes = DSNType.values.map((e) => e.scheme);
+      final ports = DSNType.values.map((e) => e.port);
+      expect(schemes.contains(result.split('://').first), true);
+      expect(ports.contains(int.parse(result.split(':').last)), true);
+
+      for (final type in DSNType.values) {
+        final result = dev.dsn(dsnType: type);
+        expect(result.startsWith('${type.scheme}://'), true);
+        expect(result.endsWith(':${type.port}'), true);
+      }
     });
   });
 }
