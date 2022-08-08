@@ -156,5 +156,13 @@ void main() {
       expect(RegExp('[0-9a-fA-F]{1,4}').hasMatch(result), true);
       expect(result.split(':').length, 8);
     });
+
+    test('returns a mac address', () {
+      expect(
+        RegExp(r'^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$')
+            .hasMatch(net.macAddress()),
+        true,
+      );
+    });
   });
 }

@@ -245,4 +245,17 @@ class Internet {
         Random().nextInt(65536).toRadixString(16).padLeft(4, '0')
     ].join(':');
   }
+
+  /// Returns a random MAC address.
+  String macAddress() {
+    final random = Random();
+    return [
+      0.toRadixString(16).padLeft(2, '0'),
+      22.toRadixString(16),
+      62.toRadixString(16),
+      random.nextInt(128).toRadixString(16).padLeft(2, '0'),
+      random.nextInt(256).toRadixString(16).padLeft(2, '0'),
+      random.nextInt(256).toRadixString(16).padLeft(2, '0'),
+    ].join(':');
+  }
 }
