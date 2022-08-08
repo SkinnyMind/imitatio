@@ -33,3 +33,15 @@ enum DSNType {
   final String scheme;
   final int port;
 }
+
+/// File types.
+enum FileType {
+  source,
+  text,
+  data,
+  audio,
+  video,
+  image,
+  executable,
+  compressed,
+}
