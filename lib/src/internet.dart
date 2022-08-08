@@ -258,4 +258,8 @@ class Internet {
       random.nextInt(256).toRadixString(16).padLeft(2, '0'),
     ].join(':');
   }
+
+  /// Returns a random public DNS.
+  String publicDNS() =>
+      InternetData.publicDNS[Random().nextInt(InternetData.publicDNS.length)];
 }

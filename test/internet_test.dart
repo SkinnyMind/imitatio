@@ -174,5 +174,9 @@ void main() {
         true,
       );
     });
+
+    test('returns a public DNS', () {
+      expect(InternetData.publicDNS.contains(net.publicDNS()), true);
+    });
   });
 }
