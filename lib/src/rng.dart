@@ -24,4 +24,43 @@ class Rng {
       n: length ?? Random().nextInt(113) + 16,
     ).join();
   }
+
+  /// Returns a custom code using ascii uppercase and random integers.
+  ///
+  /// [mask] is optional mask of code (default is 4 digits).
+  ///
+  /// [char] is optional placeholder for characters (default is "@").
+  ///
+  /// [digit] is optional placeholder for digits (default is "#").
+  ///
+  /// Throws [ArgumentError] if [char] and [digit] are the same.
+  static String customCode({
+    String mask = '####',
+    String char = '@',
+    String digit = '#',
+  }) {
+    final random = Random();
+    final maskCodes = mask.codeUnits;
+    final charCode = char.codeUnits.first;
+    final digitCode = digit.codeUnits.first;
+
+    if (charCode == digitCode) {
+      throw ArgumentError(
+        'You cannot use the same placeholder for digits and chars',
+      );
+    }
+
+    final code = <int>[];
+
+    for (var i = 0; i < maskCodes.length; i++) {
+      if (maskCodes[i] == digitCode) {
+        code.add(random.nextInt(58 - 48) + 48);
+      } else if (maskCodes[i] == charCode) {
+        code.add(random.nextInt(91 - 65) + 65);
+      } else {
+        code.add(maskCodes[i]);
+      }
+    }
+    return String.fromCharCodes(code);
+  }
 }

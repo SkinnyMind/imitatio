@@ -45,3 +45,21 @@ enum FileType {
   executable,
   compressed,
 }
+
+/// ISBN formats.
+enum ISBNFormat {
+  isbn13('###-#-#####-###-#'),
+  isbn10('#-#####-###-#');
+
+  const ISBNFormat(this.mask);
+  final String mask;
+}
+
+/// EAN formats.
+enum EANFormat {
+  ean8('########'),
+  ean13('#############');
+
+  const EANFormat(this.mask);
+  final String mask;
+}

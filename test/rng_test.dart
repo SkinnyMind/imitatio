@@ -22,5 +22,22 @@ void main() {
       ];
       expect(result.length, result.toSet().length);
     });
+
+    test('returns custom code', () {
+      expect(Rng.customCode().length, 4);
+
+      final mask = r'**-š好-$$';
+      final result = Rng.customCode(mask: mask, char: '*', digit: r'$');
+      expect(result.length, 8);
+
+      final splitResult = result.split('-');
+      expect(splitResult[1], mask.split('-')[1]);
+      expect(int.parse(splitResult.last), isA<int>());
+
+      expect(
+        () => Rng.customCode(char: '*', digit: '*'),
+        throwsA(isA<ArgumentError>()),
+      );
+    });
   });
 }

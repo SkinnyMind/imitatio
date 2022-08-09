@@ -22,5 +22,11 @@ void main() {
       expect(Util.isLeapYear(2020), true);
       expect(Util.isLeapYear(2021), false);
     });
+
+    test('returns luhn checksum', () {
+      expect(Util.luhnChecksum('5563455651'), '2');
+      expect(Util.luhnChecksum('7992739871'), '3');
+      expect(Util.luhnChecksum('5161675549'), '5');
+    });
   });
 }

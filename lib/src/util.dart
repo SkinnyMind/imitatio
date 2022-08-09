@@ -35,4 +35,16 @@ class Util {
   /// Gregorian calendar.
   static bool isLeapYear(int year) =>
       (year % 4 == 0) && ((year % 100 != 0) || (year % 400 == 0));
+
+  /// Returns a checksum for [number] using the Luhn algorithm.
+  static String luhnChecksum(String number) {
+    var check = 0;
+    for (var i = number.length - 1; i >= 0; i--) {
+      var x = int.parse(number[i]);
+      if (i.isOdd) x *= 2;
+      if (x > 9) x -= 9;
+      check += x;
+    }
+    return (check * 9 % 10).toString();
+  }
 }
