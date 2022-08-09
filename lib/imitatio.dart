@@ -1,5 +1,6 @@
 library imitatio;
 
+export 'src/choice.dart';
 export 'src/code.dart';
 export 'src/date.dart';
 export 'src/development.dart';
