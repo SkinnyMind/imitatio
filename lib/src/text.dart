@@ -9,6 +9,12 @@ class Text {
   /// Returns a list of random words.
   ///
   /// [quantity] is optional number of words (default is 5).
+  ///
+  /// Example:
+  /// ```dart
+  /// Text().words(); // ["athens", "non", "hop", "maximum", "demand"]
+  /// Text().words(quantity: 2); // ["awarded", "basically"]
+  /// ```
   List<String> words({int quantity = 5}) {
     return Util.pickN(list: TextData.wordsNormal, n: quantity);
   }

@@ -13,6 +13,17 @@ class Choice {
   /// Throws [ArgumentError] if length is not a positive integer or if there
   /// are not enough unique elements in [items] to provide the specified
   /// [length].
+  ///
+  /// Example:
+  /// ```dart
+  /// Choice().choose(items: [1, 2, 3]); // [3]
+  /// Choice().choose(items: [1, 2, 3], length: 2); // [3, 1]
+  /// Choice().choose(
+  ///   items: [1, 2, 3, 2, 1],
+  ///   length: 3,
+  ///   unique: true
+  /// ); // [3, 1, 2]
+  /// ```
   List<T> choose<T>({
     required List<T> items,
     int length = 1,

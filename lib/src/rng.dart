@@ -13,6 +13,13 @@ class Rng {
   ///
   /// [length] is optional length of the resulting string (default is between
   /// 16 and 128).
+  ///
+  /// Example:
+  /// ```dart
+  /// Rng.randomString(); // "WpDwD3YSZjyXbK8fwoKRqu0PFAt2iIBWQb"
+  /// Rng.randomString(unique: true); // "9a1af951-e5b0-4a8e-bfd6-f64b323551bb"
+  /// Rng.randomString(length: 5); // "pNADq"
+  /// ```
   static String randomString({bool unique = false, int? length}) {
     if (unique) return const Uuid().v4();
     final chars =
@@ -34,6 +41,13 @@ class Rng {
   /// [digit] is optional placeholder for digits (default is "#").
   ///
   /// Throws [ArgumentError] if [char] and [digit] are the same.
+  ///
+  /// Example:
+  /// ```dart
+  /// Rng.customCode(); // "3362"
+  /// Rng.customCode(mask: '@#-#@'); // "T4-2A"
+  /// Rng.customCode(mask: r'*$$', char: '*', digit: r'$'); // "C76"
+  /// ```
   static String customCode({
     String mask = '####',
     String char = '@',

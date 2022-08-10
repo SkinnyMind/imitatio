@@ -12,6 +12,12 @@ class Date {
   /// [start] is optional start year (default is 2000).
   ///
   /// [end] is optional end year (default is current year).
+  ///
+  /// Example
+  /// ```dart
+  /// Date().date(); // "2015-9-10"
+  /// Date().date(start: 2022, end: 2022); // "2022-8-20"
+  /// ```
   String date({int start = 2000, int? end}) {
     final random = Random();
     final endYear = end ?? DateTime.now().year;

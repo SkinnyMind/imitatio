@@ -39,7 +39,7 @@ void main() {
       expect(result >= 100 && result <= 511, true);
     });
 
-    test('returns http status code', () {
+    test('returns http method', () {
       expect(InternetData.httpMethods.contains(net.httpMethod()), true);
     });
 
