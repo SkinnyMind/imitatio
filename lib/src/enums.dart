@@ -63,3 +63,6 @@ enum EANFormat {
   const EANFormat(this.mask);
   final String mask;
 }
+
+/// Credit card types.
+enum CardType { visa, masterCard, americanExpress }

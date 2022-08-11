@@ -1954,4 +1954,16 @@ class InternetData {
     "94.140.14.14",
     "94.140.15.15",
   ];
+
+  static const emailDomains = <String>[
+    "@duck.com",
+    "@gmail.com",
+    "@yandex.com",
+    "@yahoo.com",
+    "@live.com",
+    "@outlook.com",
+    "@protonmail.com",
+    "@example.com",
+    "@example.org",
+  ];
 }
