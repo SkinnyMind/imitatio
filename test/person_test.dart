@@ -1,9 +1,36 @@
 import 'package:imitatio/imitatio.dart';
+import 'package:imitatio/src/data/int/person.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('Person', () {
     const person = Person();
+
+    test('returns name', () {
+      expect(person.name(), isNotEmpty);
+
+      final maleName = person.name(gender: Gender.male);
+      final femaleName = person.name(gender: Gender.female);
+      expect(PersonData.namesMale.contains(maleName), true);
+      expect(PersonData.namesFemale.contains(femaleName), true);
+    });
+
+    test('returns surname', () {
+      final result = person.surname();
+      expect(PersonData.surnames.contains(result), true);
+    });
+
+    test('returns full name', () {
+      final result = person.fullName().split(' ');
+      expect(result.length, 2);
+      expect(result[0], isNotEmpty);
+      expect(result[1], isNotEmpty);
+
+      final reversed = person.fullName(reverse: true).split(' ');
+      expect(reversed.length, 2);
+      expect(reversed[0], isNotEmpty);
+      expect(reversed[1], isNotEmpty);
+    });
 
     test('returns username', () {
       expect(person.username().split('_').length, 2);

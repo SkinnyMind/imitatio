@@ -63,5 +63,15 @@ void main() {
     test('returns CVV code', () {
       expect(payment.cvv().length, 3);
     });
+
+    test('returns credit card owner', () {
+      final result = payment.creditCardOwner();
+      expect(result, isA<CreditCardOwner>());
+      expect(result.toString().startsWith('CreditCardOwner{'), true);
+      expect(result.card, isNotEmpty);
+      expect(result.expirationDate, isNotEmpty);
+      expect(result.owner, isNotEmpty);
+      expect(result.owner, result.owner.toUpperCase());
+    });
   });
 }

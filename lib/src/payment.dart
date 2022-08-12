@@ -134,4 +134,33 @@ class Payment {
   /// Payment().cvv(); // "420"
   /// ```
   String cvv() => (Random().nextInt(999) + 1).toString().padLeft(3, '0');
+
+  /// Returns credit card owner.
+  ///
+  /// [gender] is optional gender.
+  ///
+  /// Example:
+  /// ```dart
+  /// Payment().creditCardOwner(); // CreditCardOwner{card: "4002 6308 0423 4888", expirationDate: "10/24", owner: "SANG STEELE"}
+  /// ```
+  CreditCardOwner creditCardOwner({Gender? gender}) {
+    return CreditCardOwner._(
+      creditCardNumber(),
+      creditCardExpirationDate(),
+      const Person().fullName(gender: gender).toUpperCase(),
+    );
+  }
+}
+
+class CreditCardOwner {
+  const CreditCardOwner._(this.card, this.expirationDate, this.owner);
+
+  final String card;
+  final String expirationDate;
+  final String owner;
+
+  @override
+  String toString() =>
+      'CreditCardOwner{card: $card, expirationDate: $expirationDate, '
+      'owner: $owner}';
 }

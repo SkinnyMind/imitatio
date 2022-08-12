@@ -66,3 +66,6 @@ enum EANFormat {
 
 /// Credit card types.
 enum CardType { visa, masterCard, americanExpress }
+
+/// Genders.
+enum Gender { male, female }

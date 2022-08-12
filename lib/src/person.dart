@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:imitatio/imitatio.dart';
 import 'package:imitatio/src/data/int/internet.dart';
 import 'package:imitatio/src/data/int/person.dart';
 import 'package:imitatio/src/rng.dart';
@@ -8,6 +9,54 @@ import 'package:imitatio/src/rng.dart';
 class Person {
   /// Creates personal data.
   const Person();
+
+  /// Returns a random name.
+  ///
+  /// [gender] is optional gender.
+  ///
+  /// Example:
+  /// ```dart
+  /// Person().name(); // "Larry"
+  /// ```
+  String name({Gender? gender}) {
+    final random = Random();
+    gender ??= Gender.values[random.nextInt(Gender.values.length)];
+    return gender == Gender.male
+        ? PersonData.namesMale[random.nextInt(PersonData.namesMale.length)]
+        : PersonData.namesFemale[random.nextInt(PersonData.namesFemale.length)];
+  }
+
+  /// Returns a random surname.
+  ///
+  /// [gender] is optional gender.
+  ///
+  /// Example:
+  /// ```dart
+  /// Person().surname(); // "Weiss"
+  /// ```
+  String surname({Gender? gender}) {
+    final random = Random();
+    gender ??= Gender.values[random.nextInt(Gender.values.length)];
+    return PersonData.surnames[random.nextInt(PersonData.surnames.length)];
+  }
+
+  /// Returns a random full name.
+  ///
+  /// [gender] is optional gender.
+  ///
+  /// [reverse] whether to return reversed full name (surname before name).
+  ///
+  /// Example:
+  /// ```dart
+  /// Person().fullName(); // "Kristofer Livingston"
+  /// Person().fullName(reverse: true); // "Livingston Kristofer"
+  /// ```
+  String fullName({Gender? gender, bool reverse = false}) {
+    gender ??= Gender.values[Random().nextInt(Gender.values.length)];
+    final name = this.name(gender: gender);
+    final surname = this.surname(gender: gender);
+    return reverse ? '$surname $name' : '$name $surname';
+  }
 
   /// Returns username from template.
   ///
