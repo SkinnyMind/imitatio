@@ -11,3 +11,4 @@ export 'src/internet.dart';
 export 'src/payment.dart';
 export 'src/person.dart';
 export 'src/text.dart';
+export 'src/transport.dart';
