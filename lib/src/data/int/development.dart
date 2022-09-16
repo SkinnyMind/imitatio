@@ -107,6 +107,18 @@ class DevelopmentData {
     "openSUSE",
   ];
 
+  static const List<String> folders = <String>[
+    "Development",
+    "Downloads",
+    "Documents",
+    "Music",
+    "Video",
+    "Work",
+    "Pictures",
+    "Desktop",
+    "Study",
+  ];
+
   static const projectNames = <String>[
     "aardonyx",
     "abelisaurus",

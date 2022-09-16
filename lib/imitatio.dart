@@ -8,6 +8,7 @@ export 'src/enums.dart';
 export 'src/file.dart';
 export 'src/hardware.dart';
 export 'src/internet.dart';
+export 'src/path.dart';
 export 'src/payment.dart';
 export 'src/person.dart';
 export 'src/text.dart';
