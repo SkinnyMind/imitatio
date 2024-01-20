@@ -1,5 +1,3 @@
-// coverage:ignore-file
-
 /// Provides all the data related to transports.
 class TransportData {
   const TransportData._();

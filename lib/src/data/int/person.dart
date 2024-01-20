@@ -1,5 +1,3 @@
-// coverage:ignore-file
-
 /// Provides all the generic data related to the personal information.
 class PersonData {
   const PersonData._();

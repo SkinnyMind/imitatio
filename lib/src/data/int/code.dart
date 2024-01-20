@@ -1,5 +1,3 @@
-// coverage:ignore-file
-
 /// Provides all data related to the codes.
 class CodeData {
   const CodeData._();

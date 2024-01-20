@@ -1,5 +1,3 @@
-// coverage:ignore-file
-
 /// Provides all the data related to the development.
 class DevelopmentData {
   const DevelopmentData._();

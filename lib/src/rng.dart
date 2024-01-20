@@ -5,7 +5,7 @@ import 'package:uuid/uuid.dart';
 
 /// Implements various helpers.
 class Rng {
-  const Rng._(); // coverage:ignore-line
+  const Rng._();
 
   /// Returns a random string value.
   ///
