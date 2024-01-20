@@ -108,16 +108,12 @@ class Person {
           final capitalized = '${username[0].toUpperCase()}'
               '${username.substring(1).toLowerCase()}';
           result.write(capitalized);
-          break;
         case 'U':
           result.write(username.toUpperCase());
-          break;
         case 'l':
           result.write(username.toLowerCase());
-          break;
         case 'd':
           result.write(random.nextInt(digitsMax + 1 - digitsMin) + digitsMin);
-          break;
         default:
           result.write(tag);
       }
