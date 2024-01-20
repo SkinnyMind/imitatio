@@ -23,7 +23,7 @@ class Date {
     final endYear = end ?? DateTime.now().year;
     final year = random.nextInt(endYear + 1 - start) + start;
     final month = random.nextInt(12) + 1;
-    final day = random.nextInt(Util.daysInMonth(year, month)) + 1;
+    final day = random.nextInt(Util.daysInMonth(year: year, month: month)) + 1;
     return '$year-$month-$day';
   }
 }

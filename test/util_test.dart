@@ -14,13 +14,13 @@ void main() {
     });
 
     test('returns number of days in provided month', () {
-      expect(Util.daysInMonth(2020, 02), 29);
-      expect(Util.daysInMonth(2021, 02), 28);
+      expect(Util.daysInMonth(year: 2020, month: 02), 29);
+      expect(Util.daysInMonth(year: 2021, month: 02), 28);
     });
 
     test('checks if provided year is a leap year', () {
-      expect(Util.isLeapYear(2020), true);
-      expect(Util.isLeapYear(2021), false);
+      expect(Util.isLeapYear(year: 2020), true);
+      expect(Util.isLeapYear(year: 2021), false);
     });
 
     test('returns luhn checksum', () {

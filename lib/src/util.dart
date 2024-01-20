@@ -16,11 +16,11 @@ class Util {
   ///
   /// This function assumes the use of the Gregorian calendar or the proleptic
   /// Gregorian calendar.
-  static int daysInMonth(int year, int month) {
+  static int daysInMonth({required int year, required int month}) {
     // Days in a month. This array uses 1-based month numbers, i.e. January is
     // the 1-st element in the array, not the 0-th.
     const daysInMonth = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-    return (month == DateTime.february && isLeapYear(year))
+    return (month == DateTime.february && isLeapYear(year: year))
         ? 29
         : daysInMonth[month];
   }
@@ -33,7 +33,7 @@ class Util {
   ///
   /// This function assumes the use of the Gregorian calendar or the proleptic
   /// Gregorian calendar.
-  static bool isLeapYear(int year) =>
+  static bool isLeapYear({required int year}) =>
       (year % 4 == 0) && ((year % 100 != 0) || (year % 400 == 0));
 
   /// Returns a checksum for [number] using the Luhn algorithm.
