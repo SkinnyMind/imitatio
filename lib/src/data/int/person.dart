@@ -11749,7 +11749,7 @@ class PersonData {
     "Zofia",
     "Zonia",
     "Zulema",
-    "Zulma"
+    "Zulma",
   ];
 
   static const namesMale = <String>[
@@ -12964,7 +12964,7 @@ class PersonData {
     "Zachery",
     "Zack",
     "Zackary",
-    "Zane"
+    "Zane",
   ];
 
   static const surnames = <String>[
@@ -13967,6 +13967,6 @@ class PersonData {
     "York",
     "Young",
     "Zamora",
-    "Zimmerman"
+    "Zimmerman",
   ];
 }

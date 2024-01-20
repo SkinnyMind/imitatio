@@ -344,7 +344,7 @@ class Internet {
   String ipv6() {
     return [
       for (var i = 0; i < 8; i++)
-        Random().nextInt(65536).toRadixString(16).padLeft(4, '0')
+        Random().nextInt(65536).toRadixString(16).padLeft(4, '0'),
     ].join(':');
   }
 

@@ -1027,7 +1027,7 @@ class InternetData {
       ".tel",
       ".travel",
       ".xxx",
-    ]
+    ],
   };
 
   static const emoji = <String>[

@@ -18,7 +18,7 @@ void main() {
 
     test('returns unique random string', () {
       final result = [
-        for (var i = 0; i < 1000; i++) Rng.randomString(unique: true)
+        for (var i = 0; i < 1000; i++) Rng.randomString(unique: true),
       ];
       expect(result.length, result.toSet().length);
     });
