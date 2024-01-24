@@ -20,16 +20,12 @@ class Path {
   final String _pathSeparator;
 
   static String _getPlatformHome(String platform) {
-    switch (platform) {
-      case 'linux':
-        return '/home/';
-      case 'macos':
-        return '/home/';
-      case 'windows':
-        return r'C:\Users\';
-      default:
-        throw Exception('$platform is not supported');
-    }
+    return switch (platform) {
+      'linux' => '/home/',
+      'macos' => '/home/',
+      'windows' => r'C:\Users\',
+      _ => throw Exception('$platform is not supported'),
+    };
   }
 
   /// Returns a root dir path.
