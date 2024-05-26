@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'dart:math';
 
-import 'package:imitatio/src/data/int/development.dart';
-import 'package:imitatio/src/data/int/person.dart';
+import 'package:imitatio/src/datasets/international/development.dart';
+import 'package:imitatio/src/datasets/international/person.dart';
 
 /// Provides data related to paths.
 class Path {

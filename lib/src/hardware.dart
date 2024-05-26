@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:imitatio/src/data/int/hardware.dart';
+import 'package:imitatio/src/datasets/international/hardware.dart';
 
 /// Provides data related to hardware.
 class Hardware {

@@ -1,8 +1,8 @@
 import 'dart:math';
 
 import 'package:imitatio/imitatio.dart';
-import 'package:imitatio/src/data/int/internet.dart';
-import 'package:imitatio/src/data/int/person.dart';
+import 'package:imitatio/src/datasets/international/internet.dart';
+import 'package:imitatio/src/datasets/international/person.dart';
 import 'package:imitatio/src/rng.dart';
 
 /// Provides personal data.
