@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:imitatio/src/data/int/transport.dart';
+import 'package:imitatio/src/datasets/international/transport.dart';
 import 'package:imitatio/src/rng.dart';
 
 /// Provides data related to transports.

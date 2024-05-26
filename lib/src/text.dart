@@ -1,4 +1,4 @@
-import 'package:imitatio/src/data/int/text.dart';
+import 'package:imitatio/src/datasets/international/text.dart';
 import 'package:imitatio/src/util.dart';
 
 /// Provides data related to text.

@@ -1,5 +1,5 @@
 import 'package:imitatio/imitatio.dart';
-import 'package:imitatio/src/data/int/person.dart';
+import 'package:imitatio/src/datasets/international/person.dart';
 import 'package:test/test.dart';
 
 void main() {

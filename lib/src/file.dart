@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:imitatio/imitatio.dart';
-import 'package:imitatio/src/data/int/file.dart';
+import 'package:imitatio/src/datasets/international/file.dart';
 
 /// File data provider.
 class File {

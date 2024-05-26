@@ -1,6 +1,6 @@
 import 'package:imitatio/imitatio.dart';
-import 'package:imitatio/src/data/int/file.dart';
-import 'package:imitatio/src/data/int/internet.dart';
+import 'package:imitatio/src/datasets/international/file.dart';
+import 'package:imitatio/src/datasets/international/internet.dart';
 import 'package:test/test.dart';
 
 void main() {
