@@ -4,14 +4,15 @@ import 'package:test/test.dart';
 
 void main() {
   group('Development', () {
-    const dev = Development();
-
     test('returns random software licence', () {
-      expect(DevelopmentData.licenses.contains(dev.softwareLicense()), true);
+      expect(
+        DevelopmentData.licenses.contains(Development.softwareLicense()),
+        true,
+      );
     });
 
     test('returns version number', () {
-      final version = dev.version().split('.');
+      final version = Development.version().split('.');
       expect(version.length, 3);
 
       final major = int.parse(version[0]);
@@ -23,12 +24,12 @@ void main() {
     });
 
     test('returns version number with pre-release', () {
-      final version = dev.version(preRelease: true).split('.');
+      final version = Development.version(preRelease: true).split('.');
       expect(version.length, 4);
     });
 
     test('returns version number in Calendar Versioning format', () {
-      final version = dev.version(calVer: true).split('.');
+      final version = Development.version(calVer: true).split('.');
       expect(version.length, 3);
 
       final major = int.parse(version[0]);
@@ -42,7 +43,8 @@ void main() {
     test(
       'returns version number in Calendar Versioning format with pre-release',
       () {
-        final version = dev.version(calVer: true, preRelease: true).split('.');
+        final version =
+            Development.version(calVer: true, preRelease: true).split('.');
         expect(version.length, 4);
 
         final major = int.parse(version[0]);
@@ -53,28 +55,28 @@ void main() {
     test('returns programming language', () {
       expect(
         DevelopmentData.programmingLanguages
-            .contains(dev.programmingLanguage()),
+            .contains(Development.programmingLanguage()),
         true,
       );
     });
 
     test('returns os', () {
-      expect(DevelopmentData.os.contains(dev.os()), true);
+      expect(DevelopmentData.os.contains(Development.os()), true);
     });
 
     test('returns boolean value', () {
-      expect(dev.boolean(), isA<bool>());
+      expect(Development.boolean(), isA<bool>());
     });
 
     test('returns DSN', () {
-      final result = dev.dsn();
+      final result = Development.dsn();
       final schemes = DSNType.values.map((e) => e.scheme);
       final ports = DSNType.values.map((e) => e.port);
       expect(schemes.contains(result.split('://').first), true);
       expect(ports.contains(int.parse(result.split(':').last)), true);
 
       for (final type in DSNType.values) {
-        final result = dev.dsn(dsnType: type);
+        final result = Development.dsn(dsnType: type);
         expect(result.startsWith('${type.scheme}://'), true);
         expect(result.endsWith(':${type.port}'), true);
       }

@@ -7,8 +7,7 @@ import 'package:imitatio/src/rng.dart';
 
 /// Provides personal data.
 class Person {
-  /// Creates personal data.
-  const Person();
+  const Person._();
 
   /// Returns a random name.
   ///
@@ -16,9 +15,9 @@ class Person {
   ///
   /// Example:
   /// ```dart
-  /// Person().name(); // "Larry"
+  /// Person.name(); // "Larry"
   /// ```
-  String name({Gender? gender}) {
+  static String name({Gender? gender}) {
     final random = Random();
     gender ??= Gender.values[random.nextInt(Gender.values.length)];
     return gender == Gender.male
@@ -32,9 +31,9 @@ class Person {
   ///
   /// Example:
   /// ```dart
-  /// Person().surname(); // "Weiss"
+  /// Person.surname(); // "Weiss"
   /// ```
-  String surname({Gender? gender}) {
+  static String surname({Gender? gender}) {
     final random = Random();
     gender ??= Gender.values[random.nextInt(Gender.values.length)];
     return PersonData.surnames[random.nextInt(PersonData.surnames.length)];
@@ -48,13 +47,13 @@ class Person {
   ///
   /// Example:
   /// ```dart
-  /// Person().fullName(); // "Kristofer Livingston"
-  /// Person().fullName(reverse: true); // "Livingston Kristofer"
+  /// Person.fullName(); // "Kristofer Livingston"
+  /// Person.fullName(reverse: true); // "Livingston Kristofer"
   /// ```
-  String fullName({Gender? gender, bool reverse = false}) {
+  static String fullName({Gender? gender, bool reverse = false}) {
     gender ??= Gender.values[Random().nextInt(Gender.values.length)];
-    final name = this.name(gender: gender);
-    final surname = this.surname(gender: gender);
+    final name = Person.name(gender: gender);
+    final surname = Person.surname(gender: gender);
     return reverse ? '$surname $name' : '$name $surname';
   }
 
@@ -79,11 +78,11 @@ class Person {
   ///
   /// Example:
   /// ```dart
-  /// Person().username(); // "seems_2007"
-  /// Person().username(mask: 'C_C_d'); // "Warm_Egyptian_2053"
-  /// Person().username(digitsMin: 20, digitsMax: 30); // "jordan_25"
+  /// Person.username(); // "seems_2007"
+  /// Person.username(mask: 'C_C_d'); // "Warm_Egyptian_2053"
+  /// Person.username(digitsMin: 20, digitsMax: 30); // "jordan_25"
   /// ```
-  String username({
+  static String username({
     String mask = 'l_d',
     int digitsMin = 1800,
     int digitsMax = 2100,
@@ -130,11 +129,11 @@ class Person {
   ///
   /// Example:
   /// ```dart
-  /// Person().email(); // "crash1802@duck.com"
-  /// Person().email(domains: ['example.com']); // "complaints1927@example.com"
-  /// Person().email(unique: true) // "a467545c-1397-4601-8cc0-288e6b0de671@outlook.com"
+  /// Person.email(); // "crash1802@duck.com"
+  /// Person.email(domains: ['example.com']); // "complaints1927@example.com"
+  /// Person.email(unique: true) // "a467545c-1397-4601-8cc0-288e6b0de671@outlook.com"
   /// ```
-  String email({List<String>? domains, bool unique = false}) {
+  static String email({List<String>? domains, bool unique = false}) {
     final emailDomains = domains ?? InternetData.emailDomains;
     var domain = emailDomains[Random().nextInt(emailDomains.length)];
 

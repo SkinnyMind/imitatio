@@ -6,18 +6,7 @@ import 'package:imitatio/src/datasets/international/person.dart';
 
 /// Provides data related to paths.
 class Path {
-  /// Creates data related to paths.
-  ///
-  /// [platform] is optional platform (operating system). Possible values
-  /// are: "linux", "macos" or "windows".
-  Path({String? platform})
-      : platform = platform ?? Platform.operatingSystem,
-        _platformHome = _getPlatformHome(platform ?? Platform.operatingSystem),
-        _pathSeparator = platform == 'windows' ? r'\' : '/';
-
-  final String platform;
-  final String _platformHome;
-  final String _pathSeparator;
+  const Path._();
 
   static String _getPlatformHome(String platform) {
     return switch (platform) {
@@ -29,47 +18,76 @@ class Path {
   }
 
   /// Returns a root dir path.
-  String root() {
-    return platform == 'windows'
-        ? r'C:\'
-        : Directory(_platformHome).parent.path;
+  ///
+  /// [platform] is optional platform (operating system). Possible values
+  /// are: "linux", "macos" or "windows".
+  static String root({String? platform}) {
+    final os = platform ?? Platform.operatingSystem;
+    final home = _getPlatformHome(os);
+    return os == 'windows' ? r'C:\' : Directory(home).parent.path;
   }
 
   /// Returns a home path.
-  String home() => _platformHome;
+  ///
+  /// [platform] is optional platform (operating system). Possible values
+  /// are: "linux", "macos" or "windows".
+  static String home({String? platform}) {
+    final os = platform ?? Platform.operatingSystem;
+    return _getPlatformHome(os);
+  }
 
   /// Returns a path to random user.
-  String user() {
+  ///
+  /// [platform] is optional platform (operating system). Possible values
+  /// are: "linux", "macos" or "windows".
+  static String user({String? platform}) {
+    final os = platform ?? Platform.operatingSystem;
+    final home = _getPlatformHome(os);
     final user =
         PersonData.usernames[Random().nextInt(PersonData.usernames.length)];
-    return platform == 'windows'
-        ? '$_platformHome${user[0].toUpperCase()}${user.substring(1)}'
-        : '$_platformHome$user';
+    return os == 'windows'
+        ? '$home${user[0].toUpperCase()}${user.substring(1)}'
+        : '$home$user';
   }
 
   /// Returns a random path to user's folders.
-  String usersFolder() {
-    final user = this.user();
+  ///
+  /// [platform] is optional platform (operating system). Possible values
+  /// are: "linux", "macos" or "windows".
+  static String usersFolder({String? platform}) {
+    final os = platform ?? Platform.operatingSystem;
+    final user = Path.user(platform: os);
+    final pathSeparator = os == 'windows' ? r'\' : '/';
     final folder = DevelopmentData
         .folders[Random().nextInt(DevelopmentData.folders.length)];
-    return '$user$_pathSeparator$folder';
+    return '$user$pathSeparator$folder';
   }
 
   /// Returns a random path to development directory.
-  String devDir() {
+  ///
+  /// [platform] is optional platform (operating system). Possible values
+  /// are: "linux", "macos" or "windows".
+  static String devDir({String? platform}) {
     final random = Random();
-    final user = this.user();
+    final os = platform ?? Platform.operatingSystem;
+    final user = Path.user(platform: os);
+    final pathSeparator = os == 'windows' ? r'\' : '/';
     final folder = random.nextBool() ? 'Development' : 'Dev';
     final stack = DevelopmentData.programmingLanguages[
         random.nextInt(DevelopmentData.programmingLanguages.length)];
-    return '$user$_pathSeparator$folder$_pathSeparator$stack';
+    return '$user$pathSeparator$folder$pathSeparator$stack';
   }
 
   /// Returns a random path to project directory.
-  String projectDir() {
-    final devDir = this.devDir();
+  ///
+  /// [platform] is optional platform (operating system). Possible values
+  /// are: "linux", "macos" or "windows".
+  static String projectDir({String? platform}) {
+    final os = platform ?? Platform.operatingSystem;
+    final pathSeparator = os == 'windows' ? r'\' : '/';
+    final devDir = Path.devDir(platform: os);
     final project = DevelopmentData
         .projectNames[Random().nextInt(DevelopmentData.projectNames.length)];
-    return '$devDir$_pathSeparator$project';
+    return '$devDir$pathSeparator$project';
   }
 }

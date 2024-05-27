@@ -4,68 +4,66 @@ import 'package:test/test.dart';
 
 void main() {
   group('Hardware', () {
-    const hardware = Hardware();
-
     test('returns screen resolution', () {
-      expect(HardwareData.resolutions.contains(hardware.resolution()), true);
+      expect(HardwareData.resolutions.contains(Hardware.resolution()), true);
     });
 
     test('returns screen size', () {
-      expect(HardwareData.screenSizes.contains(hardware.screenSize()), true);
+      expect(HardwareData.screenSizes.contains(Hardware.screenSize()), true);
     });
 
     test('returns cpu name', () {
-      expect(HardwareData.cpu.contains(hardware.cpu()), true);
+      expect(HardwareData.cpu.contains(Hardware.cpu()), true);
     });
 
     test('returns cpu frequency', () {
-      final result = hardware.cpuFrequency();
+      final result = Hardware.cpuFrequency();
       expect(double.parse(result.split('G').first) <= 5, true);
     });
 
     test('returns generation', () {
-      expect(HardwareData.generations.contains(hardware.generation()), true);
+      expect(HardwareData.generations.contains(Hardware.generation()), true);
     });
 
     test('returns cpu model code', () {
       expect(
-        HardwareData.cpuModelCodes.contains(hardware.cpuModelCode()),
+        HardwareData.cpuModelCodes.contains(Hardware.cpuModelCode()),
         true,
       );
     });
 
     test('returns cpu code name', () {
       expect(
-        HardwareData.cpuCodeNames.contains(hardware.cpuCodeName()),
+        HardwareData.cpuCodeNames.contains(Hardware.cpuCodeName()),
         true,
       );
     });
 
     test('returns ram type', () {
-      expect(HardwareData.ramTypes.contains(hardware.ramType()), true);
+      expect(HardwareData.ramTypes.contains(Hardware.ramType()), true);
     });
 
     test('returns ram size', () {
-      expect(HardwareData.ramSizes.contains(hardware.ramSize()), true);
+      expect(HardwareData.ramSizes.contains(Hardware.ramSize()), true);
     });
 
     test('returns drive', () {
-      expect(HardwareData.drives.contains(hardware.drive()), true);
+      expect(HardwareData.drives.contains(Hardware.drive()), true);
     });
 
     test('returns graphics', () {
-      expect(HardwareData.graphics.contains(hardware.graphics()), true);
+      expect(HardwareData.graphics.contains(Hardware.graphics()), true);
     });
 
     test('returns manufacturer', () {
       expect(
-        HardwareData.manufacturers.contains(hardware.manufacturer()),
+        HardwareData.manufacturers.contains(Hardware.manufacturer()),
         true,
       );
     });
 
     test('returns phone model', () {
-      expect(HardwareData.phoneModels.contains(hardware.phoneModel()), true);
+      expect(HardwareData.phoneModels.contains(Hardware.phoneModel()), true);
     });
   });
 }

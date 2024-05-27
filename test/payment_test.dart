@@ -4,31 +4,29 @@ import 'package:test/test.dart';
 
 void main() {
   group('Payment', () {
-    const payment = Payment();
-
     test('returns CID code', () {
-      expect(payment.cid().length, 4);
+      expect(Payment.cid().length, 4);
     });
 
     test('returns paypal account email', () {
-      expect(payment.paypal(), isNotEmpty);
+      expect(Payment.paypal(), isNotEmpty);
     });
 
     test('returns bitcoin address', () {
-      final result = payment.bitcoinAddress();
+      final result = Payment.bitcoinAddress();
       final type = int.parse(result[0]);
       expect(type >= 1 && type <= 3, true);
       expect(result.length, 34);
     });
 
     test('returns ethereum address', () {
-      final result = payment.ethereumAddress();
+      final result = Payment.ethereumAddress();
       expect(RegExp(r'^0x([a-zA-Z0-9]{40})$').hasMatch(result), true);
     });
 
     test('returns credit card network', () {
       expect(
-        PaymentData.creditCardNetworks.contains(payment.creditCardNetwork()),
+        PaymentData.creditCardNetworks.contains(Payment.creditCardNetwork()),
         true,
       );
     });
@@ -37,15 +35,14 @@ void main() {
       for (final type in CardType.values) {
         expect(
           RegExp(r'[\d]+((-|\s)?[\d]+)+')
-              .hasMatch(payment.creditCardNumber(cardType: type)),
+              .hasMatch(Payment.creditCardNumber(cardType: type)),
           true,
         );
       }
 
       for (var i = 0; i < 10; i++) {
         final result = int.parse(
-          payment
-              .creditCardNumber(cardType: CardType.masterCard)
+          Payment.creditCardNumber(cardType: CardType.masterCard)
               .split(' ')
               .first,
         );
@@ -55,19 +52,18 @@ void main() {
 
     test('returns credit card expiration date', () {
       final year = int.parse(
-        payment.creditCardExpirationDate(min: 22, max: 27).split('/').last,
+        Payment.creditCardExpirationDate(min: 22, max: 27).split('/').last,
       );
       expect(year >= 22 && year <= 27, true);
     });
 
     test('returns CVV code', () {
-      expect(payment.cvv().length, 3);
+      expect(Payment.cvv().length, 3);
     });
 
     test('returns credit card owner', () {
-      final result = payment.creditCardOwner();
-      expect(result, isA<CreditCardOwner>());
-      expect(result.toString().startsWith('CreditCardOwner{'), true);
+      final result = Payment.creditCardOwner();
+      expect(result, isA<Record>());
       expect(result.card, isNotEmpty);
       expect(result.expirationDate, isNotEmpty);
       expect(result.owner, isNotEmpty);

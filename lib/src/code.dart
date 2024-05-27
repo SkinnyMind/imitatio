@@ -7,25 +7,24 @@ import 'package:imitatio/src/util.dart';
 
 /// Provides data related to codes.
 class Code {
-  /// Creates data related to codes.
-  const Code();
+  const Code._();
 
   /// Returns a random locale code (MS-LCID).
   ///
   /// Example:
   /// ```dart
-  /// Code().localeCode(); // "en"
+  /// Code.localeCode(); // "en"
   /// ```
-  String localeCode() =>
+  static String localeCode() =>
       CodeData.localeCodes[Random().nextInt(CodeData.localeCodes.length)];
 
   /// Returns a random IMEI.
   ///
   /// Example:
   /// ```dart
-  /// Code().imei(); // "358031069395385"
+  /// Code.imei(); // "358031069395385"
   /// ```
-  String imei() {
+  static String imei() {
     final random = Random();
     final number = StringBuffer();
     number.write(CodeData.imeiTacs[random.nextInt(CodeData.imeiTacs.length)]);
@@ -47,7 +46,7 @@ class Code {
   /// Code.pin(mask: "33##"); // "3373"
   ///
   /// ```
-  String pin({String mask = "####"}) => Rng.customCode(mask: mask);
+  static String pin({String mask = "####"}) => Rng.customCode(mask: mask);
 
   /// Returns a random ISSN.
   ///
@@ -61,7 +60,7 @@ class Code {
   /// Code.issn(); // "9032-7804"
   /// Code.issn(mask: "##-##-####"); // "75-19-3500"
   /// ```
-  String issn({String mask = "####-####"}) => Rng.customCode(mask: mask);
+  static String issn({String mask = "####-####"}) => Rng.customCode(mask: mask);
 
   /// Returns ISBN.
   ///
@@ -72,7 +71,7 @@ class Code {
   /// Code.isbn(); // "886-5-33530-286-4"
   /// Code.isbn(format: ISBNFormat.isbn10); // "8-81232-519-8"
   /// ```
-  String isbn({ISBNFormat? format}) {
+  static String isbn({ISBNFormat? format}) {
     final mask = format?.mask ??
         (Random().nextBool() ? ISBNFormat.isbn10.mask : ISBNFormat.isbn13.mask);
     return Rng.customCode(mask: mask);
@@ -87,7 +86,7 @@ class Code {
   /// Code.ean(); // "02012064"
   /// Code.ean(format: EANFormat.ean13); // "1059922466156"
   /// ```
-  String ean({EANFormat? format}) {
+  static String ean({EANFormat? format}) {
     final mask = format?.mask ??
         (Random().nextBool() ? EANFormat.ean8.mask : EANFormat.ean13.mask);
     return Rng.customCode(mask: mask);

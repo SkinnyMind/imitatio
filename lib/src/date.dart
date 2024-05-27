@@ -4,8 +4,7 @@ import 'package:imitatio/src/util.dart';
 
 /// Provider of data related to date and time.
 class Date {
-  /// Creates data related to the date and time.
-  const Date();
+  const Date._();
 
   /// Returns random date.
   ///
@@ -15,10 +14,10 @@ class Date {
   ///
   /// Example
   /// ```dart
-  /// Date().date(); // "2015-9-10"
-  /// Date().date(start: 2022, end: 2022); // "2022-8-20"
+  /// Date.date(); // "2015-9-10"
+  /// Date.date(start: 2022, end: 2022); // "2022-8-20"
   /// ```
-  String date({int start = 2000, int? end}) {
+  static String date({int start = 2000, int? end}) {
     final random = Random();
     final endYear = end ?? DateTime.now().year;
     final year = random.nextInt(endYear + 1 - start) + start;
