@@ -5,16 +5,15 @@ import 'package:imitatio/src/datasets/international/development.dart';
 
 /// Data related to the development.
 class Development {
-  /// Creates fake data for Developers.
-  const Development();
+  const Development._();
 
   /// Returns a random software license.
   ///
   /// Example:
   /// ```dart
-  /// Development().softwareLicense(); // "MIT License (MIT)"
+  /// Development.softwareLicense(); // "MIT License (MIT)"
   /// ```
-  String softwareLicense() {
+  static String softwareLicense() {
     return DevelopmentData
         .licenses[Random().nextInt(DevelopmentData.licenses.length)];
   }
@@ -27,11 +26,11 @@ class Development {
   ///
   /// Example:
   /// ```dart
-  /// Development().version(); // "7.11.0"
-  /// Development().version(calVer: true); // "2021.5.1"
-  /// Development().version(preRelease: true); // "9.7.11-rc.8"
+  /// Development.version(); // "7.11.0"
+  /// Development.version(calVer: true); // "2021.5.1"
+  /// Development.version(preRelease: true); // "9.7.11-rc.8"
   /// ```
-  String version({bool calVer = false, bool preRelease = false}) {
+  static String version({bool calVer = false, bool preRelease = false}) {
     late final int major;
     late final int minor;
     late final int patch;
@@ -64,9 +63,9 @@ class Development {
   ///
   /// Example:
   /// ```dart
-  /// Development().programmingLanguage(); // "Dart"
+  /// Development.programmingLanguage(); // "Dart"
   /// ```
-  String programmingLanguage() {
+  static String programmingLanguage() {
     return DevelopmentData.programmingLanguages[
         Random().nextInt(DevelopmentData.programmingLanguages.length)];
   }
@@ -75,9 +74,9 @@ class Development {
   ///
   /// Example:
   /// ```dart
-  /// Development().os(); // "Fedora"
+  /// Development.os(); // "Fedora"
   /// ```
-  String os() {
+  static String os() {
     return DevelopmentData.os[Random().nextInt(DevelopmentData.os.length)];
   }
 
@@ -85,9 +84,9 @@ class Development {
   ///
   /// Example:
   /// ```dart
-  /// Development().boolean(); // true
+  /// Development.boolean(); // true
   /// ```
-  bool boolean() => Random().nextBool();
+  static bool boolean() => Random().nextBool();
 
   /// Returns a random DSN (Data Source Name).
   ///
@@ -99,13 +98,17 @@ class Development {
   ///
   /// Example:
   /// ```dart
-  /// Development().dsn(); // "mysql://kitchen.vn:3306"
-  /// Development().dsn(dsnType: DSNType.redis); // "redis://losing.gl:6379"
-  /// Development().dsn(tldType: TLDType.geotld); // "rabbitmq://identifies.moscow:5672"
-  /// Development().dsn(subdomains: ['app', 'api', 'admin']); // "postgres://api.concentrate.io:5432"
+  /// Development.dsn(); // "mysql://kitchen.vn:3306"
+  /// Development.dsn(dsnType: DSNType.redis); // "redis://losing.gl:6379"
+  /// Development.dsn(tldType: TLDType.geotld); // "rabbitmq://identifies.moscow:5672"
+  /// Development.dsn(subdomains: ['app', 'api', 'admin']); // "postgres://api.concentrate.io:5432"
   /// ```
-  String dsn({DSNType? dsnType, TLDType? tldType, List<String>? subdomains}) {
-    final hostname = const Internet().hostname(
+  static String dsn({
+    DSNType? dsnType,
+    TLDType? tldType,
+    List<String>? subdomains,
+  }) {
+    final hostname = Internet.hostname(
       tldType: tldType,
       subdomains: subdomains,
     );

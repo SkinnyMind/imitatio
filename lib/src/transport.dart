@@ -5,8 +5,7 @@ import 'package:imitatio/src/rng.dart';
 
 /// Provides data related to transports.
 class Transport {
-  /// Creates data related to transports.
-  const Transport();
+  const Transport._();
 
   /// Returns a truck model.
   ///
@@ -16,10 +15,10 @@ class Transport {
   ///
   /// Example:
   /// ```dart
-  /// Transport().truck(); // "Carmichael-4951 EM"
-  /// Transport().truck(modelMask: '####'); // "Albion-1212"
+  /// Transport.truck(); // "Carmichael-4951 EM"
+  /// Transport.truck(modelMask: '####'); // "Albion-1212"
   /// ```
-  String truck({String modelMask = '#### @@'}) {
+  static String truck({String modelMask = '#### @@'}) {
     final model = Rng.customCode(mask: modelMask);
     final truck =
         TransportData.trucks[Random().nextInt(TransportData.trucks.length)];
@@ -30,18 +29,18 @@ class Transport {
   ///
   /// Example:
   /// ```dart
-  /// Transport().manufacturer(); // "McLaren"
+  /// Transport.manufacturer(); // "McLaren"
   /// ```
-  String manufacturer() => TransportData
+  static String manufacturer() => TransportData
       .manufacturers[Random().nextInt(TransportData.manufacturers.length)];
 
   /// Returns a random vehicle.
   ///
   /// Example:
   /// ```dart
-  /// Transport().car(); // "Jeep Cherokee (XJ)"
+  /// Transport.car(); // "Jeep Cherokee (XJ)"
   /// ```
-  String car() =>
+  static String car() =>
       TransportData.cars[Random().nextInt(TransportData.cars.length)];
 
   /// Returns an airplane model.
@@ -51,10 +50,10 @@ class Transport {
   ///
   /// Example:
   /// ```dart
-  /// Transport().airplane(); // "Airbus 721"
-  /// Transport().airplane(modelMask: '@###'); // "Tu M578"
+  /// Transport.airplane(); // "Airbus 721"
+  /// Transport.airplane(modelMask: '@###'); // "Tu M578"
   /// ```
-  String airplane({String modelMask = '###'}) {
+  static String airplane({String modelMask = '###'}) {
     final model = Rng.customCode(mask: modelMask);
     final plane = TransportData
         .airplanes[Random().nextInt(TransportData.airplanes.length)];
@@ -65,8 +64,8 @@ class Transport {
   ///
   /// Example:
   /// ```dart
-  /// Transport().vehicleRegistrationCode(); // "TO"
+  /// Transport.vehicleRegistrationCode(); // "TO"
   /// ```
-  String vehicleRegistrationCode() =>
+  static String vehicleRegistrationCode() =>
       TransportData.vrCodes[Random().nextInt(TransportData.vrCodes.length)];
 }

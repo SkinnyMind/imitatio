@@ -5,83 +5,85 @@ import 'package:test/test.dart';
 
 void main() {
   group('Internet', () {
-    const net = Internet();
-
     test('returns hostname', () {
-      expect(net.hostname().split('.').length, 2);
+      expect(Internet.hostname().split('.').length, 2);
 
       final subdomains = ['api', 'admin'];
-      final hostname = net.hostname(subdomains: subdomains).split('.');
+      final hostname = Internet.hostname(subdomains: subdomains).split('.');
       expect(hostname.length, 3);
       expect(subdomains.contains(hostname.first), true);
     });
 
     test('returns content type', () {
-      expect(net.contentType().startsWith('Content-Type:'), true);
+      expect(Internet.contentType().startsWith('Content-Type:'), true);
     });
 
     test('returns content type of provided mime type', () {
       for (final mimeType in MimeType.values) {
-        final result = net.contentType(mimeType: mimeType).split(':')[1].trim();
+        final result =
+            Internet.contentType(mimeType: mimeType).split(':')[1].trim();
         expect(FileData.mimeTypes[mimeType.name]!.contains(result), true);
       }
     });
 
     test('returns http status message', () {
       expect(
-        InternetData.httpStatusMessages.contains(net.httpStatusMessage()),
+        InternetData.httpStatusMessages.contains(Internet.httpStatusMessage()),
         true,
       );
     });
 
     test('returns http status code', () {
-      final result = net.httpStatusCode();
+      final result = Internet.httpStatusCode();
       expect(result >= 100 && result <= 511, true);
     });
 
     test('returns http method', () {
-      expect(InternetData.httpMethods.contains(net.httpMethod()), true);
+      expect(InternetData.httpMethods.contains(Internet.httpMethod()), true);
     });
 
     test('returns emoji', () {
-      expect(InternetData.emoji.contains(net.emoji()), true);
+      expect(InternetData.emoji.contains(Internet.emoji()), true);
     });
 
     test('returns list of hashtags', () {
-      expect(net.hashtags().length, 4);
-      expect(net.hashtags(quantity: 5).length, 5);
+      expect(Internet.hashtags().length, 4);
+      expect(Internet.hashtags(quantity: 5).length, 5);
     });
 
     test('throws when trying to get invalid number of hashtags', () {
-      expect(() => net.hashtags(quantity: 0), throwsA(isA<ArgumentError>()));
+      expect(
+        () => Internet.hashtags(quantity: 0),
+        throwsA(isA<ArgumentError>()),
+      );
     });
 
     test('returns Map of query parameters', () {
-      final result = net.queryParameters(count: 5);
+      final result = Internet.queryParameters(count: 5);
       expect(result.length, 5);
     });
 
     test('throws when trying to get more than 32 query parameters', () {
       expect(
-        () => net.queryParameters(count: 33),
+        () => Internet.queryParameters(count: 33),
         throwsA(isA<ArgumentError>()),
       );
     });
 
     test('returns query string', () {
-      final result = net.queryString().split('&').length;
+      final result = Internet.queryString().split('&').length;
       expect(result >= 1 && result <= 10, true);
     });
 
     test('returns query string with provided number of parameters', () {
-      expect(net.queryString(count: 5).split('&').length, 5);
+      expect(Internet.queryString(count: 5).split('&').length, 5);
     });
 
     test(
       'throws when trying to get string with more than 32 query parameters',
       () {
         expect(
-          () => net.queryString(count: 33),
+          () => Internet.queryString(count: 33),
           throwsA(isA<ArgumentError>()),
         );
       },
@@ -89,58 +91,60 @@ void main() {
 
     test('returns top level domain', () {
       expect(
-        InternetData.tld[TLDType.cctld.name]!.contains(net.topLevelDomain()),
+        InternetData.tld[TLDType.cctld.name]!.contains(
+          Internet.topLevelDomain(),
+        ),
         true,
       );
 
       for (final type in TLDType.values) {
-        final result = net.topLevelDomain(type: type);
+        final result = Internet.topLevelDomain(type: type);
         expect(InternetData.tld[type.name]!.contains(result), true);
       }
     });
 
     test('returns user agent', () {
-      expect(InternetData.userAgents.contains(net.userAgent()), true);
+      expect(InternetData.userAgents.contains(Internet.userAgent()), true);
     });
 
     test('returns slug', () {
-      final result = net.slug().split('-').length;
+      final result = Internet.slug().split('-').length;
       expect(result >= 2 && result <= 12, true);
-      expect(net.slug(parts: 5).split('-').length, 5);
+      expect(Internet.slug(parts: 5).split('-').length, 5);
     });
 
     test('throws when trying to return slug with wrong number of parts', () {
-      expect(() => net.slug(parts: 1), throwsA(isA<ArgumentError>()));
-      expect(() => net.slug(parts: 13), throwsA(isA<ArgumentError>()));
+      expect(() => Internet.slug(parts: 1), throwsA(isA<ArgumentError>()));
+      expect(() => Internet.slug(parts: 13), throwsA(isA<ArgumentError>()));
     });
 
     test('returns port number', () {
       for (final range in PortRange.values) {
-        final result = net.port(range: range);
+        final result = Internet.port(range: range);
         expect(result >= range.min && result <= range.max, true);
       }
     });
 
     test('returns URL', () {
-      expect(net.url().startsWith(URLScheme.https.name), true);
+      expect(Internet.url().startsWith(URLScheme.https.name), true);
 
       for (final scheme in URLScheme.values) {
-        expect(net.url(urlScheme: scheme).startsWith(scheme.name), true);
+        expect(Internet.url(urlScheme: scheme).startsWith(scheme.name), true);
       }
 
       for (final range in PortRange.values) {
         final port = int.parse(
-          net.url(portRange: range).split(':').last.replaceFirst('/', ''),
+          Internet.url(portRange: range).split(':').last.replaceFirst('/', ''),
         );
         expect(port >= range.min && port <= range.max, true);
       }
     });
 
     test('returns URI', () {
-      expect(net.uri().startsWith(URLScheme.https.name), true);
+      expect(Internet.uri().startsWith(URLScheme.https.name), true);
 
       final urlScheme = URLScheme.http;
-      final result = net.uri(
+      final result = Internet.uri(
         urlScheme: urlScheme,
         tldType: TLDType.gtld,
         subdomains: ['test', 'dev', 'app'],
@@ -150,19 +154,19 @@ void main() {
     });
 
     test('returns an IPv4 address', () {
-      final result = net.ipv4().split('.');
+      final result = Internet.ipv4().split('.');
       expect(result.length, 4);
       for (final octet in result) {
         expect(int.tryParse(octet), isA<int>());
       }
 
       final port =
-          int.parse(net.ipv4(portRange: PortRange.all).split(':').last);
+          int.parse(Internet.ipv4(portRange: PortRange.all).split(':').last);
       expect(port >= PortRange.all.min && port <= PortRange.all.max, true);
     });
 
     test('returns an IPv6 address', () {
-      final result = net.ipv6();
+      final result = Internet.ipv6();
       expect(RegExp('[0-9a-fA-F]{1,4}').hasMatch(result), true);
       expect(result.split(':').length, 8);
     });
@@ -170,13 +174,13 @@ void main() {
     test('returns a mac address', () {
       expect(
         RegExp(r'^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$')
-            .hasMatch(net.macAddress()),
+            .hasMatch(Internet.macAddress()),
         true,
       );
     });
 
     test('returns a public DNS', () {
-      expect(InternetData.publicDNS.contains(net.publicDNS()), true);
+      expect(InternetData.publicDNS.contains(Internet.publicDNS()), true);
     });
   });
 }

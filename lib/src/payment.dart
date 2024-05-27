@@ -7,32 +7,32 @@ import 'package:imitatio/src/util.dart';
 
 /// Provides data related to payment.
 class Payment {
-  /// Creates data related to payments.
-  const Payment();
+  const Payment._();
 
   /// Returns a random CID code.
   ///
   /// Example:
   /// ```dart
-  /// Payment().cid(); // "1945"
+  /// Payment.cid(); // "1945"
   /// ```
-  String cid() => (Random().nextInt(9999) + 1).toString().padLeft(4, '0');
+  static String cid() =>
+      (Random().nextInt(9999) + 1).toString().padLeft(4, '0');
 
   /// Returns a random email of PayPal account.
   ///
   /// Example:
   /// ```dart
-  /// Payment().paypal(); // "urge2051@outlook.com"
+  /// Payment.paypal(); // "urge2051@outlook.com"
   /// ```
-  String paypal() => const Person().email();
+  static String paypal() => Person.email();
 
   /// Returns a random bitcoin address.
   ///
   /// Example:
   /// ```dart
-  /// Payment().bitcoinAddress(); // "3cOTCy6QHVBvleZ33QSiUeDKLc93KkrAWV"
+  /// Payment.bitcoinAddress(); // "3cOTCy6QHVBvleZ33QSiUeDKLc93KkrAWV"
   /// ```
-  String bitcoinAddress() {
+  static String bitcoinAddress() {
     final address = StringBuffer();
     address.write(Random().nextInt(3) + 1);
     address.write(Rng.randomString(length: 33));
@@ -43,9 +43,9 @@ class Payment {
   ///
   /// Example:
   /// ```dart
-  /// Payment().ethereumAddress(); // "0xa17f8fe569cad9c952ddf89ec50e635b5040e025"
+  /// Payment.ethereumAddress(); // "0xa17f8fe569cad9c952ddf89ec50e635b5040e025"
   /// ```
-  String ethereumAddress() {
+  static String ethereumAddress() {
     final strBits = StringBuffer();
     final random = Random();
     for (var i = 1; i <= 160; i++) {
@@ -62,9 +62,9 @@ class Payment {
   ///
   /// Example:
   /// ```dart
-  /// Payment().creditCardNetwork(); // "Visa"
+  /// Payment.creditCardNetwork(); // "Visa"
   /// ```
-  String creditCardNetwork() => PaymentData.creditCardNetworks[
+  static String creditCardNetwork() => PaymentData.creditCardNetworks[
       Random().nextInt(PaymentData.creditCardNetworks.length)];
 
   /// Returns a random credit card number.
@@ -74,10 +74,10 @@ class Payment {
   ///
   /// Example:
   /// ```dart
-  /// Payment().creditCardNumber(); // "4567 0238 9444 1885"
-  /// Payment().creditCardNumber(cardType: CardType.americanExpress); // "3754 483800 01097"
+  /// Payment.creditCardNumber(); // "4567 0238 9444 1885"
+  /// Payment.creditCardNumber(cardType: CardType.americanExpress); // "3754 483800 01097"
   /// ```
-  String creditCardNumber({CardType cardType = CardType.visa}) {
+  static String creditCardNumber({CardType cardType = CardType.visa}) {
     final random = Random();
     var length = 16;
     final result = StringBuffer();
@@ -117,10 +117,10 @@ class Payment {
   ///
   /// Example:
   /// ```dart
-  /// Payment().creditCardExpirationDate(); // "03/24"
-  /// Payment().creditCardExpirationDate(min: 22, max: 27); // "11/26"
+  /// Payment.creditCardExpirationDate(); // "03/24"
+  /// Payment.creditCardExpirationDate(min: 22, max: 27); // "11/26"
   /// ```
-  String creditCardExpirationDate({int min = 18, int max = 25}) {
+  static String creditCardExpirationDate({int min = 18, int max = 25}) {
     final random = Random();
     final month = (random.nextInt(12) + 1).toString().padLeft(2, '0');
     final year = random.nextInt(max + 1 - min) + min;
@@ -131,9 +131,9 @@ class Payment {
   ///
   /// Example:
   /// ```dart
-  /// Payment().cvv(); // "420"
+  /// Payment.cvv(); // "420"
   /// ```
-  String cvv() => (Random().nextInt(999) + 1).toString().padLeft(3, '0');
+  static String cvv() => (Random().nextInt(999) + 1).toString().padLeft(3, '0');
 
   /// Returns credit card owner.
   ///
@@ -141,26 +141,15 @@ class Payment {
   ///
   /// Example:
   /// ```dart
-  /// Payment().creditCardOwner(); // CreditCardOwner{card: "4002 6308 0423 4888", expirationDate: "10/24", owner: "SANG STEELE"}
+  /// Payment.creditCardOwner(); // (card: 4248 3072 4575 5973, expirationDate: 05/22, owner: NEDA ROJAS)
   /// ```
-  CreditCardOwner creditCardOwner({Gender? gender}) {
-    return CreditCardOwner._(
-      creditCardNumber(),
-      creditCardExpirationDate(),
-      const Person().fullName(gender: gender).toUpperCase(),
+  static ({String card, String expirationDate, String owner}) creditCardOwner({
+    Gender? gender,
+  }) {
+    return (
+      card: creditCardNumber(),
+      expirationDate: creditCardExpirationDate(),
+      owner: Person.fullName(gender: gender).toUpperCase(),
     );
   }
-}
-
-class CreditCardOwner {
-  const CreditCardOwner._(this.card, this.expirationDate, this.owner);
-
-  final String card;
-  final String expirationDate;
-  final String owner;
-
-  @override
-  String toString() =>
-      'CreditCardOwner{card: $card, expirationDate: $expirationDate, '
-      'owner: $owner}';
 }
