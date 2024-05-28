@@ -69,3 +69,5 @@ enum CardType { visa, masterCard, americanExpress }
 
 /// Genders.
 enum Gender { male, female }
+
+enum Locale { en, ru }
