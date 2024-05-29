@@ -21,6 +21,12 @@ class Path {
   ///
   /// [platform] is optional platform (operating system). Possible values
   /// are: "linux", "macos" or "windows".
+  ///
+  /// Example:
+  /// ```dart
+  /// Path.root(); // "/"
+  /// Path.root(platform: 'windows'); // "C:\"
+  /// ```
   static String root({String? platform}) {
     final os = platform ?? Platform.operatingSystem;
     final home = _getPlatformHome(os);
@@ -31,6 +37,12 @@ class Path {
   ///
   /// [platform] is optional platform (operating system). Possible values
   /// are: "linux", "macos" or "windows".
+  ///
+  /// Example:
+  /// ```dart
+  /// Path.home(); // "/home/"
+  /// Path.home(platform: 'windows'); // "C:\Users\"
+  /// ```
   static String home({String? platform}) {
     final os = platform ?? Platform.operatingSystem;
     return _getPlatformHome(os);
@@ -40,6 +52,12 @@ class Path {
   ///
   /// [platform] is optional platform (operating system). Possible values
   /// are: "linux", "macos" or "windows".
+  ///
+  /// Example:
+  /// ```dart
+  /// Path.user(); // "/home/himself"
+  /// Path.user(platform: 'windows'); // "C:\Users\Gordon"
+  /// ```
   static String user({String? platform}) {
     final os = platform ?? Platform.operatingSystem;
     final home = _getPlatformHome(os);
@@ -54,6 +72,12 @@ class Path {
   ///
   /// [platform] is optional platform (operating system). Possible values
   /// are: "linux", "macos" or "windows".
+  ///
+  /// Example:
+  /// ```dart
+  /// Path.usersFolder(); // "/home/society/Work"
+  /// Path.usersFolder(platform: 'windows'); // "C:\Users\Practitioners\Documents"
+  /// ```
   static String usersFolder({String? platform}) {
     final os = platform ?? Platform.operatingSystem;
     final user = Path.user(platform: os);
@@ -67,6 +91,12 @@ class Path {
   ///
   /// [platform] is optional platform (operating system). Possible values
   /// are: "linux", "macos" or "windows".
+  ///
+  /// Example:
+  /// ```dart
+  /// Path.devDir(); // "/home/lexmark/Dev/Go"
+  /// Path.devDir(platform: 'windows'); // "C:\Users\Badge\Dev\Falcon"
+  /// ```
   static String devDir({String? platform}) {
     final random = Random();
     final os = platform ?? Platform.operatingSystem;
@@ -82,6 +112,12 @@ class Path {
   ///
   /// [platform] is optional platform (operating system). Possible values
   /// are: "linux", "macos" or "windows".
+  ///
+  /// Example:
+  /// ```dart
+  /// Path.projectDir(); // "/home/pvc/Dev/Rust/gryposaurus"
+  /// Path.projectDir(platform: 'windows'); // "C:\Users\Anderson\Development\C\antarctosaurus"
+  /// ```
   static String projectDir({String? platform}) {
     final os = platform ?? Platform.operatingSystem;
     final pathSeparator = os == 'windows' ? r'\' : '/';

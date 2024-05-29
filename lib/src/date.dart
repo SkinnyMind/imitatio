@@ -14,7 +14,7 @@ class Date {
   ///
   /// [end] is optional end year (default is current year).
   ///
-  /// Example
+  /// Example:
   /// ```dart
   /// Date.date(); // "2015-9-10"
   /// Date.date(start: 2022, end: 2022); // "2022-8-20"
@@ -33,6 +33,12 @@ class Date {
   /// [isAbbr] is optional name abbreviation (default is false).
   ///
   /// [locale] is optional [Locale] (default is [Locale.en]).
+  ///
+  /// Example:
+  /// ```dart
+  /// Date.dayOfWeek(); // "Monday"
+  /// Date.dayOfWeek(isAbbr: true); // "Sun."
+  /// ```
   static String dayOfWeek({bool isAbbr = false, Locale locale = Locale.en}) {
     final random = Random();
     final day = DateData.locale[locale.name]!.day[isAbbr ? 'abbr' : 'name']!;
