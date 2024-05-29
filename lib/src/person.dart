@@ -16,6 +16,7 @@ class Person {
   /// Example:
   /// ```dart
   /// Person.name(); // "Larry"
+  /// Person.name(gender: Gender.female); // "Kiana"
   /// ```
   static String name({Gender? gender}) {
     final random = Random();
