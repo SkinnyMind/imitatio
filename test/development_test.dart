@@ -81,5 +81,10 @@ void main() {
         expect(result.endsWith(':${type.port}'), true);
       }
     });
+
+    test('returns system quality attribute', () {
+      final result = Development.systemQualityAttribute();
+      expect(DevelopmentData.systemQualityAttributes.contains(result), true);
+    });
   });
 }

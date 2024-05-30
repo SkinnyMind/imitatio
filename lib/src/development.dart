@@ -117,4 +117,24 @@ class Development {
 
     return '${dsn.scheme}://$hostname:${dsn.port}';
   }
+
+  /// Returns a random system quality attribute.
+  ///
+  /// Within systems engineering, quality attributes are realized
+  /// non-functional requirements used to evaluate the performance
+  /// of a system. These are sometimes named "ilities" after the
+  /// suffix many of the words share.
+  ///
+  /// Example:
+  /// ```dart
+  /// Development.systemQualityAttribute() // "configurability"
+  /// ```
+  static String systemQualityAttribute() =>
+      DevelopmentData.systemQualityAttributes[
+          Random().nextInt(DevelopmentData.systemQualityAttributes.length)];
+
+  /// Returns a random system quality attribute.
+  ///
+  /// An alias for [Development.systemQualityAttribute()].
+  static String ility() => Development.systemQualityAttribute();
 }
