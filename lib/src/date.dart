@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:imitatio/src/datasets/date.dart';
+import 'package:imitatio/src/datasets/international/date.dart';
 import 'package:imitatio/src/enums.dart';
 import 'package:imitatio/src/util.dart';
 
@@ -44,4 +45,116 @@ class Date {
     final day = DateData.locale[locale.name]!.day[isAbbr ? 'abbr' : 'name']!;
     return day[random.nextInt(day.length)];
   }
+
+  /// Returns a random year.
+  ///
+  /// [min] is optional minumum value (default is 1990).
+  ///
+  /// [max] is optional maximum value (default is current year).
+  ///
+  /// Example:
+  /// ```dart
+  /// Date.year(); // 2007
+  /// Date.year(min: 1800, max: 2000); // 1808
+  /// ```
+  static int year({int min = 1990, int? max}) {
+    final random = Random();
+    final maxYear = max ?? DateTime.now().year;
+    return random.nextInt(maxYear + 1 - min) + min;
+  }
+
+  /// Returns a random week number with year.
+  ///
+  /// [start] is optional starting year (default is 2017).
+  ///
+  /// [end] is optional ending year (default is current year)
+  ///
+  /// Example:
+  /// ```dart
+  /// Date.weekDate(); // "2022-W48"
+  /// Date.weekDate(start: 1800, end: 2000); // "1855-W10"
+  /// ```
+  static String weekDate({int start = 2017, int? end}) {
+    final year = Date.year(min: start, max: end);
+    final week = Random().nextInt(52) + 1;
+    return "$year-W$week";
+  }
+
+  /// Returns a random month of the year.
+  ///
+  /// [isAbbr] is optional month name abbreviation (default is false).
+  ///
+  /// [locale] is optional [Locale] (default is [Locale.en]).
+  ///
+  /// Example:
+  /// ```dart
+  /// Date.month(); // "July"
+  /// Date.month(isAbbr: true); // "Jan."
+  /// ```
+  static String month({bool isAbbr = false, Locale locale = Locale.en}) {
+    final random = Random();
+    final month =
+        DateData.locale[locale.name]!.month[isAbbr ? 'abbr' : 'name']!;
+    return month[random.nextInt(month.length)];
+  }
+
+  /// Returns a random century.
+  ///
+  /// Example:
+  /// ```dart
+  /// Date.century(); // "XIII"
+  /// ```
+  static String century() =>
+      IntDateData.romanNums[Random().nextInt(IntDateData.romanNums.length)];
+
+  /// Returns a random periodicity string.
+  ///
+  /// [locale] is optional [Locale] (default is [Locale.en]).
+  ///
+  /// Example:
+  /// ```dart
+  /// Date.periodicity(); // "Often"
+  /// ```
+  static String periodicity({Locale locale = Locale.en}) {
+    final random = Random();
+    final periodicity = DateData.locale[locale.name]!.periodicity;
+    return periodicity[random.nextInt(periodicity.length)];
+  }
+
+  /// Returns a random day of the month, from 1 to 31.
+  ///
+  /// Example:
+  /// ```dart
+  /// Date.dayOfMonth(); // 18
+  /// ```
+  static int dayOfMonth() => Random().nextInt(31) + 1;
+
+  /// Returns a random timezone.
+  ///
+  /// [region] is optional [TimezoneRegion].
+  ///
+  /// Example:
+  /// ```dart
+  /// Date.timezone() // "Asia/Kathmandu"
+  /// Date.timezone(region: TimezoneRegion.europe) // "Europe/Stockholm"
+  /// ```
+  static String timezone({TimezoneRegion? region}) {
+    late final data = <String>[];
+    if (region == null) {
+      data.addAll(IntDateData.timezones.values.expand((e) => e));
+    } else {
+      data.addAll(IntDateData.timezones[region.name]!);
+    }
+
+    return data[Random().nextInt(data.length)];
+  }
+
+  /// Returns a random GMT offset value.
+  ///
+  /// Example:
+  /// ```dart
+  /// Date.gmtOffset(); // "UTC +11:00"
+  /// ```
+  static String gmtOffset() =>
+      IntDateData.gmtOffsets[Random().nextInt(IntDateData.gmtOffsets.length)];
 }
