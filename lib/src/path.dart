@@ -61,8 +61,8 @@ class Path {
   static String user({String? platform}) {
     final os = platform ?? Platform.operatingSystem;
     final home = _getPlatformHome(os);
-    final user =
-        PersonData.usernames[Random().nextInt(PersonData.usernames.length)];
+    final user = IntPersonData
+        .usernames[Random().nextInt(IntPersonData.usernames.length)];
     return os == 'windows'
         ? '$home${user[0].toUpperCase()}${user.substring(1)}'
         : '$home$user';
