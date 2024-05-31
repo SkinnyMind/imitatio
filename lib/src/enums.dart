@@ -70,6 +70,9 @@ enum CardType { visa, masterCard, americanExpress }
 /// Genders.
 enum Gender { male, female }
 
+/// Title types.
+enum TitleType { typical, academic }
+
 /// Regions of timezones.
 enum TimezoneRegion {
   africa,

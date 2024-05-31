@@ -110,7 +110,7 @@ class Internet {
     }
 
     host.write(
-      PersonData.usernames[Random().nextInt(PersonData.usernames.length)],
+      IntPersonData.usernames[Random().nextInt(IntPersonData.usernames.length)],
     );
 
     host.write(tld);
