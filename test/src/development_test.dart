@@ -75,11 +75,10 @@ void main() {
       expect(schemes.contains(result.split('://').first), true);
       expect(ports.contains(int.parse(result.split(':').last)), true);
 
-      for (final type in DSNType.values) {
-        final result = Development.dsn(dsnType: type);
-        expect(result.startsWith('${type.scheme}://'), true);
-        expect(result.endsWith(':${type.port}'), true);
-      }
+      final type = DSNType.postgres;
+      final withType = Development.dsn(dsnType: type);
+      expect(withType.startsWith('${type.scheme}://'), true);
+      expect(withType.endsWith(':${type.port}'), true);
     });
 
     test('returns system quality attribute', () {

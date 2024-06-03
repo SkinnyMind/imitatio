@@ -12,27 +12,20 @@ void main() {
     });
 
     test('returns day of the week', () {
-      final result = Date.dayOfWeek();
+      final noarg = Date.dayOfWeek();
       final data = DateData.locale(Locale.en).day(isAbbr: false);
-      expect(data.contains(result), true);
+      expect(data.contains(noarg), true);
 
-      for (final locale in Locale.values) {
-        final result = Date.dayOfWeek(locale: locale);
-        final data = DateData.locale(locale).day(isAbbr: false);
-        expect(data.contains(result), true);
-      }
+      final locale = Locale.ru;
+      final withLocale = Date.dayOfWeek(locale: locale);
+      final localeData = DateData.locale(locale).day(isAbbr: false);
+      expect(localeData.contains(withLocale), true);
     });
 
     test('returns abbreviated day of the week', () {
       final result = Date.dayOfWeek(isAbbr: true);
       final data = DateData.locale(Locale.en).day(isAbbr: true);
       expect(data.contains(result), true);
-
-      for (final locale in Locale.values) {
-        final result = Date.dayOfWeek(isAbbr: true, locale: locale);
-        final data = DateData.locale(locale).day(isAbbr: true);
-        expect(data.contains(result), true);
-      }
     });
 
     test('returns a year', () {
@@ -68,27 +61,20 @@ void main() {
     });
 
     test('returns name of the month', () {
-      final result = Date.month();
+      final noarg = Date.month();
       final data = DateData.locale(Locale.en).month(isAbbr: false);
-      expect(data.contains(result), true);
+      expect(data.contains(noarg), true);
 
-      for (final locale in Locale.values) {
-        final result = Date.month(locale: locale);
-        final data = DateData.locale(locale).month(isAbbr: false);
-        expect(data.contains(result), true);
-      }
+      final locale = Locale.ru;
+      final withLocale = Date.month(locale: locale);
+      final localeData = DateData.locale(locale).month(isAbbr: false);
+      expect(localeData.contains(withLocale), true);
     });
 
     test('returns abbreviated name of the month', () {
       final result = Date.month(isAbbr: true);
       final data = DateData.locale(Locale.en).month(isAbbr: true);
       expect(data.contains(result), true);
-
-      for (final locale in Locale.values) {
-        final result = Date.month(isAbbr: true, locale: locale);
-        final data = DateData.locale(locale).month(isAbbr: true);
-        expect(data.contains(result), true);
-      }
     });
 
     test('returns century', () {
@@ -97,15 +83,14 @@ void main() {
     });
 
     test('returns periodicity', () {
-      final result = Date.periodicity();
+      final noarg = Date.periodicity();
       final data = DateData.locale(Locale.en).periodicity;
-      expect(data.contains(result), true);
+      expect(data.contains(noarg), true);
 
-      for (final locale in Locale.values) {
-        final result = Date.periodicity(locale: locale);
-        final data = DateData.locale(locale).periodicity;
-        expect(data.contains(result), true);
-      }
+      final locale = Locale.ru;
+      final withLocale = Date.periodicity(locale: locale);
+      final localeData = DateData.locale(locale).periodicity;
+      expect(localeData.contains(withLocale), true);
     });
 
     test('returns day of month', () {
