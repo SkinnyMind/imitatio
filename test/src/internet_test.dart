@@ -22,7 +22,7 @@ void main() {
       for (final mimeType in MimeType.values) {
         final result =
             Internet.contentType(mimeType: mimeType).split(':')[1].trim();
-        expect(FileData.mimeTypes[mimeType.name]!.contains(result), true);
+        expect(FileData.mimeTypes(mimeType).contains(result), true);
       }
     });
 
@@ -91,15 +91,13 @@ void main() {
 
     test('returns top level domain', () {
       expect(
-        InternetData.tld[TLDType.cctld.name]!.contains(
-          Internet.topLevelDomain(),
-        ),
+        InternetData.tld(TLDType.cctld).contains(Internet.topLevelDomain()),
         true,
       );
 
       for (final type in TLDType.values) {
         final result = Internet.topLevelDomain(type: type);
-        expect(InternetData.tld[type.name]!.contains(result), true);
+        expect(InternetData.tld(type).contains(result), true);
       }
     });
 

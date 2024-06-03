@@ -251,7 +251,7 @@ class Internet {
   /// Internet.topLevelDomain(type: TLDType.utld); // ".info"
   /// ```
   static String topLevelDomain({TLDType type = TLDType.cctld}) {
-    final domains = InternetData.tld[type.name]!;
+    final domains = InternetData.tld(type);
     return domains[Random().nextInt(domains.length)];
   }
 

@@ -138,13 +138,9 @@ class Date {
   /// Date.timezone(region: TimezoneRegion.europe) // "Europe/Stockholm"
   /// ```
   static String timezone({TimezoneRegion? region}) {
-    late final data = <String>[];
-    if (region == null) {
-      data.addAll(IntDateData.timezones.values.expand((e) => e));
-    } else {
-      data.addAll(IntDateData.timezones[region.name]!);
-    }
-
+    final timezone = region ??
+        TimezoneRegion.values[Random().nextInt(TimezoneRegion.values.length)];
+    final data = IntDateData.timezones(timezone);
     return data[Random().nextInt(data.length)];
   }
 

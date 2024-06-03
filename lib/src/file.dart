@@ -18,9 +18,9 @@ class File {
   /// ```
   static String ext({FileType? fileType}) {
     final random = Random();
-    final key =
+    final type =
         fileType ?? FileType.values[random.nextInt(FileType.values.length)];
-    final extensions = FileData.extensions[key.name]!;
+    final extensions = FileData.extensions(type);
     return extensions[random.nextInt(extensions.length)];
   }
 
@@ -34,9 +34,9 @@ class File {
   /// File.mimeType(type: MimeType.image); // "image/vnd.net-fpx"
   /// ```
   static String mimeType({MimeType? type}) {
-    final key =
+    final mime =
         type ?? MimeType.values[Random().nextInt(MimeType.values.length)];
-    final types = FileData.mimeTypes[key.name]!;
+    final types = FileData.mimeTypes(mime);
     return types[Random().nextInt(types.length)];
   }
 

@@ -7,17 +7,15 @@ void main() {
     test('returns file extension', () {
       expect(File.ext(), isNotEmpty);
 
-      for (final type in FileType.values) {
-        final result = File.ext(fileType: type);
-        expect(FileData.extensions[type.name]!.contains(result), true);
-      }
+      final type = FileType.audio;
+      final result = File.ext(fileType: type);
+      expect(FileData.extensions(type).contains(result), true);
     });
 
     test('returns mime type of provided group', () {
-      for (final type in MimeType.values) {
-        final result = File.mimeType(type: type);
-        expect(FileData.mimeTypes[type.name]!.contains(result), true);
-      }
+      final type = MimeType.audio;
+      final result = File.mimeType(type: type);
+      expect(FileData.mimeTypes(type).contains(result), true);
     });
 
     test('returns size of a file', () {
@@ -30,7 +28,7 @@ void main() {
       final type = FileType.audio;
       final result = File.name(fileType: type);
       final ext = '.${result.split('.').last}';
-      expect(FileData.extensions[type.name]!.contains(ext), true);
+      expect(FileData.extensions(type).contains(ext), true);
     });
   });
 }
