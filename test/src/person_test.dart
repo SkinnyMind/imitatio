@@ -9,14 +9,11 @@ void main() {
       expect(Person.name(), isNotEmpty);
 
       for (final locale in Locale.values) {
-        final maleName = Person.name(gender: Gender.male, locale: locale);
-        final femaleName = Person.name(gender: Gender.female, locale: locale);
-        final data = PersonData.locale[locale.name]!;
-        final maleData = data.names[Gender.male.name] ?? data.names['generic']!;
-        final femaleData =
-            data.names[Gender.female.name] ?? data.names['generic']!;
-        expect(maleData.contains(maleName), true);
-        expect(femaleData.contains(femaleName), true);
+        final male = Person.name(gender: Gender.male, locale: locale);
+        final female = Person.name(gender: Gender.female, locale: locale);
+        final data = PersonData.locale(locale);
+        expect(data.names(Gender.male).contains(male), true);
+        expect(data.names(Gender.female).contains(female), true);
       }
     });
 
@@ -24,16 +21,11 @@ void main() {
       expect(Person.surname(), isNotEmpty);
 
       for (final locale in Locale.values) {
-        final maleSurname = Person.surname(gender: Gender.male, locale: locale);
-        final femaleSurname =
-            Person.surname(gender: Gender.female, locale: locale);
-        final data = PersonData.locale[locale.name]!;
-        final maleData =
-            data.surnames[Gender.male.name] ?? data.surnames['generic']!;
-        final femaleData =
-            data.surnames[Gender.female.name] ?? data.surnames['generic']!;
-        expect(maleData.contains(maleSurname), true);
-        expect(femaleData.contains(femaleSurname), true);
+        final male = Person.surname(gender: Gender.male, locale: locale);
+        final female = Person.surname(gender: Gender.female, locale: locale);
+        final data = PersonData.locale(locale);
+        expect(data.surnames(Gender.male).contains(male), true);
+        expect(data.surnames(Gender.female).contains(female), true);
       }
     });
 
@@ -54,21 +46,27 @@ void main() {
 
       for (final locale in Locale.values) {
         for (final titleType in TitleType.values) {
-          final maleTitle = Person.title(
+          final male = Person.title(
             gender: Gender.male,
             titleType: titleType,
             locale: locale,
           );
-          final femaleTitle = Person.title(
+          final female = Person.title(
             gender: Gender.female,
             titleType: titleType,
             locale: locale,
           );
-          final data = PersonData.locale[locale.name]!;
-          final maleData = data.title[Gender.male.name]![titleType.name]!;
-          final femaleData = data.title[Gender.female.name]![titleType.name]!;
-          expect(maleData.contains(maleTitle), true);
-          expect(femaleData.contains(femaleTitle), true);
+          final data = PersonData.locale(locale);
+          final maleData = data.title(
+            gender: Gender.male,
+            titleType: titleType,
+          );
+          final femaleData = data.title(
+            gender: Gender.female,
+            titleType: titleType,
+          );
+          expect(maleData.contains(male), true);
+          expect(femaleData.contains(female), true);
         }
       }
     });
@@ -143,7 +141,7 @@ void main() {
 
       for (final locale in Locale.values) {
         final result = Person.gender(locale: locale);
-        final data = PersonData.locale[locale.name]!.gender;
+        final data = PersonData.locale(locale).gender;
         expect(data.contains(result), true);
       }
     });
@@ -178,7 +176,7 @@ void main() {
 
       for (final locale in Locale.values) {
         final result = Person.occupation(locale: locale);
-        final data = PersonData.locale[locale.name]!.occupation;
+        final data = PersonData.locale(locale).occupation;
         expect(data.contains(result), true);
       }
     });
@@ -188,7 +186,7 @@ void main() {
 
       for (final locale in Locale.values) {
         final result = Person.politicalViews(locale: locale);
-        final data = PersonData.locale[locale.name]!.politicalViews;
+        final data = PersonData.locale(locale).politicalViews;
         expect(data.contains(result), true);
       }
     });
@@ -198,7 +196,7 @@ void main() {
 
       for (final locale in Locale.values) {
         final result = Person.worldview(locale: locale);
-        final data = PersonData.locale[locale.name]!.worldview;
+        final data = PersonData.locale(locale).worldview;
         expect(data.contains(result), true);
       }
     });
@@ -208,7 +206,7 @@ void main() {
 
       for (final locale in Locale.values) {
         final result = Person.viewsOn(locale: locale);
-        final data = PersonData.locale[locale.name]!.viewsOn;
+        final data = PersonData.locale(locale).viewsOn;
         expect(data.contains(result), true);
       }
     });
@@ -217,21 +215,17 @@ void main() {
       expect(Person.nationality(), isNotEmpty);
 
       for (final locale in Locale.values) {
-        final maleNationality = Person.nationality(
+        final male = Person.nationality(
           gender: Gender.male,
           locale: locale,
         );
-        final femaleNationality = Person.nationality(
+        final female = Person.nationality(
           gender: Gender.female,
           locale: locale,
         );
-        final data = PersonData.locale[locale.name]!;
-        final maleData =
-            data.nationality[Gender.male.name] ?? data.nationality['generic']!;
-        final femaleData = data.nationality[Gender.female.name] ??
-            data.nationality['generic']!;
-        expect(maleData.contains(maleNationality), true);
-        expect(femaleData.contains(femaleNationality), true);
+        final data = PersonData.locale(locale);
+        expect(data.nationality(Gender.male).contains(male), true);
+        expect(data.nationality(Gender.female).contains(female), true);
       }
     });
 
@@ -240,7 +234,7 @@ void main() {
 
       for (final locale in Locale.values) {
         final result = Person.university(locale: locale);
-        final data = PersonData.locale[locale.name]!.university;
+        final data = PersonData.locale(locale).university;
         expect(data.contains(result), true);
       }
     });
@@ -250,7 +244,7 @@ void main() {
 
       for (final locale in Locale.values) {
         final result = Person.academicDegree(locale: locale);
-        final data = PersonData.locale[locale.name]!.academicDegree;
+        final data = PersonData.locale(locale).academicDegree;
         expect(data.contains(result), true);
       }
     });
@@ -260,7 +254,7 @@ void main() {
 
       for (final locale in Locale.values) {
         final result = Person.language(locale: locale);
-        final data = PersonData.locale[locale.name]!.language;
+        final data = PersonData.locale(locale).language;
         expect(data.contains(result), true);
       }
     });
