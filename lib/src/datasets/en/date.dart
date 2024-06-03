@@ -4,26 +4,26 @@ class EnDateData extends DateDataset {
   EnDateData();
 
   @override
-  Map<String, List<String>> get day {
-    return const {
-      "abbr": [
-        "Fri.",
-        "Mon.",
-        "Sat",
-        "Sun.",
-        "Thu.",
-        "Tue.",
-        "Wed.",
-      ],
-      "name": [
-        "Friday",
-        "Monday",
-        "Saturday",
-        "Sunday",
-        "Thursday",
-        "Tuesday",
-        "Wednesday",
-      ],
+  List<String> day({required bool isAbbr}) {
+    return switch (isAbbr) {
+      true => const [
+          "Fri.",
+          "Mon.",
+          "Sat",
+          "Sun.",
+          "Thu.",
+          "Tue.",
+          "Wed.",
+        ],
+      false => const [
+          "Friday",
+          "Monday",
+          "Saturday",
+          "Sunday",
+          "Thursday",
+          "Tuesday",
+          "Wednesday",
+        ],
     };
   }
 
@@ -36,36 +36,36 @@ class EnDateData extends DateDataset {
   }
 
   @override
-  Map<String, List<String>> get month {
-    return const {
-      "abbr": [
-        "Jan.",
-        "Feb.",
-        "Mar.",
-        "Apr.",
-        "May.",
-        "Jun.",
-        "Jul.",
-        "Aug.",
-        "Sept.",
-        "Oct.",
-        "Nov.",
-        "Dec.",
-      ],
-      "name": [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
-      ],
+  List<String> month({required bool isAbbr}) {
+    return switch (isAbbr) {
+      true => const [
+          "Jan.",
+          "Feb.",
+          "Mar.",
+          "Apr.",
+          "May.",
+          "Jun.",
+          "Jul.",
+          "Aug.",
+          "Sept.",
+          "Oct.",
+          "Nov.",
+          "Dec.",
+        ],
+      false => [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
+        ],
     };
   }
 

@@ -1,6 +1,6 @@
 abstract class DateDataset {
-  Map<String, List<String>> get day;
+  List<String> day({required bool isAbbr});
   Map<String, String> get formats;
-  Map<String, List<String>> get month;
+  List<String> month({required bool isAbbr});
   List<String> get periodicity;
 }

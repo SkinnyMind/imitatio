@@ -42,7 +42,7 @@ class Date {
   /// ```
   static String dayOfWeek({bool isAbbr = false, Locale locale = Locale.en}) {
     final random = Random();
-    final day = DateData.locale[locale.name]!.day[isAbbr ? 'abbr' : 'name']!;
+    final day = DateData.locale(locale).day(isAbbr: isAbbr);
     return day[random.nextInt(day.length)];
   }
 
@@ -93,8 +93,7 @@ class Date {
   /// ```
   static String month({bool isAbbr = false, Locale locale = Locale.en}) {
     final random = Random();
-    final month =
-        DateData.locale[locale.name]!.month[isAbbr ? 'abbr' : 'name']!;
+    final month = DateData.locale(locale).month(isAbbr: isAbbr);
     return month[random.nextInt(month.length)];
   }
 
@@ -117,7 +116,7 @@ class Date {
   /// ```
   static String periodicity({Locale locale = Locale.en}) {
     final random = Random();
-    final periodicity = DateData.locale[locale.name]!.periodicity;
+    final periodicity = DateData.locale(locale).periodicity;
     return periodicity[random.nextInt(periodicity.length)];
   }
 
