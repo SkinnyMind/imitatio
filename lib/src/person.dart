@@ -24,8 +24,7 @@ class Person {
   static String name({Gender? gender, Locale locale = Locale.en}) {
     final random = Random();
     gender ??= Gender.values[random.nextInt(Gender.values.length)];
-    final data = PersonData.locale[locale.name]!;
-    final names = data.names[gender.name] ?? data.names['generic']!;
+    final names = PersonData.locale(locale).names(gender);
     return names[random.nextInt(names.length)];
   }
 
@@ -42,8 +41,7 @@ class Person {
   static String surname({Gender? gender, Locale locale = Locale.en}) {
     final random = Random();
     gender ??= Gender.values[random.nextInt(Gender.values.length)];
-    final data = PersonData.locale[locale.name]!;
-    final surnames = data.surnames[gender.name] ?? data.surnames['generic']!;
+    final surnames = PersonData.locale(locale).surnames(gender);
     return surnames[random.nextInt(surnames.length)];
   }
 
@@ -93,8 +91,10 @@ class Person {
     final random = Random();
     gender ??= Gender.values[random.nextInt(Gender.values.length)];
     titleType ??= TitleType.values[random.nextInt(TitleType.values.length)];
-    final titles =
-        PersonData.locale[locale.name]!.title[gender.name]![titleType.name]!;
+    final titles = PersonData.locale(locale).title(
+      gender: gender,
+      titleType: titleType,
+    );
     return titles[random.nextInt(titles.length)];
   }
 
@@ -215,7 +215,7 @@ class Person {
   /// Person.gender(); // "Female"
   /// ```
   static String gender({Locale locale = Locale.en}) {
-    final genders = PersonData.locale[locale.name]!.gender;
+    final genders = PersonData.locale(locale).gender;
     return genders[Random().nextInt(genders.length)];
   }
 
@@ -267,7 +267,7 @@ class Person {
   /// Person.occupation(); // "Legal Executive"
   /// ```
   static String occupation({Locale locale = Locale.en}) {
-    final data = PersonData.locale[locale.name]!.occupation;
+    final data = PersonData.locale(locale).occupation;
     return data[Random().nextInt(data.length)];
   }
 
@@ -280,7 +280,7 @@ class Person {
   /// Person.politicalViews(); // "Communist"
   /// ```
   static String politicalViews({Locale locale = Locale.en}) {
-    final data = PersonData.locale[locale.name]!.politicalViews;
+    final data = PersonData.locale(locale).politicalViews;
     return data[Random().nextInt(data.length)];
   }
 
@@ -293,7 +293,7 @@ class Person {
   /// Person.worldview(); // "Agnosticism"
   /// ```
   static String worldview({Locale locale = Locale.en}) {
-    final data = PersonData.locale[locale.name]!.worldview;
+    final data = PersonData.locale(locale).worldview;
     return data[Random().nextInt(data.length)];
   }
 
@@ -306,7 +306,7 @@ class Person {
   /// Person.viewsOn(); // "Positive"
   /// ```
   static String viewsOn({Locale locale = Locale.en}) {
-    final data = PersonData.locale[locale.name]!.viewsOn;
+    final data = PersonData.locale(locale).viewsOn;
     return data[Random().nextInt(data.length)];
   }
 
@@ -323,9 +323,7 @@ class Person {
   static String nationality({Gender? gender, Locale locale = Locale.en}) {
     final random = Random();
     gender ??= Gender.values[random.nextInt(Gender.values.length)];
-    final data = PersonData.locale[locale.name]!;
-    final nationalities =
-        data.nationality[gender.name] ?? data.nationality['generic']!;
+    final nationalities = PersonData.locale(locale).nationality(gender);
     return nationalities[random.nextInt(nationalities.length)];
   }
 
@@ -338,7 +336,7 @@ class Person {
   /// Person.university(); // "University of Georgia (UGA)"
   /// ```
   static String university({Locale locale = Locale.en}) {
-    final data = PersonData.locale[locale.name]!.university;
+    final data = PersonData.locale(locale).university;
     return data[Random().nextInt(data.length)];
   }
 
@@ -351,7 +349,7 @@ class Person {
   /// Person.academicDegree(); // "Master"
   /// ```
   static String academicDegree({Locale locale = Locale.en}) {
-    final data = PersonData.locale[locale.name]!.academicDegree;
+    final data = PersonData.locale(locale).academicDegree;
     return data[Random().nextInt(data.length)];
   }
 
@@ -364,7 +362,7 @@ class Person {
   /// Person.language(); // "Icelandic"
   /// ```
   static String language({Locale locale = Locale.en}) {
-    final data = PersonData.locale[locale.name]!.language;
+    final data = PersonData.locale(locale).language;
     return data[Random().nextInt(data.length)];
   }
 
@@ -382,7 +380,7 @@ class Person {
   /// Person.phoneNumber(mask: "123#"); // "1232"
   /// ```
   static String phoneNumber({String? mask, Locale locale = Locale.en}) {
-    final data = PersonData.locale[locale.name]!.telephoneFormat;
+    final data = PersonData.locale(locale).telephoneFormat;
     mask ??= data[Random().nextInt(data.length)];
     return Rng.customCode(mask: mask);
   }
