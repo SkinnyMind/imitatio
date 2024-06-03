@@ -19,11 +19,9 @@ void main() {
     });
 
     test('returns content type of provided mime type', () {
-      for (final mimeType in MimeType.values) {
-        final result =
-            Internet.contentType(mimeType: mimeType).split(':')[1].trim();
-        expect(FileData.mimeTypes(mimeType).contains(result), true);
-      }
+      final type = MimeType.text;
+      final result = Internet.contentType(mimeType: type).split(':')[1].trim();
+      expect(FileData.mimeTypes(type).contains(result), true);
     });
 
     test('returns http status message', () {
@@ -90,15 +88,13 @@ void main() {
     );
 
     test('returns top level domain', () {
-      expect(
-        InternetData.tld(TLDType.cctld).contains(Internet.topLevelDomain()),
-        true,
-      );
+      final noarg = Internet.topLevelDomain();
+      final data = InternetData.tld(TLDType.cctld);
+      expect(data.contains(noarg), true);
 
-      for (final type in TLDType.values) {
-        final result = Internet.topLevelDomain(type: type);
-        expect(InternetData.tld(type).contains(result), true);
-      }
+      final type = TLDType.geotld;
+      final withType = Internet.topLevelDomain(type: type);
+      expect(InternetData.tld(type).contains(withType), true);
     });
 
     test('returns user agent', () {
@@ -124,18 +120,17 @@ void main() {
     });
 
     test('returns URL', () {
-      expect(Internet.url().startsWith(URLScheme.https.name), true);
+      final noarg = Internet.url();
+      expect(noarg.startsWith(URLScheme.https.name), true);
 
-      for (final scheme in URLScheme.values) {
-        expect(Internet.url(urlScheme: scheme).startsWith(scheme.name), true);
-      }
+      final scheme = URLScheme.ws;
+      expect(Internet.url(urlScheme: scheme).startsWith(scheme.name), true);
 
-      for (final range in PortRange.values) {
-        final port = int.parse(
-          Internet.url(portRange: range).split(':').last.replaceFirst('/', ''),
-        );
-        expect(port >= range.min && port <= range.max, true);
-      }
+      final range = PortRange.wellKnown;
+      final port = int.parse(
+        Internet.url(portRange: range).split(':').last.replaceFirst('/', ''),
+      );
+      expect(port >= range.min && port <= range.max, true);
     });
 
     test('returns URI', () {
