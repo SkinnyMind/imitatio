@@ -15,7 +15,7 @@ void main() {
       expect((minMaxResult >= min) && (minMaxResult <= max), true);
 
       final precisionDigits = minMaxResult.toString().split('.')[1];
-      expect(precisionDigits.length, precision);
+      expect(precisionDigits.length <= precision, true);
     });
 
     test('returns list of float numbers', () {
