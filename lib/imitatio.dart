@@ -1,4 +1,4 @@
-library imitatio;
+library;
 
 export 'src/choice.dart';
 export 'src/code.dart';
