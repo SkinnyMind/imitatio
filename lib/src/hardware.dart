@@ -55,15 +55,6 @@ class Hardware {
   static String generation() => HardwareData
       .generations[Random().nextInt(HardwareData.generations.length)];
 
-  /// Returns a random CPU model code.
-  ///
-  /// Example:
-  /// ```dart
-  /// Hardware.cpuModelCode(); // "6820HK"
-  /// ```
-  static String cpuModelCode() => HardwareData
-      .cpuModelCodes[Random().nextInt(HardwareData.cpuModelCodes.length)];
-
   /// Returns a random CPU code name.
   ///
   /// Example:
@@ -91,14 +82,20 @@ class Hardware {
   static String ramSize() =>
       HardwareData.ramSizes[Random().nextInt(HardwareData.ramSizes.length)];
 
-  /// Returns a random size and type of disk drive (e.g. "512GB SSD").
+  /// Returns a random type of disk.
   ///
   /// Example:
   /// ```dart
-  /// Hardware.drive(); // "1024GB SSD"
+  /// Hardware.ssdOrHdd(); // "Seagate 256GB HDD"
   /// ```
-  static String drive() =>
-      HardwareData.drives[Random().nextInt(HardwareData.drives.length)];
+  static String ssdOrHdd() {
+    final random = Random();
+    final manufacturer = HardwareData.hddSsdManufacturers[
+        random.nextInt(HardwareData.hddSsdManufacturers.length)];
+    final capacity =
+        HardwareData.capacity[random.nextInt(HardwareData.capacity.length)];
+    return "$manufacturer $capacity";
+  }
 
   /// Returns a random graphics.
   ///
@@ -122,7 +119,7 @@ class Hardware {
   ///
   /// Example:
   /// ```dart
-  /// Hardware.phoneModel(); // "Nokia Lumia 810"
+  /// Hardware.phoneModel(); // "iPhone SE"
   /// ```
   static String phoneModel() => HardwareData
       .phoneModels[Random().nextInt(HardwareData.phoneModels.length)];

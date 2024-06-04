@@ -25,13 +25,6 @@ void main() {
       expect(HardwareData.generations.contains(Hardware.generation()), true);
     });
 
-    test('returns cpu model code', () {
-      expect(
-        HardwareData.cpuModelCodes.contains(Hardware.cpuModelCode()),
-        true,
-      );
-    });
-
     test('returns cpu code name', () {
       expect(
         HardwareData.cpuCodeNames.contains(Hardware.cpuCodeName()),
@@ -48,7 +41,7 @@ void main() {
     });
 
     test('returns drive', () {
-      expect(HardwareData.drives.contains(Hardware.drive()), true);
+      expect(Hardware.ssdOrHdd(), isNotEmpty);
     });
 
     test('returns graphics', () {
