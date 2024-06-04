@@ -11,7 +11,9 @@ linter:
     - always_declare_return_types
     - always_put_required_named_parameters_first
     - always_use_package_imports
+    - annotate_redeclares
     - avoid_bool_literals_in_conditional_expressions
+    - avoid_catches_without_on_clauses
     - avoid_double_and_int_checks
     - avoid_dynamic_calls
     - avoid_equals_and_hash_code_on_mutable_classes
@@ -37,8 +39,12 @@ linter:
     - join_return_with_assignment
     - lines_longer_than_80_chars
     - literal_only_boolean_expressions
+    - missing_code_block_language_in_doc_comment
     - missing_whitespace_between_adjacent_strings
     - no_default_cases
+    - no_literal_bool_comparisons
+    - no_self_assignments
+    - no_wildcard_variable_uses
     - noop_primitive_operations
     - omit_local_variable_types
     - parameter_assignments
@@ -61,6 +67,7 @@ linter:
     - unawaited_futures
     - unnecessary_await_in_return
     - unnecessary_breaks
+    - unnecessary_library_name
     - unnecessary_parenthesis
     - unnecessary_raw_strings
     - unnecessary_to_list_in_spreads
