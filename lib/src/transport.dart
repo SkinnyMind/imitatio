@@ -1,29 +1,10 @@
 import 'dart:math';
 
 import 'package:imitatio/src/datasets/international/transport.dart';
-import 'package:imitatio/src/rng.dart';
 
 /// Provides data related to transports.
 class Transport {
   const Transport._();
-
-  /// Returns a truck model.
-  ///
-  /// [modelMask] is optional mask of pin code. "#" will be changed to digit
-  /// and "@" will be changed to ascii character (default is 4 digits followed
-  /// by space followed by 2 characters).
-  ///
-  /// Example:
-  /// ```dart
-  /// Transport.truck(); // "Carmichael-4951 EM"
-  /// Transport.truck(modelMask: '####'); // "Albion-1212"
-  /// ```
-  static String truck({String modelMask = '#### @@'}) {
-    final model = Rng.customCode(mask: modelMask);
-    final truck =
-        TransportData.trucks[Random().nextInt(TransportData.trucks.length)];
-    return '$truck-$model';
-  }
 
   /// Returns a random vehicle manufacturer.
   ///
@@ -31,8 +12,10 @@ class Transport {
   /// ```dart
   /// Transport.manufacturer(); // "McLaren"
   /// ```
-  static String manufacturer() => TransportData
-      .manufacturers[Random().nextInt(TransportData.manufacturers.length)];
+  static String manufacturer() {
+    final data = TransportData.manufacturers;
+    return data[Random().nextInt(data.length)];
+  }
 
   /// Returns a random vehicle.
   ///
@@ -40,24 +23,20 @@ class Transport {
   /// ```dart
   /// Transport.car(); // "Jeep Cherokee (XJ)"
   /// ```
-  static String car() =>
-      TransportData.cars[Random().nextInt(TransportData.cars.length)];
+  static String car() {
+    final data = TransportData.cars;
+    return data[Random().nextInt(data.length)];
+  }
 
   /// Returns an airplane model.
-  ///
-  /// [modelMask] is optional mask of pin code. "#" will be changed to digit
-  /// and "@" will be changed to ascii character (default is 3 digits).
   ///
   /// Example:
   /// ```dart
   /// Transport.airplane(); // "Airbus 721"
-  /// Transport.airplane(modelMask: '@###'); // "Tu M578"
   /// ```
-  static String airplane({String modelMask = '###'}) {
-    final model = Rng.customCode(mask: modelMask);
-    final plane = TransportData
-        .airplanes[Random().nextInt(TransportData.airplanes.length)];
-    return '$plane $model';
+  static String airplane() {
+    final data = TransportData.airplanes;
+    return data[Random().nextInt(data.length)];
   }
 
   /// Returns vehicle registration code.
@@ -66,6 +45,8 @@ class Transport {
   /// ```dart
   /// Transport.vehicleRegistrationCode(); // "TO"
   /// ```
-  static String vehicleRegistrationCode() =>
-      TransportData.vrCodes[Random().nextInt(TransportData.vrCodes.length)];
+  static String vehicleRegistrationCode() {
+    final data = TransportData.vrCodes;
+    return data[Random().nextInt(data.length)];
+  }
 }

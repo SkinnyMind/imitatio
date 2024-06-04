@@ -4,15 +4,6 @@ import 'package:test/test.dart';
 
 void main() {
   group('Transport', () {
-    test('returns a truck model', () {
-      final result = Transport.truck().split('-');
-      expect(TransportData.trucks.contains(result[0]), true);
-      expect(result[1].length, 7);
-
-      final masked = Transport.truck(modelMask: '####').split('-');
-      expect(masked.last.length, 4);
-    });
-
     test('returns manufacturer', () {
       expect(
         TransportData.manufacturers.contains(Transport.manufacturer()),
@@ -25,12 +16,8 @@ void main() {
     });
 
     test('returns airplane', () {
-      final result = Transport.airplane().split(' ');
-      expect(TransportData.airplanes.contains(result[0]), true);
-      expect(result[1].length, 3);
-
-      final masked = Transport.airplane(modelMask: '@###').split(' ');
-      expect(masked.last.length, 4);
+      final result = Transport.airplane();
+      expect(TransportData.airplanes.contains(result), true);
     });
 
     test('returns vehicle registration code', () {
