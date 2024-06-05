@@ -77,7 +77,8 @@ class Development {
   /// Development.os(); // "Fedora"
   /// ```
   static String os() {
-    return DevelopmentData.os[Random().nextInt(DevelopmentData.os.length)];
+    final data = DevelopmentData.oses;
+    return data[Random().nextInt(data.length)];
   }
 
   /// Returns a random boolean value.

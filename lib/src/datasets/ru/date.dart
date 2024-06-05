@@ -4,7 +4,7 @@ class RuDateData extends DateDataset {
   RuDateData();
 
   @override
-  List<String> day({required bool isAbbr}) {
+  List<String> days({required bool isAbbr}) {
     return switch (isAbbr) {
       true => const [
           "Пн.",
@@ -36,7 +36,7 @@ class RuDateData extends DateDataset {
   }
 
   @override
-  List<String> month({required bool isAbbr}) {
+  List<String> months({required bool isAbbr}) {
     return switch (isAbbr) {
       true => const [
           "Янв.",
@@ -70,7 +70,7 @@ class RuDateData extends DateDataset {
   }
 
   @override
-  List<String> get periodicity {
+  List<String> get periodicities {
     return const [
       "Ежегодно",
       "Ежедневно",

@@ -13,18 +13,18 @@ void main() {
 
     test('returns day of the week', () {
       final noarg = Date.dayOfWeek();
-      final data = DateData.locale(Locale.en).day(isAbbr: false);
+      final data = DateData.locale(Locale.en).days(isAbbr: false);
       expect(data.contains(noarg), true);
 
       final locale = Locale.ru;
       final withLocale = Date.dayOfWeek(locale: locale);
-      final localeData = DateData.locale(locale).day(isAbbr: false);
+      final localeData = DateData.locale(locale).days(isAbbr: false);
       expect(localeData.contains(withLocale), true);
     });
 
     test('returns abbreviated day of the week', () {
       final result = Date.dayOfWeek(isAbbr: true);
-      final data = DateData.locale(Locale.en).day(isAbbr: true);
+      final data = DateData.locale(Locale.en).days(isAbbr: true);
       expect(data.contains(result), true);
     });
 
@@ -62,18 +62,18 @@ void main() {
 
     test('returns name of the month', () {
       final noarg = Date.month();
-      final data = DateData.locale(Locale.en).month(isAbbr: false);
+      final data = DateData.locale(Locale.en).months(isAbbr: false);
       expect(data.contains(noarg), true);
 
       final locale = Locale.ru;
       final withLocale = Date.month(locale: locale);
-      final localeData = DateData.locale(locale).month(isAbbr: false);
+      final localeData = DateData.locale(locale).months(isAbbr: false);
       expect(localeData.contains(withLocale), true);
     });
 
     test('returns abbreviated name of the month', () {
       final result = Date.month(isAbbr: true);
-      final data = DateData.locale(Locale.en).month(isAbbr: true);
+      final data = DateData.locale(Locale.en).months(isAbbr: true);
       expect(data.contains(result), true);
     });
 
@@ -84,12 +84,12 @@ void main() {
 
     test('returns periodicity', () {
       final noarg = Date.periodicity();
-      final data = DateData.locale(Locale.en).periodicity;
+      final data = DateData.locale(Locale.en).periodicities;
       expect(data.contains(noarg), true);
 
       final locale = Locale.ru;
       final withLocale = Date.periodicity(locale: locale);
-      final localeData = DateData.locale(locale).periodicity;
+      final localeData = DateData.locale(locale).periodicities;
       expect(localeData.contains(withLocale), true);
     });
 

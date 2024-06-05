@@ -41,7 +41,7 @@ void main() {
     });
 
     test('returns emoji', () {
-      expect(InternetData.emoji.contains(Internet.emoji()), true);
+      expect(InternetData.emojis.contains(Internet.emoji()), true);
     });
 
     test('returns list of hashtags', () {
@@ -89,12 +89,12 @@ void main() {
 
     test('returns top level domain', () {
       final noarg = Internet.topLevelDomain();
-      final data = InternetData.tld(TLDType.cctld);
+      final data = InternetData.tlds(TLDType.cctld);
       expect(data.contains(noarg), true);
 
       final type = TLDType.geotld;
       final withType = Internet.topLevelDomain(type: type);
-      expect(InternetData.tld(type).contains(withType), true);
+      expect(InternetData.tlds(type).contains(withType), true);
     });
 
     test('returns user agent', () {
@@ -173,7 +173,7 @@ void main() {
     });
 
     test('returns a public DNS', () {
-      expect(InternetData.publicDNS.contains(Internet.publicDNS()), true);
+      expect(InternetData.publicDNSes.contains(Internet.publicDNS()), true);
     });
   });
 }

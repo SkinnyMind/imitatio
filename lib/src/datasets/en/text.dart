@@ -71,7 +71,7 @@ class EnTextData extends TextDataset {
   }
 
   @override
-  List<String> get color {
+  List<String> get colors {
     return const [
       "Beige",
       "Black",
@@ -90,7 +90,7 @@ class EnTextData extends TextDataset {
   }
 
   @override
-  List<String> get level {
+  List<String> get levels {
     return const [
       "low",
       "moderate",
@@ -125,7 +125,7 @@ class EnTextData extends TextDataset {
   }
 
   @override
-  List<String> get text {
+  List<String> get texts {
     return const [
       "Haskell is a standardized, general-purpose purely functional programming language, with non-strict semantics and strong static typing.",
       "Haskell features a type system with type inference and lazy evaluation.",

@@ -77,7 +77,7 @@ class DevelopmentData {
     "Z shell",
   ];
 
-  static const os = <String>[
+  static const oses = <String>[
     "Arch",
     "CentOS",
     "Debian",

@@ -6,7 +6,7 @@ import 'package:imitatio/src/enums.dart';
 
 class RuPersonData extends PersonDataset {
   @override
-  List<String> get academicDegree {
+  List<String> get academicDegrees {
     return const [
       "Бакалавр",
       "Доктор наук",
@@ -17,7 +17,7 @@ class RuPersonData extends PersonDataset {
   }
 
   @override
-  List<String> get gender {
+  List<String> get genders {
     return const [
       "Жен.",
       "Муж.",
@@ -25,7 +25,7 @@ class RuPersonData extends PersonDataset {
   }
 
   @override
-  List<String> get language {
+  List<String> get languages {
     return const [
       "Китайский",
       "Арабский",
@@ -793,7 +793,7 @@ class RuPersonData extends PersonDataset {
   }
 
   @override
-  List<String> nationality(Gender gender) {
+  List<String> nationalities(Gender gender) {
     return switch (gender) {
       Gender.female => const [
           "Русская",
@@ -841,7 +841,7 @@ class RuPersonData extends PersonDataset {
   }
 
   @override
-  List<String> get occupation {
+  List<String> get occupations {
     return const [
       "Писатель",
       "Пожарный",
@@ -4489,7 +4489,7 @@ class RuPersonData extends PersonDataset {
   }
 
   @override
-  List<String> get telephoneFormat {
+  List<String> get telephoneFormats {
     return const [
       "+7-(96#)-###-##-##",
       "+7-(92#)-###-##-##",
@@ -4503,7 +4503,7 @@ class RuPersonData extends PersonDataset {
   }
 
   @override
-  List<String> title({required Gender gender, required TitleType titleType}) {
+  List<String> titles({required Gender gender, required TitleType titleType}) {
     return switch (gender) {
       Gender.female => titleType == TitleType.typical
           ? const ["Мисс", "Миссис"]
@@ -4515,7 +4515,7 @@ class RuPersonData extends PersonDataset {
   }
 
   @override
-  List<String> get university {
+  List<String> get universities {
     return const [
       "Государственная морская академия имени адмирала С.О. Макарова",
       "Санкт-Петербургский государственный архитектурно-строительный университет",
@@ -4553,7 +4553,7 @@ class RuPersonData extends PersonDataset {
   }
 
   @override
-  List<String> get worldview {
+  List<String> get worldviews {
     return const [
       "Агностицизм",
       "Атеизм",

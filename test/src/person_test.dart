@@ -55,11 +55,11 @@ void main() {
         locale: locale,
       );
       final data = PersonData.locale(locale);
-      final maleData = data.title(
+      final maleData = data.titles(
         gender: Gender.male,
         titleType: titleType,
       );
-      final femaleData = data.title(
+      final femaleData = data.titles(
         gender: Gender.female,
         titleType: titleType,
       );
@@ -137,7 +137,7 @@ void main() {
 
       final locale = Locale.ru;
       final result = Person.gender(locale: locale);
-      final data = PersonData.locale(locale).gender;
+      final data = PersonData.locale(locale).genders;
       expect(data.contains(result), true);
     });
 
@@ -171,7 +171,7 @@ void main() {
 
       final locale = Locale.ru;
       final result = Person.occupation(locale: locale);
-      final data = PersonData.locale(locale).occupation;
+      final data = PersonData.locale(locale).occupations;
       expect(data.contains(result), true);
     });
 
@@ -189,7 +189,7 @@ void main() {
 
       final locale = Locale.ru;
       final result = Person.worldview(locale: locale);
-      final data = PersonData.locale(locale).worldview;
+      final data = PersonData.locale(locale).worldviews;
       expect(data.contains(result), true);
     });
 
@@ -215,8 +215,8 @@ void main() {
         locale: locale,
       );
       final data = PersonData.locale(locale);
-      expect(data.nationality(Gender.male).contains(male), true);
-      expect(data.nationality(Gender.female).contains(female), true);
+      expect(data.nationalities(Gender.male).contains(male), true);
+      expect(data.nationalities(Gender.female).contains(female), true);
     });
 
     test('returns university', () {
@@ -224,7 +224,7 @@ void main() {
 
       final locale = Locale.ru;
       final result = Person.university(locale: locale);
-      final data = PersonData.locale(locale).university;
+      final data = PersonData.locale(locale).universities;
       expect(data.contains(result), true);
     });
 
@@ -233,7 +233,7 @@ void main() {
 
       final locale = Locale.ru;
       final result = Person.academicDegree(locale: locale);
-      final data = PersonData.locale(locale).academicDegree;
+      final data = PersonData.locale(locale).academicDegrees;
       expect(data.contains(result), true);
     });
 
@@ -242,7 +242,7 @@ void main() {
 
       final locale = Locale.ru;
       final result = Person.language(locale: locale);
-      final data = PersonData.locale(locale).language;
+      final data = PersonData.locale(locale).languages;
       expect(data.contains(result), true);
     });
 
