@@ -21,7 +21,7 @@ void main() {
 
     test('returns ethereum address', () {
       final result = Payment.ethereumAddress();
-      expect(RegExp(r'^0x([a-zA-Z0-9]{40})$').hasMatch(result), true);
+      expect(RegExp(r'^0x([a-f0-9]{40})$').hasMatch(result), true);
     });
 
     test('returns credit card network', () {
