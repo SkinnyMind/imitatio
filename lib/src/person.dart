@@ -24,8 +24,8 @@ class Person {
   static String name({Gender? gender, Locale locale = Locale.en}) {
     final random = Random();
     gender ??= Gender.values[random.nextInt(Gender.values.length)];
-    final names = PersonData.locale(locale).names(gender);
-    return names[random.nextInt(names.length)];
+    final data = PersonData.locale(locale).names(gender);
+    return data[random.nextInt(data.length)];
   }
 
   /// Returns a random surname.
@@ -41,8 +41,8 @@ class Person {
   static String surname({Gender? gender, Locale locale = Locale.en}) {
     final random = Random();
     gender ??= Gender.values[random.nextInt(Gender.values.length)];
-    final surnames = PersonData.locale(locale).surnames(gender);
-    return surnames[random.nextInt(surnames.length)];
+    final data = PersonData.locale(locale).surnames(gender);
+    return data[random.nextInt(data.length)];
   }
 
   /// Returns a random full name.
@@ -91,11 +91,11 @@ class Person {
     final random = Random();
     gender ??= Gender.values[random.nextInt(Gender.values.length)];
     titleType ??= TitleType.values[random.nextInt(TitleType.values.length)];
-    final titles = PersonData.locale(locale).title(
+    final data = PersonData.locale(locale).titles(
       gender: gender,
       titleType: titleType,
     );
-    return titles[random.nextInt(titles.length)];
+    return data[random.nextInt(data.length)];
   }
 
   /// Returns username from template.
@@ -175,8 +175,8 @@ class Person {
   /// Person.email(unique: true) // "a467545c-1397-4601-8cc0-288e6b0de671@outlook.com"
   /// ```
   static String email({List<String>? domains, bool unique = false}) {
-    final emailDomains = domains ?? InternetData.emailDomains;
-    var domain = emailDomains[Random().nextInt(emailDomains.length)];
+    final data = domains ?? InternetData.emailDomains;
+    var domain = data[Random().nextInt(data.length)];
 
     if (!domain.startsWith('@')) domain = '@$domain';
 
@@ -215,8 +215,8 @@ class Person {
   /// Person.gender(); // "Female"
   /// ```
   static String gender({Locale locale = Locale.en}) {
-    final genders = PersonData.locale(locale).gender;
-    return genders[Random().nextInt(genders.length)];
+    final data = PersonData.locale(locale).genders;
+    return data[Random().nextInt(data.length)];
   }
 
   /// Returns a random height in meters.
@@ -267,7 +267,7 @@ class Person {
   /// Person.occupation(); // "Legal Executive"
   /// ```
   static String occupation({Locale locale = Locale.en}) {
-    final data = PersonData.locale(locale).occupation;
+    final data = PersonData.locale(locale).occupations;
     return data[Random().nextInt(data.length)];
   }
 
@@ -293,7 +293,7 @@ class Person {
   /// Person.worldview(); // "Agnosticism"
   /// ```
   static String worldview({Locale locale = Locale.en}) {
-    final data = PersonData.locale(locale).worldview;
+    final data = PersonData.locale(locale).worldviews;
     return data[Random().nextInt(data.length)];
   }
 
@@ -323,8 +323,8 @@ class Person {
   static String nationality({Gender? gender, Locale locale = Locale.en}) {
     final random = Random();
     gender ??= Gender.values[random.nextInt(Gender.values.length)];
-    final nationalities = PersonData.locale(locale).nationality(gender);
-    return nationalities[random.nextInt(nationalities.length)];
+    final data = PersonData.locale(locale).nationalities(gender);
+    return data[random.nextInt(data.length)];
   }
 
   /// Returns a random university name.
@@ -336,7 +336,7 @@ class Person {
   /// Person.university(); // "University of Georgia (UGA)"
   /// ```
   static String university({Locale locale = Locale.en}) {
-    final data = PersonData.locale(locale).university;
+    final data = PersonData.locale(locale).universities;
     return data[Random().nextInt(data.length)];
   }
 
@@ -349,7 +349,7 @@ class Person {
   /// Person.academicDegree(); // "Master"
   /// ```
   static String academicDegree({Locale locale = Locale.en}) {
-    final data = PersonData.locale(locale).academicDegree;
+    final data = PersonData.locale(locale).academicDegrees;
     return data[Random().nextInt(data.length)];
   }
 
@@ -362,7 +362,7 @@ class Person {
   /// Person.language(); // "Icelandic"
   /// ```
   static String language({Locale locale = Locale.en}) {
-    final data = PersonData.locale(locale).language;
+    final data = PersonData.locale(locale).languages;
     return data[Random().nextInt(data.length)];
   }
 
@@ -380,7 +380,7 @@ class Person {
   /// Person.phoneNumber(mask: "123#"); // "1232"
   /// ```
   static String phoneNumber({String? mask, Locale locale = Locale.en}) {
-    final data = PersonData.locale(locale).telephoneFormat;
+    final data = PersonData.locale(locale).telephoneFormats;
     mask ??= data[Random().nextInt(data.length)];
     return Rng.customCode(mask: mask);
   }

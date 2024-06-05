@@ -40,7 +40,7 @@ void main() {
 
       final locale = Locale.ru;
       final result = Text.level(locale: locale);
-      final data = TextData.locale(locale).level;
+      final data = TextData.locale(locale).levels;
       expect(data.contains(result), true);
     });
 
@@ -48,7 +48,7 @@ void main() {
       expect(Text.text(), isNotEmpty);
 
       final locale = Locale.ru;
-      final data = TextData.locale(locale).text;
+      final data = TextData.locale(locale).texts;
       final result = Text.text(quantity: 1, locale: locale);
       expect(data.contains(result), true);
     });
@@ -57,7 +57,7 @@ void main() {
       expect(Text.sentence(), isNotEmpty);
 
       final locale = Locale.ru;
-      final data = TextData.locale(locale).text;
+      final data = TextData.locale(locale).texts;
       final result = Text.sentence(locale: locale);
       expect(data.contains(result), true);
     });
@@ -66,7 +66,7 @@ void main() {
       expect(Text.title(), isNotEmpty);
 
       final locale = Locale.ru;
-      final data = TextData.locale(locale).text;
+      final data = TextData.locale(locale).texts;
       final result = Text.title(locale: locale);
       expect(data.contains(result), true);
     });
@@ -84,7 +84,7 @@ void main() {
       expect(Text.color(), isNotEmpty);
 
       final locale = Locale.ru;
-      final data = TextData.locale(locale).color;
+      final data = TextData.locale(locale).colors;
       final result = Text.color(locale: locale);
       expect(data.contains(result), true);
     });

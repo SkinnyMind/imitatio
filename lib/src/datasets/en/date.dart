@@ -4,7 +4,7 @@ class EnDateData extends DateDataset {
   EnDateData();
 
   @override
-  List<String> day({required bool isAbbr}) {
+  List<String> days({required bool isAbbr}) {
     return switch (isAbbr) {
       true => const [
           "Fri.",
@@ -36,7 +36,7 @@ class EnDateData extends DateDataset {
   }
 
   @override
-  List<String> month({required bool isAbbr}) {
+  List<String> months({required bool isAbbr}) {
     return switch (isAbbr) {
       true => const [
           "Jan.",
@@ -70,7 +70,7 @@ class EnDateData extends DateDataset {
   }
 
   @override
-  List<String> get periodicity {
+  List<String> get periodicities {
     return const [
       "Daily",
       "Monthly",

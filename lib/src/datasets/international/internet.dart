@@ -142,7 +142,7 @@ class InternetData {
     "511 Network Authentication Required",
   ];
 
-  static List<String> tld(TLDType type) {
+  static List<String> tlds(TLDType type) {
     return switch (type) {
       TLDType.cctld => const [
           ".ac",
@@ -1032,7 +1032,7 @@ class InternetData {
     };
   }
 
-  static const emoji = <String>[
+  static const emojis = <String>[
     ":bowtie:",
     ":smile:",
     ":laughing:",
@@ -1940,7 +1940,7 @@ class InternetData {
     "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; en) Opera 9.26",
   ];
 
-  static const publicDNS = <String>[
+  static const publicDNSes = <String>[
     "1.0.0.1",
     "1.1.1.1",
     "149.112.112.112",

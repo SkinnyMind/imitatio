@@ -61,7 +61,7 @@ void main() {
     });
 
     test('returns os', () {
-      expect(DevelopmentData.os.contains(Development.os()), true);
+      expect(DevelopmentData.oses.contains(Development.os()), true);
     });
 
     test('returns boolean value', () {

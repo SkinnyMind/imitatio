@@ -13,7 +13,7 @@ void main() {
     });
 
     test('returns cpu name', () {
-      expect(HardwareData.cpu.contains(Hardware.cpu()), true);
+      expect(HardwareData.cpus.contains(Hardware.cpu()), true);
     });
 
     test('returns cpu frequency', () {

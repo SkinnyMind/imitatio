@@ -41,9 +41,8 @@ class Date {
   /// Date.dayOfWeek(isAbbr: true); // "Sun."
   /// ```
   static String dayOfWeek({bool isAbbr = false, Locale locale = Locale.en}) {
-    final random = Random();
-    final day = DateData.locale(locale).day(isAbbr: isAbbr);
-    return day[random.nextInt(day.length)];
+    final data = DateData.locale(locale).days(isAbbr: isAbbr);
+    return data[Random().nextInt(data.length)];
   }
 
   /// Returns a random year.
@@ -58,9 +57,8 @@ class Date {
   /// Date.year(min: 1800, max: 2000); // 1808
   /// ```
   static int year({int min = 1990, int? max}) {
-    final random = Random();
     final maxYear = max ?? DateTime.now().year;
-    return random.nextInt(maxYear + 1 - min) + min;
+    return Random().nextInt(maxYear + 1 - min) + min;
   }
 
   /// Returns a random week number with year.
@@ -92,9 +90,8 @@ class Date {
   /// Date.month(isAbbr: true); // "Jan."
   /// ```
   static String month({bool isAbbr = false, Locale locale = Locale.en}) {
-    final random = Random();
-    final month = DateData.locale(locale).month(isAbbr: isAbbr);
-    return month[random.nextInt(month.length)];
+    final data = DateData.locale(locale).months(isAbbr: isAbbr);
+    return data[Random().nextInt(data.length)];
   }
 
   /// Returns a random century.
@@ -115,9 +112,8 @@ class Date {
   /// Date.periodicity(); // "Often"
   /// ```
   static String periodicity({Locale locale = Locale.en}) {
-    final random = Random();
-    final periodicity = DateData.locale(locale).periodicity;
-    return periodicity[random.nextInt(periodicity.length)];
+    final periodicities = DateData.locale(locale).periodicities;
+    return periodicities[Random().nextInt(periodicities.length)];
   }
 
   /// Returns a random day of the month, from 1 to 31.

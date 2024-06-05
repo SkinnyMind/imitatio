@@ -49,7 +49,7 @@ class HardwareData {
     "40″",
   ];
 
-  static const cpu = <String>[
+  static const cpus = <String>[
     "AMD Ryzen 7 1800X",
     "AMD Ryzen 7 1700",
     "AMD Ryzen™ Threadripper™",
@@ -117,7 +117,7 @@ class HardwareData {
     "SanDisk",
   ];
 
-  static const capacity = <String>[
+  static const capacities = <String>[
     "64GB SSD",
     "128GB SSD",
     "256GB SDD",

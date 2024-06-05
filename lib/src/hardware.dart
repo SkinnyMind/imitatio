@@ -31,7 +31,7 @@ class Hardware {
   /// Hardware.cpu(); // "AMD Ryzen™ Threadripper™"
   /// ```
   static String cpu() =>
-      HardwareData.cpu[Random().nextInt(HardwareData.cpu.length)];
+      HardwareData.cpus[Random().nextInt(HardwareData.cpus.length)];
 
   /// Returns a random frequency of CPU.
   ///
@@ -93,7 +93,7 @@ class Hardware {
     final manufacturer = HardwareData.hddSsdManufacturers[
         random.nextInt(HardwareData.hddSsdManufacturers.length)];
     final capacity =
-        HardwareData.capacity[random.nextInt(HardwareData.capacity.length)];
+        HardwareData.capacities[random.nextInt(HardwareData.capacities.length)];
     return "$manufacturer $capacity";
   }
 

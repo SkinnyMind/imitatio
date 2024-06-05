@@ -36,7 +36,7 @@ class Text {
   /// Text.level(); // "extreme"
   /// ```
   static String level({Locale locale = Locale.en}) {
-    final data = TextData.locale(locale).level;
+    final data = TextData.locale(locale).levels;
     return data[Random().nextInt(data.length)];
   }
 
@@ -51,7 +51,7 @@ class Text {
   /// Text.text(); // "I don't even care. Erlang is a general-purpose..."
   /// ```
   static String text({int quantity = 5, Locale locale = Locale.en}) {
-    final data = TextData.locale(locale).text;
+    final data = TextData.locale(locale).texts;
     return [
       for (var i = 0; i < quantity; i++) data[Random().nextInt(data.length)],
     ].join(" ");
@@ -130,7 +130,7 @@ class Text {
   /// Text.color(); // "White"
   /// ```
   static String color({Locale locale = Locale.en}) {
-    final data = TextData.locale(locale).color;
+    final data = TextData.locale(locale).colors;
     return data[Random().nextInt(data.length)];
   }
 

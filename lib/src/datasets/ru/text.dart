@@ -85,7 +85,7 @@ class RuTextData extends TextDataset {
   }
 
   @override
-  List<String> get color {
+  List<String> get colors {
     return const [
       "Аквамариновый",
       "Амарантовый",
@@ -115,7 +115,7 @@ class RuTextData extends TextDataset {
   }
 
   @override
-  List<String> get level {
+  List<String> get levels {
     return const [
       "низкий",
       "умеренный",
@@ -207,7 +207,7 @@ class RuTextData extends TextDataset {
   }
 
   @override
-  List<String> get text {
+  List<String> get texts {
     return const [
       "Haskell — стандартизированный чистый функциональный язык программирования общего назначения.",
       "Является одним из самых распространённых языков программирования с поддержкой отложенных вычислений.",

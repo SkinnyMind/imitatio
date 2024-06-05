@@ -5,7 +5,7 @@ import 'package:imitatio/src/enums.dart';
 
 class EnPersonData extends PersonDataset {
   @override
-  List<String> get academicDegree {
+  List<String> get academicDegrees {
     return const [
       "Bachelor",
       "Master",
@@ -14,7 +14,7 @@ class EnPersonData extends PersonDataset {
   }
 
   @override
-  List<String> get gender {
+  List<String> get genders {
     return const [
       "Male",
       "Female",
@@ -23,7 +23,7 @@ class EnPersonData extends PersonDataset {
   }
 
   @override
-  List<String> get language {
+  List<String> get languages {
     return const [
       "Afrikaans",
       "Albanian",
@@ -3626,7 +3626,7 @@ class EnPersonData extends PersonDataset {
   }
 
   @override
-  List<String> nationality(Gender gender) {
+  List<String> nationalities(Gender gender) {
     return switch (gender) {
       _ => const [
           "Afghan",
@@ -3684,7 +3684,7 @@ class EnPersonData extends PersonDataset {
   }
 
   @override
-  List<String> get occupation {
+  List<String> get occupations {
     return const [
       "Accountant",
       "Accounts Assistant",
@@ -5868,7 +5868,7 @@ class EnPersonData extends PersonDataset {
   }
 
   @override
-  List<String> get telephoneFormat {
+  List<String> get telephoneFormats {
     return const [
       "+1-325-###-####",
       "+1-330-###-####",
@@ -6514,7 +6514,7 @@ class EnPersonData extends PersonDataset {
   }
 
   @override
-  List<String> title({required Gender gender, required TitleType titleType}) {
+  List<String> titles({required Gender gender, required TitleType titleType}) {
     return switch (gender) {
       Gender.female => titleType == TitleType.typical
           ? const ["Mrs.", "Ms.", "Miss", "Madam"]
@@ -6562,7 +6562,7 @@ class EnPersonData extends PersonDataset {
   }
 
   @override
-  List<String> get university {
+  List<String> get universities {
     return const [
       "Florida A&M University (Florida A&M)",
       "Florida Atlantic University (FAU)",
@@ -6662,7 +6662,7 @@ class EnPersonData extends PersonDataset {
   }
 
   @override
-  List<String> get worldview {
+  List<String> get worldviews {
     return const [
       "Atheism",
       "Agnosticism",

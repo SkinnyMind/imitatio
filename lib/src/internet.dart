@@ -62,7 +62,7 @@ class Internet {
   /// Internet.emoji(); // ":congratulations:"
   /// ```
   static String emoji() {
-    return InternetData.emoji[Random().nextInt(InternetData.emoji.length)];
+    return InternetData.emojis[Random().nextInt(InternetData.emojis.length)];
   }
 
   /// Returns a list of hashtags.
@@ -251,8 +251,8 @@ class Internet {
   /// Internet.topLevelDomain(type: TLDType.utld); // ".info"
   /// ```
   static String topLevelDomain({TLDType type = TLDType.cctld}) {
-    final domains = InternetData.tld(type);
-    return domains[Random().nextInt(domains.length)];
+    final data = InternetData.tlds(type);
+    return data[Random().nextInt(data.length)];
   }
 
   /// Returns a random user agent.
@@ -370,6 +370,8 @@ class Internet {
   /// ```dart
   /// Internet.publicDNS(); // "185.228.168.9"
   /// ```
-  static String publicDNS() =>
-      InternetData.publicDNS[Random().nextInt(InternetData.publicDNS.length)];
+  static String publicDNS() {
+    final data = InternetData.publicDNSes;
+    return data[Random().nextInt(data.length)];
+  }
 }
