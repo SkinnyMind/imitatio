@@ -46,16 +46,13 @@ class Payment {
   /// Payment.ethereumAddress(); // "0xa17f8fe569cad9c952ddf89ec50e635b5040e025"
   /// ```
   static String ethereumAddress() {
-    final strBits = StringBuffer();
+    final chars = '0123456789abcdef';
     final random = Random();
-    for (var i = 1; i <= 160; i++) {
-      strBits.write(random.nextInt(2));
+    final result = StringBuffer('0x');
+    for (var i = 0; i < 40; i++) {
+      result.write(chars[random.nextInt(chars.length)]);
     }
-
-    final bits = BigInt.parse(strBits.toString(), radix: 2);
-    final bytes = bits.toRadixString(16).padLeft(20, '0');
-
-    return '0x$bytes';
+    return result.toString();
   }
 
   /// Returns a random credit card network.
