@@ -1,6 +1,6 @@
 /// Provides all the data related to transports.
-class TransportData {
-  const TransportData._();
+class IntTransportData {
+  const IntTransportData._();
 
   static const cars = <String>[
     "Alfa Romeo 145",

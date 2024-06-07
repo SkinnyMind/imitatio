@@ -29,8 +29,8 @@ class Internet {
   /// Internet.httpStatusMessage(); // "408 Request Timeout"
   /// ```
   static String httpStatusMessage() {
-    return InternetData.httpStatusMessages[
-        Random().nextInt(InternetData.httpStatusMessages.length)];
+    return IntInternetData.httpStatusMessages[
+        Random().nextInt(IntInternetData.httpStatusMessages.length)];
   }
 
   /// Returns a random HTTP status code.
@@ -40,8 +40,8 @@ class Internet {
   /// Internet.httpStatusCode(); // 202
   /// ```
   static int httpStatusCode() {
-    return InternetData
-        .httpStatusCodes[Random().nextInt(InternetData.httpStatusCodes.length)];
+    return IntInternetData.httpStatusCodes[
+        Random().nextInt(IntInternetData.httpStatusCodes.length)];
   }
 
   /// Returns a random HTTP method.
@@ -51,8 +51,8 @@ class Internet {
   /// Internet.httpMethod(); // "CONNECT"
   /// ```
   static String httpMethod() {
-    return InternetData
-        .httpMethods[Random().nextInt(InternetData.httpMethods.length)];
+    return IntInternetData
+        .httpMethods[Random().nextInt(IntInternetData.httpMethods.length)];
   }
 
   /// Returns a random emoji shortcut code.
@@ -62,7 +62,8 @@ class Internet {
   /// Internet.emoji(); // ":congratulations:"
   /// ```
   static String emoji() {
-    return InternetData.emojis[Random().nextInt(InternetData.emojis.length)];
+    return IntInternetData
+        .emojis[Random().nextInt(IntInternetData.emojis.length)];
   }
 
   /// Returns a list of hashtags.
@@ -251,7 +252,7 @@ class Internet {
   /// Internet.topLevelDomain(type: TLDType.utld); // ".info"
   /// ```
   static String topLevelDomain({TLDType type = TLDType.cctld}) {
-    final data = InternetData.tlds(type);
+    final data = IntInternetData.tlds(type);
     return data[Random().nextInt(data.length)];
   }
 
@@ -262,8 +263,8 @@ class Internet {
   /// Internet.userAgent(); // "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; de) Opera 8.02"
   /// ```
   static String userAgent() {
-    return InternetData
-        .userAgents[Random().nextInt(InternetData.userAgents.length)];
+    return IntInternetData
+        .userAgents[Random().nextInt(IntInternetData.userAgents.length)];
   }
 
   /// Returns random port.
@@ -371,7 +372,7 @@ class Internet {
   /// Internet.publicDNS(); // "185.228.168.9"
   /// ```
   static String publicDNS() {
-    final data = InternetData.publicDNSes;
+    final data = IntInternetData.publicDNSes;
     return data[Random().nextInt(data.length)];
   }
 }

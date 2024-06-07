@@ -13,7 +13,7 @@ class Transport {
   /// Transport.manufacturer(); // "McLaren"
   /// ```
   static String manufacturer() {
-    final data = TransportData.manufacturers;
+    final data = IntTransportData.manufacturers;
     return data[Random().nextInt(data.length)];
   }
 
@@ -24,7 +24,7 @@ class Transport {
   /// Transport.car(); // "Jeep Cherokee (XJ)"
   /// ```
   static String car() {
-    final data = TransportData.cars;
+    final data = IntTransportData.cars;
     return data[Random().nextInt(data.length)];
   }
 
@@ -35,7 +35,7 @@ class Transport {
   /// Transport.airplane(); // "Airbus 721"
   /// ```
   static String airplane() {
-    final data = TransportData.airplanes;
+    final data = IntTransportData.airplanes;
     return data[Random().nextInt(data.length)];
   }
 
@@ -46,7 +46,7 @@ class Transport {
   /// Transport.vehicleRegistrationCode(); // "TO"
   /// ```
   static String vehicleRegistrationCode() {
-    final data = TransportData.vrCodes;
+    final data = IntTransportData.vrCodes;
     return data[Random().nextInt(data.length)];
   }
 }

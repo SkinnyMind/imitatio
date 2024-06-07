@@ -82,8 +82,8 @@ class Path {
     final os = platform ?? Platform.operatingSystem;
     final user = Path.user(platform: os);
     final pathSeparator = os == 'windows' ? r'\' : '/';
-    final folder = DevelopmentData
-        .folders[Random().nextInt(DevelopmentData.folders.length)];
+    final folder = IntDevelopmentData
+        .folders[Random().nextInt(IntDevelopmentData.folders.length)];
     return '$user$pathSeparator$folder';
   }
 
@@ -103,8 +103,8 @@ class Path {
     final user = Path.user(platform: os);
     final pathSeparator = os == 'windows' ? r'\' : '/';
     final folder = random.nextBool() ? 'Development' : 'Dev';
-    final stack = DevelopmentData.programmingLanguages[
-        random.nextInt(DevelopmentData.programmingLanguages.length)];
+    final stack = IntDevelopmentData.programmingLanguages[
+        random.nextInt(IntDevelopmentData.programmingLanguages.length)];
     return '$user$pathSeparator$folder$pathSeparator$stack';
   }
 
@@ -122,8 +122,8 @@ class Path {
     final os = platform ?? Platform.operatingSystem;
     final pathSeparator = os == 'windows' ? r'\' : '/';
     final devDir = Path.devDir(platform: os);
-    final project = DevelopmentData
-        .projectNames[Random().nextInt(DevelopmentData.projectNames.length)];
+    final project = IntDevelopmentData
+        .projectNames[Random().nextInt(IntDevelopmentData.projectNames.length)];
     return '$devDir$pathSeparator$project';
   }
 }

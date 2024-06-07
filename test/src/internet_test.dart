@@ -24,14 +24,14 @@ void main() {
     test('returns content type of provided mime type', () {
       final type = MimeType.text;
       expect(
-        FileData.mimeTypes(type),
+        IntFileData.mimeTypes(type),
         contains(Internet.contentType(mimeType: type).split(':')[1].trim()),
       );
     });
 
     test('returns http status message', () {
       expect(
-        InternetData.httpStatusMessages,
+        IntInternetData.httpStatusMessages,
         contains(Internet.httpStatusMessage()),
       );
     });
@@ -43,14 +43,14 @@ void main() {
 
     test('returns http method', () {
       expect(
-        InternetData.httpMethods,
+        IntInternetData.httpMethods,
         contains(Internet.httpMethod()),
       );
     });
 
     test('returns emoji', () {
       expect(
-        InternetData.emojis,
+        IntInternetData.emojis,
         contains(Internet.emoji()),
       );
     });
@@ -100,20 +100,20 @@ void main() {
 
     test('returns top level domain', () {
       expect(
-        InternetData.tlds(TLDType.cctld),
+        IntInternetData.tlds(TLDType.cctld),
         contains(Internet.topLevelDomain()),
       );
 
       final type = TLDType.geotld;
       expect(
-        InternetData.tlds(type),
+        IntInternetData.tlds(type),
         contains(Internet.topLevelDomain(type: type)),
       );
     });
 
     test('returns user agent', () {
       expect(
-        InternetData.userAgents,
+        IntInternetData.userAgents,
         contains(Internet.userAgent()),
       );
     });
@@ -199,7 +199,7 @@ void main() {
 
     test('returns a public DNS', () {
       expect(
-        InternetData.publicDNSes,
+        IntInternetData.publicDNSes,
         contains(Internet.publicDNS()),
       );
     });

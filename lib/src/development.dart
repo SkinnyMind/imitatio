@@ -14,8 +14,8 @@ class Development {
   /// Development.softwareLicense(); // "MIT License (MIT)"
   /// ```
   static String softwareLicense() {
-    return DevelopmentData
-        .licenses[Random().nextInt(DevelopmentData.licenses.length)];
+    return IntDevelopmentData
+        .licenses[Random().nextInt(IntDevelopmentData.licenses.length)];
   }
 
   /// Returns version number.
@@ -66,8 +66,8 @@ class Development {
   /// Development.programmingLanguage(); // "Dart"
   /// ```
   static String programmingLanguage() {
-    return DevelopmentData.programmingLanguages[
-        Random().nextInt(DevelopmentData.programmingLanguages.length)];
+    return IntDevelopmentData.programmingLanguages[
+        Random().nextInt(IntDevelopmentData.programmingLanguages.length)];
   }
 
   /// Returns a random operating system or distributive name.
@@ -77,7 +77,7 @@ class Development {
   /// Development.os(); // "Fedora"
   /// ```
   static String os() {
-    final data = DevelopmentData.oses;
+    final data = IntDevelopmentData.oses;
     return data[Random().nextInt(data.length)];
   }
 
@@ -131,8 +131,8 @@ class Development {
   /// Development.systemQualityAttribute() // "configurability"
   /// ```
   static String systemQualityAttribute() =>
-      DevelopmentData.systemQualityAttributes[
-          Random().nextInt(DevelopmentData.systemQualityAttributes.length)];
+      IntDevelopmentData.systemQualityAttributes[
+          Random().nextInt(IntDevelopmentData.systemQualityAttributes.length)];
 
   /// Returns a random system quality attribute.
   ///

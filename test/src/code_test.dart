@@ -6,7 +6,7 @@ void main() {
   group('Code', () {
     test('returns locale code', () {
       expect(
-        CodeData.localeCodes,
+        IntCodeData.localeCodes,
         contains(Code.localeCode()),
       );
     });

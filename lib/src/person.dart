@@ -175,7 +175,7 @@ class Person {
   /// Person.email(unique: true) // "a467545c-1397-4601-8cc0-288e6b0de671@outlook.com"
   /// ```
   static String email({List<String>? domains, bool unique = false}) {
-    final data = domains ?? InternetData.emailDomains;
+    final data = domains ?? IntInternetData.emailDomains;
     var domain = data[Random().nextInt(data.length)];
 
     if (!domain.startsWith('@')) domain = '@$domain';
