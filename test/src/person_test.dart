@@ -52,7 +52,7 @@ void main() {
           titleType: titleType,
         );
         final result = Person.title(
-          gender: Gender.male,
+          gender: gender,
           titleType: titleType,
           locale: locale,
         );
