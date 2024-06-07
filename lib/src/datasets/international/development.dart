@@ -1,6 +1,6 @@
 /// Provides all the data related to the development.
-class DevelopmentData {
-  const DevelopmentData._();
+class IntDevelopmentData {
+  const IntDevelopmentData._();
 
   static const licenses = <String>[
     "Apache License, 2.0 (Apache-2.0)",

@@ -20,7 +20,7 @@ class File {
     final random = Random();
     final type =
         fileType ?? FileType.values[random.nextInt(FileType.values.length)];
-    final extensions = FileData.extensions(type);
+    final extensions = IntFileData.extensions(type);
     return extensions[random.nextInt(extensions.length)];
   }
 
@@ -36,7 +36,7 @@ class File {
   static String mimeType({MimeType? type}) {
     final mime =
         type ?? MimeType.values[Random().nextInt(MimeType.values.length)];
-    final types = FileData.mimeTypes(mime);
+    final types = IntFileData.mimeTypes(mime);
     return types[Random().nextInt(types.length)];
   }
 

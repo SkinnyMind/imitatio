@@ -1,8 +1,8 @@
 import 'package:imitatio/src/enums.dart';
 
 /// Provides all the data related to the files.
-class FileData {
-  const FileData._();
+class IntFileData {
+  const IntFileData._();
 
   static List<String> extensions(FileType fileType) {
     return switch (fileType) {

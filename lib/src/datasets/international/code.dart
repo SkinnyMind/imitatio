@@ -1,6 +1,6 @@
 /// Provides all data related to the codes.
-class CodeData {
-  const CodeData._();
+class IntCodeData {
+  const IntCodeData._();
 
   static const localeCodes = <String>[
     "af",

@@ -12,8 +12,8 @@ class Hardware {
   /// ```dart
   /// Hardware.resolution(); // "1280x800"
   /// ```
-  static String resolution() => HardwareData
-      .resolutions[Random().nextInt(HardwareData.resolutions.length)];
+  static String resolution() => IntHardwareData
+      .resolutions[Random().nextInt(IntHardwareData.resolutions.length)];
 
   /// Returns a random size of screen in inches.
   ///
@@ -21,8 +21,8 @@ class Hardware {
   /// ```dart
   /// Hardware.screenSize(); // "13.3″"
   /// ```
-  static String screenSize() => HardwareData
-      .screenSizes[Random().nextInt(HardwareData.screenSizes.length)];
+  static String screenSize() => IntHardwareData
+      .screenSizes[Random().nextInt(IntHardwareData.screenSizes.length)];
 
   /// Returns a random CPU name.
   ///
@@ -31,7 +31,7 @@ class Hardware {
   /// Hardware.cpu(); // "AMD Ryzen™ Threadripper™"
   /// ```
   static String cpu() =>
-      HardwareData.cpus[Random().nextInt(HardwareData.cpus.length)];
+      IntHardwareData.cpus[Random().nextInt(IntHardwareData.cpus.length)];
 
   /// Returns a random frequency of CPU.
   ///
@@ -52,8 +52,8 @@ class Hardware {
   /// ```dart
   /// Hardware.generation(); // "4th Generation"
   /// ```
-  static String generation() => HardwareData
-      .generations[Random().nextInt(HardwareData.generations.length)];
+  static String generation() => IntHardwareData
+      .generations[Random().nextInt(IntHardwareData.generations.length)];
 
   /// Returns a random CPU code name.
   ///
@@ -61,8 +61,8 @@ class Hardware {
   /// ```dart
   /// Hardware.cpuCodeName(); // "Devil's Canyon"
   /// ```
-  static String cpuCodeName() => HardwareData
-      .cpuCodeNames[Random().nextInt(HardwareData.cpuCodeNames.length)];
+  static String cpuCodeName() => IntHardwareData
+      .cpuCodeNames[Random().nextInt(IntHardwareData.cpuCodeNames.length)];
 
   /// Returns a random RAM type.
   ///
@@ -70,8 +70,8 @@ class Hardware {
   /// ```dart
   /// Hardware.ramType(); // "DDR2"
   /// ```
-  static String ramType() =>
-      HardwareData.ramTypes[Random().nextInt(HardwareData.ramTypes.length)];
+  static String ramType() => IntHardwareData
+      .ramTypes[Random().nextInt(IntHardwareData.ramTypes.length)];
 
   /// Returns a random RAM size.
   ///
@@ -79,8 +79,8 @@ class Hardware {
   /// ```dart
   /// Hardware.ramSize(); // "64GB"
   /// ```
-  static String ramSize() =>
-      HardwareData.ramSizes[Random().nextInt(HardwareData.ramSizes.length)];
+  static String ramSize() => IntHardwareData
+      .ramSizes[Random().nextInt(IntHardwareData.ramSizes.length)];
 
   /// Returns a random type of disk.
   ///
@@ -90,10 +90,10 @@ class Hardware {
   /// ```
   static String ssdOrHdd() {
     final random = Random();
-    final manufacturer = HardwareData.hddSsdManufacturers[
-        random.nextInt(HardwareData.hddSsdManufacturers.length)];
-    final capacity =
-        HardwareData.capacities[random.nextInt(HardwareData.capacities.length)];
+    final manufacturer = IntHardwareData.hddSsdManufacturers[
+        random.nextInt(IntHardwareData.hddSsdManufacturers.length)];
+    final capacity = IntHardwareData
+        .capacities[random.nextInt(IntHardwareData.capacities.length)];
     return "$manufacturer $capacity";
   }
 
@@ -103,8 +103,8 @@ class Hardware {
   /// ```dart
   /// Hardware.graphics(); // "Intel® HD Graphics 620"
   /// ```
-  static String graphics() =>
-      HardwareData.graphics[Random().nextInt(HardwareData.graphics.length)];
+  static String graphics() => IntHardwareData
+      .graphics[Random().nextInt(IntHardwareData.graphics.length)];
 
   /// Returns a random manufacturer.
   ///
@@ -112,8 +112,8 @@ class Hardware {
   /// ```dart
   /// Hardware.manufacturer(); // "Samsung"
   /// ```
-  static String manufacturer() => HardwareData
-      .manufacturers[Random().nextInt(HardwareData.manufacturers.length)];
+  static String manufacturer() => IntHardwareData
+      .manufacturers[Random().nextInt(IntHardwareData.manufacturers.length)];
 
   /// Returns a random phone model.
   ///
@@ -121,6 +121,6 @@ class Hardware {
   /// ```dart
   /// Hardware.phoneModel(); // "iPhone SE"
   /// ```
-  static String phoneModel() => HardwareData
-      .phoneModels[Random().nextInt(HardwareData.phoneModels.length)];
+  static String phoneModel() => IntHardwareData
+      .phoneModels[Random().nextInt(IntHardwareData.phoneModels.length)];
 }

@@ -6,7 +6,7 @@ void main() {
   group('Development', () {
     test('returns random software licence', () {
       expect(
-        DevelopmentData.licenses,
+        IntDevelopmentData.licenses,
         contains(Development.softwareLicense()),
       );
     });
@@ -54,14 +54,14 @@ void main() {
 
     test('returns programming language', () {
       expect(
-        DevelopmentData.programmingLanguages,
+        IntDevelopmentData.programmingLanguages,
         contains(Development.programmingLanguage()),
       );
     });
 
     test('returns os', () {
       expect(
-        DevelopmentData.oses,
+        IntDevelopmentData.oses,
         contains(Development.os()),
       );
     });
@@ -85,7 +85,7 @@ void main() {
 
     test('returns system quality attribute', () {
       expect(
-        DevelopmentData.systemQualityAttributes,
+        IntDevelopmentData.systemQualityAttributes,
         contains(Development.systemQualityAttribute()),
       );
     });

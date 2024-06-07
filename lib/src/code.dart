@@ -16,7 +16,7 @@ class Code {
   /// Code.localeCode(); // "en"
   /// ```
   static String localeCode() =>
-      CodeData.localeCodes[Random().nextInt(CodeData.localeCodes.length)];
+      IntCodeData.localeCodes[Random().nextInt(IntCodeData.localeCodes.length)];
 
   /// Returns a random IMEI.
   ///
@@ -27,7 +27,9 @@ class Code {
   static String imei() {
     final random = Random();
     final number = StringBuffer();
-    number.write(CodeData.imeiTacs[random.nextInt(CodeData.imeiTacs.length)]);
+    number.write(
+      IntCodeData.imeiTacs[random.nextInt(IntCodeData.imeiTacs.length)],
+    );
     number.write(random.nextInt(1000000 - 100000) + 100000);
     number.write(Util.luhnChecksum(number.toString()));
     return number.toString();

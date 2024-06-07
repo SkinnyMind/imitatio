@@ -6,28 +6,28 @@ void main() {
   group('Transport', () {
     test('returns manufacturer', () {
       expect(
-        TransportData.manufacturers,
+        IntTransportData.manufacturers,
         contains(Transport.manufacturer()),
       );
     });
 
     test('returns car', () {
       expect(
-        TransportData.cars,
+        IntTransportData.cars,
         contains(Transport.car()),
       );
     });
 
     test('returns airplane', () {
       expect(
-        TransportData.airplanes,
+        IntTransportData.airplanes,
         contains(Transport.airplane()),
       );
     });
 
     test('returns vehicle registration code', () {
       expect(
-        TransportData.vrCodes,
+        IntTransportData.vrCodes,
         contains(Transport.vehicleRegistrationCode()),
       );
     });

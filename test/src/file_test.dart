@@ -9,7 +9,7 @@ void main() {
 
       final type = FileType.audio;
       expect(
-        FileData.extensions(type),
+        IntFileData.extensions(type),
         contains(File.ext(fileType: type)),
       );
     });
@@ -17,7 +17,7 @@ void main() {
     test('returns mime type of provided group', () {
       final type = MimeType.audio;
       expect(
-        FileData.mimeTypes(type),
+        IntFileData.mimeTypes(type),
         contains(File.mimeType(type: type)),
       );
     });
@@ -32,7 +32,7 @@ void main() {
       final type = FileType.audio;
       final result = File.name(fileType: type);
       final ext = '.${result.split('.').last}';
-      expect(FileData.extensions(type), contains(ext));
+      expect(IntFileData.extensions(type), contains(ext));
     });
   });
 }

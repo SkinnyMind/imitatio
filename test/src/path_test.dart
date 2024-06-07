@@ -35,14 +35,14 @@ void main() {
       final unixPath = Path.usersFolder().split('/');
       expect(unixPath.length, 4);
       expect(
-        DevelopmentData.folders,
+        IntDevelopmentData.folders,
         contains(unixPath.last),
       );
 
       final winPath = Path.usersFolder(platform: 'windows').split(r'\');
       expect(winPath.length, 4);
       expect(
-        DevelopmentData.folders,
+        IntDevelopmentData.folders,
         contains(winPath.last),
       );
     });
@@ -51,14 +51,14 @@ void main() {
       final unixPath = Path.devDir().split('/');
       expect(unixPath.length, 5);
       expect(
-        DevelopmentData.programmingLanguages,
+        IntDevelopmentData.programmingLanguages,
         contains(unixPath.last),
       );
 
       final winPath = Path.devDir(platform: 'windows').split(r'\');
       expect(winPath.length, 5);
       expect(
-        DevelopmentData.programmingLanguages,
+        IntDevelopmentData.programmingLanguages,
         contains(winPath.last),
       );
     });
@@ -67,14 +67,14 @@ void main() {
       final unixPath = Path.projectDir().split('/');
       expect(unixPath.length, 6);
       expect(
-        DevelopmentData.projectNames,
+        IntDevelopmentData.projectNames,
         contains(unixPath.last),
       );
 
       final winPath = Path.projectDir(platform: 'windows').split(r'\');
       expect(winPath.length, 6);
       expect(
-        DevelopmentData.projectNames,
+        IntDevelopmentData.projectNames,
         contains(winPath.last),
       );
     });

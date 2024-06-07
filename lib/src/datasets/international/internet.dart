@@ -1,8 +1,8 @@
 import 'package:imitatio/src/enums.dart';
 
 /// Provides all the data related to the internet.
-class InternetData {
-  const InternetData._();
+class IntInternetData {
+  const IntInternetData._();
 
   static const httpMethods = <String>[
     "GET",

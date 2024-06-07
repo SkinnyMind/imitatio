@@ -61,8 +61,8 @@ class Payment {
   /// ```dart
   /// Payment.creditCardNetwork(); // "Visa"
   /// ```
-  static String creditCardNetwork() => PaymentData.creditCardNetworks[
-      Random().nextInt(PaymentData.creditCardNetworks.length)];
+  static String creditCardNetwork() => IntPaymentData.creditCardNetworks[
+      Random().nextInt(IntPaymentData.creditCardNetworks.length)];
 
   /// Returns a random credit card number.
   ///

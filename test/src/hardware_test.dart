@@ -6,21 +6,21 @@ void main() {
   group('Hardware', () {
     test('returns screen resolution', () {
       expect(
-        HardwareData.resolutions,
+        IntHardwareData.resolutions,
         contains(Hardware.resolution()),
       );
     });
 
     test('returns screen size', () {
       expect(
-        HardwareData.screenSizes,
+        IntHardwareData.screenSizes,
         contains(Hardware.screenSize()),
       );
     });
 
     test('returns cpu name', () {
       expect(
-        HardwareData.cpus,
+        IntHardwareData.cpus,
         contains(Hardware.cpu()),
       );
     });
@@ -32,28 +32,28 @@ void main() {
 
     test('returns generation', () {
       expect(
-        HardwareData.generations,
+        IntHardwareData.generations,
         contains(Hardware.generation()),
       );
     });
 
     test('returns cpu code name', () {
       expect(
-        HardwareData.cpuCodeNames,
+        IntHardwareData.cpuCodeNames,
         contains(Hardware.cpuCodeName()),
       );
     });
 
     test('returns ram type', () {
       expect(
-        HardwareData.ramTypes,
+        IntHardwareData.ramTypes,
         contains(Hardware.ramType()),
       );
     });
 
     test('returns ram size', () {
       expect(
-        HardwareData.ramSizes,
+        IntHardwareData.ramSizes,
         contains(Hardware.ramSize()),
       );
     });
@@ -64,21 +64,21 @@ void main() {
 
     test('returns graphics', () {
       expect(
-        HardwareData.graphics,
+        IntHardwareData.graphics,
         contains(Hardware.graphics()),
       );
     });
 
     test('returns manufacturer', () {
       expect(
-        HardwareData.manufacturers,
+        IntHardwareData.manufacturers,
         contains(Hardware.manufacturer()),
       );
     });
 
     test('returns phone model', () {
       expect(
-        HardwareData.phoneModels,
+        IntHardwareData.phoneModels,
         contains(Hardware.phoneModel()),
       );
     });
