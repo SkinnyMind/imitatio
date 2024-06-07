@@ -9,18 +9,24 @@ void main() {
 
       final locale = Locale.ru;
       final result = Text.words(quantity: 1, locale: locale);
-      final data = TextData.locale(locale).words;
       expect(result.length, 1);
-      expect(data.contains(result.first), true);
+      expect(
+        TextData.locale(locale).words,
+        contains(result.first),
+      );
     });
 
     test('returns word', () {
-      expect(Text.word(), isNotEmpty);
+      expect(
+        TextData.locale(Locale.en).words,
+        contains(Text.word()),
+      );
 
       final locale = Locale.ru;
-      final result = Text.word(locale: locale);
-      final data = TextData.locale(locale).words;
-      expect(data.contains(result), true);
+      expect(
+        TextData.locale(locale).words,
+        contains(Text.word(locale: locale)),
+      );
     });
 
     test('returns alphabet', () {
@@ -30,72 +36,98 @@ void main() {
       );
 
       final locale = Locale.ru;
-      final result = Text.alphabet(isLowerCase: true, locale: locale);
-      final data = TextData.locale(locale).alphabet(isLowerCase: true);
-      expect(data, result);
+      expect(
+        TextData.locale(locale).alphabet(isLowerCase: true),
+        Text.alphabet(isLowerCase: true, locale: locale),
+      );
     });
 
     test('returns level of something', () {
-      expect(Text.level(), isNotEmpty);
+      expect(
+        TextData.locale(Locale.en).levels,
+        contains(Text.level()),
+      );
 
       final locale = Locale.ru;
-      final result = Text.level(locale: locale);
-      final data = TextData.locale(locale).levels;
-      expect(data.contains(result), true);
+      expect(
+        TextData.locale(locale).levels,
+        contains(Text.level(locale: locale)),
+      );
     });
 
     test('returns the text', () {
       expect(Text.text(), isNotEmpty);
 
       final locale = Locale.ru;
-      final data = TextData.locale(locale).texts;
-      final result = Text.text(quantity: 1, locale: locale);
-      expect(data.contains(result), true);
+      expect(
+        TextData.locale(locale).texts,
+        contains(Text.text(quantity: 1, locale: locale)),
+      );
     });
 
     test('returns the sentence', () {
-      expect(Text.sentence(), isNotEmpty);
+      expect(
+        TextData.locale(Locale.en).texts,
+        contains(Text.sentence()),
+      );
 
       final locale = Locale.ru;
-      final data = TextData.locale(locale).texts;
-      final result = Text.sentence(locale: locale);
-      expect(data.contains(result), true);
+      expect(
+        TextData.locale(locale).texts,
+        contains(Text.sentence(locale: locale)),
+      );
     });
 
     test('returns a title', () {
-      expect(Text.title(), isNotEmpty);
+      expect(
+        TextData.locale(Locale.en).texts,
+        contains(Text.title()),
+      );
 
       final locale = Locale.ru;
-      final data = TextData.locale(locale).texts;
-      final result = Text.title(locale: locale);
-      expect(data.contains(result), true);
+      expect(
+        TextData.locale(locale).texts,
+        contains(Text.title(locale: locale)),
+      );
     });
 
     test('returns a quote', () {
-      expect(Text.quote(), isNotEmpty);
+      expect(
+        TextData.locale(Locale.en).quotes,
+        contains(Text.quote()),
+      );
 
       final locale = Locale.ru;
-      final data = TextData.locale(locale).quotes;
-      final result = Text.quote(locale: locale);
-      expect(data.contains(result), true);
+      expect(
+        TextData.locale(locale).quotes,
+        contains(Text.quote(locale: locale)),
+      );
     });
 
     test('returns a color name', () {
-      expect(Text.color(), isNotEmpty);
+      expect(
+        TextData.locale(Locale.en).colors,
+        contains(Text.color()),
+      );
 
       final locale = Locale.ru;
-      final data = TextData.locale(locale).colors;
-      final result = Text.color(locale: locale);
-      expect(data.contains(result), true);
+      expect(
+        TextData.locale(locale).colors,
+        contains(Text.color(locale: locale)),
+      );
     });
 
     test('returns an answer', () {
-      expect(Text.answer(), isNotEmpty);
+      expect(
+        TextData.locale(Locale.en).answers,
+        contains(Text.answer()),
+      );
 
       final locale = Locale.ru;
-      final data = TextData.locale(locale).answers;
-      final result = Text.answer(locale: locale);
-      expect(data.contains(result), true);
+      expect(
+        TextData.locale(locale).answers,
+        contains(Text.answer(locale: locale)),
+      );
     });
   });
 }
