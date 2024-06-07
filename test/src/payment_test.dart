@@ -26,8 +26,8 @@ void main() {
 
     test('returns credit card network', () {
       expect(
-        PaymentData.creditCardNetworks.contains(Payment.creditCardNetwork()),
-        true,
+        PaymentData.creditCardNetworks,
+        contains(Payment.creditCardNetwork()),
       );
     });
 

@@ -9,7 +9,7 @@ void main() {
 
       expect(picked.length, 2);
       for (final pick in picked) {
-        expect(list.contains(pick), true);
+        expect(list, contains(pick));
       }
     });
 

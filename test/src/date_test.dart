@@ -12,20 +12,23 @@ void main() {
     });
 
     test('returns day of the week', () {
-      final noarg = Date.dayOfWeek();
-      final data = DateData.locale(Locale.en).days(isAbbr: false);
-      expect(data.contains(noarg), true);
+      expect(
+        DateData.locale(Locale.en).days(isAbbr: false),
+        contains(Date.dayOfWeek()),
+      );
 
       final locale = Locale.ru;
-      final withLocale = Date.dayOfWeek(locale: locale);
-      final localeData = DateData.locale(locale).days(isAbbr: false);
-      expect(localeData.contains(withLocale), true);
+      expect(
+        DateData.locale(locale).days(isAbbr: false),
+        contains(Date.dayOfWeek(locale: locale)),
+      );
     });
 
     test('returns abbreviated day of the week', () {
-      final result = Date.dayOfWeek(isAbbr: true);
-      final data = DateData.locale(Locale.en).days(isAbbr: true);
-      expect(data.contains(result), true);
+      expect(
+        DateData.locale(Locale.en).days(isAbbr: true),
+        contains(Date.dayOfWeek(isAbbr: true)),
+      );
     });
 
     test('returns a year', () {
@@ -61,36 +64,43 @@ void main() {
     });
 
     test('returns name of the month', () {
-      final noarg = Date.month();
-      final data = DateData.locale(Locale.en).months(isAbbr: false);
-      expect(data.contains(noarg), true);
+      expect(
+        DateData.locale(Locale.en).months(isAbbr: false),
+        contains(Date.month()),
+      );
 
       final locale = Locale.ru;
-      final withLocale = Date.month(locale: locale);
-      final localeData = DateData.locale(locale).months(isAbbr: false);
-      expect(localeData.contains(withLocale), true);
+      expect(
+        DateData.locale(locale).months(isAbbr: false),
+        contains(Date.month(locale: locale)),
+      );
     });
 
     test('returns abbreviated name of the month', () {
-      final result = Date.month(isAbbr: true);
-      final data = DateData.locale(Locale.en).months(isAbbr: true);
-      expect(data.contains(result), true);
+      expect(
+        DateData.locale(Locale.en).months(isAbbr: true),
+        contains(Date.month(isAbbr: true)),
+      );
     });
 
     test('returns century', () {
-      final result = Date.century();
-      expect(IntDateData.romanNums.contains(result), true);
+      expect(
+        IntDateData.romanNums,
+        contains(Date.century()),
+      );
     });
 
     test('returns periodicity', () {
-      final noarg = Date.periodicity();
-      final data = DateData.locale(Locale.en).periodicities;
-      expect(data.contains(noarg), true);
+      expect(
+        DateData.locale(Locale.en).periodicities,
+        contains(Date.periodicity()),
+      );
 
       final locale = Locale.ru;
-      final withLocale = Date.periodicity(locale: locale);
-      final localeData = DateData.locale(locale).periodicities;
-      expect(localeData.contains(withLocale), true);
+      expect(
+        DateData.locale(locale).periodicities,
+        contains(Date.periodicity(locale: locale)),
+      );
     });
 
     test('returns day of month', () {
@@ -104,14 +114,17 @@ void main() {
 
     test('returns random timezone for provided region', () {
       final region = TimezoneRegion.europe;
-      final result = Date.timezone(region: region);
-      final data = IntDateData.timezones(region);
-      expect(data.contains(result), true);
+      expect(
+        IntDateData.timezones(region),
+        contains(Date.timezone(region: region)),
+      );
     });
 
     test('returns GMT offset value', () {
-      final result = Date.gmtOffset();
-      expect(IntDateData.gmtOffsets.contains(result), true);
+      expect(
+        IntDateData.gmtOffsets,
+        contains(Date.gmtOffset()),
+      );
     });
   });
 }

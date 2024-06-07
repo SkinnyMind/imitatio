@@ -11,23 +11,28 @@ void main() {
       final subdomains = ['api', 'admin'];
       final hostname = Internet.hostname(subdomains: subdomains).split('.');
       expect(hostname.length, 3);
-      expect(subdomains.contains(hostname.first), true);
+      expect(subdomains, contains(hostname.first));
     });
 
     test('returns content type', () {
-      expect(Internet.contentType().startsWith('Content-Type:'), true);
+      expect(
+        Internet.contentType(),
+        startsWith('Content-Type:'),
+      );
     });
 
     test('returns content type of provided mime type', () {
       final type = MimeType.text;
-      final result = Internet.contentType(mimeType: type).split(':')[1].trim();
-      expect(FileData.mimeTypes(type).contains(result), true);
+      expect(
+        FileData.mimeTypes(type),
+        contains(Internet.contentType(mimeType: type).split(':')[1].trim()),
+      );
     });
 
     test('returns http status message', () {
       expect(
-        InternetData.httpStatusMessages.contains(Internet.httpStatusMessage()),
-        true,
+        InternetData.httpStatusMessages,
+        contains(Internet.httpStatusMessage()),
       );
     });
 
@@ -37,11 +42,17 @@ void main() {
     });
 
     test('returns http method', () {
-      expect(InternetData.httpMethods.contains(Internet.httpMethod()), true);
+      expect(
+        InternetData.httpMethods,
+        contains(Internet.httpMethod()),
+      );
     });
 
     test('returns emoji', () {
-      expect(InternetData.emojis.contains(Internet.emoji()), true);
+      expect(
+        InternetData.emojis,
+        contains(Internet.emoji()),
+      );
     });
 
     test('returns list of hashtags', () {
@@ -88,17 +99,23 @@ void main() {
     );
 
     test('returns top level domain', () {
-      final noarg = Internet.topLevelDomain();
-      final data = InternetData.tlds(TLDType.cctld);
-      expect(data.contains(noarg), true);
+      expect(
+        InternetData.tlds(TLDType.cctld),
+        contains(Internet.topLevelDomain()),
+      );
 
       final type = TLDType.geotld;
-      final withType = Internet.topLevelDomain(type: type);
-      expect(InternetData.tlds(type).contains(withType), true);
+      expect(
+        InternetData.tlds(type),
+        contains(Internet.topLevelDomain(type: type)),
+      );
     });
 
     test('returns user agent', () {
-      expect(InternetData.userAgents.contains(Internet.userAgent()), true);
+      expect(
+        InternetData.userAgents,
+        contains(Internet.userAgent()),
+      );
     });
 
     test('returns slug', () {
@@ -120,11 +137,16 @@ void main() {
     });
 
     test('returns URL', () {
-      final noarg = Internet.url();
-      expect(noarg.startsWith(URLScheme.https.name), true);
+      expect(
+        Internet.url(),
+        startsWith(URLScheme.https.name),
+      );
 
       final scheme = URLScheme.ws;
-      expect(Internet.url(urlScheme: scheme).startsWith(scheme.name), true);
+      expect(
+        Internet.url(urlScheme: scheme),
+        startsWith(scheme.name),
+      );
 
       final range = PortRange.wellKnown;
       final port = int.parse(
@@ -134,7 +156,10 @@ void main() {
     });
 
     test('returns URI', () {
-      expect(Internet.uri().startsWith(URLScheme.https.name), true);
+      expect(
+        Internet.uri(),
+        startsWith(URLScheme.https.name),
+      );
 
       final urlScheme = URLScheme.http;
       final result = Internet.uri(
@@ -143,7 +168,7 @@ void main() {
         subdomains: ['test', 'dev', 'app'],
         queryParameters: 5,
       );
-      expect(result.startsWith(URLScheme.http.name), true);
+      expect(result, startsWith(URLScheme.http.name));
     });
 
     test('returns an IPv4 address', () {
@@ -173,7 +198,10 @@ void main() {
     });
 
     test('returns a public DNS', () {
-      expect(InternetData.publicDNSes.contains(Internet.publicDNS()), true);
+      expect(
+        InternetData.publicDNSes,
+        contains(Internet.publicDNS()),
+      );
     });
   });
 }

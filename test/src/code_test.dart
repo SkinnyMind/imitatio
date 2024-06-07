@@ -5,7 +5,10 @@ import 'package:test/test.dart';
 void main() {
   group('Code', () {
     test('returns locale code', () {
-      expect(CodeData.localeCodes.contains(Code.localeCode()), true);
+      expect(
+        CodeData.localeCodes,
+        contains(Code.localeCode()),
+      );
     });
 
     test('returns imei', () {

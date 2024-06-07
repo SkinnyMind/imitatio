@@ -6,8 +6,8 @@ void main() {
   group('Development', () {
     test('returns random software licence', () {
       expect(
-        DevelopmentData.licenses.contains(Development.softwareLicense()),
-        true,
+        DevelopmentData.licenses,
+        contains(Development.softwareLicense()),
       );
     });
 
@@ -54,14 +54,16 @@ void main() {
 
     test('returns programming language', () {
       expect(
-        DevelopmentData.programmingLanguages
-            .contains(Development.programmingLanguage()),
-        true,
+        DevelopmentData.programmingLanguages,
+        contains(Development.programmingLanguage()),
       );
     });
 
     test('returns os', () {
-      expect(DevelopmentData.oses.contains(Development.os()), true);
+      expect(
+        DevelopmentData.oses,
+        contains(Development.os()),
+      );
     });
 
     test('returns boolean value', () {
@@ -72,8 +74,8 @@ void main() {
       final result = Development.dsn();
       final schemes = DSNType.values.map((e) => e.scheme);
       final ports = DSNType.values.map((e) => e.port);
-      expect(schemes.contains(result.split('://').first), true);
-      expect(ports.contains(int.parse(result.split(':').last)), true);
+      expect(schemes, contains(result.split('://').first));
+      expect(ports, contains(int.parse(result.split(':').last)));
 
       final type = DSNType.postgres;
       final withType = Development.dsn(dsnType: type);
@@ -82,8 +84,10 @@ void main() {
     });
 
     test('returns system quality attribute', () {
-      final result = Development.systemQualityAttribute();
-      expect(DevelopmentData.systemQualityAttributes.contains(result), true);
+      expect(
+        DevelopmentData.systemQualityAttributes,
+        contains(Development.systemQualityAttribute()),
+      );
     });
   });
 }

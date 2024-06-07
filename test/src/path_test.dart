@@ -34,37 +34,49 @@ void main() {
     test("returns path to user's folders", () {
       final unixPath = Path.usersFolder().split('/');
       expect(unixPath.length, 4);
-      expect(DevelopmentData.folders.contains(unixPath.last), true);
+      expect(
+        DevelopmentData.folders,
+        contains(unixPath.last),
+      );
 
       final winPath = Path.usersFolder(platform: 'windows').split(r'\');
       expect(winPath.length, 4);
-      expect(DevelopmentData.folders.contains(winPath.last), true);
+      expect(
+        DevelopmentData.folders,
+        contains(winPath.last),
+      );
     });
 
     test("returns path to development directory", () {
       final unixPath = Path.devDir().split('/');
       expect(unixPath.length, 5);
       expect(
-        DevelopmentData.programmingLanguages.contains(unixPath.last),
-        true,
+        DevelopmentData.programmingLanguages,
+        contains(unixPath.last),
       );
 
       final winPath = Path.devDir(platform: 'windows').split(r'\');
       expect(winPath.length, 5);
       expect(
-        DevelopmentData.programmingLanguages.contains(winPath.last),
-        true,
+        DevelopmentData.programmingLanguages,
+        contains(winPath.last),
       );
     });
 
     test("returns path to project directory", () {
       final unixPath = Path.projectDir().split('/');
       expect(unixPath.length, 6);
-      expect(DevelopmentData.projectNames.contains(unixPath.last), true);
+      expect(
+        DevelopmentData.projectNames,
+        contains(unixPath.last),
+      );
 
       final winPath = Path.projectDir(platform: 'windows').split(r'\');
       expect(winPath.length, 6);
-      expect(DevelopmentData.projectNames.contains(winPath.last), true);
+      expect(
+        DevelopmentData.projectNames,
+        contains(winPath.last),
+      );
     });
   });
 }
