@@ -1,5 +1,6 @@
 library;
 
+export 'src/address.dart';
 export 'src/choice.dart';
 export 'src/code.dart';
 export 'src/date.dart';
