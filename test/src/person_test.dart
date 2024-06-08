@@ -5,63 +5,63 @@ import 'package:test/test.dart';
 
 void main() {
   group('Person', () {
-    test('returns name', () {
-      expect(Person.name(), isNotEmpty);
+    const person = Person();
+    const locale = Locale.ru;
+    const localePerson = Person(locale: locale);
 
-      final locale = Locale.ru;
+    test('returns name', () {
+      expect(person.name(), isNotEmpty);
+
       for (final gender in Gender.values) {
         expect(
           PersonData.locale(locale).names(gender),
-          contains(Person.name(gender: gender, locale: locale)),
+          contains(localePerson.name(gender: gender)),
         );
       }
     });
 
     test('returns surname', () {
-      expect(Person.surname(), isNotEmpty);
+      expect(person.surname(), isNotEmpty);
 
-      final locale = Locale.ru;
       for (final gender in Gender.values) {
         expect(
           PersonData.locale(locale).surnames(gender),
-          contains(Person.surname(gender: gender, locale: locale)),
+          contains(localePerson.surname(gender: gender)),
         );
       }
     });
 
     test('returns full name', () {
-      final result = Person.fullName().split(' ');
+      final result = person.fullName().split(' ');
       expect(result.length, 2);
       expect(result[0], isNotEmpty);
       expect(result[1], isNotEmpty);
 
-      final reversed = Person.fullName().split(' ');
+      final reversed = person.fullName(reverse: true).split(' ');
       expect(reversed.length, 2);
       expect(reversed[0], isNotEmpty);
       expect(reversed[1], isNotEmpty);
     });
 
     test('returns title', () {
-      expect(Person.title(), isNotEmpty);
+      expect(person.title(), isNotEmpty);
 
       final titleType = TitleType.academic;
-      final locale = Locale.ru;
       for (final gender in Gender.values) {
         final data = PersonData.locale(locale).titles(
           gender: gender,
           titleType: titleType,
         );
-        final result = Person.title(
+        final result = localePerson.title(
           gender: gender,
           titleType: titleType,
-          locale: locale,
         );
         expect(data, contains(result));
       }
     });
 
     test('returns username', () {
-      expect(Person.username().split('_').length, 2);
+      expect(person.username().split('_').length, 2);
 
       const patterns = {
         'C-d': r"^[A-Z][a-z]+-[0-9]+$",
@@ -77,35 +77,35 @@ void main() {
         "ld": r"^[a-z]+[0-9]+$",
       };
       for (final pattern in patterns.entries) {
-        final result = Person.username(mask: pattern.key);
+        final result = person.username(mask: pattern.key);
         expect(RegExp(pattern.value).hasMatch(result), true);
       }
 
       final digitsRange = int.parse(
-        Person.username(digitsMin: 10, digitsMax: 20).split('_').last,
+        person.username(digitsMin: 10, digitsMax: 20).split('_').last,
       );
       expect(digitsRange >= 10 && digitsRange <= 20, true);
     });
 
     test('throws when trying to get username with invalid mask', () {
-      expect(() => Person.username(mask: ''), throwsA(isA<ArgumentError>()));
+      expect(() => person.username(mask: ''), throwsA(isA<ArgumentError>()));
     });
 
     test('returns an email', () {
       final emailRegex = RegExp(
         r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)",
       );
-      expect(emailRegex.hasMatch(Person.email()), true);
+      expect(emailRegex.hasMatch(person.email()), true);
 
       final domains = ['@example.com', 'example.com'];
-      final result = Person.email(domains: domains);
+      final result = person.email(domains: domains);
       expect(emailRegex.hasMatch(result), true);
       expect(result.split('@').last, 'example.com');
 
       final count = 1000000;
       final generated = <String>{};
       for (var i = 0; i < count; i++) {
-        final email = Person.email(domains: ['example.com'], unique: true);
+        final email = person.email(domains: ['example.com'], unique: true);
         generated.add(email.split('@').first);
       }
       expect(generated.length, count);
@@ -114,148 +114,139 @@ void main() {
     test('returns gender symbol', () {
       expect(
         IntPersonData.genderSymbols,
-        contains(Person.genderSymbol()),
+        contains(person.genderSymbol),
       );
     });
 
     test('returns gender code', () {
       expect(
         IntPersonData.genderCodes,
-        contains(Person.genderCode()),
+        contains(person.genderCode),
       );
     });
 
     test('returns gender title', () {
-      expect(Person.gender(), isNotEmpty);
+      expect(person.gender, isNotEmpty);
 
-      final locale = Locale.ru;
       expect(
         PersonData.locale(locale).genders,
-        contains(Person.gender(locale: locale)),
+        contains(localePerson.gender),
       );
     });
 
     test('returns random height in meters', () {
-      final defaultResult = double.parse(Person.height());
+      final defaultResult = double.parse(person.height());
       expect((defaultResult >= 1.5) && (defaultResult <= 2.0), true);
 
       final min = 1.7;
       final max = 1.8;
-      final minMaxResult = double.parse(Person.height(min: min, max: max));
+      final minMaxResult = double.parse(person.height(min: min, max: max));
       expect((minMaxResult >= min) && (minMaxResult <= max), true);
     });
 
     test('returns random weight in kg', () {
-      final defaultResult = Person.weight();
+      final defaultResult = person.weight();
       expect((defaultResult >= 38) && (defaultResult <= 90), true);
 
       final min = 69;
       final max = 69;
-      final minMaxResult = Person.weight(min: min, max: max);
+      final minMaxResult = person.weight(min: min, max: max);
       expect((minMaxResult >= min) && (minMaxResult <= max), true);
     });
 
     test('returns random blood type', () {
       expect(
         IntPersonData.bloodGroups,
-        contains(Person.bloodType()),
+        contains(person.bloodType),
       );
     });
 
     test('returns occupation', () {
-      expect(Person.occupation(), isNotEmpty);
+      expect(person.occupation, isNotEmpty);
 
-      final locale = Locale.ru;
       expect(
         PersonData.locale(locale).occupations,
-        contains(Person.occupation(locale: locale)),
+        contains(localePerson.occupation),
       );
     });
 
     test('returns political views', () {
-      expect(Person.politicalViews(), isNotEmpty);
+      expect(person.politicalViews, isNotEmpty);
 
-      final locale = Locale.ru;
       expect(
         PersonData.locale(locale).politicalViews,
-        contains(Person.politicalViews(locale: locale)),
+        contains(localePerson.politicalViews),
       );
     });
 
     test('returns worldview', () {
-      expect(Person.worldview(), isNotEmpty);
+      expect(person.worldview, isNotEmpty);
 
-      final locale = Locale.ru;
       expect(
         PersonData.locale(locale).worldviews,
-        contains(Person.worldview(locale: locale)),
+        contains(localePerson.worldview),
       );
     });
 
     test('returns views on something', () {
-      expect(Person.viewsOn(), isNotEmpty);
+      expect(person.viewsOn, isNotEmpty);
 
-      final locale = Locale.ru;
       expect(
         PersonData.locale(locale).viewsOn,
-        contains(Person.viewsOn(locale: locale)),
+        contains(localePerson.viewsOn),
       );
     });
 
     test('returns nationality', () {
-      expect(Person.nationality(), isNotEmpty);
+      expect(person.nationality(), isNotEmpty);
 
-      final locale = Locale.ru;
       for (final gender in Gender.values) {
         expect(
           PersonData.locale(locale).nationalities(gender),
-          contains(Person.nationality(gender: gender, locale: locale)),
+          contains(localePerson.nationality(gender: gender)),
         );
       }
     });
 
     test('returns university', () {
-      expect(Person.university(), isNotEmpty);
+      expect(person.university, isNotEmpty);
 
-      final locale = Locale.ru;
       expect(
         PersonData.locale(locale).universities,
-        contains(Person.university(locale: locale)),
+        contains(localePerson.university),
       );
     });
 
     test('returns academic degree', () {
-      expect(Person.academicDegree(), isNotEmpty);
+      expect(person.academicDegree, isNotEmpty);
 
-      final locale = Locale.ru;
       expect(
         PersonData.locale(locale).academicDegrees,
-        contains(Person.academicDegree(locale: locale)),
+        contains(localePerson.academicDegree),
       );
     });
 
     test('returns language name', () {
-      expect(Person.language(), isNotEmpty);
+      expect(person.language, isNotEmpty);
 
-      final locale = Locale.ru;
       expect(
         PersonData.locale(locale).languages,
-        contains(Person.language(locale: locale)),
+        contains(localePerson.language),
       );
     });
 
     test('returns phone number', () {
-      expect(Person.phoneNumber(), isNotEmpty);
+      expect(person.phoneNumber(), isNotEmpty);
 
-      final result = Person.phoneNumber(mask: "123#");
+      final result = person.phoneNumber(mask: "123#");
       expect(result, startsWith("123"));
       expect(result.length, 4);
     });
 
     test('returns identifier by mask', () {
-      expect(Person.identifier().length, 8);
+      expect(person.identifier().length, 8);
 
-      final result = Person.identifier(mask: "123#");
+      final result = person.identifier(mask: "123#");
       expect(result, startsWith("123"));
       expect(result.length, 4);
     });

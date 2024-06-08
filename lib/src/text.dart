@@ -6,36 +6,34 @@ import 'package:imitatio/src/util.dart';
 
 /// Provides data related to text.
 class Text {
-  const Text._();
+  /// Provides data related to text.
+  ///
+  /// [locale] is optional [Locale] (default is [Locale.en]).
+  const Text({this.locale = Locale.en});
+
+  final Locale locale;
 
   /// Returns an alphabet for [locale].
   ///
   /// [isLowerCase] determines whether to return alphabet in lower case or not
   /// (default is false).
   ///
-  /// [locale] is optional [Locale] (default is [Locale.en]).
-  ///
   /// Example:
   /// ```dart
-  /// Text.alphabet(); // [A, B, C, ..., Z]
-  /// Text.alphabet(isLowerCase: true); // [a, b, c, ..., z]
+  /// Text().alphabet(); // [A, B, C, ..., Z]
+  /// Text().alphabet(isLowerCase: true); // [a, b, c, ..., z]
   /// ```
-  static List<String> alphabet({
-    bool isLowerCase = false,
-    Locale locale = Locale.en,
-  }) {
+  List<String> alphabet({bool isLowerCase = false}) {
     return TextData.locale(locale).alphabet(isLowerCase: isLowerCase);
   }
 
   /// Returns a word that indicates a level of something.
   ///
-  /// [locale] is optional [Locale] (default is [Locale.en]).
-  ///
   /// Example:
   /// ```dart
-  /// Text.level(); // "extreme"
+  /// Text().level; // "extreme"
   /// ```
-  static String level({Locale locale = Locale.en}) {
+  String get level {
     final data = TextData.locale(locale).levels;
     return data[Random().nextInt(data.length)];
   }
@@ -44,13 +42,11 @@ class Text {
   ///
   /// [quantity] is optional number of sentences (default is 5).
   ///
-  /// [locale] is optional [Locale] (default is [Locale.en]).
-  ///
   /// Example:
   /// ```dart
-  /// Text.text(); // "I don't even care. Erlang is a general-purpose..."
+  /// Text().text(); // "I don't even care. Erlang is a general-purpose..."
   /// ```
-  static String text({int quantity = 5, Locale locale = Locale.en}) {
+  String text({int quantity = 5}) {
     final data = TextData.locale(locale).texts;
     return [
       for (var i = 0; i < quantity; i++) data[Random().nextInt(data.length)],
@@ -59,90 +55,70 @@ class Text {
 
   /// Returns a random sentence from the text.
   ///
-  /// [locale] is optional [Locale] (default is [Locale.en]).
-  ///
   /// Example:
   /// ```dart
-  /// Text.sentence(); // "Ports are created with the built-in function open_port."
+  /// Text().sentence; // "Ports are created with the built-in function open_port."
   /// ```
-  static String sentence({Locale locale = Locale.en}) {
-    return Text.text(quantity: 1, locale: locale);
-  }
+  String get sentence => text(quantity: 1);
 
   /// Returns a random title.
   ///
-  /// [locale] is optional [Locale] (default is [Locale.en]).
-  ///
   /// Example:
   /// ```dart
-  /// Text.title(); // "Type classes first appeared in the Haskell programming language."
+  /// Text().title; // "Type classes first appeared in the Haskell programming language."
   /// ```
-  static String title({Locale locale = Locale.en}) {
-    return Text.text(quantity: 1, locale: locale);
-  }
+  String get title => text(quantity: 1);
 
   /// Returns a list of random words.
   ///
   /// [quantity] is optional number of words (default is 5).
   ///
-  /// [locale] is optional [Locale] (default is [Locale.en]).
-  ///
   /// Example:
   /// ```dart
-  /// Text.words(); // ["athens", "non", "hop", "maximum", "demand"]
-  /// Text.words(quantity: 2); // ["awarded", "basically"]
+  /// Text().words(); // ["athens", "non", "hop", "maximum", "demand"]
+  /// Text().words(quantity: 2); // ["awarded", "basically"]
   /// ```
-  static List<String> words({int quantity = 5, Locale locale = Locale.en}) {
+  List<String> words({int quantity = 5}) {
     return Util.pickN(list: TextData.locale(locale).words, n: quantity);
   }
 
   /// Returns a random word.
   ///
-  /// [locale] is optional [Locale] (default is [Locale.en]).
-  ///
   /// Example:
   /// ```dart
-  /// Text.word(); // "named"
+  /// Text().word; // "named"
   /// ```
-  static String word({Locale locale = Locale.en}) {
-    return Text.words(quantity: 1, locale: locale).first;
-  }
+  String get word => words(quantity: 1).first;
 
   /// Returns a random quote.
   ///
-  /// [locale] is optional [Locale] (default is [Locale.en]).
-  ///
   /// Example:
   /// ```dart
-  /// Text.quote(); // "They call me *Mister* Tibbs!"
+  /// Text().quote; // "They call me *Mister* Tibbs!"
   /// ```
-  static String quote({Locale locale = Locale.en}) {
+  String get quote {
     final data = TextData.locale(locale).quotes;
     return data[Random().nextInt(data.length)];
   }
 
   /// Returns a random color name.
   ///
-  /// [locale] is optional [Locale] (default is [Locale.en]).
-  ///
   /// Example:
   /// ```dart
-  /// Text.color(); // "White"
+  /// Text().color; // "White"
   /// ```
-  static String color({Locale locale = Locale.en}) {
+  String get color {
     final data = TextData.locale(locale).colors;
     return data[Random().nextInt(data.length)];
   }
 
   /// Returns a random answer.
   ///
-  /// [locale] is optional [Locale] (default is [Locale.en]).
-  ///
   /// Example:
   /// ```dart
-  /// Text.answer(); // "No"
+  /// Text().answer; // "No"
   /// ```
-  static String answer({Locale locale = Locale.en}) {
+  String get answer {
     final data = TextData.locale(locale).answers;
     return data[Random().nextInt(data.length)];
   }

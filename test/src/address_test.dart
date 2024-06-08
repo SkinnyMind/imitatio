@@ -5,111 +5,109 @@ import 'package:test/test.dart';
 
 void main() {
   group('Address', () {
+    const address = Address();
+    const locale = Locale.ru;
+    const localeAddress = Address(locale: locale);
+
     test('returns street number', () async {
-      final result = Address.streetNumber();
+      final result = address.streetNumber();
       expect((result >= 1) && (result <= 1400), true);
-      expect(Address.streetNumber(max: 1) == 1, true);
+      expect(address.streetNumber(max: 1) == 1, true);
     });
 
     test('returns street name', () async {
       expect(
         AddressData.locale(Locale.en).streets(isSuffix: false),
-        contains(Address.streetName()),
+        contains(address.streetName),
       );
 
-      final locale = Locale.ru;
       expect(
         AddressData.locale(locale).streets(isSuffix: false),
-        contains(Address.streetName(locale: locale)),
+        contains(localeAddress.streetName),
       );
     });
 
     test('returns street suffix', () async {
       expect(
         AddressData.locale(Locale.en).streets(isSuffix: true),
-        contains(Address.streetSuffix()),
+        contains(address.streetSuffix),
       );
 
-      final locale = Locale.ru;
       expect(
         AddressData.locale(locale).streets(isSuffix: true),
-        contains(Address.streetSuffix(locale: locale)),
+        contains(localeAddress.streetSuffix),
       );
     });
 
     test('returns full address', () async {
-      expect(Address.address(), isNotEmpty);
+      expect(address.address, isNotEmpty);
     });
 
     test('returns state', () async {
       expect(
         AddressData.locale(Locale.en).states(isAbbr: false),
-        contains(Address.state()),
+        contains(address.state()),
       );
 
-      final locale = Locale.ru;
       expect(
         AddressData.locale(locale).states(isAbbr: true),
-        contains(Address.state(isAbbr: true, locale: locale)),
+        contains(localeAddress.state(isAbbr: true)),
       );
     });
 
     test('returns postal code', () async {
-      expect(Address.postalCode(), isNotEmpty);
-      expect(Address.postalCode(locale: Locale.ru).length, 6);
+      expect(address.postalCode, isNotEmpty);
+      expect(localeAddress.postalCode.length, 6);
     });
 
     test('returns country', () async {
       expect(
         AddressData.locale(Locale.en).countries,
-        contains(Address.country()),
+        contains(address.country),
       );
 
-      final locale = Locale.ru;
       expect(
         AddressData.locale(locale).countries,
-        contains(Address.country(locale: locale)),
+        contains(localeAddress.country),
       );
     });
 
     test('returns city', () async {
       expect(
         AddressData.locale(Locale.en).cities,
-        contains(Address.city()),
+        contains(address.city),
       );
 
-      final locale = Locale.ru;
       expect(
         AddressData.locale(locale).cities,
-        contains(Address.city(locale: locale)),
+        contains(localeAddress.city),
       );
     });
 
     test('returns continent', () async {
       expect(
         AddressData.locale(Locale.en).continents,
-        contains(Address.continent()),
+        contains(address.continent()),
       );
       expect(
         IntAddressData.continentCodes,
-        contains(Address.continent(asCode: true)),
+        contains(address.continent(asCode: true)),
       );
 
-      final locale = Locale.ru;
       expect(
         AddressData.locale(locale).continents,
-        contains(Address.continent(locale: locale)),
+        contains(localeAddress.continent()),
       );
       expect(
         IntAddressData.continentCodes,
-        contains(Address.continent(asCode: true, locale: locale)),
+        contains(localeAddress.continent(asCode: true)),
       );
     });
 
     test('returns calling code', () async {
       expect(
         IntAddressData.callingCodes,
-        contains(Address.callingCode()),
+        contains(address.callingCode),
       );
     });
   });

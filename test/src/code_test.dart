@@ -4,37 +4,39 @@ import 'package:test/test.dart';
 
 void main() {
   group('Code', () {
+    const code = Code();
+
     test('returns locale code', () {
       expect(
         IntCodeData.localeCodes,
-        contains(Code.localeCode()),
+        contains(code.localeCode),
       );
     });
 
     test('returns imei', () {
-      expect(Code.imei().length <= 15, true);
+      expect(code.imei.length <= 15, true);
     });
 
     test('returns pin', () {
-      expect(Code.pin().length, 4);
-      expect(Code.pin(mask: "##").length, 2);
+      expect(code.pin().length, 4);
+      expect(code.pin(mask: "##").length, 2);
     });
 
     test('returns ISSN', () {
-      expect(Code.issn().length, 9);
-      expect(Code.issn(mask: "##").length, 2);
+      expect(code.issn().length, 9);
+      expect(code.issn(mask: "##").length, 2);
     });
 
     test('returns ISBN', () {
-      expect(Code.isbn(), isNotEmpty);
-      expect(Code.isbn(format: ISBNFormat.isbn10).length >= 10, true);
-      expect(Code.isbn(format: ISBNFormat.isbn13).length >= 13, true);
+      expect(code.isbn(), isNotEmpty);
+      expect(code.isbn(format: ISBNFormat.isbn10).length >= 10, true);
+      expect(code.isbn(format: ISBNFormat.isbn13).length >= 13, true);
     });
 
     test('returns EAN', () {
-      expect(Code.ean(), isNotEmpty);
-      expect(Code.ean(format: EANFormat.ean8).length, 8);
-      expect(Code.ean(format: EANFormat.ean13).length, 13);
+      expect(code.ean(), isNotEmpty);
+      expect(code.ean(format: EANFormat.ean8).length, 8);
+      expect(code.ean(format: EANFormat.ean13).length, 13);
     });
   });
 }

@@ -4,42 +4,47 @@ import 'package:test/test.dart';
 
 void main() {
   group('Path', () {
+    final path = Path();
+    final linuxPath = Path(platform: 'linux');
+    final macosPath = Path(platform: 'macos');
+    final windowsPath = Path(platform: 'windows');
+
     test('returns root path', () {
-      expect(Path.root(), '/');
-      expect(Path.root(platform: 'linux'), '/');
-      expect(Path.root(platform: 'macos'), '/');
-      expect(Path.root(platform: 'windows'), r'C:\');
-      expect(() => Path.root(platform: 'ios'), throwsA(isA<Exception>()));
+      expect(path.root, '/');
+      expect(linuxPath.root, '/');
+      expect(macosPath.root, '/');
+      expect(windowsPath.root, r'C:\');
+      expect(() => Path(platform: 'ios').root, throwsA(isA<Exception>()));
     });
 
     test('returns home path', () {
-      expect(Path.home(), '/home/');
-      expect(Path.home(platform: 'linux'), '/home/');
-      expect(Path.home(platform: 'macos'), '/home/');
-      expect(Path.home(platform: 'windows'), r'C:\Users\');
+      expect(path.home, '/home/');
+      expect(linuxPath.home, '/home/');
+      expect(macosPath.home, '/home/');
+      expect(windowsPath.home, r'C:\Users\');
     });
 
     test('returns path to random user', () {
-      final unixPath = Path.user().split('/');
+      final unixPath = path.user.split('/');
       expect(unixPath.length, 3);
       expect(unixPath.last, isNotEmpty);
       expect(unixPath.last[0], unixPath.last[0].toLowerCase());
 
-      final winPath = Path.user(platform: 'windows').split(r'\');
+      final winPath = windowsPath.user.split(r'\');
       expect(winPath.length, 3);
       expect(winPath.last, isNotEmpty);
       expect(winPath.last[0], winPath.last[0].toUpperCase());
     });
 
     test("returns path to user's folders", () {
-      final unixPath = Path.usersFolder().split('/');
+      final unixPath = path.usersFolder.split('/');
       expect(unixPath.length, 4);
       expect(
         IntDevelopmentData.folders,
         contains(unixPath.last),
       );
 
-      final winPath = Path.usersFolder(platform: 'windows').split(r'\');
+      final winPath = windowsPath.usersFolder.split(r'\');
       expect(winPath.length, 4);
       expect(
         IntDevelopmentData.folders,
@@ -48,14 +53,14 @@ void main() {
     });
 
     test("returns path to development directory", () {
-      final unixPath = Path.devDir().split('/');
+      final unixPath = path.devDir.split('/');
       expect(unixPath.length, 5);
       expect(
         IntDevelopmentData.programmingLanguages,
         contains(unixPath.last),
       );
 
-      final winPath = Path.devDir(platform: 'windows').split(r'\');
+      final winPath = windowsPath.devDir.split(r'\');
       expect(winPath.length, 5);
       expect(
         IntDevelopmentData.programmingLanguages,
@@ -64,14 +69,14 @@ void main() {
     });
 
     test("returns path to project directory", () {
-      final unixPath = Path.projectDir().split('/');
+      final unixPath = path.projectDir.split('/');
       expect(unixPath.length, 6);
       expect(
         IntDevelopmentData.projectNames,
         contains(unixPath.last),
       );
 
-      final winPath = Path.projectDir(platform: 'windows').split(r'\');
+      final winPath = windowsPath.projectDir.split(r'\');
       expect(winPath.length, 6);
       expect(
         IntDevelopmentData.projectNames,

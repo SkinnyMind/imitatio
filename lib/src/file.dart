@@ -3,20 +3,21 @@ import 'dart:math';
 import 'package:imitatio/imitatio.dart';
 import 'package:imitatio/src/datasets/international/file.dart';
 
-/// File data provider.
+/// Provides data related to file.
 class File {
-  const File._();
+  /// Provides data related to file.
+  const File();
 
-  /// Return a random file extension.
+  /// Returns a random file extension.
   ///
   /// [fileType] is optional [FileType] group.
   ///
   /// Example:
   /// ```dart
-  /// File.ext(); // ".tar.gz"
-  /// File.ext(fileType: FileType.audio); // ".m4a"
+  /// File().ext(); // ".tar.gz"
+  /// File().ext(fileType: FileType.audio); // ".m4a"
   /// ```
-  static String ext({FileType? fileType}) {
+  String ext({FileType? fileType}) {
     final random = Random();
     final type =
         fileType ?? FileType.values[random.nextInt(FileType.values.length)];
@@ -30,10 +31,10 @@ class File {
   ///
   /// Example:
   /// ```dart
-  /// File.mimeType(); // "audio/vnd.octel.sbc"
-  /// File.mimeType(type: MimeType.image); // "image/vnd.net-fpx"
+  /// File().mimeType(); // "audio/vnd.octel.sbc"
+  /// File().mimeType(type: MimeType.image); // "image/vnd.net-fpx"
   /// ```
-  static String mimeType({MimeType? type}) {
+  String mimeType({MimeType? type}) {
     final mime =
         type ?? MimeType.values[Random().nextInt(MimeType.values.length)];
     final types = IntFileData.mimeTypes(mime);
@@ -48,10 +49,10 @@ class File {
   ///
   /// Example:
   /// ```dart
-  /// File.size(); // "69 kB"
-  /// File.size(min: 42, max: 420); // "236 TB"
+  /// File().size(); // "69 kB"
+  /// File().size(min: 42, max: 420); // "236 TB"
   /// ```
-  static String size({int min = 1, int max = 100}) {
+  String size({int min = 1, int max = 100}) {
     final random = Random();
     final number = random.nextInt(max + 1 - min) + min;
     final units = ['bytes', 'kB', 'MB', 'GB', 'TB'];
@@ -65,12 +66,12 @@ class File {
   ///
   /// Example:
   /// ```dart
-  /// File.name(); // "after.pdf"
-  /// File.name(fileType: FileType.executable); // "latex.bat"
+  /// File().name(); // "after.pdf"
+  /// File().name(fileType: FileType.executable); // "latex.bat"
   /// ```
-  static String name({FileType? fileType}) {
-    final name = Text.word();
-    final ext = File.ext(fileType: fileType);
+  String name({FileType? fileType}) {
+    final name = const Text().word;
+    final ext = this.ext(fileType: fileType);
     return '$name$ext';
   }
 }

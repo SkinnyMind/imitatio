@@ -1,7 +1,7 @@
 import 'dart:math';
 
 class Choice {
-  const Choice._();
+  const Choice();
 
   /// Returns a randomly-chosen list of elements from provided [items].
   ///
@@ -16,15 +16,15 @@ class Choice {
   ///
   /// Example:
   /// ```dart
-  /// Choice.choose(items: [1, 2, 3]); // [3]
-  /// Choice.choose(items: [1, 2, 3], length: 2); // [3, 1]
-  /// Choice.choose(
+  /// Choice().choose(items: [1, 2, 3]); // [3]
+  /// Choice().choose(items: [1, 2, 3], length: 2); // [3, 1]
+  /// Choice().choose(
   ///   items: [1, 2, 3, 2, 1],
   ///   length: 3,
   ///   unique: true
   /// ); // [3, 1, 2]
   /// ```
-  static List<T> choose<T>({
+  List<T> choose<T>({
     required List<T> items,
     int length = 1,
     bool unique = false,

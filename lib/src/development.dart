@@ -3,17 +3,18 @@ import 'dart:math';
 import 'package:imitatio/imitatio.dart';
 import 'package:imitatio/src/datasets/international/development.dart';
 
-/// Data related to the development.
+/// Provides data related to the development.
 class Development {
-  const Development._();
+  /// Provides data related to the development.
+  const Development();
 
   /// Returns a random software license.
   ///
   /// Example:
   /// ```dart
-  /// Development.softwareLicense(); // "MIT License (MIT)"
+  /// Development().softwareLicense; // "MIT License (MIT)"
   /// ```
-  static String softwareLicense() {
+  String get softwareLicense {
     return IntDevelopmentData
         .licenses[Random().nextInt(IntDevelopmentData.licenses.length)];
   }
@@ -26,11 +27,11 @@ class Development {
   ///
   /// Example:
   /// ```dart
-  /// Development.version(); // "7.11.0"
-  /// Development.version(calVer: true); // "2021.5.1"
-  /// Development.version(preRelease: true); // "9.7.11-rc.8"
+  /// Development().version(); // "7.11.0"
+  /// Development().version(calVer: true); // "2021.5.1"
+  /// Development().version(preRelease: true); // "9.7.11-rc.8"
   /// ```
-  static String version({bool calVer = false, bool preRelease = false}) {
+  String version({bool calVer = false, bool preRelease = false}) {
     late final int major;
     late final int minor;
     late final int patch;
@@ -63,9 +64,9 @@ class Development {
   ///
   /// Example:
   /// ```dart
-  /// Development.programmingLanguage(); // "Dart"
+  /// Development().programmingLanguage; // "Dart"
   /// ```
-  static String programmingLanguage() {
+  String get programmingLanguage {
     return IntDevelopmentData.programmingLanguages[
         Random().nextInt(IntDevelopmentData.programmingLanguages.length)];
   }
@@ -74,9 +75,9 @@ class Development {
   ///
   /// Example:
   /// ```dart
-  /// Development.os(); // "Fedora"
+  /// Development().os; // "Fedora"
   /// ```
-  static String os() {
+  String get os {
     final data = IntDevelopmentData.oses;
     return data[Random().nextInt(data.length)];
   }
@@ -85,9 +86,9 @@ class Development {
   ///
   /// Example:
   /// ```dart
-  /// Development.boolean(); // true
+  /// Development().boolean; // true
   /// ```
-  static bool boolean() => Random().nextBool();
+  bool get boolean => Random().nextBool();
 
   /// Returns a random DSN (Data Source Name).
   ///
@@ -99,17 +100,17 @@ class Development {
   ///
   /// Example:
   /// ```dart
-  /// Development.dsn(); // "mysql://kitchen.vn:3306"
-  /// Development.dsn(dsnType: DSNType.redis); // "redis://losing.gl:6379"
-  /// Development.dsn(tldType: TLDType.geotld); // "rabbitmq://identifies.moscow:5672"
-  /// Development.dsn(subdomains: ['app', 'api', 'admin']); // "postgres://api.concentrate.io:5432"
+  /// Development().dsn(); // "mysql://kitchen.vn:3306"
+  /// Development().dsn(dsnType: DSNType.redis); // "redis://losing.gl:6379"
+  /// Development().dsn(tldType: TLDType.geotld); // "rabbitmq://identifies.moscow:5672"
+  /// Development().dsn(subdomains: ['app', 'api', 'admin']); // "postgres://api.concentrate.io:5432"
   /// ```
-  static String dsn({
+  String dsn({
     DSNType? dsnType,
     TLDType? tldType,
     List<String>? subdomains,
   }) {
-    final hostname = Internet.hostname(
+    final hostname = const Internet().hostname(
       tldType: tldType,
       subdomains: subdomains,
     );
@@ -128,14 +129,14 @@ class Development {
   ///
   /// Example:
   /// ```dart
-  /// Development.systemQualityAttribute() // "configurability"
+  /// Development().systemQualityAttribute; // "configurability"
   /// ```
-  static String systemQualityAttribute() =>
+  String get systemQualityAttribute =>
       IntDevelopmentData.systemQualityAttributes[
           Random().nextInt(IntDevelopmentData.systemQualityAttributes.length)];
 
   /// Returns a random system quality attribute.
   ///
-  /// An alias for [Development.systemQualityAttribute()].
-  static String ility() => Development.systemQualityAttribute();
+  /// An alias for [Development().systemQualityAttribute].
+  String get ility => systemQualityAttribute;
 }
