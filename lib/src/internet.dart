@@ -6,7 +6,8 @@ import 'package:imitatio/src/datasets/international/person.dart';
 
 /// Provides data related to internet.
 class Internet {
-  const Internet._();
+  /// Provides data related to internet.
+  const Internet();
 
   /// Returns a random HTTP content type.
   ///
@@ -14,11 +15,11 @@ class Internet {
   ///
   /// Example:
   /// ```dart
-  /// Internet.contentType(); // "Content-Type: text/vnd.motorola.reflex"
-  /// Internet.contentType(mimeType: MimeType.text); // "Content-Type: text/vnd.debian.copyright"
+  /// Internet().contentType(); // "Content-Type: text/vnd.motorola.reflex"
+  /// Internet().contentType(mimeType: MimeType.text); // "Content-Type: text/vnd.debian.copyright"
   /// ```
-  static String contentType({MimeType? mimeType}) {
-    final format = File.mimeType(type: mimeType);
+  String contentType({MimeType? mimeType}) {
+    final format = const File().mimeType(type: mimeType);
     return 'Content-Type: $format';
   }
 
@@ -26,9 +27,9 @@ class Internet {
   ///
   /// Example:
   /// ```dart
-  /// Internet.httpStatusMessage(); // "408 Request Timeout"
+  /// Internet().httpStatusMessage; // "408 Request Timeout"
   /// ```
-  static String httpStatusMessage() {
+  String get httpStatusMessage {
     return IntInternetData.httpStatusMessages[
         Random().nextInt(IntInternetData.httpStatusMessages.length)];
   }
@@ -37,9 +38,9 @@ class Internet {
   ///
   /// Example:
   /// ```dart
-  /// Internet.httpStatusCode(); // 202
+  /// Internet().httpStatusCode; // 202
   /// ```
-  static int httpStatusCode() {
+  int get httpStatusCode {
     return IntInternetData.httpStatusCodes[
         Random().nextInt(IntInternetData.httpStatusCodes.length)];
   }
@@ -48,9 +49,9 @@ class Internet {
   ///
   /// Example:
   /// ```dart
-  /// Internet.httpMethod(); // "CONNECT"
+  /// Internet().httpMethod; // "CONNECT"
   /// ```
-  static String httpMethod() {
+  String get httpMethod {
     return IntInternetData
         .httpMethods[Random().nextInt(IntInternetData.httpMethods.length)];
   }
@@ -59,9 +60,9 @@ class Internet {
   ///
   /// Example:
   /// ```dart
-  /// Internet.emoji(); // ":congratulations:"
+  /// Internet().emoji; // ":congratulations:"
   /// ```
-  static String emoji() {
+  String get emoji {
     return IntInternetData
         .emojis[Random().nextInt(IntInternetData.emojis.length)];
   }
@@ -74,10 +75,10 @@ class Internet {
   ///
   /// Example:
   /// ```dart
-  /// Internet.hashtags(); // ["#plates", "#coat", "#star", "#granted"]
-  /// Internet.hashtags(quantity: 2); // ["#systems", "#experts"]
+  /// Internet().hashtags(); // ["#plates", "#coat", "#star", "#granted"]
+  /// Internet().hashtags(quantity: 2); // ["#systems", "#experts"]
   /// ```
-  static List<String> hashtags({int quantity = 4}) {
+  List<String> hashtags({int quantity = 4}) {
     if (quantity < 1) {
       throw ArgumentError.value(
         quantity,
@@ -85,7 +86,7 @@ class Internet {
         'Quantity must be a positive integer',
       );
     }
-    return [for (var i = 0; i < quantity; i++) '#${Text.word()}'];
+    return [for (var i = 0; i < quantity; i++) '#${const Text().word}'];
   }
 
   /// Returns a random hostname without scheme.
@@ -96,15 +97,14 @@ class Internet {
   ///
   /// Example:
   /// ```dart
-  /// Internet.hostname(); // "shepherd.ax"
-  /// Internet.hostname(tldType: TLDType.gtld); // "toe.mls"
-  /// Internet.hostname(subdomains: ['api', 'admin']); // "admin.ten.gb"
+  /// Internet().hostname(); // "shepherd.ax"
+  /// Internet().hostname(tldType: TLDType.gtld); // "toe.mls"
+  /// Internet().hostname(subdomains: ['api', 'admin']); // "admin.ten.gb"
   /// ```
-  static String hostname({TLDType? tldType, List<String>? subdomains}) {
+  String hostname({TLDType? tldType, List<String>? subdomains}) {
     final host = StringBuffer();
-    final tld = tldType != null
-        ? Internet.topLevelDomain(type: tldType)
-        : Internet.topLevelDomain();
+    final tld =
+        tldType != null ? topLevelDomain(type: tldType) : topLevelDomain();
 
     if (subdomains != null) {
       host.write('${subdomains[Random().nextInt(subdomains.length)]}.');
@@ -131,12 +131,12 @@ class Internet {
   ///
   /// Example:
   /// ```dart
-  /// Internet.url(); // "https://greatly.yt/"
-  /// Internet.url(urlScheme: URLScheme.ws, portRange: PortRange.all); // "ws://index.tw:29511/"
-  /// Internet.url(tldType: TLDType.stld); // "https://lid.gov/"
-  /// Internet.url(subdomains: ['api', 'admin']); // "https://api.throws.fm/"
+  /// Internet().url(); // "https://greatly.yt/"
+  /// Internet().url(urlScheme: URLScheme.ws, portRange: PortRange.all); // "ws://index.tw:29511/"
+  /// Internet().url(tldType: TLDType.stld); // "https://lid.gov/"
+  /// Internet().url(subdomains: ['api', 'admin']); // "https://api.throws.fm/"
   /// ```
-  static String url({
+  String url({
     URLScheme urlScheme = URLScheme.https,
     PortRange? portRange,
     TLDType? tldType,
@@ -148,7 +148,7 @@ class Internet {
     url.write('${urlScheme.name}://$host');
 
     if (portRange != null) {
-      url.write(':${Internet.port(range: portRange)}');
+      url.write(':${port(range: portRange)}');
     }
 
     url.write('/');
@@ -168,29 +168,29 @@ class Internet {
   ///
   /// Example:
   /// ```dart
-  /// Internet.uri(); // "https://import.ht/2014/6/10/grades-ghost-custom-republic-durham-desk"
-  /// Internet.uri(urlScheme: URLScheme.ftp); // "ftp://motors.ma/2020/10/14/dangerous-plants-customers-textbooks-item-ct-outlet"
-  /// Internet.uri(tldType: TLDType.stld); // "https://for.jobs/2017/2/16/lab-typical"
-  /// Internet.uri(subdomains: ['api', 'admin']); // "https://api.philip.at/2012/6/11/places-local-grace-disc-acts-specialist-judges-ignore-sized-copyright-ties"
-  /// Internet.uri(queryParameters: 3); // "https://qualified.ma/2016/4/12/musical-rr-detail?private=root&businesses=somebody&age=surface"
+  /// Internet().uri(); // "https://import.ht/2014/6/10/grades-ghost-custom-republic-durham-desk"
+  /// Internet().uri(urlScheme: URLScheme.ftp); // "ftp://motors.ma/2020/10/14/dangerous-plants-customers-textbooks-item-ct-outlet"
+  /// Internet().uri(tldType: TLDType.stld); // "https://for.jobs/2017/2/16/lab-typical"
+  /// Internet().uri(subdomains: ['api', 'admin']); // "https://api.philip.at/2012/6/11/places-local-grace-disc-acts-specialist-judges-ignore-sized-copyright-ties"
+  /// Internet().uri(queryParameters: 3); // "https://qualified.ma/2016/4/12/musical-rr-detail?private=root&businesses=somebody&age=surface"
   /// ```
-  static String uri({
+  String uri({
     URLScheme urlScheme = URLScheme.https,
     TLDType? tldType,
     List<String>? subdomains,
     int? queryParameters,
   }) {
-    final directory = Date.date(start: 2010).replaceAll('-', '/');
-    final url = Internet.url(
+    final directory = const Date().date(start: 2010).replaceAll('-', '/');
+    final url = this.url(
       urlScheme: urlScheme,
       tldType: tldType,
       subdomains: subdomains,
     );
     final uri = StringBuffer();
-    uri.write('$url$directory/${Internet.slug()}');
+    uri.write('$url$directory/${slug()}');
 
     if (queryParameters != null) {
-      uri.write('?${Internet.queryString(count: queryParameters)}');
+      uri.write('?${queryString(count: queryParameters)}');
     }
 
     return uri.toString();
@@ -205,10 +205,10 @@ class Internet {
   ///
   /// Example:
   /// ```dart
-  /// Internet.queryParameters(); // {"senior": "public", "physics": "invite", "enemy": "trek"}
-  /// Internet.queryParameters(count: 1); // {"experiments": "risk"}
+  /// Internet().queryParameters(); // {"senior": "public", "physics": "invite", "enemy": "trek"}
+  /// Internet().queryParameters(count: 1); // {"experiments": "risk"}
   /// ```
-  static Map<String, String> queryParameters({int? count}) {
+  Map<String, String> queryParameters({int? count}) {
     final quantity = count ?? Random().nextInt(10) + 1;
     if (quantity > 32) {
       throw ArgumentError.value(
@@ -219,9 +219,9 @@ class Internet {
     }
     final keys = <String>{};
     while (keys.length != quantity) {
-      keys.add(Text.word());
+      keys.add(const Text().word);
     }
-    final values = Text.words(quantity: quantity);
+    final values = const Text().words(quantity: quantity);
 
     return Map.fromIterables(keys, values);
   }
@@ -235,10 +235,10 @@ class Internet {
   ///
   /// Example:
   /// ```dart
-  /// Internet.queryString(); // "environment=contract&planned=personal&task=goes"
-  /// Internet.queryString(count: 1); // "influence=material"
+  /// Internet().queryString(); // "environment=contract&planned=personal&task=goes"
+  /// Internet().queryString(count: 1); // "influence=material"
   /// ```
-  static String queryString({int? count}) {
+  String queryString({int? count}) {
     return Uri(queryParameters: queryParameters(count: count)).query;
   }
 
@@ -248,10 +248,10 @@ class Internet {
   ///
   /// Example:
   /// ```dart
-  /// Internet.topLevelDomain(); // ".bh"
-  /// Internet.topLevelDomain(type: TLDType.utld); // ".info"
+  /// Internet().topLevelDomain(); // ".bh"
+  /// Internet().topLevelDomain(type: TLDType.utld); // ".info"
   /// ```
-  static String topLevelDomain({TLDType type = TLDType.cctld}) {
+  String topLevelDomain({TLDType type = TLDType.cctld}) {
     final data = IntInternetData.tlds(type);
     return data[Random().nextInt(data.length)];
   }
@@ -260,9 +260,9 @@ class Internet {
   ///
   /// Example:
   /// ```dart
-  /// Internet.userAgent(); // "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; de) Opera 8.02"
+  /// Internet().userAgent; // "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; de) Opera 8.02"
   /// ```
-  static String userAgent() {
+  String get userAgent {
     return IntInternetData
         .userAgents[Random().nextInt(IntInternetData.userAgents.length)];
   }
@@ -273,10 +273,10 @@ class Internet {
   ///
   /// Example:
   /// ```dart
-  /// Internet.port(); // 58232
-  /// Internet.port(range: PortRange.wellKnown); // 59
+  /// Internet().port(); // 58232
+  /// Internet().port(range: PortRange.wellKnown); // 59
   /// ```
-  static int port({PortRange range = PortRange.all}) {
+  int port({PortRange range = PortRange.all}) {
     return Random().nextInt(range.max - range.min) + range.min;
   }
 
@@ -289,10 +289,10 @@ class Internet {
   ///
   /// Example:
   /// ```dart
-  /// Internet.slug(); // "railway-characteristics-specifically-then-performing-firefox"
-  /// Internet.slug(parts: 2); // "payable-jokes"
+  /// Internet().slug(); // "railway-characteristics-specifically-then-performing-firefox"
+  /// Internet().slug(parts: 2); // "payable-jokes"
   /// ```
-  static String slug({int? parts}) {
+  String slug({int? parts}) {
     final count = parts ?? Random().nextInt(11) + 2;
     if (count < 2) {
       throw ArgumentError.value(
@@ -309,7 +309,7 @@ class Internet {
       );
     }
 
-    return Text.words(quantity: count).join('-');
+    return const Text().words(quantity: count).join('-');
   }
 
   /// Returns a random IPv4 address.
@@ -318,10 +318,10 @@ class Internet {
   ///
   /// Example:
   /// ```dart
-  /// Internet.ipv4(); // "143.233.12.25"
-  /// Internet.ipv4(portRange: PortRange.registered); // "171.209.85.41:17455"
+  /// Internet().ipv4(); // "143.233.12.25"
+  /// Internet().ipv4(portRange: PortRange.registered); // "171.209.85.41:17455"
   /// ```
-  static String ipv4({PortRange? portRange}) {
+  String ipv4({PortRange? portRange}) {
     final result = StringBuffer();
     final octets =
         [for (var i = 0; i < 4; i++) Random().nextInt(256)].join('.');
@@ -338,9 +338,9 @@ class Internet {
   ///
   /// Example:
   /// ```dart
-  /// Internet.ipv6(); // "7ca5:39d3:96ff:4e6e:7448:b16b:e50c:7131"
+  /// Internet().ipv6; // "7ca5:39d3:96ff:4e6e:7448:b16b:e50c:7131"
   /// ```
-  static String ipv6() {
+  String get ipv6 {
     return [
       for (var i = 0; i < 8; i++)
         Random().nextInt(65536).toRadixString(16).padLeft(4, '0'),
@@ -351,9 +351,9 @@ class Internet {
   ///
   /// Example:
   /// ```dart
-  /// Internet.macAddress(); // "00:16:3e:40:42:ed"
+  /// Internet().macAddress; // "00:16:3e:40:42:ed"
   /// ```
-  static String macAddress() {
+  String get macAddress {
     final random = Random();
     return [
       0.toRadixString(16).padLeft(2, '0'),
@@ -369,9 +369,9 @@ class Internet {
   ///
   /// Example:
   /// ```dart
-  /// Internet.publicDNS(); // "185.228.168.9"
+  /// Internet().publicDNS; // "185.228.168.9"
   /// ```
-  static String publicDNS() {
+  String get publicDNS {
     final data = IntInternetData.publicDNSes;
     return data[Random().nextInt(data.length)];
   }

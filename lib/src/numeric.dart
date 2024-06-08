@@ -2,7 +2,8 @@ import 'dart:math';
 
 /// Provider of data related to generating numeric data.
 class Numeric {
-  const Numeric._();
+  /// Provider of data related to generating numeric data.
+  const Numeric();
 
   /// Returns a random float number in range [`start`, `end`] (inclusive).
   ///
@@ -15,10 +16,10 @@ class Numeric {
   ///
   /// Example:
   /// ```dart
-  /// Numeric.floatNumber(); // 60.452937498140727
-  /// Numeric.floatNumber(start: 10.0, end: 15.0, precision: 3); // 13.929
+  /// Numeric().floatNumber(); // 60.452937498140727
+  /// Numeric().floatNumber(start: 10.0, end: 15.0, precision: 3); // 13.929
   /// ```
-  static double floatNumber({
+  double floatNumber({
     double start = -1000.0,
     double end = 1000.0,
     int precision = 15,
@@ -42,9 +43,9 @@ class Numeric {
   ///
   /// Example:
   /// ```dart
-  /// Numeric.floats(n: 3, precision: 3); // [0.896, 0.355, 0.579]
+  /// Numeric().floats(n: 3, precision: 3); // [0.896, 0.355, 0.579]
   /// ```
-  static List<double> floats({
+  List<double> floats({
     double start = 0.0,
     double end = 1.0,
     int n = 10,
@@ -52,7 +53,7 @@ class Numeric {
   }) {
     return [
       for (var i = 0; i < n; i++)
-        Numeric.floatNumber(start: start, end: end, precision: precision),
+        floatNumber(start: start, end: end, precision: precision),
     ];
   }
 
@@ -64,10 +65,10 @@ class Numeric {
   ///
   /// Example:
   /// ```dart
-  /// Numeric.integerNumber(); // -52
-  /// Numeric.integerNumber(start: 10, end: 15); // 13
+  /// Numeric().integerNumber(); // -52
+  /// Numeric().integerNumber(start: 10, end: 15); // 13
   /// ```
-  static int integerNumber({int start = -1000, int end = 1000}) {
+  int integerNumber({int start = -1000, int end = 1000}) {
     return Random().nextInt(end + 1 - start) + start;
   }
 
@@ -81,12 +82,10 @@ class Numeric {
   ///
   /// Example:
   /// ```dart
-  /// Numeric.integers(); // [2, 9, 5, 4, 8, 5, 7, 4, 8, 6]
-  /// Numeric.integers(n: 3); // [3, 8, 6]
+  /// Numeric().integers(); // [2, 9, 5, 4, 8, 5, 7, 4, 8, 6]
+  /// Numeric().integers(n: 3); // [3, 8, 6]
   /// ```
-  static List<int> integers({int start = 0, int end = 10, int n = 10}) {
-    return [
-      for (var i = 0; i < n; i++) Numeric.integerNumber(start: start, end: end),
-    ];
+  List<int> integers({int start = 0, int end = 10, int n = 10}) {
+    return [for (var i = 0; i < n; i++) integerNumber(start: start, end: end)];
   }
 }

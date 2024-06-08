@@ -6,7 +6,18 @@ import 'package:imitatio/src/datasets/international/person.dart';
 
 /// Provides data related to paths.
 class Path {
-  const Path._();
+  /// Provides data related to paths.
+  ///
+  /// [platform] is optional platform (operating system). Possible values
+  /// are: `linux`, `macos` or `windows`.
+  Path({String? platform})
+      : platform = platform ?? Platform.operatingSystem,
+        _platformHome = _getPlatformHome(platform ?? Platform.operatingSystem),
+        _pathSeparator = platform == 'windows' ? r'\' : '/';
+
+  final String platform;
+  final String _platformHome;
+  final String _pathSeparator;
 
   static String _getPlatformHome(String platform) {
     return switch (platform) {
@@ -19,111 +30,75 @@ class Path {
 
   /// Returns a root dir path.
   ///
-  /// [platform] is optional platform (operating system). Possible values
-  /// are: "linux", "macos" or "windows".
-  ///
   /// Example:
   /// ```dart
-  /// Path.root(); // "/"
-  /// Path.root(platform: 'windows'); // "C:\"
+  /// Path().root; // "/"
+  /// Path(platform: 'windows').root; // "C:\"
   /// ```
-  static String root({String? platform}) {
-    final os = platform ?? Platform.operatingSystem;
-    final home = _getPlatformHome(os);
-    return os == 'windows' ? r'C:\' : Directory(home).parent.path;
-  }
+  String get root => platform == 'windows' ? r'C:\' : '/';
 
   /// Returns a home path.
   ///
-  /// [platform] is optional platform (operating system). Possible values
-  /// are: "linux", "macos" or "windows".
-  ///
   /// Example:
   /// ```dart
-  /// Path.home(); // "/home/"
-  /// Path.home(platform: 'windows'); // "C:\Users\"
+  /// Path().home; // "/home/"
+  /// Path(platform: 'windows').home; // "C:\Users\"
   /// ```
-  static String home({String? platform}) {
-    final os = platform ?? Platform.operatingSystem;
-    return _getPlatformHome(os);
-  }
+  String get home => _platformHome;
 
   /// Returns a path to random user.
   ///
-  /// [platform] is optional platform (operating system). Possible values
-  /// are: "linux", "macos" or "windows".
-  ///
   /// Example:
   /// ```dart
-  /// Path.user(); // "/home/himself"
-  /// Path.user(platform: 'windows'); // "C:\Users\Gordon"
+  /// Path().user; // "/home/himself"
+  /// Path(platform: 'windows').user; // "C:\Users\Gordon"
   /// ```
-  static String user({String? platform}) {
-    final os = platform ?? Platform.operatingSystem;
-    final home = _getPlatformHome(os);
-    final user = IntPersonData
-        .usernames[Random().nextInt(IntPersonData.usernames.length)];
-    return os == 'windows'
+  String get user {
+    final data = IntPersonData.usernames;
+    final user = data[Random().nextInt(data.length)];
+    return platform == 'windows'
         ? '$home${user[0].toUpperCase()}${user.substring(1)}'
         : '$home$user';
   }
 
   /// Returns a random path to user's folders.
   ///
-  /// [platform] is optional platform (operating system). Possible values
-  /// are: "linux", "macos" or "windows".
-  ///
   /// Example:
   /// ```dart
-  /// Path.usersFolder(); // "/home/society/Work"
-  /// Path.usersFolder(platform: 'windows'); // "C:\Users\Practitioners\Documents"
+  /// Path().usersFolder; // "/home/society/Work"
+  /// Path(platform: 'windows').usersFolder; // "C:\Users\Practitioners\Documents"
   /// ```
-  static String usersFolder({String? platform}) {
-    final os = platform ?? Platform.operatingSystem;
-    final user = Path.user(platform: os);
-    final pathSeparator = os == 'windows' ? r'\' : '/';
+  String get usersFolder {
     final folder = IntDevelopmentData
         .folders[Random().nextInt(IntDevelopmentData.folders.length)];
-    return '$user$pathSeparator$folder';
+    return '$user$_pathSeparator$folder';
   }
 
   /// Returns a random path to development directory.
   ///
-  /// [platform] is optional platform (operating system). Possible values
-  /// are: "linux", "macos" or "windows".
-  ///
   /// Example:
   /// ```dart
-  /// Path.devDir(); // "/home/lexmark/Dev/Go"
-  /// Path.devDir(platform: 'windows'); // "C:\Users\Badge\Dev\Falcon"
+  /// Path().devDir; // "/home/lexmark/Dev/Go"
+  /// Path(platform: 'windows').devDir; // "C:\Users\Badge\Dev\Falcon"
   /// ```
-  static String devDir({String? platform}) {
+  String get devDir {
     final random = Random();
-    final os = platform ?? Platform.operatingSystem;
-    final user = Path.user(platform: os);
-    final pathSeparator = os == 'windows' ? r'\' : '/';
     final folder = random.nextBool() ? 'Development' : 'Dev';
     final stack = IntDevelopmentData.programmingLanguages[
         random.nextInt(IntDevelopmentData.programmingLanguages.length)];
-    return '$user$pathSeparator$folder$pathSeparator$stack';
+    return '$user$_pathSeparator$folder$_pathSeparator$stack';
   }
 
   /// Returns a random path to project directory.
   ///
-  /// [platform] is optional platform (operating system). Possible values
-  /// are: "linux", "macos" or "windows".
-  ///
   /// Example:
   /// ```dart
-  /// Path.projectDir(); // "/home/pvc/Dev/Rust/gryposaurus"
-  /// Path.projectDir(platform: 'windows'); // "C:\Users\Anderson\Development\C\antarctosaurus"
+  /// Path().projectDir; // "/home/pvc/Dev/Rust/gryposaurus"
+  /// Path(platform: 'windows').projectDir; // "C:\Users\Anderson\Development\C\antarctosaurus"
   /// ```
-  static String projectDir({String? platform}) {
-    final os = platform ?? Platform.operatingSystem;
-    final pathSeparator = os == 'windows' ? r'\' : '/';
-    final devDir = Path.devDir(platform: os);
+  String get projectDir {
     final project = IntDevelopmentData
         .projectNames[Random().nextInt(IntDevelopmentData.projectNames.length)];
-    return '$devDir$pathSeparator$project';
+    return '$devDir$_pathSeparator$project';
   }
 }

@@ -7,24 +7,25 @@ import 'package:imitatio/src/util.dart';
 
 /// Provides data related to codes.
 class Code {
-  const Code._();
+  /// Provides data related to codes.
+  const Code();
 
   /// Returns a random locale code (MS-LCID).
   ///
   /// Example:
   /// ```dart
-  /// Code.localeCode(); // "en"
+  /// Code().localeCode; // "en"
   /// ```
-  static String localeCode() =>
+  String get localeCode =>
       IntCodeData.localeCodes[Random().nextInt(IntCodeData.localeCodes.length)];
 
   /// Returns a random IMEI.
   ///
   /// Example:
   /// ```dart
-  /// Code.imei(); // "358031069395385"
+  /// Code().imei; // "358031069395385"
   /// ```
-  static String imei() {
+  String get imei {
     final random = Random();
     final number = StringBuffer();
     number.write(
@@ -43,12 +44,12 @@ class Code {
   ///
   /// Example:
   /// ```dart
-  /// Code.pin(); // "7302"
-  /// Code.pin(mask: "@@###"); // "DU728"
-  /// Code.pin(mask: "33##"); // "3373"
+  /// Code().pin(); // "7302"
+  /// Code().pin(mask: "@@###"); // "DU728"
+  /// Code().pin(mask: "33##"); // "3373"
   ///
   /// ```
-  static String pin({String mask = "####"}) => Rng.customCode(mask: mask);
+  String pin({String mask = "####"}) => Rng.customCode(mask: mask);
 
   /// Returns a random ISSN.
   ///
@@ -59,10 +60,10 @@ class Code {
   ///
   /// Example:
   /// ```dart
-  /// Code.issn(); // "9032-7804"
-  /// Code.issn(mask: "##-##-####"); // "75-19-3500"
+  /// Code().issn(); // "9032-7804"
+  /// Code().issn(mask: "##-##-####"); // "75-19-3500"
   /// ```
-  static String issn({String mask = "####-####"}) => Rng.customCode(mask: mask);
+  String issn({String mask = "####-####"}) => Rng.customCode(mask: mask);
 
   /// Returns ISBN.
   ///
@@ -70,10 +71,10 @@ class Code {
   ///
   /// Example:
   /// ```dart
-  /// Code.isbn(); // "886-5-33530-286-4"
-  /// Code.isbn(format: ISBNFormat.isbn10); // "8-81232-519-8"
+  /// Code().isbn(); // "886-5-33530-286-4"
+  /// Code().isbn(format: ISBNFormat.isbn10); // "8-81232-519-8"
   /// ```
-  static String isbn({ISBNFormat? format}) {
+  String isbn({ISBNFormat? format}) {
     final mask = format?.mask ??
         (Random().nextBool() ? ISBNFormat.isbn10.mask : ISBNFormat.isbn13.mask);
     return Rng.customCode(mask: mask);
@@ -85,10 +86,10 @@ class Code {
   ///
   /// Example:
   /// ```dart
-  /// Code.ean(); // "02012064"
-  /// Code.ean(format: EANFormat.ean13); // "1059922466156"
+  /// Code().ean(); // "02012064"
+  /// Code().ean(format: EANFormat.ean13); // "1059922466156"
   /// ```
-  static String ean({EANFormat? format}) {
+  String ean({EANFormat? format}) {
     final mask = format?.mask ??
         (Random().nextBool() ? EANFormat.ean8.mask : EANFormat.ean13.mask);
     return Rng.customCode(mask: mask);

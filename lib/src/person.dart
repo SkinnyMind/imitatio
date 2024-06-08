@@ -8,20 +8,23 @@ import 'package:imitatio/src/rng.dart';
 
 /// Provides personal data.
 class Person {
-  const Person._();
+  /// Provides personal data.
+  ///
+  /// [locale] is optional [Locale] (default is [Locale.en]).
+  const Person({this.locale = Locale.en});
+
+  final Locale locale;
 
   /// Returns a random name.
   ///
   /// [gender] is optional [Gender].
   ///
-  /// [locale] is optional [Locale] (default is [Locale.en]).
-  ///
   /// Example:
   /// ```dart
-  /// Person.name(); // "Larry"
-  /// Person.name(gender: Gender.female); // "Kiana"
+  /// Person().name(); // "Larry"
+  /// Person().name(gender: Gender.female); // "Kiana"
   /// ```
-  static String name({Gender? gender, Locale locale = Locale.en}) {
+  String name({Gender? gender}) {
     final random = Random();
     gender ??= Gender.values[random.nextInt(Gender.values.length)];
     final data = PersonData.locale(locale).names(gender);
@@ -32,13 +35,11 @@ class Person {
   ///
   /// [gender] is optional [Gender].
   ///
-  /// [locale] is optional [Locale] (default is [Locale.en]).
-  ///
   /// Example:
   /// ```dart
-  /// Person.surname(); // "Weiss"
+  /// Person().surname(); // "Weiss"
   /// ```
-  static String surname({Gender? gender, Locale locale = Locale.en}) {
+  String surname({Gender? gender}) {
     final random = Random();
     gender ??= Gender.values[random.nextInt(Gender.values.length)];
     final data = PersonData.locale(locale).surnames(gender);
@@ -51,21 +52,15 @@ class Person {
   ///
   /// [reverse] whether to return reversed full name (surname before name).
   ///
-  /// [locale] is optional [Locale] (default is [Locale.en]).
-  ///
   /// Example:
   /// ```dart
-  /// Person.fullName(); // "Kristofer Livingston"
-  /// Person.fullName(reverse: true); // "Livingston Kristofer"
+  /// Person().fullName(); // "Kristofer Livingston"
+  /// Person().fullName(reverse: true); // "Livingston Kristofer"
   /// ```
-  static String fullName({
-    Gender? gender,
-    bool reverse = false,
-    Locale locale = Locale.en,
-  }) {
+  String fullName({Gender? gender, bool reverse = false}) {
     gender ??= Gender.values[Random().nextInt(Gender.values.length)];
-    final name = Person.name(gender: gender, locale: locale);
-    final surname = Person.surname(gender: gender, locale: locale);
+    final name = this.name(gender: gender);
+    final surname = this.surname(gender: gender);
     return reverse ? '$surname $name' : '$name $surname';
   }
 
@@ -75,19 +70,13 @@ class Person {
   ///
   /// [titleType] is optional [TitleType].
   ///
-  /// [locale] is optional [Locale] (default is [Locale.en]).
-  ///
   /// Example:
   /// ```dart
-  /// Person.title(); // "B.A."
-  /// Person.title(gender: Gender.male); // "Sir"
-  /// Person.title(titleType: TitleType.academic); // "B.Sc"
+  /// Person().title(); // "B.A."
+  /// Person().title(gender: Gender.male); // "Sir"
+  /// Person().title(titleType: TitleType.academic); // "B.Sc"
   /// ```
-  static String title({
-    Gender? gender,
-    TitleType? titleType,
-    Locale locale = Locale.en,
-  }) {
+  String title({Gender? gender, TitleType? titleType}) {
     final random = Random();
     gender ??= Gender.values[random.nextInt(Gender.values.length)];
     titleType ??= TitleType.values[random.nextInt(TitleType.values.length)];
@@ -119,11 +108,11 @@ class Person {
   ///
   /// Example:
   /// ```dart
-  /// Person.username(); // "seems_2007"
-  /// Person.username(mask: 'C_C_d'); // "Warm_Egyptian_2053"
-  /// Person.username(digitsMin: 20, digitsMax: 30); // "jordan_25"
+  /// Person().username(); // "seems_2007"
+  /// Person().username(mask: 'C_C_d'); // "Warm_Egyptian_2053"
+  /// Person().username(digitsMin: 20, digitsMax: 30); // "jordan_25"
   /// ```
-  static String username({
+  String username({
     String mask = 'l_d',
     int digitsMin = 1800,
     int digitsMax = 2100,
@@ -170,11 +159,11 @@ class Person {
   ///
   /// Example:
   /// ```dart
-  /// Person.email(); // "crash1802@duck.com"
-  /// Person.email(domains: ['example.com']); // "complaints1927@example.com"
-  /// Person.email(unique: true) // "a467545c-1397-4601-8cc0-288e6b0de671@outlook.com"
+  /// Person().email(); // "crash1802@duck.com"
+  /// Person().email(domains: ['example.com']); // "complaints1927@example.com"
+  /// Person().email(unique: true) // "a467545c-1397-4601-8cc0-288e6b0de671@outlook.com"
   /// ```
-  static String email({List<String>? domains, bool unique = false}) {
+  String email({List<String>? domains, bool unique = false}) {
     final data = domains ?? IntInternetData.emailDomains;
     var domain = data[Random().nextInt(data.length)];
 
@@ -189,9 +178,9 @@ class Person {
   ///
   /// Example:
   /// ```dart
-  /// Person.genderSymbol(); // "♀"
+  /// Person().genderSymbol; // "♀"
   /// ```
-  static String genderSymbol() => IntPersonData
+  String get genderSymbol => IntPersonData
       .genderSymbols[Random().nextInt(IntPersonData.genderSymbols.length)];
 
   /// Returns a random ISO/IEC 5218 gender code.
@@ -201,20 +190,18 @@ class Person {
   ///
   /// Example:
   /// ```dart
-  /// Person.genderCode(); // 2
+  /// Person().genderCode; // 2
   /// ```
-  static int genderCode() => IntPersonData
+  int get genderCode => IntPersonData
       .genderCodes[Random().nextInt(IntPersonData.genderCodes.length)];
 
   /// Returns a random gender title.
   ///
-  /// [locale] is optional [Locale] (default is [Locale.en]).
-  ///
   /// Example:
   /// ```dart
-  /// Person.gender(); // "Female"
+  /// Person().gender; // "Female"
   /// ```
-  static String gender({Locale locale = Locale.en}) {
+  String get gender {
     final data = PersonData.locale(locale).genders;
     return data[Random().nextInt(data.length)];
   }
@@ -227,10 +214,10 @@ class Person {
   ///
   /// Example:
   /// ```dart
-  /// Person.height(); // "1.97"
-  /// Person.height(min: 1.7, max: 1.8); // "1.71"
+  /// Person().height(); // "1.97"
+  /// Person().height(min: 1.7, max: 1.8); // "1.71"
   /// ```
-  static String height({double min = 1.5, double max = 2.0}) {
+  String height({double min = 1.5, double max = 2.0}) {
     final result = Random().nextDouble() * (max - min) + min;
     return result.toStringAsFixed(2);
   }
@@ -243,69 +230,61 @@ class Person {
   ///
   /// Example:
   /// ```dart
-  /// Person.weight(); // 84
-  /// Person.weight(min: 42, max: 69); // 53
+  /// Person().weight(); // 84
+  /// Person().weight(min: 42, max: 69); // 53
   /// ```
-  static int weight({int min = 38, int max = 90}) =>
+  int weight({int min = 38, int max = 90}) =>
       Random().nextInt(max + 1 - min) + min;
 
   /// Returns a random blood type (blood group).
   ///
   /// Example:
   /// ```dart
-  /// Person.bloodType(); // "O-"
+  /// Person().bloodType; // "O-"
   /// ```
-  static String bloodType() => IntPersonData
+  String get bloodType => IntPersonData
       .bloodGroups[Random().nextInt(IntPersonData.bloodGroups.length)];
 
   /// Returns a random occupation (job).
   ///
-  /// [locale] is optional [Locale] (default is [Locale.en]).
-  ///
   /// Example:
   /// ```dart
-  /// Person.occupation(); // "Legal Executive"
+  /// Person().occupation; // "Legal Executive"
   /// ```
-  static String occupation({Locale locale = Locale.en}) {
+  String get occupation {
     final data = PersonData.locale(locale).occupations;
     return data[Random().nextInt(data.length)];
   }
 
   /// Returns a random political views.
   ///
-  /// [locale] is optional [Locale] (default is [Locale.en]).
-  ///
   /// Example:
   /// ```dart
-  /// Person.politicalViews(); // "Communist"
+  /// Person().politicalViews; // "Communist"
   /// ```
-  static String politicalViews({Locale locale = Locale.en}) {
+  String get politicalViews {
     final data = PersonData.locale(locale).politicalViews;
     return data[Random().nextInt(data.length)];
   }
 
   /// Returns a random worldview.
   ///
-  /// [locale] is optional [Locale] (default is [Locale.en]).
-  ///
   /// Example:
   /// ```dart
-  /// Person.worldview(); // "Agnosticism"
+  /// Person().worldview; // "Agnosticism"
   /// ```
-  static String worldview({Locale locale = Locale.en}) {
+  String get worldview {
     final data = PersonData.locale(locale).worldviews;
     return data[Random().nextInt(data.length)];
   }
 
   /// Returns a random views on something.
   ///
-  /// [locale] is optional [Locale] (default is [Locale.en]).
-  ///
   /// Example:
   /// ```dart
-  /// Person.viewsOn(); // "Positive"
+  /// Person().viewsOn; // "Positive"
   /// ```
-  static String viewsOn({Locale locale = Locale.en}) {
+  String get viewsOn {
     final data = PersonData.locale(locale).viewsOn;
     return data[Random().nextInt(data.length)];
   }
@@ -314,13 +293,11 @@ class Person {
   ///
   /// [gender] is optional [Gender].
   ///
-  /// [locale] is optional [Locale] (default is [Locale.en]).
-  ///
   /// Example:
   /// ```dart
-  /// Person.nationality(); // "Japanese"
+  /// Person().nationality(); // "Japanese"
   /// ```
-  static String nationality({Gender? gender, Locale locale = Locale.en}) {
+  String nationality({Gender? gender}) {
     final random = Random();
     gender ??= Gender.values[random.nextInt(Gender.values.length)];
     final data = PersonData.locale(locale).nationalities(gender);
@@ -329,39 +306,33 @@ class Person {
 
   /// Returns a random university name.
   ///
-  /// [locale] is optional [Locale] (default is [Locale.en]).
-  ///
   /// Example:
   /// ```dart
-  /// Person.university(); // "University of Georgia (UGA)"
+  /// Person().university; // "University of Georgia (UGA)"
   /// ```
-  static String university({Locale locale = Locale.en}) {
+  String get university {
     final data = PersonData.locale(locale).universities;
     return data[Random().nextInt(data.length)];
   }
 
   /// Returns a random academic degree.
   ///
-  /// [locale] is optional [Locale] (default is [Locale.en]).
-  ///
   /// Example:
   /// ```dart
-  /// Person.academicDegree(); // "Master"
+  /// Person().academicDegree; // "Master"
   /// ```
-  static String academicDegree({Locale locale = Locale.en}) {
+  String get academicDegree {
     final data = PersonData.locale(locale).academicDegrees;
     return data[Random().nextInt(data.length)];
   }
 
   /// Returns a random language name.
   ///
-  /// [locale] is optional [Locale] (default is [Locale.en]).
-  ///
   /// Example:
   /// ```dart
-  /// Person.language(); // "Icelandic"
+  /// Person().language; // "Icelandic"
   /// ```
-  static String language({Locale locale = Locale.en}) {
+  String get language {
     final data = PersonData.locale(locale).languages;
     return data[Random().nextInt(data.length)];
   }
@@ -372,14 +343,12 @@ class Person {
   /// "#" and will be changed to digit). Any provided digits or characters in
   /// mask will be left as is.
   ///
-  /// [locale] is optional [Locale] (default is [Locale.en]).
-  ///
   /// Example:
   /// ```dart
-  /// Person.phoneNumber(); // "+1-912-450-5556"
-  /// Person.phoneNumber(mask: "123#"); // "1232"
+  /// Person().phoneNumber(); // "+1-912-450-5556"
+  /// Person().phoneNumber(mask: "123#"); // "1232"
   /// ```
-  static String phoneNumber({String? mask, Locale locale = Locale.en}) {
+  String phoneNumber({String? mask}) {
     final data = PersonData.locale(locale).telephoneFormats;
     mask ??= data[Random().nextInt(data.length)];
     return Rng.customCode(mask: mask);
@@ -393,9 +362,8 @@ class Person {
   ///
   /// Example:
   /// ```dart
-  /// Person.identifier(); // "42-02/40"
-  /// Person.identifier(mask: "123#"); // "1235"
+  /// Person().identifier(); // "42-02/40"
+  /// Person().identifier(mask: "123#"); // "1235"
   /// ```
-  static String identifier({String mask = "##-##/##"}) =>
-      Rng.customCode(mask: mask);
+  String identifier({String mask = "##-##/##"}) => Rng.customCode(mask: mask);
 }
