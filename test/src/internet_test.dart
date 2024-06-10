@@ -97,6 +97,11 @@ void main() {
     test('returns Map of query parameters', () {
       final result = internet.queryParameters(count: 5);
       expect(result.length, 5);
+
+      expect(
+        seededInternet.queryParameters(),
+        equals(seededInternet.queryParameters()),
+      );
     });
 
     test('throws when trying to get more than 32 query parameters', () {
@@ -109,6 +114,11 @@ void main() {
     test('returns query string', () {
       final result = internet.queryString().split('&').length;
       expect(result >= 1 && result <= 10, true);
+
+      expect(
+        seededInternet.queryString(),
+        equals(seededInternet.queryString()),
+      );
     });
 
     test('returns query string with provided number of parameters', () {
@@ -155,6 +165,11 @@ void main() {
       final result = internet.slug().split('-').length;
       expect(result >= 2 && result <= 12, true);
       expect(internet.slug(parts: 5).split('-').length, 5);
+
+      expect(
+        seededInternet.slug(),
+        equals(seededInternet.slug()),
+      );
     });
 
     test('throws when trying to return slug with wrong number of parts', () {

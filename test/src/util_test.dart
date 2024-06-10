@@ -11,6 +11,11 @@ void main() {
       for (final pick in picked) {
         expect(list, contains(pick));
       }
+
+      expect(
+        Util.pickN(list: list, n: 5, seed: 1),
+        equals(Util.pickN(list: list, n: 5, seed: 1)),
+      );
     });
 
     test('returns number of days in provided month', () {

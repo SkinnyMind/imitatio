@@ -22,6 +22,10 @@ void main() {
       final type = int.parse(result[0]);
       expect(type >= 1 && type <= 3, true);
       expect(result.length, 34);
+      expect(
+        seededPayment.bitcoinAddress,
+        equals(seededPayment.bitcoinAddress),
+      );
     });
 
     test('returns ethereum address', () {

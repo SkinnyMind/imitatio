@@ -8,8 +8,13 @@ class Util {
   /// [list] is the list to pick from.
   ///
   /// [n] is the number of strings to pick.
-  static List<String> pickN({required List<String> list, required int n}) {
-    return [for (var i = 0; i < n; i++) list[Random().nextInt(list.length)]];
+  static List<String> pickN({
+    required List<String> list,
+    required int n,
+    int? seed,
+  }) {
+    final random = Random(seed);
+    return [for (var i = 0; i < n; i++) list[random.nextInt(list.length)]];
   }
 
   /// Returns the number of days in the specified month.

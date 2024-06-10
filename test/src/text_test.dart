@@ -18,6 +18,8 @@ void main() {
         TextData.locale(locale).words,
         contains(result.first),
       );
+
+      expect(seededText.words(), equals(seededText.words()));
     });
 
     test('returns word', () {
@@ -68,6 +70,8 @@ void main() {
         TextData.locale(locale).texts,
         contains(localeText.text(quantity: 1)),
       );
+
+      expect(seededText.text(), equals(seededText.text()));
     });
 
     test('returns the sentence', () {

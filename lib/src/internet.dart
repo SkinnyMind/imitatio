@@ -223,10 +223,8 @@ class Internet {
         'Maximum allowed number of query parameters is 32',
       );
     }
-    final keys = <String>{};
-    while (keys.length != quantity) {
-      keys.add(Text(seed: seed).word);
-    }
+    final keysSeed = seed != null ? seed! + 69 : null;
+    final keys = Text(seed: keysSeed).words(quantity: quantity);
     final values = Text(seed: seed).words(quantity: quantity);
 
     return Map.fromIterables(keys, values);
@@ -328,8 +326,8 @@ class Internet {
   /// ```
   String ipv4({PortRange? portRange}) {
     final result = StringBuffer();
-    final octets =
-        [for (var i = 0; i < 4; i++) Random(seed).nextInt(256)].join('.');
+    final random = Random(seed);
+    final octets = [for (var i = 0; i < 4; i++) random.nextInt(256)].join('.');
     result.write(octets);
 
     if (portRange != null) {
@@ -346,9 +344,10 @@ class Internet {
   /// Internet().ipv6; // "7ca5:39d3:96ff:4e6e:7448:b16b:e50c:7131"
   /// ```
   String get ipv6 {
+    final random = Random(seed);
     return [
       for (var i = 0; i < 8; i++)
-        Random(seed).nextInt(65536).toRadixString(16).padLeft(4, '0'),
+        random.nextInt(65536).toRadixString(16).padLeft(4, '0'),
     ].join(':');
   }
 

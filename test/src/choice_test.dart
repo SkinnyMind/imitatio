@@ -18,8 +18,8 @@ void main() {
       expect(uniqueResult, uniqueResult.toSet());
 
       expect(
-        seededChoice.choose(items: ['a', 'b', 'c']),
-        equals(seededChoice.choose(items: ['a', 'b', 'c'])),
+        seededChoice.choose(items: ['a', 'b', 'c'], length: 5),
+        equals(seededChoice.choose(items: ['a', 'b', 'c'], length: 5)),
       );
     });
 
