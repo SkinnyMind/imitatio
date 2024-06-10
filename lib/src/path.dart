@@ -10,7 +10,10 @@ class Path {
   ///
   /// [platform] is optional platform (operating system). Possible values
   /// are: `linux`, `macos` or `windows`.
-  Path({String? platform})
+  ///
+  /// [seed] is optional parameter to initialize the internal state of the
+  /// random generator.
+  Path({String? platform, this.seed})
       : platform = platform ?? Platform.operatingSystem,
         _platformHome = _getPlatformHome(platform ?? Platform.operatingSystem),
         _pathSeparator = platform == 'windows' ? r'\' : '/';
@@ -18,6 +21,7 @@ class Path {
   final String platform;
   final String _platformHome;
   final String _pathSeparator;
+  final int? seed;
 
   static String _getPlatformHome(String platform) {
     return switch (platform) {
@@ -55,7 +59,7 @@ class Path {
   /// ```
   String get user {
     final data = IntPersonData.usernames;
-    final user = data[Random().nextInt(data.length)];
+    final user = data[Random(seed).nextInt(data.length)];
     return platform == 'windows'
         ? '$home${user[0].toUpperCase()}${user.substring(1)}'
         : '$home$user';
@@ -69,8 +73,8 @@ class Path {
   /// Path(platform: 'windows').usersFolder; // "C:\Users\Practitioners\Documents"
   /// ```
   String get usersFolder {
-    final folder = IntDevelopmentData
-        .folders[Random().nextInt(IntDevelopmentData.folders.length)];
+    final data = IntDevelopmentData.folders;
+    final folder = data[Random(seed).nextInt(data.length)];
     return '$user$_pathSeparator$folder';
   }
 
@@ -82,10 +86,10 @@ class Path {
   /// Path(platform: 'windows').devDir; // "C:\Users\Badge\Dev\Falcon"
   /// ```
   String get devDir {
-    final random = Random();
+    final random = Random(seed);
     final folder = random.nextBool() ? 'Development' : 'Dev';
-    final stack = IntDevelopmentData.programmingLanguages[
-        random.nextInt(IntDevelopmentData.programmingLanguages.length)];
+    final data = IntDevelopmentData.programmingLanguages;
+    final stack = data[random.nextInt(data.length)];
     return '$user$_pathSeparator$folder$_pathSeparator$stack';
   }
 
@@ -97,8 +101,8 @@ class Path {
   /// Path(platform: 'windows').projectDir; // "C:\Users\Anderson\Development\C\antarctosaurus"
   /// ```
   String get projectDir {
-    final project = IntDevelopmentData
-        .projectNames[Random().nextInt(IntDevelopmentData.projectNames.length)];
+    final data = IntDevelopmentData.projectNames;
+    final project = data[Random(seed).nextInt(data.length)];
     return '$devDir$_pathSeparator$project';
   }
 }

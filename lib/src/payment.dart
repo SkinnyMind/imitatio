@@ -8,7 +8,12 @@ import 'package:imitatio/src/util.dart';
 /// Provides data related to payment.
 class Payment {
   /// Provides data related to payment.
-  const Payment();
+  ///
+  /// [seed] is optional parameter to initialize the internal state of the
+  /// random generator.
+  const Payment({this.seed});
+
+  final int? seed;
 
   /// Returns a random CID code.
   ///
@@ -16,7 +21,7 @@ class Payment {
   /// ```dart
   /// Payment().cid; // "1945"
   /// ```
-  String get cid => (Random().nextInt(9999) + 1).toString().padLeft(4, '0');
+  String get cid => (Random(seed).nextInt(9999) + 1).toString().padLeft(4, '0');
 
   /// Returns a random email of PayPal account.
   ///
@@ -24,7 +29,7 @@ class Payment {
   /// ```dart
   /// Payment().paypal; // "urge2051@outlook.com"
   /// ```
-  String get paypal => const Person().email();
+  String get paypal => Person(seed: seed).email();
 
   /// Returns a random bitcoin address.
   ///
@@ -34,7 +39,7 @@ class Payment {
   /// ```
   String get bitcoinAddress {
     final address = StringBuffer();
-    address.write(Random().nextInt(3) + 1);
+    address.write(Random(seed).nextInt(3) + 1);
     address.write(Rng.randomString(length: 33));
     return address.toString();
   }
@@ -47,7 +52,7 @@ class Payment {
   /// ```
   String get ethereumAddress {
     final chars = '0123456789abcdef';
-    final random = Random();
+    final random = Random(seed);
     final result = StringBuffer('0x');
     for (var i = 0; i < 40; i++) {
       result.write(chars[random.nextInt(chars.length)]);
@@ -63,7 +68,7 @@ class Payment {
   /// ```
   String get creditCardNetwork {
     final data = IntPaymentData.creditCardNetworks;
-    return data[Random().nextInt(data.length)];
+    return data[Random(seed).nextInt(data.length)];
   }
 
   /// Returns a random credit card number.
@@ -77,7 +82,7 @@ class Payment {
   /// Payment().creditCardNumber(cardType: CardType.americanExpress); // "3754 483800 01097"
   /// ```
   String creditCardNumber({CardType cardType = CardType.visa}) {
-    final random = Random();
+    final random = Random(seed);
     var length = 16;
     final result = StringBuffer();
     late final int number;
@@ -120,7 +125,7 @@ class Payment {
   /// Payment().creditCardExpirationDate(min: 22, max: 27); // "11/26"
   /// ```
   String creditCardExpirationDate({int min = 18, int max = 25}) {
-    final random = Random();
+    final random = Random(seed);
     final month = (random.nextInt(12) + 1).toString().padLeft(2, '0');
     final year = random.nextInt(max + 1 - min) + min;
     return '$month/$year';
@@ -132,7 +137,7 @@ class Payment {
   /// ```dart
   /// Payment().cvv; // "420"
   /// ```
-  String get cvv => (Random().nextInt(999) + 1).toString().padLeft(3, '0');
+  String get cvv => (Random(seed).nextInt(999) + 1).toString().padLeft(3, '0');
 
   /// Returns credit card owner.
   ///
@@ -148,7 +153,7 @@ class Payment {
     return (
       card: creditCardNumber(),
       expirationDate: creditCardExpirationDate(),
-      owner: const Person().fullName(gender: gender).toUpperCase(),
+      owner: Person(seed: seed).fullName(gender: gender).toUpperCase(),
     );
   }
 }

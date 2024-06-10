@@ -11,9 +11,13 @@ class Person {
   /// Provides personal data.
   ///
   /// [locale] is optional [Locale] (default is [Locale.en]).
-  const Person({this.locale = Locale.en});
+  ///
+  /// [seed] is optional parameter to initialize the internal state of the
+  /// random generator.
+  const Person({this.locale = Locale.en, this.seed});
 
   final Locale locale;
+  final int? seed;
 
   /// Returns a random name.
   ///
@@ -25,7 +29,7 @@ class Person {
   /// Person().name(gender: Gender.female); // "Kiana"
   /// ```
   String name({Gender? gender}) {
-    final random = Random();
+    final random = Random(seed);
     gender ??= Gender.values[random.nextInt(Gender.values.length)];
     final data = PersonData.locale(locale).names(gender);
     return data[random.nextInt(data.length)];
@@ -40,7 +44,7 @@ class Person {
   /// Person().surname(); // "Weiss"
   /// ```
   String surname({Gender? gender}) {
-    final random = Random();
+    final random = Random(seed);
     gender ??= Gender.values[random.nextInt(Gender.values.length)];
     final data = PersonData.locale(locale).surnames(gender);
     return data[random.nextInt(data.length)];
@@ -58,7 +62,7 @@ class Person {
   /// Person().fullName(reverse: true); // "Livingston Kristofer"
   /// ```
   String fullName({Gender? gender, bool reverse = false}) {
-    gender ??= Gender.values[Random().nextInt(Gender.values.length)];
+    gender ??= Gender.values[Random(seed).nextInt(Gender.values.length)];
     final name = this.name(gender: gender);
     final surname = this.surname(gender: gender);
     return reverse ? '$surname $name' : '$name $surname';
@@ -77,7 +81,7 @@ class Person {
   /// Person().title(titleType: TitleType.academic); // "B.Sc"
   /// ```
   String title({Gender? gender, TitleType? titleType}) {
-    final random = Random();
+    final random = Random(seed);
     gender ??= Gender.values[random.nextInt(Gender.values.length)];
     titleType ??= TitleType.values[random.nextInt(TitleType.values.length)];
     final data = PersonData.locale(locale).titles(
@@ -128,10 +132,10 @@ class Person {
 
     final result = StringBuffer();
     final tags = mask.split('');
-    final random = Random();
+    final random = Random(seed);
+    final data = IntPersonData.usernames;
     for (final tag in tags) {
-      final username = IntPersonData
-          .usernames[random.nextInt(IntPersonData.usernames.length)];
+      final username = data[random.nextInt(data.length)];
       switch (tag) {
         case 'C':
           final capitalized = '${username[0].toUpperCase()}'
@@ -165,7 +169,7 @@ class Person {
   /// ```
   String email({List<String>? domains, bool unique = false}) {
     final data = domains ?? IntInternetData.emailDomains;
-    var domain = data[Random().nextInt(data.length)];
+    var domain = data[Random(seed).nextInt(data.length)];
 
     if (!domain.startsWith('@')) domain = '@$domain';
 
@@ -180,8 +184,10 @@ class Person {
   /// ```dart
   /// Person().genderSymbol; // "♀"
   /// ```
-  String get genderSymbol => IntPersonData
-      .genderSymbols[Random().nextInt(IntPersonData.genderSymbols.length)];
+  String get genderSymbol {
+    final data = IntPersonData.genderSymbols;
+    return data[Random(seed).nextInt(data.length)];
+  }
 
   /// Returns a random ISO/IEC 5218 gender code.
   ///
@@ -192,8 +198,10 @@ class Person {
   /// ```dart
   /// Person().genderCode; // 2
   /// ```
-  int get genderCode => IntPersonData
-      .genderCodes[Random().nextInt(IntPersonData.genderCodes.length)];
+  int get genderCode {
+    final data = IntPersonData.genderCodes;
+    return data[Random(seed).nextInt(data.length)];
+  }
 
   /// Returns a random gender title.
   ///
@@ -203,7 +211,7 @@ class Person {
   /// ```
   String get gender {
     final data = PersonData.locale(locale).genders;
-    return data[Random().nextInt(data.length)];
+    return data[Random(seed).nextInt(data.length)];
   }
 
   /// Returns a random height in meters.
@@ -218,7 +226,7 @@ class Person {
   /// Person().height(min: 1.7, max: 1.8); // "1.71"
   /// ```
   String height({double min = 1.5, double max = 2.0}) {
-    final result = Random().nextDouble() * (max - min) + min;
+    final result = Random(seed).nextDouble() * (max - min) + min;
     return result.toStringAsFixed(2);
   }
 
@@ -234,7 +242,7 @@ class Person {
   /// Person().weight(min: 42, max: 69); // 53
   /// ```
   int weight({int min = 38, int max = 90}) =>
-      Random().nextInt(max + 1 - min) + min;
+      Random(seed).nextInt(max + 1 - min) + min;
 
   /// Returns a random blood type (blood group).
   ///
@@ -242,8 +250,10 @@ class Person {
   /// ```dart
   /// Person().bloodType; // "O-"
   /// ```
-  String get bloodType => IntPersonData
-      .bloodGroups[Random().nextInt(IntPersonData.bloodGroups.length)];
+  String get bloodType {
+    final data = IntPersonData.bloodGroups;
+    return data[Random(seed).nextInt(data.length)];
+  }
 
   /// Returns a random occupation (job).
   ///
@@ -253,7 +263,7 @@ class Person {
   /// ```
   String get occupation {
     final data = PersonData.locale(locale).occupations;
-    return data[Random().nextInt(data.length)];
+    return data[Random(seed).nextInt(data.length)];
   }
 
   /// Returns a random political views.
@@ -264,7 +274,7 @@ class Person {
   /// ```
   String get politicalViews {
     final data = PersonData.locale(locale).politicalViews;
-    return data[Random().nextInt(data.length)];
+    return data[Random(seed).nextInt(data.length)];
   }
 
   /// Returns a random worldview.
@@ -275,7 +285,7 @@ class Person {
   /// ```
   String get worldview {
     final data = PersonData.locale(locale).worldviews;
-    return data[Random().nextInt(data.length)];
+    return data[Random(seed).nextInt(data.length)];
   }
 
   /// Returns a random views on something.
@@ -286,7 +296,7 @@ class Person {
   /// ```
   String get viewsOn {
     final data = PersonData.locale(locale).viewsOn;
-    return data[Random().nextInt(data.length)];
+    return data[Random(seed).nextInt(data.length)];
   }
 
   /// Returns a random nationality.
@@ -298,7 +308,7 @@ class Person {
   /// Person().nationality(); // "Japanese"
   /// ```
   String nationality({Gender? gender}) {
-    final random = Random();
+    final random = Random(seed);
     gender ??= Gender.values[random.nextInt(Gender.values.length)];
     final data = PersonData.locale(locale).nationalities(gender);
     return data[random.nextInt(data.length)];
@@ -312,7 +322,7 @@ class Person {
   /// ```
   String get university {
     final data = PersonData.locale(locale).universities;
-    return data[Random().nextInt(data.length)];
+    return data[Random(seed).nextInt(data.length)];
   }
 
   /// Returns a random academic degree.
@@ -323,7 +333,7 @@ class Person {
   /// ```
   String get academicDegree {
     final data = PersonData.locale(locale).academicDegrees;
-    return data[Random().nextInt(data.length)];
+    return data[Random(seed).nextInt(data.length)];
   }
 
   /// Returns a random language name.
@@ -334,7 +344,7 @@ class Person {
   /// ```
   String get language {
     final data = PersonData.locale(locale).languages;
-    return data[Random().nextInt(data.length)];
+    return data[Random(seed).nextInt(data.length)];
   }
 
   /// Returns a random phone number.
@@ -350,8 +360,8 @@ class Person {
   /// ```
   String phoneNumber({String? mask}) {
     final data = PersonData.locale(locale).telephoneFormats;
-    mask ??= data[Random().nextInt(data.length)];
-    return Rng.customCode(mask: mask);
+    mask ??= data[Random(seed).nextInt(data.length)];
+    return Rng.customCode(mask: mask, seed: seed);
   }
 
   /// Returns a random identifier by mask.
@@ -365,5 +375,6 @@ class Person {
   /// Person().identifier(); // "42-02/40"
   /// Person().identifier(mask: "123#"); // "1235"
   /// ```
-  String identifier({String mask = "##-##/##"}) => Rng.customCode(mask: mask);
+  String identifier({String mask = "##-##/##"}) =>
+      Rng.customCode(mask: mask, seed: seed);
 }

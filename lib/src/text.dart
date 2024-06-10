@@ -9,9 +9,14 @@ class Text {
   /// Provides data related to text.
   ///
   /// [locale] is optional [Locale] (default is [Locale.en]).
-  const Text({this.locale = Locale.en});
+  ///
+  /// [seed] is optional parameter to initialize the internal state of the
+  /// random generator.
+  const Text({this.locale = Locale.en, this.seed});
 
   final Locale locale;
+
+  final int? seed;
 
   /// Returns an alphabet for [locale].
   ///
@@ -35,7 +40,7 @@ class Text {
   /// ```
   String get level {
     final data = TextData.locale(locale).levels;
-    return data[Random().nextInt(data.length)];
+    return data[Random(seed).nextInt(data.length)];
   }
 
   /// Returns the text.
@@ -98,7 +103,7 @@ class Text {
   /// ```
   String get quote {
     final data = TextData.locale(locale).quotes;
-    return data[Random().nextInt(data.length)];
+    return data[Random(seed).nextInt(data.length)];
   }
 
   /// Returns a random color name.
@@ -109,7 +114,7 @@ class Text {
   /// ```
   String get color {
     final data = TextData.locale(locale).colors;
-    return data[Random().nextInt(data.length)];
+    return data[Random(seed).nextInt(data.length)];
   }
 
   /// Returns a random answer.
@@ -120,6 +125,6 @@ class Text {
   /// ```
   String get answer {
     final data = TextData.locale(locale).answers;
-    return data[Random().nextInt(data.length)];
+    return data[Random(seed).nextInt(data.length)];
   }
 }

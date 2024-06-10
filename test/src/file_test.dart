@@ -5,6 +5,8 @@ import 'package:test/test.dart';
 void main() {
   group('File', () {
     const file = File();
+    const seededFile = File(seed: 1);
+
     test('returns file extension', () {
       expect(file.ext(), isNotEmpty);
 
@@ -13,6 +15,8 @@ void main() {
         IntFileData.extensions(type),
         contains(file.ext(fileType: type)),
       );
+
+      expect(seededFile.ext(), equals(seededFile.ext()));
     });
 
     test('returns mime type of provided group', () {
@@ -21,11 +25,15 @@ void main() {
         IntFileData.mimeTypes(type),
         contains(file.mimeType(type: type)),
       );
+
+      expect(seededFile.mimeType(), equals(seededFile.mimeType()));
     });
 
     test('returns size of a file', () {
       final result = file.size(min: 10, max: 10);
       expect(int.parse(result.split(' ').first), 10);
+
+      expect(seededFile.size(), equals(seededFile.size()));
     });
 
     test('returns file name with extension', () {

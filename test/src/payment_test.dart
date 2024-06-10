@@ -5,13 +5,16 @@ import 'package:test/test.dart';
 void main() {
   group('Payment', () {
     const payment = Payment();
+    const seededPayment = Payment(seed: 1);
 
     test('returns CID code', () {
       expect(payment.cid.length, 4);
+      expect(seededPayment.cid, equals(seededPayment.cid));
     });
 
     test('returns paypal account email', () {
       expect(payment.paypal, isNotEmpty);
+      expect(seededPayment.paypal, equals(seededPayment.paypal));
     });
 
     test('returns bitcoin address', () {
@@ -30,6 +33,10 @@ void main() {
       expect(
         IntPaymentData.creditCardNetworks,
         contains(payment.creditCardNetwork),
+      );
+      expect(
+        seededPayment.creditCardNetwork,
+        equals(seededPayment.creditCardNetwork),
       );
     });
 
@@ -51,6 +58,11 @@ void main() {
         );
         expect(result >= 2221 && result <= 5599, true);
       }
+
+      expect(
+        seededPayment.creditCardNumber(),
+        equals(seededPayment.creditCardNumber()),
+      );
     });
 
     test('returns credit card expiration date', () {
@@ -58,10 +70,16 @@ void main() {
         payment.creditCardExpirationDate(min: 22, max: 27).split('/').last,
       );
       expect(year >= 22 && year <= 27, true);
+
+      expect(
+        seededPayment.creditCardExpirationDate(),
+        equals(seededPayment.creditCardExpirationDate()),
+      );
     });
 
     test('returns CVV code', () {
       expect(payment.cvv.length, 3);
+      expect(seededPayment.cvv, equals(seededPayment.cvv));
     });
 
     test('returns credit card owner', () {
@@ -71,6 +89,11 @@ void main() {
       expect(result.expirationDate, isNotEmpty);
       expect(result.owner, isNotEmpty);
       expect(result.owner, result.owner.toUpperCase());
+
+      expect(
+        seededPayment.creditCardOwner(),
+        equals(seededPayment.creditCardOwner()),
+      );
     });
   });
 }

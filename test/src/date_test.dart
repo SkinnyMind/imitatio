@@ -8,11 +8,13 @@ void main() {
     const date = Date();
     const locale = Locale.ru;
     const localeDate = Date(locale: locale);
+    const seededDate = Date(seed: 1);
 
     test('returns date', () {
       final currentYear = DateTime.now().year;
       final result = date.date(start: currentYear);
       expect(int.parse(result.split('-')[0]), currentYear);
+      expect(seededDate.date(), equals(seededDate.date()));
     });
 
     test('returns day of the week', () {
@@ -24,6 +26,11 @@ void main() {
       expect(
         DateData.locale(locale).days(isAbbr: false),
         contains(localeDate.dayOfWeek()),
+      );
+
+      expect(
+        seededDate.dayOfWeek(),
+        equals(seededDate.dayOfWeek()),
       );
     });
 
@@ -43,6 +50,11 @@ void main() {
       final max = 2000;
       final minMaxResult = date.year(min: min, max: max);
       expect((minMaxResult >= min) && (minMaxResult <= max), true);
+
+      expect(
+        seededDate.year(),
+        equals(seededDate.year()),
+      );
     });
 
     test('returns a week number with year', () {
@@ -64,6 +76,11 @@ void main() {
           (int.parse(splitMinMax[0]), int.parse(splitMinMax[1]));
       expect((minMaxYear >= start) && (minMaxYear <= end), true);
       expect((minMaxWeek >= 1) && (minMaxWeek <= 52), true);
+
+      expect(
+        seededDate.weekDate(),
+        equals(seededDate.weekDate()),
+      );
     });
 
     test('returns name of the month', () {
@@ -76,6 +93,11 @@ void main() {
         DateData.locale(locale).months(isAbbr: false),
         contains(localeDate.month()),
       );
+
+      expect(
+        seededDate.month(),
+        equals(seededDate.month()),
+      );
     });
 
     test('returns abbreviated name of the month', () {
@@ -87,6 +109,7 @@ void main() {
 
     test('returns century', () {
       expect(IntDateData.romanNums, contains(date.century));
+      expect(seededDate.century, equals(seededDate.century));
     });
 
     test('returns periodicity', () {
@@ -99,15 +122,22 @@ void main() {
         DateData.locale(locale).periodicities,
         contains(localeDate.periodicity),
       );
+
+      expect(
+        seededDate.periodicity,
+        equals(seededDate.periodicity),
+      );
     });
 
     test('returns day of month', () {
       final result = date.dayOfMonth;
       expect((result >= 1) && (result <= 31), true);
+      expect(seededDate.dayOfMonth, equals(seededDate.dayOfMonth));
     });
 
     test('returns random timezone', () {
       expect(date.timezone(), isNotEmpty);
+      expect(seededDate.timezone(), equals(seededDate.timezone()));
     });
 
     test('returns random timezone for provided region', () {
@@ -120,6 +150,7 @@ void main() {
 
     test('returns GMT offset value', () {
       expect(IntDateData.gmtOffsets, contains(date.gmtOffset));
+      expect(seededDate.gmtOffset, equals(seededDate.gmtOffset));
     });
   });
 }

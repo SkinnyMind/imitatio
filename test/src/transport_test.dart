@@ -5,11 +5,17 @@ import 'package:test/test.dart';
 void main() {
   group('Transport', () {
     const transport = Transport();
+    const seededTransport = Transport(seed: 1);
 
     test('returns manufacturer', () {
       expect(
         IntTransportData.manufacturers,
         contains(transport.manufacturer),
+      );
+
+      expect(
+        seededTransport.manufacturer,
+        equals(seededTransport.manufacturer),
       );
     });
 
@@ -18,6 +24,8 @@ void main() {
         IntTransportData.cars,
         contains(transport.car),
       );
+
+      expect(seededTransport.car, equals(seededTransport.car));
     });
 
     test('returns airplane', () {
@@ -25,12 +33,22 @@ void main() {
         IntTransportData.airplanes,
         contains(transport.airplane),
       );
+
+      expect(
+        seededTransport.airplane,
+        equals(seededTransport.airplane),
+      );
     });
 
     test('returns vehicle registration code', () {
       expect(
         IntTransportData.vrCodes,
         contains(transport.vehicleRegistrationCode),
+      );
+
+      expect(
+        seededTransport.vehicleRegistrationCode,
+        equals(seededTransport.vehicleRegistrationCode),
       );
     });
   });

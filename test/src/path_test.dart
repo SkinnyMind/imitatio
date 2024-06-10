@@ -8,6 +8,7 @@ void main() {
     final linuxPath = Path(platform: 'linux');
     final macosPath = Path(platform: 'macos');
     final windowsPath = Path(platform: 'windows');
+    final seededPath = Path(seed: 1);
 
     test('returns root path', () {
       expect(path.root, '/');
@@ -34,6 +35,8 @@ void main() {
       expect(winPath.length, 3);
       expect(winPath.last, isNotEmpty);
       expect(winPath.last[0], winPath.last[0].toUpperCase());
+
+      expect(seededPath.user, equals(seededPath.user));
     });
 
     test("returns path to user's folders", () {
@@ -49,6 +52,11 @@ void main() {
       expect(
         IntDevelopmentData.folders,
         contains(winPath.last),
+      );
+
+      expect(
+        seededPath.usersFolder,
+        equals(seededPath.usersFolder),
       );
     });
 
@@ -66,6 +74,11 @@ void main() {
         IntDevelopmentData.programmingLanguages,
         contains(winPath.last),
       );
+
+      expect(
+        seededPath.devDir,
+        equals(seededPath.devDir),
+      );
     });
 
     test("returns path to project directory", () {
@@ -81,6 +94,11 @@ void main() {
       expect(
         IntDevelopmentData.projectNames,
         contains(winPath.last),
+      );
+
+      expect(
+        seededPath.projectDir,
+        equals(seededPath.projectDir),
       );
     });
   });

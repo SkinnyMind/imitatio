@@ -8,11 +8,16 @@ void main() {
     const address = Address();
     const locale = Locale.ru;
     const localeAddress = Address(locale: locale);
+    const seededAddress = Address(seed: 1);
 
     test('returns street number', () async {
       final result = address.streetNumber();
       expect((result >= 1) && (result <= 1400), true);
       expect(address.streetNumber(max: 1) == 1, true);
+      expect(
+        seededAddress.streetNumber(),
+        equals(seededAddress.streetNumber()),
+      );
     });
 
     test('returns street name', () async {
@@ -24,6 +29,11 @@ void main() {
       expect(
         AddressData.locale(locale).streets(isSuffix: false),
         contains(localeAddress.streetName),
+      );
+
+      expect(
+        seededAddress.streetName,
+        equals(seededAddress.streetName),
       );
     });
 
@@ -37,10 +47,19 @@ void main() {
         AddressData.locale(locale).streets(isSuffix: true),
         contains(localeAddress.streetSuffix),
       );
+
+      expect(
+        seededAddress.streetSuffix,
+        equals(seededAddress.streetSuffix),
+      );
     });
 
     test('returns full address', () async {
       expect(address.address, isNotEmpty);
+      expect(
+        seededAddress.address,
+        equals(seededAddress.address),
+      );
     });
 
     test('returns state', () async {
@@ -53,11 +72,21 @@ void main() {
         AddressData.locale(locale).states(isAbbr: true),
         contains(localeAddress.state(isAbbr: true)),
       );
+
+      expect(
+        seededAddress.state(),
+        equals(seededAddress.state()),
+      );
     });
 
     test('returns postal code', () async {
       expect(address.postalCode, isNotEmpty);
       expect(localeAddress.postalCode.length, 6);
+
+      expect(
+        seededAddress.postalCode,
+        equals(seededAddress.postalCode),
+      );
     });
 
     test('returns country', () async {
@@ -70,6 +99,11 @@ void main() {
         AddressData.locale(locale).countries,
         contains(localeAddress.country),
       );
+
+      expect(
+        seededAddress.country,
+        equals(seededAddress.country),
+      );
     });
 
     test('returns city', () async {
@@ -81,6 +115,11 @@ void main() {
       expect(
         AddressData.locale(locale).cities,
         contains(localeAddress.city),
+      );
+
+      expect(
+        seededAddress.city,
+        equals(seededAddress.city),
       );
     });
 
@@ -102,12 +141,21 @@ void main() {
         IntAddressData.continentCodes,
         contains(localeAddress.continent(asCode: true)),
       );
+
+      expect(
+        seededAddress.continent(),
+        equals(seededAddress.continent()),
+      );
     });
 
     test('returns calling code', () async {
       expect(
         IntAddressData.callingCodes,
         contains(address.callingCode),
+      );
+      expect(
+        seededAddress.callingCode,
+        equals(seededAddress.callingCode),
       );
     });
   });

@@ -5,11 +5,17 @@ import 'package:test/test.dart';
 void main() {
   group('Development', () {
     const development = Development();
+    const seededDevelopment = Development(seed: 1);
 
     test('returns random software licence', () {
       expect(
         IntDevelopmentData.licenses,
         contains(development.softwareLicense),
+      );
+
+      expect(
+        seededDevelopment.softwareLicense,
+        equals(seededDevelopment.softwareLicense),
       );
     });
 
@@ -23,6 +29,11 @@ void main() {
       expect(major >= 0 && major <= 11, true);
       expect(minor >= 0 && minor <= 11, true);
       expect(patch >= 0 && patch <= 11, true);
+
+      expect(
+        seededDevelopment.version(),
+        equals(seededDevelopment.version()),
+      );
     });
 
     test('returns version number with pre-release', () {
@@ -59,6 +70,10 @@ void main() {
         IntDevelopmentData.programmingLanguages,
         contains(development.programmingLanguage),
       );
+      expect(
+        seededDevelopment.programmingLanguage,
+        equals(seededDevelopment.programmingLanguage),
+      );
     });
 
     test('returns os', () {
@@ -66,10 +81,18 @@ void main() {
         IntDevelopmentData.oses,
         contains(development.os),
       );
+      expect(
+        seededDevelopment.os,
+        equals(seededDevelopment.os),
+      );
     });
 
     test('returns boolean value', () {
       expect(development.boolean, isA<bool>());
+      expect(
+        seededDevelopment.boolean,
+        equals(seededDevelopment.boolean),
+      );
     });
 
     test('returns DSN', () {
@@ -83,12 +106,21 @@ void main() {
       final withType = development.dsn(dsnType: type);
       expect(withType.startsWith('${type.scheme}://'), true);
       expect(withType.endsWith(':${type.port}'), true);
+
+      expect(
+        seededDevelopment.dsn(),
+        equals(seededDevelopment.dsn()),
+      );
     });
 
     test('returns system quality attribute', () {
       expect(
         IntDevelopmentData.systemQualityAttributes,
         contains(development.systemQualityAttribute),
+      );
+      expect(
+        seededDevelopment.systemQualityAttribute,
+        equals(seededDevelopment.systemQualityAttribute),
       );
     });
   });

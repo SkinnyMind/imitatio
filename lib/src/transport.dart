@@ -5,7 +5,12 @@ import 'package:imitatio/src/datasets/international/transport.dart';
 /// Provides data related to transports.
 class Transport {
   /// Provides data related to transports.
-  const Transport();
+  ///
+  /// [seed] is optional parameter to initialize the internal state of the
+  /// random generator.
+  const Transport({this.seed});
+
+  final int? seed;
 
   /// Returns a random vehicle manufacturer.
   ///
@@ -15,7 +20,7 @@ class Transport {
   /// ```
   String get manufacturer {
     final data = IntTransportData.manufacturers;
-    return data[Random().nextInt(data.length)];
+    return data[Random(seed).nextInt(data.length)];
   }
 
   /// Returns a random vehicle.
@@ -26,7 +31,7 @@ class Transport {
   /// ```
   String get car {
     final data = IntTransportData.cars;
-    return data[Random().nextInt(data.length)];
+    return data[Random(seed).nextInt(data.length)];
   }
 
   /// Returns an airplane model.
@@ -37,7 +42,7 @@ class Transport {
   /// ```
   String get airplane {
     final data = IntTransportData.airplanes;
-    return data[Random().nextInt(data.length)];
+    return data[Random(seed).nextInt(data.length)];
   }
 
   /// Returns vehicle registration code.
@@ -48,6 +53,6 @@ class Transport {
   /// ```
   String get vehicleRegistrationCode {
     final data = IntTransportData.vrCodes;
-    return data[Random().nextInt(data.length)];
+    return data[Random(seed).nextInt(data.length)];
   }
 }
