@@ -8,7 +8,12 @@ import 'package:imitatio/src/util.dart';
 /// Provides data related to codes.
 class Code {
   /// Provides data related to codes.
-  const Code();
+  ///
+  /// [seed] is optional parameter to initialize the internal state of the
+  /// random generator.
+  const Code({this.seed});
+
+  final int? seed;
 
   /// Returns a random locale code (MS-LCID).
   ///
@@ -16,8 +21,10 @@ class Code {
   /// ```dart
   /// Code().localeCode; // "en"
   /// ```
-  String get localeCode =>
-      IntCodeData.localeCodes[Random().nextInt(IntCodeData.localeCodes.length)];
+  String get localeCode {
+    final data = IntCodeData.localeCodes;
+    return data[Random(seed).nextInt(data.length)];
+  }
 
   /// Returns a random IMEI.
   ///
@@ -26,7 +33,7 @@ class Code {
   /// Code().imei; // "358031069395385"
   /// ```
   String get imei {
-    final random = Random();
+    final random = Random(seed);
     final number = StringBuffer();
     number.write(
       IntCodeData.imeiTacs[random.nextInt(IntCodeData.imeiTacs.length)],
@@ -49,7 +56,7 @@ class Code {
   /// Code().pin(mask: "33##"); // "3373"
   ///
   /// ```
-  String pin({String mask = "####"}) => Rng.customCode(mask: mask);
+  String pin({String mask = "####"}) => Rng.customCode(mask: mask, seed: seed);
 
   /// Returns a random ISSN.
   ///
@@ -63,7 +70,8 @@ class Code {
   /// Code().issn(); // "9032-7804"
   /// Code().issn(mask: "##-##-####"); // "75-19-3500"
   /// ```
-  String issn({String mask = "####-####"}) => Rng.customCode(mask: mask);
+  String issn({String mask = "####-####"}) =>
+      Rng.customCode(mask: mask, seed: seed);
 
   /// Returns ISBN.
   ///
@@ -76,8 +84,10 @@ class Code {
   /// ```
   String isbn({ISBNFormat? format}) {
     final mask = format?.mask ??
-        (Random().nextBool() ? ISBNFormat.isbn10.mask : ISBNFormat.isbn13.mask);
-    return Rng.customCode(mask: mask);
+        (Random(seed).nextBool()
+            ? ISBNFormat.isbn10.mask
+            : ISBNFormat.isbn13.mask);
+    return Rng.customCode(mask: mask, seed: seed);
   }
 
   /// Returns EAN.
@@ -91,7 +101,7 @@ class Code {
   /// ```
   String ean({EANFormat? format}) {
     final mask = format?.mask ??
-        (Random().nextBool() ? EANFormat.ean8.mask : EANFormat.ean13.mask);
-    return Rng.customCode(mask: mask);
+        (Random(seed).nextBool() ? EANFormat.ean8.mask : EANFormat.ean13.mask);
+    return Rng.customCode(mask: mask, seed: seed);
   }
 }

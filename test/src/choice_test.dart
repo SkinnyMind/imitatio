@@ -4,6 +4,8 @@ import 'package:test/test.dart';
 void main() {
   group('Choice', () {
     const choice = Choice();
+    const seededChoice = Choice(seed: 1);
+
     test('randomly chooses from provided list', () {
       expect(choice.choose(items: ['a', 'b', 'c']).length, 1);
       expect(choice.choose(items: ['a', 'b', 'c'], length: 5).length, 5);
@@ -14,6 +16,11 @@ void main() {
       );
       expect(uniqueResult.length, 4);
       expect(uniqueResult, uniqueResult.toSet());
+
+      expect(
+        seededChoice.choose(items: ['a', 'b', 'c']),
+        equals(seededChoice.choose(items: ['a', 'b', 'c'])),
+      );
     });
 
     test('throws when trying to choose with invalid length', () {

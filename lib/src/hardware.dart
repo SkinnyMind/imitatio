@@ -5,7 +5,12 @@ import 'package:imitatio/src/datasets/international/hardware.dart';
 /// Provides data related to hardware.
 class Hardware {
   /// Provides data related to hardware.
-  const Hardware();
+  ///
+  /// [seed] is optional parameter to initialize the internal state of the
+  /// random generator.
+  const Hardware({this.seed});
+
+  final int? seed;
 
   /// Returns a random screen resolution.
   ///
@@ -13,8 +18,10 @@ class Hardware {
   /// ```dart
   /// Hardware().resolution; // "1280x800"
   /// ```
-  String get resolution => IntHardwareData
-      .resolutions[Random().nextInt(IntHardwareData.resolutions.length)];
+  String get resolution {
+    final data = IntHardwareData.resolutions;
+    return data[Random(seed).nextInt(data.length)];
+  }
 
   /// Returns a random size of screen in inches.
   ///
@@ -22,8 +29,10 @@ class Hardware {
   /// ```dart
   /// Hardware().screenSize; // "13.3″"
   /// ```
-  String get screenSize => IntHardwareData
-      .screenSizes[Random().nextInt(IntHardwareData.screenSizes.length)];
+  String get screenSize {
+    final data = IntHardwareData.screenSizes;
+    return data[Random(seed).nextInt(data.length)];
+  }
 
   /// Returns a random CPU name.
   ///
@@ -31,8 +40,10 @@ class Hardware {
   /// ```dart
   /// Hardware().cpu; // "AMD Ryzen™ Threadripper™"
   /// ```
-  String get cpu =>
-      IntHardwareData.cpus[Random().nextInt(IntHardwareData.cpus.length)];
+  String get cpu {
+    final data = IntHardwareData.cpus;
+    return data[Random(seed).nextInt(data.length)];
+  }
 
   /// Returns a random frequency of CPU.
   ///
@@ -41,7 +52,7 @@ class Hardware {
   /// Hardware().cpuFrequency; // "3.7GHz"
   /// ```
   String get cpuFrequency {
-    final random = Random();
+    final random = Random(seed);
     final frequency =
         (random.nextInt(4) + 1 + random.nextDouble()).toStringAsFixed(1);
     return '${frequency}GHz';
@@ -53,8 +64,10 @@ class Hardware {
   /// ```dart
   /// Hardware().generation; // "4th Generation"
   /// ```
-  String get generation => IntHardwareData
-      .generations[Random().nextInt(IntHardwareData.generations.length)];
+  String get generation {
+    final data = IntHardwareData.generations;
+    return data[Random(seed).nextInt(data.length)];
+  }
 
   /// Returns a random CPU code name.
   ///
@@ -62,8 +75,10 @@ class Hardware {
   /// ```dart
   /// Hardware().cpuCodeName; // "Devil's Canyon"
   /// ```
-  String get cpuCodeName => IntHardwareData
-      .cpuCodeNames[Random().nextInt(IntHardwareData.cpuCodeNames.length)];
+  String get cpuCodeName {
+    final data = IntHardwareData.cpuCodeNames;
+    return data[Random(seed).nextInt(data.length)];
+  }
 
   /// Returns a random RAM type.
   ///
@@ -71,8 +86,10 @@ class Hardware {
   /// ```dart
   /// Hardware().ramType; // "DDR2"
   /// ```
-  String get ramType => IntHardwareData
-      .ramTypes[Random().nextInt(IntHardwareData.ramTypes.length)];
+  String get ramType {
+    final data = IntHardwareData.ramTypes;
+    return data[Random(seed).nextInt(data.length)];
+  }
 
   /// Returns a random RAM size.
   ///
@@ -80,8 +97,10 @@ class Hardware {
   /// ```dart
   /// Hardware().ramSize; // "64GB"
   /// ```
-  String get ramSize => IntHardwareData
-      .ramSizes[Random().nextInt(IntHardwareData.ramSizes.length)];
+  String get ramSize {
+    final data = IntHardwareData.ramSizes;
+    return data[Random(seed).nextInt(data.length)];
+  }
 
   /// Returns a random type of disk.
   ///
@@ -90,7 +109,7 @@ class Hardware {
   /// Hardware().ssdOrHdd; // "Seagate 256GB HDD"
   /// ```
   String get ssdOrHdd {
-    final random = Random();
+    final random = Random(seed);
     final manufacturer = IntHardwareData.hddSsdManufacturers[
         random.nextInt(IntHardwareData.hddSsdManufacturers.length)];
     final capacity = IntHardwareData
@@ -104,8 +123,10 @@ class Hardware {
   /// ```dart
   /// Hardware().graphics; // "Intel® HD Graphics 620"
   /// ```
-  String get graphics => IntHardwareData
-      .graphics[Random().nextInt(IntHardwareData.graphics.length)];
+  String get graphics {
+    final data = IntHardwareData.graphics;
+    return data[Random(seed).nextInt(data.length)];
+  }
 
   /// Returns a random manufacturer.
   ///
@@ -113,8 +134,10 @@ class Hardware {
   /// ```dart
   /// Hardware().manufacturer; // "Samsung"
   /// ```
-  String get manufacturer => IntHardwareData
-      .manufacturers[Random().nextInt(IntHardwareData.manufacturers.length)];
+  String get manufacturer {
+    final data = IntHardwareData.manufacturers;
+    return data[Random(seed).nextInt(data.length)];
+  }
 
   /// Returns a random phone model.
   ///
@@ -122,6 +145,8 @@ class Hardware {
   /// ```dart
   /// Hardware().phoneModel; // "iPhone SE"
   /// ```
-  String get phoneModel => IntHardwareData
-      .phoneModels[Random().nextInt(IntHardwareData.phoneModels.length)];
+  String get phoneModel {
+    final data = IntHardwareData.phoneModels;
+    return data[Random(seed).nextInt(data.length)];
+  }
 }

@@ -7,6 +7,7 @@ void main() {
     const text = Text();
     const locale = Locale.ru;
     const localeText = Text(locale: locale);
+    const seededText = Text(seed: 1);
 
     test('returns list of words', () {
       expect(text.words().length, 5);
@@ -53,6 +54,11 @@ void main() {
         TextData.locale(locale).levels,
         contains(localeText.level),
       );
+
+      expect(
+        seededText.level,
+        equals(seededText.level),
+      );
     });
 
     test('returns the text', () {
@@ -98,6 +104,8 @@ void main() {
         TextData.locale(locale).quotes,
         contains(localeText.quote),
       );
+
+      expect(seededText.quote, equals(seededText.quote));
     });
 
     test('returns a color name', () {
@@ -110,6 +118,8 @@ void main() {
         TextData.locale(locale).colors,
         contains(localeText.color),
       );
+
+      expect(seededText.color, equals(seededText.color));
     });
 
     test('returns an answer', () {
@@ -122,6 +132,8 @@ void main() {
         TextData.locale(locale).answers,
         contains(localeText.answer),
       );
+
+      expect(seededText.answer, equals(seededText.answer));
     });
   });
 }

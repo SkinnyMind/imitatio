@@ -8,6 +8,7 @@ void main() {
     const person = Person();
     const locale = Locale.ru;
     const localePerson = Person(locale: locale);
+    const seededPerson = Person(seed: 1);
 
     test('returns name', () {
       expect(person.name(), isNotEmpty);
@@ -18,6 +19,11 @@ void main() {
           contains(localePerson.name(gender: gender)),
         );
       }
+
+      expect(
+        seededPerson.name(),
+        equals(seededPerson.name()),
+      );
     });
 
     test('returns surname', () {
@@ -29,6 +35,11 @@ void main() {
           contains(localePerson.surname(gender: gender)),
         );
       }
+
+      expect(
+        seededPerson.surname(),
+        equals(seededPerson.surname()),
+      );
     });
 
     test('returns full name', () {
@@ -41,6 +52,11 @@ void main() {
       expect(reversed.length, 2);
       expect(reversed[0], isNotEmpty);
       expect(reversed[1], isNotEmpty);
+
+      expect(
+        seededPerson.fullName(),
+        equals(seededPerson.fullName()),
+      );
     });
 
     test('returns title', () {
@@ -58,6 +74,11 @@ void main() {
         );
         expect(data, contains(result));
       }
+
+      expect(
+        seededPerson.title(),
+        equals(seededPerson.title()),
+      );
     });
 
     test('returns username', () {
@@ -85,6 +106,11 @@ void main() {
         person.username(digitsMin: 10, digitsMax: 20).split('_').last,
       );
       expect(digitsRange >= 10 && digitsRange <= 20, true);
+
+      expect(
+        seededPerson.username(),
+        equals(seededPerson.username()),
+      );
     });
 
     test('throws when trying to get username with invalid mask', () {
@@ -109,6 +135,11 @@ void main() {
         generated.add(email.split('@').first);
       }
       expect(generated.length, count);
+
+      expect(
+        seededPerson.email(),
+        equals(seededPerson.email()),
+      );
     });
 
     test('returns gender symbol', () {
@@ -116,12 +147,20 @@ void main() {
         IntPersonData.genderSymbols,
         contains(person.genderSymbol),
       );
+      expect(
+        seededPerson.genderSymbol,
+        equals(seededPerson.genderSymbol),
+      );
     });
 
     test('returns gender code', () {
       expect(
         IntPersonData.genderCodes,
         contains(person.genderCode),
+      );
+      expect(
+        seededPerson.genderCode,
+        equals(seededPerson.genderCode),
       );
     });
 
@@ -131,6 +170,11 @@ void main() {
       expect(
         PersonData.locale(locale).genders,
         contains(localePerson.gender),
+      );
+
+      expect(
+        seededPerson.gender,
+        equals(seededPerson.gender),
       );
     });
 
@@ -142,6 +186,11 @@ void main() {
       final max = 1.8;
       final minMaxResult = double.parse(person.height(min: min, max: max));
       expect((minMaxResult >= min) && (minMaxResult <= max), true);
+
+      expect(
+        seededPerson.height(),
+        equals(seededPerson.height()),
+      );
     });
 
     test('returns random weight in kg', () {
@@ -152,12 +201,21 @@ void main() {
       final max = 69;
       final minMaxResult = person.weight(min: min, max: max);
       expect((minMaxResult >= min) && (minMaxResult <= max), true);
+
+      expect(
+        seededPerson.weight(),
+        equals(seededPerson.weight()),
+      );
     });
 
     test('returns random blood type', () {
       expect(
         IntPersonData.bloodGroups,
         contains(person.bloodType),
+      );
+      expect(
+        seededPerson.bloodType,
+        equals(seededPerson.bloodType),
       );
     });
 
@@ -168,6 +226,11 @@ void main() {
         PersonData.locale(locale).occupations,
         contains(localePerson.occupation),
       );
+
+      expect(
+        seededPerson.occupation,
+        equals(seededPerson.occupation),
+      );
     });
 
     test('returns political views', () {
@@ -176,6 +239,11 @@ void main() {
       expect(
         PersonData.locale(locale).politicalViews,
         contains(localePerson.politicalViews),
+      );
+
+      expect(
+        seededPerson.politicalViews,
+        equals(seededPerson.politicalViews),
       );
     });
 
@@ -186,6 +254,11 @@ void main() {
         PersonData.locale(locale).worldviews,
         contains(localePerson.worldview),
       );
+
+      expect(
+        seededPerson.worldview,
+        equals(seededPerson.worldview),
+      );
     });
 
     test('returns views on something', () {
@@ -194,6 +267,11 @@ void main() {
       expect(
         PersonData.locale(locale).viewsOn,
         contains(localePerson.viewsOn),
+      );
+
+      expect(
+        seededPerson.viewsOn,
+        equals(seededPerson.viewsOn),
       );
     });
 
@@ -206,6 +284,11 @@ void main() {
           contains(localePerson.nationality(gender: gender)),
         );
       }
+
+      expect(
+        seededPerson.nationality(),
+        equals(seededPerson.nationality()),
+      );
     });
 
     test('returns university', () {
@@ -214,6 +297,11 @@ void main() {
       expect(
         PersonData.locale(locale).universities,
         contains(localePerson.university),
+      );
+
+      expect(
+        seededPerson.university,
+        equals(seededPerson.university),
       );
     });
 
@@ -224,6 +312,11 @@ void main() {
         PersonData.locale(locale).academicDegrees,
         contains(localePerson.academicDegree),
       );
+
+      expect(
+        seededPerson.academicDegree,
+        equals(seededPerson.academicDegree),
+      );
     });
 
     test('returns language name', () {
@@ -233,6 +326,11 @@ void main() {
         PersonData.locale(locale).languages,
         contains(localePerson.language),
       );
+
+      expect(
+        seededPerson.language,
+        equals(seededPerson.language),
+      );
     });
 
     test('returns phone number', () {
@@ -241,6 +339,11 @@ void main() {
       final result = person.phoneNumber(mask: "123#");
       expect(result, startsWith("123"));
       expect(result.length, 4);
+
+      expect(
+        seededPerson.phoneNumber(),
+        equals(seededPerson.phoneNumber()),
+      );
     });
 
     test('returns identifier by mask', () {
@@ -249,6 +352,11 @@ void main() {
       final result = person.identifier(mask: "123#");
       expect(result, startsWith("123"));
       expect(result.length, 4);
+
+      expect(
+        seededPerson.identifier(),
+        equals(seededPerson.identifier()),
+      );
     });
   });
 }

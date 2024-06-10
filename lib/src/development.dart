@@ -6,7 +6,12 @@ import 'package:imitatio/src/datasets/international/development.dart';
 /// Provides data related to the development.
 class Development {
   /// Provides data related to the development.
-  const Development();
+  ///
+  /// [seed] is optional parameter to initialize the internal state of the
+  /// random generator.
+  const Development({this.seed});
+
+  final int? seed;
 
   /// Returns a random software license.
   ///
@@ -15,8 +20,8 @@ class Development {
   /// Development().softwareLicense; // "MIT License (MIT)"
   /// ```
   String get softwareLicense {
-    return IntDevelopmentData
-        .licenses[Random().nextInt(IntDevelopmentData.licenses.length)];
+    final data = IntDevelopmentData.licenses;
+    return data[Random(seed).nextInt(data.length)];
   }
 
   /// Returns version number.
@@ -36,7 +41,7 @@ class Development {
     late final int minor;
     late final int patch;
 
-    final random = Random();
+    final random = Random(seed);
 
     if (calVer) {
       major = random.nextInt(3) + 2020;
@@ -52,8 +57,8 @@ class Development {
 
     if (preRelease) {
       const suffixes = ['alpha', 'beta', 'rc'];
-      final suffix = suffixes[Random().nextInt(suffixes.length)];
-      final number = Random().nextInt(11) + 1;
+      final suffix = suffixes[random.nextInt(suffixes.length)];
+      final number = random.nextInt(11) + 1;
       version = '$version-$suffix.$number';
     }
 
@@ -67,8 +72,8 @@ class Development {
   /// Development().programmingLanguage; // "Dart"
   /// ```
   String get programmingLanguage {
-    return IntDevelopmentData.programmingLanguages[
-        Random().nextInt(IntDevelopmentData.programmingLanguages.length)];
+    final data = IntDevelopmentData.programmingLanguages;
+    return data[Random(seed).nextInt(data.length)];
   }
 
   /// Returns a random operating system or distributive name.
@@ -79,7 +84,7 @@ class Development {
   /// ```
   String get os {
     final data = IntDevelopmentData.oses;
-    return data[Random().nextInt(data.length)];
+    return data[Random(seed).nextInt(data.length)];
   }
 
   /// Returns a random boolean value.
@@ -88,7 +93,7 @@ class Development {
   /// ```dart
   /// Development().boolean; // true
   /// ```
-  bool get boolean => Random().nextBool();
+  bool get boolean => Random(seed).nextBool();
 
   /// Returns a random DSN (Data Source Name).
   ///
@@ -110,12 +115,12 @@ class Development {
     TLDType? tldType,
     List<String>? subdomains,
   }) {
-    final hostname = const Internet().hostname(
+    final hostname = Internet(seed: seed).hostname(
       tldType: tldType,
       subdomains: subdomains,
     );
     final dsn =
-        dsnType ?? DSNType.values[Random().nextInt(DSNType.values.length)];
+        dsnType ?? DSNType.values[Random(seed).nextInt(DSNType.values.length)];
 
     return '${dsn.scheme}://$hostname:${dsn.port}';
   }
@@ -131,9 +136,10 @@ class Development {
   /// ```dart
   /// Development().systemQualityAttribute; // "configurability"
   /// ```
-  String get systemQualityAttribute =>
-      IntDevelopmentData.systemQualityAttributes[
-          Random().nextInt(IntDevelopmentData.systemQualityAttributes.length)];
+  String get systemQualityAttribute {
+    final data = IntDevelopmentData.systemQualityAttributes;
+    return data[Random(seed).nextInt(data.length)];
+  }
 
   /// Returns a random system quality attribute.
   ///

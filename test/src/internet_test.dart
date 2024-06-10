@@ -6,6 +6,7 @@ import 'package:test/test.dart';
 void main() {
   group('Internet', () {
     const internet = Internet();
+    const seededInternet = Internet(seed: 1);
 
     test('returns hostname', () {
       expect(internet.hostname().split('.').length, 2);
@@ -14,12 +15,22 @@ void main() {
       final hostname = internet.hostname(subdomains: subdomains).split('.');
       expect(hostname.length, 3);
       expect(subdomains, contains(hostname.first));
+
+      expect(
+        seededInternet.hostname(),
+        equals(seededInternet.hostname()),
+      );
     });
 
     test('returns content type', () {
       expect(
         internet.contentType(),
         startsWith('Content-Type:'),
+      );
+
+      expect(
+        seededInternet.contentType(),
+        equals(seededInternet.contentType()),
       );
     });
 
@@ -36,11 +47,20 @@ void main() {
         IntInternetData.httpStatusMessages,
         contains(internet.httpStatusMessage),
       );
+      expect(
+        seededInternet.httpStatusMessage,
+        equals(seededInternet.httpStatusMessage),
+      );
     });
 
     test('returns http status code', () {
       final result = internet.httpStatusCode;
       expect(result >= 100 && result <= 511, true);
+
+      expect(
+        seededInternet.httpStatusCode,
+        equals(seededInternet.httpStatusCode),
+      );
     });
 
     test('returns http method', () {
@@ -48,10 +68,18 @@ void main() {
         IntInternetData.httpMethods,
         contains(internet.httpMethod),
       );
+      expect(
+        seededInternet.httpMethod,
+        equals(seededInternet.httpMethod),
+      );
     });
 
     test('returns emoji', () {
       expect(IntInternetData.emojis, contains(internet.emoji));
+      expect(
+        seededInternet.emoji,
+        equals(seededInternet.emoji),
+      );
     });
 
     test('returns list of hashtags', () {
@@ -108,10 +136,19 @@ void main() {
         IntInternetData.tlds(type),
         contains(internet.topLevelDomain(type: type)),
       );
+
+      expect(
+        seededInternet.topLevelDomain(),
+        equals(seededInternet.topLevelDomain()),
+      );
     });
 
     test('returns user agent', () {
       expect(IntInternetData.userAgents, contains(internet.userAgent));
+      expect(
+        seededInternet.userAgent,
+        equals(seededInternet.userAgent),
+      );
     });
 
     test('returns slug', () {
@@ -130,6 +167,11 @@ void main() {
         final result = internet.port(range: range);
         expect(result >= range.min && result <= range.max, true);
       }
+
+      expect(
+        seededInternet.port(),
+        equals(seededInternet.port()),
+      );
     });
 
     test('returns URL', () {
@@ -149,6 +191,11 @@ void main() {
         internet.url(portRange: range).split(':').last.replaceFirst('/', ''),
       );
       expect(port >= range.min && port <= range.max, true);
+
+      expect(
+        seededInternet.url(),
+        equals(seededInternet.url()),
+      );
     });
 
     test('returns URI', () {
@@ -177,12 +224,22 @@ void main() {
       final port =
           int.parse(internet.ipv4(portRange: PortRange.all).split(':').last);
       expect(port >= PortRange.all.min && port <= PortRange.all.max, true);
+
+      expect(
+        seededInternet.ipv4(),
+        equals(seededInternet.ipv4()),
+      );
     });
 
     test('returns an IPv6 address', () {
       final result = internet.ipv6;
       expect(RegExp('[0-9a-fA-F]{1,4}').hasMatch(result), true);
       expect(result.split(':').length, 8);
+
+      expect(
+        seededInternet.ipv6,
+        equals(seededInternet.ipv6),
+      );
     });
 
     test('returns a mac address', () {
@@ -191,10 +248,19 @@ void main() {
             .hasMatch(internet.macAddress),
         true,
       );
+
+      expect(
+        seededInternet.macAddress,
+        equals(seededInternet.macAddress),
+      );
     });
 
     test('returns a public DNS', () {
       expect(IntInternetData.publicDNSes, contains(internet.publicDNS));
+      expect(
+        seededInternet.publicDNS,
+        equals(seededInternet.publicDNS),
+      );
     });
   });
 }

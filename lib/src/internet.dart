@@ -7,7 +7,12 @@ import 'package:imitatio/src/datasets/international/person.dart';
 /// Provides data related to internet.
 class Internet {
   /// Provides data related to internet.
-  const Internet();
+  ///
+  /// /// [seed] is optional parameter to initialize the internal state of the
+  /// random generator.
+  const Internet({this.seed});
+
+  final int? seed;
 
   /// Returns a random HTTP content type.
   ///
@@ -19,7 +24,7 @@ class Internet {
   /// Internet().contentType(mimeType: MimeType.text); // "Content-Type: text/vnd.debian.copyright"
   /// ```
   String contentType({MimeType? mimeType}) {
-    final format = const File().mimeType(type: mimeType);
+    final format = File(seed: seed).mimeType(type: mimeType);
     return 'Content-Type: $format';
   }
 
@@ -30,8 +35,8 @@ class Internet {
   /// Internet().httpStatusMessage; // "408 Request Timeout"
   /// ```
   String get httpStatusMessage {
-    return IntInternetData.httpStatusMessages[
-        Random().nextInt(IntInternetData.httpStatusMessages.length)];
+    final data = IntInternetData.httpStatusMessages;
+    return data[Random(seed).nextInt(data.length)];
   }
 
   /// Returns a random HTTP status code.
@@ -41,8 +46,8 @@ class Internet {
   /// Internet().httpStatusCode; // 202
   /// ```
   int get httpStatusCode {
-    return IntInternetData.httpStatusCodes[
-        Random().nextInt(IntInternetData.httpStatusCodes.length)];
+    final data = IntInternetData.httpStatusCodes;
+    return data[Random(seed).nextInt(data.length)];
   }
 
   /// Returns a random HTTP method.
@@ -52,8 +57,8 @@ class Internet {
   /// Internet().httpMethod; // "CONNECT"
   /// ```
   String get httpMethod {
-    return IntInternetData
-        .httpMethods[Random().nextInt(IntInternetData.httpMethods.length)];
+    final data = IntInternetData.httpMethods;
+    return data[Random(seed).nextInt(data.length)];
   }
 
   /// Returns a random emoji shortcut code.
@@ -63,8 +68,8 @@ class Internet {
   /// Internet().emoji; // ":congratulations:"
   /// ```
   String get emoji {
-    return IntInternetData
-        .emojis[Random().nextInt(IntInternetData.emojis.length)];
+    final data = IntInternetData.emojis;
+    return data[Random(seed).nextInt(data.length)];
   }
 
   /// Returns a list of hashtags.
@@ -102,16 +107,17 @@ class Internet {
   /// Internet().hostname(subdomains: ['api', 'admin']); // "admin.ten.gb"
   /// ```
   String hostname({TLDType? tldType, List<String>? subdomains}) {
+    final random = Random(seed);
     final host = StringBuffer();
     final tld =
         tldType != null ? topLevelDomain(type: tldType) : topLevelDomain();
 
     if (subdomains != null) {
-      host.write('${subdomains[Random().nextInt(subdomains.length)]}.');
+      host.write('${subdomains[random.nextInt(subdomains.length)]}.');
     }
 
     host.write(
-      IntPersonData.usernames[Random().nextInt(IntPersonData.usernames.length)],
+      IntPersonData.usernames[random.nextInt(IntPersonData.usernames.length)],
     );
 
     host.write(tld);
@@ -180,7 +186,7 @@ class Internet {
     List<String>? subdomains,
     int? queryParameters,
   }) {
-    final directory = const Date().date(start: 2010).replaceAll('-', '/');
+    final directory = Date(seed: seed).date(start: 2010).replaceAll('-', '/');
     final url = this.url(
       urlScheme: urlScheme,
       tldType: tldType,
@@ -209,7 +215,7 @@ class Internet {
   /// Internet().queryParameters(count: 1); // {"experiments": "risk"}
   /// ```
   Map<String, String> queryParameters({int? count}) {
-    final quantity = count ?? Random().nextInt(10) + 1;
+    final quantity = count ?? Random(seed).nextInt(10) + 1;
     if (quantity > 32) {
       throw ArgumentError.value(
         count,
@@ -219,9 +225,9 @@ class Internet {
     }
     final keys = <String>{};
     while (keys.length != quantity) {
-      keys.add(const Text().word);
+      keys.add(Text(seed: seed).word);
     }
-    final values = const Text().words(quantity: quantity);
+    final values = Text(seed: seed).words(quantity: quantity);
 
     return Map.fromIterables(keys, values);
   }
@@ -253,7 +259,7 @@ class Internet {
   /// ```
   String topLevelDomain({TLDType type = TLDType.cctld}) {
     final data = IntInternetData.tlds(type);
-    return data[Random().nextInt(data.length)];
+    return data[Random(seed).nextInt(data.length)];
   }
 
   /// Returns a random user agent.
@@ -263,8 +269,8 @@ class Internet {
   /// Internet().userAgent; // "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; de) Opera 8.02"
   /// ```
   String get userAgent {
-    return IntInternetData
-        .userAgents[Random().nextInt(IntInternetData.userAgents.length)];
+    final data = IntInternetData.userAgents;
+    return data[Random(seed).nextInt(data.length)];
   }
 
   /// Returns random port.
@@ -277,13 +283,12 @@ class Internet {
   /// Internet().port(range: PortRange.wellKnown); // 59
   /// ```
   int port({PortRange range = PortRange.all}) {
-    return Random().nextInt(range.max - range.min) + range.min;
+    return Random(seed).nextInt(range.max - range.min) + range.min;
   }
 
   /// Returns a random slug of given parts count.
   ///
-  /// [parts] is optional number of slug's parts (default is between 2 and 12,
-  /// minimum is 2, maximum is 12).
+  /// [parts] is optional number of slug's parts (default is between 2 and 12).
   ///
   /// Throws [ArgumentError] if [parts] is lesser than 2 or greater than 12.
   ///
@@ -293,7 +298,7 @@ class Internet {
   /// Internet().slug(parts: 2); // "payable-jokes"
   /// ```
   String slug({int? parts}) {
-    final count = parts ?? Random().nextInt(11) + 2;
+    final count = parts ?? Random(seed).nextInt(11) + 2;
     if (count < 2) {
       throw ArgumentError.value(
         parts,
@@ -309,7 +314,7 @@ class Internet {
       );
     }
 
-    return const Text().words(quantity: count).join('-');
+    return Text(seed: seed).words(quantity: count).join('-');
   }
 
   /// Returns a random IPv4 address.
@@ -324,7 +329,7 @@ class Internet {
   String ipv4({PortRange? portRange}) {
     final result = StringBuffer();
     final octets =
-        [for (var i = 0; i < 4; i++) Random().nextInt(256)].join('.');
+        [for (var i = 0; i < 4; i++) Random(seed).nextInt(256)].join('.');
     result.write(octets);
 
     if (portRange != null) {
@@ -343,7 +348,7 @@ class Internet {
   String get ipv6 {
     return [
       for (var i = 0; i < 8; i++)
-        Random().nextInt(65536).toRadixString(16).padLeft(4, '0'),
+        Random(seed).nextInt(65536).toRadixString(16).padLeft(4, '0'),
     ].join(':');
   }
 
@@ -354,7 +359,7 @@ class Internet {
   /// Internet().macAddress; // "00:16:3e:40:42:ed"
   /// ```
   String get macAddress {
-    final random = Random();
+    final random = Random(seed);
     return [
       0.toRadixString(16).padLeft(2, '0'),
       22.toRadixString(16),
@@ -373,6 +378,6 @@ class Internet {
   /// ```
   String get publicDNS {
     final data = IntInternetData.publicDNSes;
-    return data[Random().nextInt(data.length)];
+    return data[Random(seed).nextInt(data.length)];
   }
 }

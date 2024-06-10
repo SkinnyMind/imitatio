@@ -40,6 +40,9 @@ class Rng {
   ///
   /// [digit] is optional placeholder for digits (default is "#").
   ///
+  /// [seed] is optional parameter to initialize the internal state of the
+  /// random generator.
+  ///
   /// Throws [ArgumentError] if [char] and [digit] are the same.
   ///
   /// Example:
@@ -52,8 +55,9 @@ class Rng {
     String mask = '####',
     String char = '@',
     String digit = '#',
+    int? seed,
   }) {
-    final random = Random();
+    final random = Random(seed);
     final maskCodes = mask.codeUnits;
     final charCode = char.codeUnits.first;
     final digitCode = digit.codeUnits.first;

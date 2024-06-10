@@ -3,7 +3,12 @@ import 'dart:math';
 /// Provider of data related to generating numeric data.
 class Numeric {
   /// Provider of data related to generating numeric data.
-  const Numeric();
+  ///
+  /// [seed] is optional parameter to initialize the internal state of the
+  /// random generator.
+  const Numeric({this.seed});
+
+  final int? seed;
 
   /// Returns a random float number in range [`start`, `end`] (inclusive).
   ///
@@ -25,7 +30,7 @@ class Numeric {
     int precision = 15,
   }) {
     return double.parse(
-      (Random().nextDouble() * (end - start) + start)
+      (Random(seed).nextDouble() * (end - start) + start)
           .toStringAsFixed(precision),
     );
   }
@@ -69,7 +74,7 @@ class Numeric {
   /// Numeric().integerNumber(start: 10, end: 15); // 13
   /// ```
   int integerNumber({int start = -1000, int end = 1000}) {
-    return Random().nextInt(end + 1 - start) + start;
+    return Random(seed).nextInt(end + 1 - start) + start;
   }
 
   /// Returns a list of random integers.

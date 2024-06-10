@@ -1,7 +1,11 @@
 import 'dart:math';
 
 class Choice {
-  const Choice();
+  /// [seed] is optional parameter to initialize the internal state of the
+  /// random generator.
+  const Choice({this.seed});
+
+  final int? seed;
 
   /// Returns a randomly-chosen list of elements from provided [items].
   ///
@@ -45,7 +49,7 @@ class Choice {
 
     final result = <T>[];
     while (result.length < length) {
-      final item = items[Random().nextInt(items.length)];
+      final item = items[Random(seed).nextInt(items.length)];
       if (!unique || (unique && !result.contains(item))) {
         result.add(item);
       }

@@ -10,9 +10,14 @@ class Date {
   /// Provides data related to date and time.
   ///
   /// [locale] is optional [Locale] (default is [Locale.en]).
-  const Date({this.locale = Locale.en});
+  ///
+  /// [seed] is optional parameter to initialize the internal state of the
+  /// random generator.
+  const Date({this.locale = Locale.en, this.seed});
 
   final Locale locale;
+
+  final int? seed;
 
   /// Returns random date.
   ///
@@ -26,7 +31,7 @@ class Date {
   /// Date().date(start: 2022, end: 2022); // "2022-8-20"
   /// ```
   String date({int start = 2000, int? end}) {
-    final random = Random();
+    final random = Random(seed);
     final endYear = end ?? DateTime.now().year;
     final year = random.nextInt(endYear + 1 - start) + start;
     final month = random.nextInt(12) + 1;
@@ -45,7 +50,7 @@ class Date {
   /// ```
   String dayOfWeek({bool isAbbr = false}) {
     final data = DateData.locale(locale).days(isAbbr: isAbbr);
-    return data[Random().nextInt(data.length)];
+    return data[Random(seed).nextInt(data.length)];
   }
 
   /// Returns a random year.
@@ -61,7 +66,7 @@ class Date {
   /// ```
   int year({int min = 1990, int? max}) {
     final maxYear = max ?? DateTime.now().year;
-    return Random().nextInt(maxYear + 1 - min) + min;
+    return Random(seed).nextInt(maxYear + 1 - min) + min;
   }
 
   /// Returns a random week number with year.
@@ -77,7 +82,7 @@ class Date {
   /// ```
   String weekDate({int start = 2017, int? end}) {
     final year = this.year(min: start, max: end);
-    final week = Random().nextInt(52) + 1;
+    final week = Random(seed).nextInt(52) + 1;
     return "$year-W$week";
   }
 
@@ -92,7 +97,7 @@ class Date {
   /// ```
   String month({bool isAbbr = false}) {
     final data = DateData.locale(locale).months(isAbbr: isAbbr);
-    return data[Random().nextInt(data.length)];
+    return data[Random(seed).nextInt(data.length)];
   }
 
   /// Returns a random century.
@@ -102,7 +107,7 @@ class Date {
   /// Date().century; // "XIII"
   /// ```
   String get century =>
-      IntDateData.romanNums[Random().nextInt(IntDateData.romanNums.length)];
+      IntDateData.romanNums[Random(seed).nextInt(IntDateData.romanNums.length)];
 
   /// Returns a random periodicity string.
   ///
@@ -112,7 +117,7 @@ class Date {
   /// ```
   String get periodicity {
     final periodicities = DateData.locale(locale).periodicities;
-    return periodicities[Random().nextInt(periodicities.length)];
+    return periodicities[Random(seed).nextInt(periodicities.length)];
   }
 
   /// Returns a random day of the month, from 1 to 31.
@@ -121,7 +126,7 @@ class Date {
   /// ```dart
   /// Date().dayOfMonth; // 18
   /// ```
-  int get dayOfMonth => Random().nextInt(31) + 1;
+  int get dayOfMonth => Random(seed).nextInt(31) + 1;
 
   /// Returns a random timezone.
   ///
@@ -134,9 +139,10 @@ class Date {
   /// ```
   String timezone({TimezoneRegion? region}) {
     final timezone = region ??
-        TimezoneRegion.values[Random().nextInt(TimezoneRegion.values.length)];
+        TimezoneRegion
+            .values[Random(seed).nextInt(TimezoneRegion.values.length)];
     final data = IntDateData.timezones(timezone);
-    return data[Random().nextInt(data.length)];
+    return data[Random(seed).nextInt(data.length)];
   }
 
   /// Returns a random GMT offset value.
@@ -145,6 +151,8 @@ class Date {
   /// ```dart
   /// Date().gmtOffset; // "UTC +11:00"
   /// ```
-  String get gmtOffset =>
-      IntDateData.gmtOffsets[Random().nextInt(IntDateData.gmtOffsets.length)];
+  String get gmtOffset {
+    final data = IntDateData.gmtOffsets;
+    return data[Random(seed).nextInt(data.length)];
+  }
 }

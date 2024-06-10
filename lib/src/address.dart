@@ -10,9 +10,14 @@ class Address {
   /// Provides data related to geographical location.
   ///
   /// [locale] is optional [Locale] (default is [Locale.en]).
-  const Address({this.locale = Locale.en});
+  ///
+  /// [seed] is optional parameter to initialize the internal state of the
+  /// random generator.
+  const Address({this.locale = Locale.en, this.seed});
 
   final Locale locale;
+
+  final int? seed;
 
   /// Returns a random street number.
   ///
@@ -24,7 +29,7 @@ class Address {
   /// Address().streetNumber(max: 1); // 1
   /// ```
   int streetNumber({int max = 1400}) {
-    return Random().nextInt(max) + 1;
+    return Random(seed).nextInt(max) + 1;
   }
 
   /// Returns a random street name.
@@ -35,7 +40,7 @@ class Address {
   /// ```
   String get streetName {
     final data = AddressData.locale(locale).streets(isSuffix: false);
-    return data[Random().nextInt(data.length)];
+    return data[Random(seed).nextInt(data.length)];
   }
 
   /// Returns a random street suffix.
@@ -46,7 +51,7 @@ class Address {
   /// ```
   String get streetSuffix {
     final data = AddressData.locale(locale).streets(isSuffix: true);
-    return data[Random().nextInt(data.length)];
+    return data[Random(seed).nextInt(data.length)];
   }
 
   /// Returns a random full address.
@@ -75,7 +80,7 @@ class Address {
   /// ```
   String state({bool isAbbr = false}) {
     final data = AddressData.locale(locale).states(isAbbr: isAbbr);
-    return data[Random().nextInt(data.length)];
+    return data[Random(seed).nextInt(data.length)];
   }
 
   /// Returns a postal code for provided [locale].
@@ -86,7 +91,7 @@ class Address {
   /// ```
   String get postalCode {
     final mask = AddressData.locale(locale).postalCodeFormat;
-    return Rng.customCode(mask: mask);
+    return Rng.customCode(mask: mask, seed: seed);
   }
 
   /// Returns a random country.
@@ -97,7 +102,7 @@ class Address {
   /// ```
   String get country {
     final data = AddressData.locale(locale).countries;
-    return data[Random().nextInt(data.length)];
+    return data[Random(seed).nextInt(data.length)];
   }
 
   /// Returns a random city.
@@ -108,7 +113,7 @@ class Address {
   /// ```
   String get city {
     final data = AddressData.locale(locale).cities;
-    return data[Random().nextInt(data.length)];
+    return data[Random(seed).nextInt(data.length)];
   }
 
   /// Returns a random continent name or continent code.
@@ -125,7 +130,7 @@ class Address {
         ? IntAddressData.continentCodes
         : AddressData.locale(locale).continents;
 
-    return data[Random().nextInt(data.length)];
+    return data[Random(seed).nextInt(data.length)];
   }
 
   /// Returns a random calling code of random country.
@@ -136,6 +141,6 @@ class Address {
   /// ```
   String get callingCode {
     final data = IntAddressData.callingCodes;
-    return data[Random().nextInt(data.length)];
+    return data[Random(seed).nextInt(data.length)];
   }
 }
