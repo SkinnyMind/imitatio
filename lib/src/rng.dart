@@ -20,7 +20,7 @@ class Rng {
   /// Rng.randomString(unique: true); // "9a1af951-e5b0-4a8e-bfd6-f64b323551bb"
   /// Rng.randomString(length: 5); // "pNADq"
   /// ```
-  static String randomString({bool unique = false, int? length}) {
+  static String randomString({bool unique = false, int? length, int? seed}) {
     if (unique) return const Uuid().v4();
     final chars =
         'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
@@ -28,7 +28,8 @@ class Rng {
 
     return Util.pickN(
       list: chars,
-      n: length ?? Random().nextInt(113) + 16,
+      n: length ?? Random(seed).nextInt(113) + 16,
+      seed: seed,
     ).join();
   }
 

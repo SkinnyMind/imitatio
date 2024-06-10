@@ -6,6 +6,10 @@ void main() {
     test('returns random string', () {
       final string = Rng.randomString();
       expect(string.length >= 16 && string.length <= 128, true);
+      expect(
+        Rng.randomString(length: 10, seed: 2),
+        equals(Rng.randomString(length: 10, seed: 2)),
+      );
     });
 
     test('returns random string with provided length', () {

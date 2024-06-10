@@ -56,9 +56,13 @@ class Numeric {
     int n = 10,
     int precision = 15,
   }) {
+    final random = Random(seed);
     return [
       for (var i = 0; i < n; i++)
-        floatNumber(start: start, end: end, precision: precision),
+        double.parse(
+          (random.nextDouble() * (end - start) + start)
+              .toStringAsFixed(precision),
+        ),
     ];
   }
 
@@ -91,6 +95,9 @@ class Numeric {
   /// Numeric().integers(n: 3); // [3, 8, 6]
   /// ```
   List<int> integers({int start = 0, int end = 10, int n = 10}) {
-    return [for (var i = 0; i < n; i++) integerNumber(start: start, end: end)];
+    final random = Random(seed);
+    return [
+      for (var i = 0; i < n; i++) random.nextInt(end + 1 - start) + start,
+    ];
   }
 }

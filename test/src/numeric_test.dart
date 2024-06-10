@@ -36,6 +36,11 @@ void main() {
       final n = 3;
       final nResult = numeric.floats(n: n, precision: 3);
       expect(nResult.length, 3);
+
+      expect(
+        seededNumeric.floats(),
+        equals(seededNumeric.floats()),
+      );
     });
 
     test('returns integer number', () {
@@ -63,6 +68,11 @@ void main() {
       final n = 3;
       final nResult = numeric.integers(n: n);
       expect(nResult.length, 3);
+
+      expect(
+        seededNumeric.integers(),
+        equals(seededNumeric.integers()),
+      );
     });
   });
 }

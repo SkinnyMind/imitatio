@@ -53,8 +53,9 @@ class Text {
   /// ```
   String text({int quantity = 5}) {
     final data = TextData.locale(locale).texts;
+    final random = Random(seed);
     return [
-      for (var i = 0; i < quantity; i++) data[Random().nextInt(data.length)],
+      for (var i = 0; i < quantity; i++) data[random.nextInt(data.length)],
     ].join(" ");
   }
 
@@ -84,7 +85,11 @@ class Text {
   /// Text().words(quantity: 2); // ["awarded", "basically"]
   /// ```
   List<String> words({int quantity = 5}) {
-    return Util.pickN(list: TextData.locale(locale).words, n: quantity);
+    return Util.pickN(
+      list: TextData.locale(locale).words,
+      n: quantity,
+      seed: seed,
+    );
   }
 
   /// Returns a random word.

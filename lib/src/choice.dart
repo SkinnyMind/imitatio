@@ -48,8 +48,9 @@ class Choice {
     }
 
     final result = <T>[];
+    final random = Random(seed);
     while (result.length < length) {
-      final item = items[Random(seed).nextInt(items.length)];
+      final item = items[random.nextInt(items.length)];
       if (!unique || (unique && !result.contains(item))) {
         result.add(item);
       }

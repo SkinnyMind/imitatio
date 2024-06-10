@@ -40,7 +40,7 @@ class Payment {
   String get bitcoinAddress {
     final address = StringBuffer();
     address.write(Random(seed).nextInt(3) + 1);
-    address.write(Rng.randomString(length: 33));
+    address.write(Rng.randomString(length: 33, seed: seed));
     return address.toString();
   }
 
