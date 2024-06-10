@@ -19,7 +19,7 @@ class Date {
 
   final int? seed;
 
-  /// Returns random date.
+  /// Returns random date in the YYYY-MM-DD format.
   ///
   /// [start] is optional start year (default is 2000).
   ///
@@ -27,8 +27,8 @@ class Date {
   ///
   /// Example:
   /// ```dart
-  /// Date().date(); // "2015-9-10"
-  /// Date().date(start: 2022, end: 2022); // "2022-8-20"
+  /// Date().date(); // "2015-09-10"
+  /// Date().date(start: 2022, end: 2022); // "2022-08-20"
   /// ```
   String date({int start = 2000, int? end}) {
     final random = Random(seed);
@@ -36,7 +36,9 @@ class Date {
     final year = random.nextInt(endYear + 1 - start) + start;
     final month = random.nextInt(12) + 1;
     final day = random.nextInt(Util.daysInMonth(year: year, month: month)) + 1;
-    return '$year-$month-$day';
+    final paddedMonth = month.toString().padLeft(2, '0');
+    final paddedDay = day.toString().padLeft(2, '0');
+    return '$year-$paddedMonth-$paddedDay';
   }
 
   /// Returns day of the week.
