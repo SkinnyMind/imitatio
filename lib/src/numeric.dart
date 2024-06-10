@@ -19,6 +19,8 @@ class Numeric {
   /// [precision] is optional number of digits to round a number to
   /// (default is 15).
   ///
+  /// Throws a [RangeError] if [start] is greater than [end].
+  ///
   /// Example:
   /// ```dart
   /// Numeric().floatNumber(); // 60.452937498140727
@@ -29,6 +31,14 @@ class Numeric {
     double end = 1000.0,
     int precision = 15,
   }) {
+    if (start > end) {
+      throw RangeError.value(
+        start,
+        'start',
+        'start cannot be greater than end',
+      );
+    }
+
     return double.parse(
       (Random(seed).nextDouble() * (end - start) + start)
           .toStringAsFixed(precision),
@@ -46,6 +56,8 @@ class Numeric {
   /// [precision] is optional number of digits to round a number to
   /// (default is 15).
   ///
+  /// Throws a [RangeError] if [start] is greater than [end].
+  ///
   /// Example:
   /// ```dart
   /// Numeric().floats(n: 3, precision: 3); // [0.896, 0.355, 0.579]
@@ -56,6 +68,14 @@ class Numeric {
     int n = 10,
     int precision = 15,
   }) {
+    if (start > end) {
+      throw RangeError.value(
+        start,
+        'start',
+        'start cannot be greater than end',
+      );
+    }
+
     final random = Random(seed);
     return [
       for (var i = 0; i < n; i++)
@@ -66,11 +86,13 @@ class Numeric {
     ];
   }
 
-  /// Returns  a random integer in range [`start`, `end`] (inclusive).
+  /// Returns  a random integer in range `[start, end]` (inclusive).
   ///
   /// [start] is optional range start value (default is -1000).
   ///
   /// [end] is optional range end value (default is 1000).
+  ///
+  /// Throws a [RangeError] if [start] is greater than [end].
   ///
   /// Example:
   /// ```dart
@@ -78,6 +100,14 @@ class Numeric {
   /// Numeric().integerNumber(start: 10, end: 15); // 13
   /// ```
   int integerNumber({int start = -1000, int end = 1000}) {
+    if (start > end) {
+      throw RangeError.value(
+        start,
+        'start',
+        'start cannot be greater than end',
+      );
+    }
+
     return Random(seed).nextInt(end + 1 - start) + start;
   }
 
@@ -89,12 +119,22 @@ class Numeric {
   ///
   /// [n] is length of the list (default is 10).
   ///
+  /// Throws a [RangeError] if [start] is greater than [end].
+  ///
   /// Example:
   /// ```dart
   /// Numeric().integers(); // [2, 9, 5, 4, 8, 5, 7, 4, 8, 6]
   /// Numeric().integers(n: 3); // [3, 8, 6]
   /// ```
   List<int> integers({int start = 0, int end = 10, int n = 10}) {
+    if (start > end) {
+      throw RangeError.value(
+        start,
+        'start',
+        'start cannot be greater than end',
+      );
+    }
+
     final random = Random(seed);
     return [
       for (var i = 0; i < n; i++) random.nextInt(end + 1 - start) + start,

@@ -53,12 +53,29 @@ class File {
   ///
   /// [max] is optional maximum value (default is 100).
   ///
+  /// Throws a [RangeError] if [min] or [max] is negative or [min] is
+  /// greater than [max].
+  ///
   /// Example:
   /// ```dart
   /// File().size(); // "69 kB"
   /// File().size(min: 42, max: 420); // "236 TB"
   /// ```
   String size({int min = 1, int max = 100}) {
+    if (min.isNegative || max.isNegative) {
+      throw RangeError(
+        'min and max should be positive integers',
+      );
+    }
+
+    if (min > max) {
+      throw RangeError.value(
+        min,
+        'min',
+        'min cannot be greater than end',
+      );
+    }
+
     final random = Random(seed);
     final number = random.nextInt(max + 1 - min) + min;
     final units = ['bytes', 'kB', 'MB', 'GB', 'TB'];

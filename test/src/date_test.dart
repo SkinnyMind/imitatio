@@ -17,6 +17,18 @@ void main() {
       expect(seededDate.date(), equals(seededDate.date()));
     });
 
+    test('throws when trying to return date in wrong range', () {
+      expect(
+        () => date.date(start: 2420, end: 2000),
+        throwsA(isA<RangeError>()),
+      );
+
+      expect(
+        () => date.date(start: -1, end: -10),
+        throwsA(isA<RangeError>()),
+      );
+    });
+
     test('returns day of the week', () {
       expect(
         DateData.locale(Locale.en).days(isAbbr: false),
@@ -57,6 +69,18 @@ void main() {
       );
     });
 
+    test('throws when trying to return year in wrong range', () {
+      expect(
+        () => date.year(min: 2420, max: 2000),
+        throwsA(isA<RangeError>()),
+      );
+
+      expect(
+        () => date.year(min: -1, max: -10),
+        throwsA(isA<RangeError>()),
+      );
+    });
+
     test('returns a week number with year', () {
       final currentYear = DateTime.now().year;
       final defaultResult = date.weekDate();
@@ -80,6 +104,18 @@ void main() {
       expect(
         seededDate.weekDate(),
         equals(seededDate.weekDate()),
+      );
+    });
+
+    test('throws when trying to return weekDate in wrong range', () {
+      expect(
+        () => date.weekDate(start: 2420, end: 2000),
+        throwsA(isA<RangeError>()),
+      );
+
+      expect(
+        () => date.weekDate(start: -1, end: -10),
+        throwsA(isA<RangeError>()),
       );
     });
 
