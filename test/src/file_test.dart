@@ -36,6 +36,18 @@ void main() {
       expect(seededFile.size(), equals(seededFile.size()));
     });
 
+    test('throws when trying to return size of a file in wrong range', () {
+      expect(
+        () => file.size(min: 10, max: 1),
+        throwsA(isA<RangeError>()),
+      );
+
+      expect(
+        () => file.size(min: -1, max: -10),
+        throwsA(isA<RangeError>()),
+      );
+    });
+
     test('returns file name with extension', () {
       expect(file.name(), isNotEmpty);
       final type = FileType.audio;

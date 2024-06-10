@@ -25,14 +25,32 @@ class Date {
   ///
   /// [end] is optional end year (default is current year).
   ///
+  /// Throws a [RangeError] if [start] or [end] is negative or [start] is
+  /// greater than [end].
+  ///
   /// Example:
   /// ```dart
   /// Date().date(); // "2015-09-10"
   /// Date().date(start: 2022, end: 2022); // "2022-08-20"
   /// ```
   String date({int start = 2000, int? end}) {
-    final random = Random(seed);
     final endYear = end ?? DateTime.now().year;
+
+    if (start.isNegative || endYear.isNegative) {
+      throw RangeError(
+        'start and end should be positive integers',
+      );
+    }
+
+    if (start > endYear) {
+      throw RangeError.value(
+        start,
+        'start',
+        'start cannot be greater than end',
+      );
+    }
+
+    final random = Random(seed);
     final year = random.nextInt(endYear + 1 - start) + start;
     final month = random.nextInt(12) + 1;
     final day = random.nextInt(Util.daysInMonth(year: year, month: month)) + 1;
@@ -61,6 +79,9 @@ class Date {
   ///
   /// [max] is optional maximum value (default is current year).
   ///
+  /// Throws a [RangeError] if [min] or [max] is negative or [min] is
+  /// greater than [max].
+  ///
   /// Example:
   /// ```dart
   /// Date().year(); // 2007
@@ -68,6 +89,21 @@ class Date {
   /// ```
   int year({int min = 1990, int? max}) {
     final maxYear = max ?? DateTime.now().year;
+
+    if (min.isNegative || maxYear.isNegative) {
+      throw RangeError(
+        'min and max should be positive integers',
+      );
+    }
+
+    if (min > maxYear) {
+      throw RangeError.value(
+        min,
+        'min',
+        'min cannot be greater than end',
+      );
+    }
+
     return Random(seed).nextInt(maxYear + 1 - min) + min;
   }
 
@@ -75,7 +111,10 @@ class Date {
   ///
   /// [start] is optional starting year (default is 2017).
   ///
-  /// [end] is optional ending year (default is current year)
+  /// [end] is optional ending year (default is current year).
+  ///
+  /// Throws a [RangeError] if [start] or [end] is negative or [start] is
+  /// greater than [end].
   ///
   /// Example:
   /// ```dart
@@ -84,6 +123,19 @@ class Date {
   /// ```
   String weekDate({int start = 2017, int? end}) {
     final year = this.year(min: start, max: end);
+
+    if (start.isNegative) {
+      throw RangeError('start should be positive integer');
+    }
+
+    if (start > year) {
+      throw RangeError.value(
+        start,
+        'start',
+        'start cannot be greater than end',
+      );
+    }
+
     final week = Random(seed).nextInt(52) + 1;
     return "$year-W$week";
   }

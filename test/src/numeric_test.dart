@@ -26,6 +26,13 @@ void main() {
       );
     });
 
+    test('throws when trying to return float number in wrong range', () {
+      expect(
+        () => numeric.floatNumber(start: 10, end: 1),
+        throwsA(isA<RangeError>()),
+      );
+    });
+
     test('returns list of float numbers', () {
       final result = numeric.floats();
       expect(result.length, 10);
@@ -40,6 +47,13 @@ void main() {
       expect(
         seededNumeric.floats(),
         equals(seededNumeric.floats()),
+      );
+    });
+
+    test('throws when trying to return floats in wrong range', () {
+      expect(
+        () => numeric.floats(start: 10, end: 2),
+        throwsA(isA<RangeError>()),
       );
     });
 
@@ -58,6 +72,13 @@ void main() {
       );
     });
 
+    test('throws when trying to return integer in wrong range', () {
+      expect(
+        () => numeric.integerNumber(start: 10, end: 1),
+        throwsA(isA<RangeError>()),
+      );
+    });
+
     test('returns list of integer numbers', () {
       final result = numeric.integers();
       expect(result.length, 10);
@@ -72,6 +93,13 @@ void main() {
       expect(
         seededNumeric.integers(),
         equals(seededNumeric.integers()),
+      );
+    });
+
+    test('throws when trying to return integers in wrong range', () {
+      expect(
+        () => numeric.integers(start: 10, end: 1),
+        throwsA(isA<RangeError>()),
       );
     });
   });
