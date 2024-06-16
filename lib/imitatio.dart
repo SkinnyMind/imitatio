@@ -7,6 +7,7 @@ export 'src/date.dart';
 export 'src/development.dart';
 export 'src/enums.dart';
 export 'src/file.dart';
+export 'src/finance.dart';
 export 'src/hardware.dart';
 export 'src/internet.dart';
 export 'src/numeric.dart';
