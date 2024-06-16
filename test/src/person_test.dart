@@ -10,6 +10,13 @@ void main() {
     const localePerson = Person(locale: locale);
     const seededPerson = Person(seed: 1);
 
+    test('returns birthdate', () {
+      final currentYear = DateTime.now().year;
+      final result = person.birthdate(minYear: currentYear);
+      final resultYear = int.parse(result.split('-')[0]);
+      expect(resultYear, currentYear);
+    });
+
     test('returns name', () {
       expect(person.name(), isNotEmpty);
 
@@ -140,6 +147,13 @@ void main() {
         seededPerson.email(),
         equals(seededPerson.email()),
       );
+    });
+
+    test('returns password', () {
+      expect(person.password().length, equals(8));
+      expect(person.password(length: 16).length, equals(16));
+      expect(person.password(isHashed: true).length, equals(64));
+      expect(seededPerson.password(), equals(seededPerson.password()));
     });
 
     test('returns gender symbol', () {
