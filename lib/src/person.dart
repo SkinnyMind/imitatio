@@ -1,5 +1,7 @@
+import 'dart:convert';
 import 'dart:math';
 
+import 'package:crypto/crypto.dart';
 import 'package:imitatio/imitatio.dart';
 import 'package:imitatio/src/datasets/international/internet.dart';
 import 'package:imitatio/src/datasets/international/person.dart';
@@ -18,6 +20,24 @@ class Person {
 
   final Locale locale;
   final int? seed;
+
+  /// Returns a random birthdate in the YYYY-MM-DD format.
+  ///
+  /// [minYear] is optional minimum birth year (default is 1980).
+  ///
+  /// [maxYear] is optional maximim birth year (default is current year).
+  ///
+  /// Throws a [RangeError] if [start] or [end] is negative or [start] is
+  /// greater than [end].
+  ///
+  /// Example:
+  /// ```dart
+  /// Person().birthdate(); // "2015-09-10"
+  /// Person().birthdate(minYear: 2022, maxYear: 2022); // "2022-08-20"
+  /// ```
+  String birthdate({int minYear = 1980, int? maxYear}) {
+    return const Date().date(start: minYear, end: maxYear);
+  }
 
   /// Returns a random name.
   ///
@@ -176,6 +196,36 @@ class Person {
     final name = unique ? Rng.randomString(unique: true) : username(mask: 'ld');
 
     return '$name$domain';
+  }
+
+  /// Returns a random password or SHA256 hash of password.
+  ///
+  /// [length] is optional length of the password (default is 8).
+  ///
+  /// [isHashed] determines whether to return SHA256 hashed password (default
+  /// is false).
+  ///
+  /// Example:
+  /// ```dart
+  /// Person().password(); // ""zoP(/WG"
+  /// Person().password(length: 16); // "H 'Iow7& MrH##V_"
+  /// Person().password(isHashed: true); // "42e8c2aba3368bcbe648e372e166fe410147420f2fe09d96fb7fe0a249c1c23d"
+  /// ```
+  String password({int length = 8, bool isHashed = false}) {
+    final chars =
+        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!"#\$%&\'()*+, -./:;<=>?@[\\]^_`{|}~'
+            .split('');
+    final random = Random(seed);
+    final password = [
+      for (var i = 0; i < length; i++) chars[random.nextInt(chars.length)],
+    ].join();
+
+    if (isHashed) {
+      final bytes = utf8.encode(password);
+      return sha256.convert(bytes).toString();
+    } else {
+      return password;
+    }
   }
 
   /// Returns a random sex symbol.
