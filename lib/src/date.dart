@@ -59,6 +59,103 @@ class Date {
     return '$year-$paddedMonth-$paddedDay';
   }
 
+  /// Returns random date formatted for [locale].
+  ///
+  /// [start] is optional start year (default is 2000).
+  ///
+  /// [end] is optional end year (default is current year).
+  ///
+  /// Throws a [RangeError] if [start] or [end] is negative or [start] is
+  /// greater than [end].
+  ///
+  /// Example:
+  /// ```dart
+  /// Date().formattedDate(); // "10/27/2024"
+  /// ```
+  String formattedDate({int start = 2000, int? end}) {
+    final endYear = end ?? DateTime.now().year;
+
+    if (start.isNegative || endYear.isNegative) {
+      throw RangeError(
+        'start and end should be positive integers',
+      );
+    }
+
+    if (start > endYear) {
+      throw RangeError.value(
+        start,
+        'start',
+        'start cannot be greater than end',
+      );
+    }
+
+    final random = Random(seed);
+    final year = random.nextInt(endYear + 1 - start) + start;
+    final month = random.nextInt(12) + 1;
+    final day = random.nextInt(Util.daysInMonth(year: year, month: month)) + 1;
+    final paddedMonth = month.toString().padLeft(2, '0');
+    final paddedDay = day.toString().padLeft(2, '0');
+    return DateData.locale(locale).formatDate(
+      year: year.toString(),
+      month: paddedMonth,
+      day: paddedDay,
+    );
+  }
+
+  /// Returns a random time.
+  ///
+  /// Example:
+  /// ```dart
+  /// Date().time; // "22:43:27"
+  /// ```
+  String get time {
+    final random = Random(seed);
+    final hour = random.nextInt(24).toString().padLeft(2, '0');
+    final minute = random.nextInt(60).toString().padLeft(2, '0');
+    final second = random.nextInt(60).toString().padLeft(2, '0');
+    return "$hour:$minute:$second";
+  }
+
+  /// Returns a random time formatted for [locale].
+  ///
+  /// Example:
+  /// ```dart
+  /// Date().formattedTime; // "14:27:03"
+  /// ```
+  String get formattedTime {
+    final random = Random(seed);
+    final hour = random.nextInt(24).toString().padLeft(2, '0');
+    final minute = random.nextInt(60).toString().padLeft(2, '0');
+    final second = random.nextInt(60).toString().padLeft(2, '0');
+    return DateData.locale(locale).formatTime(
+      hour: hour,
+      minute: minute,
+      second: second,
+    );
+  }
+
+  /// Returns a random [DateTime].
+  ///
+  /// [start] is optional start year (default is current year).
+  ///
+  /// [end] is optional end year (default is current year).
+  ///
+  /// Throws a [RangeError] if [start] or [end] is negative or [start] is
+  /// greater than [end].
+  ///
+  /// Example:
+  /// ```dart
+  /// ```
+  DateTime dateTime({int? start, int? end}) {
+    final currentYear = DateTime.now().year;
+    final startYear = start ?? currentYear;
+    final endYear = end ?? currentYear;
+    final date = this.date(start: startYear, end: endYear);
+    final time = this.time;
+
+    return DateTime.parse("$date $time");
+  }
+
   /// Returns day of the week.
   ///
   /// [isAbbr] is optional name abbreviation (default is false).
