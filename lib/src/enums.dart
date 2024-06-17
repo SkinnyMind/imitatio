@@ -87,4 +87,36 @@ enum TimezoneRegion {
   pacific,
 }
 
+enum MetricPrefixSign { positive, negative }
+
+/// Measure unit names and symbols.
+enum MeasureUnit {
+  mass(name: 'gram', symbol: 'gr'),
+  information(name: 'byte', symbol: 'b'),
+  thermodynamicTemperature(name: 'kelvin', symbol: 'K'),
+  amountOfSubstance(name: 'mole', symbol: 'mol'),
+  angle(name: 'radian', symbol: 'r'),
+  solidAngle(name: 'steradian', symbol: 'sr'),
+  frequency(name: 'hertz', symbol: 'Hz'),
+  force(name: 'newton', symbol: 'N'),
+  pressure(name: 'pascal', symbol: 'P'),
+  energy(name: 'joule', symbol: 'J'),
+  power(name: 'watt', symbol: 'W'),
+  flux(name: 'watt', symbol: 'W'),
+  electricCharge(name: 'coulomb', symbol: 'C'),
+  voltage(name: 'volt', symbol: 'V'),
+  electricCapacitance(name: 'farad', symbol: 'F'),
+  electricResistance(name: 'ohm', symbol: 'Ω'),
+  electricalConductance(name: 'siemens', symbol: 'S'),
+  magneticFlux(name: 'weber', symbol: 'Wb'),
+  magneticFluxDensity(name: 'tesla', symbol: 'T'),
+  inductance(name: 'henry', symbol: 'H'),
+  temperature(name: 'celcius', symbol: '°C'),
+  radioactivity(name: 'becquerel', symbol: 'Bq');
+
+  const MeasureUnit({required this.name, required this.symbol});
+  final String name;
+  final String symbol;
+}
+
 enum Locale { en, ru }
