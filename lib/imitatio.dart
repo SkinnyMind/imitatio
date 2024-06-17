@@ -15,5 +15,6 @@ export 'src/numeric.dart';
 export 'src/path.dart';
 export 'src/payment.dart';
 export 'src/person.dart';
+export 'src/science.dart';
 export 'src/text.dart';
 export 'src/transport.dart';
