@@ -28,14 +28,6 @@ class RuDateData extends DateDataset {
   }
 
   @override
-  Map<String, String> get formats {
-    return const {
-      "date": "%d.%m.%Y",
-      "time": "%H:%M:%S",
-    };
-  }
-
-  @override
   List<String> months({required bool isAbbr}) {
     return switch (isAbbr) {
       true => const [
@@ -83,5 +75,23 @@ class RuDateData extends DateDataset {
       "Редко",
       "Часто",
     ];
+  }
+
+  @override
+  String formatDate({
+    required String year,
+    required String month,
+    required String day,
+  }) {
+    return "$day.$month.$year";
+  }
+
+  @override
+  String formatTime({
+    required String hour,
+    required String minute,
+    required String second,
+  }) {
+    return "$hour:$minute:$second";
   }
 }

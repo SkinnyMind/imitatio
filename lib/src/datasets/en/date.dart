@@ -28,14 +28,6 @@ class EnDateData extends DateDataset {
   }
 
   @override
-  Map<String, String> get formats {
-    return const {
-      "date": "%m/%d/%Y",
-      "time": "%H:%M:%S",
-    };
-  }
-
-  @override
   List<String> months({required bool isAbbr}) {
     return switch (isAbbr) {
       true => const [
@@ -81,5 +73,23 @@ class EnDateData extends DateDataset {
       "Weekly",
       "Yearly",
     ];
+  }
+
+  @override
+  String formatDate({
+    required String year,
+    required String month,
+    required String day,
+  }) {
+    return "$month/$day/$year";
+  }
+
+  @override
+  String formatTime({
+    required String hour,
+    required String minute,
+    required String second,
+  }) {
+    return "$hour:$minute:$second";
   }
 }

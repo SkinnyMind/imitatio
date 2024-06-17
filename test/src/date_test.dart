@@ -29,6 +29,46 @@ void main() {
       );
     });
 
+    test('returns formatted date', () {
+      final currentYear = DateTime.now().year;
+      final result = date.formattedDate(start: currentYear);
+      final splitResult = result.split('/');
+      expect(splitResult.length, equals(3));
+      expect(splitResult.last, equals(currentYear.toString()));
+      expect(seededDate.formattedDate(), equals(seededDate.formattedDate()));
+    });
+
+    test('throws when trying to return formatted date in wrong range', () {
+      expect(
+        () => date.formattedDate(start: 2420, end: 2000),
+        throwsA(isA<RangeError>()),
+      );
+
+      expect(
+        () => date.formattedDate(start: -1, end: -10),
+        throwsA(isA<RangeError>()),
+      );
+    });
+
+    test('returns time', () {
+      final result = date.time;
+      expect(result.split(':').length, equals(3));
+      expect(result.split(':')[0].length, equals(2));
+      expect(seededDate.time, equals(seededDate.time));
+    });
+
+    test('returns formatted time', () {
+      final result = date.formattedTime;
+      expect(result.split(':').length, equals(3));
+      expect(result.split(':')[0].length, equals(2));
+      expect(seededDate.formattedTime, equals(seededDate.formattedTime));
+    });
+
+    test('returns DateTime', () {
+      final result = date.dateTime();
+      expect(result, isA<DateTime>());
+    });
+
     test('returns day of the week', () {
       expect(
         DateData.locale(Locale.en).days(isAbbr: false),
