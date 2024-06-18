@@ -143,4 +143,26 @@ class Address {
     final data = IntAddressData.callingCodes;
     return data[Random(seed).nextInt(data.length)];
   }
+
+  /// Returns a random a random IATA code.
+  ///
+  /// Example:
+  /// ```dart
+  /// Address().iataCode; // "NUW"
+  /// ```
+  String get iataCode {
+    final data = IntAddressData.iataCodes;
+    return data[Random(seed).nextInt(data.length)];
+  }
+
+  /// Returns a random a random ICAO code.
+  ///
+  /// Example:
+  /// ```dart
+  /// Address().icaoCode; // "EGTE"
+  /// ```
+  String get icaoCode {
+    final data = IntAddressData.icaoCodes;
+    return data[Random(seed).nextInt(data.length)];
+  }
 }
