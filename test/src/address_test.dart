@@ -158,5 +158,27 @@ void main() {
         equals(seededAddress.callingCode),
       );
     });
+
+    test('returns IATA code', () async {
+      expect(
+        IntAddressData.iataCodes,
+        contains(address.iataCode),
+      );
+      expect(
+        seededAddress.iataCode,
+        equals(seededAddress.iataCode),
+      );
+    });
+
+    test('returns ICAO code', () async {
+      expect(
+        IntAddressData.icaoCodes,
+        contains(address.icaoCode),
+      );
+      expect(
+        seededAddress.icaoCode,
+        equals(seededAddress.icaoCode),
+      );
+    });
   });
 }
