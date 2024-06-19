@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:imitatio/src/datasets/international/text.dart';
 import 'package:imitatio/src/datasets/text.dart';
 import 'package:imitatio/src/enums.dart';
 import 'package:imitatio/src/util.dart';
@@ -131,5 +132,24 @@ class Text {
   String get answer {
     final data = TextData.locale(locale).answers;
     return data[Random(seed).nextInt(data.length)];
+  }
+
+  /// Returns a random emoji. If [category] is not specified returns emoji from
+  /// random category in [EmojiCategory].
+  ///
+  /// [category] is optional [EmojiCategory].
+  ///
+  /// Example:
+  /// ```dart
+  /// Text().emoji(); // "🐸"
+  /// Text().emoji(category: EmojiCategory.activities); // "🥅"
+  /// ```
+  String emoji({EmojiCategory? category}) {
+    final random = Random(seed);
+    final categories = EmojiCategory.values;
+    final emojiCategory =
+        category ?? categories[random.nextInt(categories.length)];
+    final data = IntTextData.emojis(category: emojiCategory);
+    return data[random.nextInt(data.length)];
   }
 }

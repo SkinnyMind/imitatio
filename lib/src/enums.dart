@@ -119,4 +119,16 @@ enum MeasureUnit {
   final String symbol;
 }
 
+enum EmojiCategory {
+  smileysAndEmotion,
+  peopleAndBody,
+  animalsAndNature,
+  foodAndDrink,
+  travelAndPlaces,
+  activities,
+  objects,
+  symbols,
+  flags,
+}
+
 enum Locale { en, ru }

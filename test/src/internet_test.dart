@@ -74,26 +74,6 @@ void main() {
       );
     });
 
-    test('returns emoji', () {
-      expect(IntInternetData.emojis, contains(internet.emoji));
-      expect(
-        seededInternet.emoji,
-        equals(seededInternet.emoji),
-      );
-    });
-
-    test('returns list of hashtags', () {
-      expect(internet.hashtags().length, 4);
-      expect(internet.hashtags(quantity: 5).length, 5);
-    });
-
-    test('throws when trying to get invalid number of hashtags', () {
-      expect(
-        () => internet.hashtags(quantity: 0),
-        throwsA(isA<ArgumentError>()),
-      );
-    });
-
     test('returns Map of query parameters', () {
       final result = internet.queryParameters(count: 5);
       expect(result.length, 5);
@@ -275,6 +255,24 @@ void main() {
       expect(
         seededInternet.publicDNS,
         equals(seededInternet.publicDNS),
+      );
+    });
+
+    test('returns DSN', () {
+      final result = internet.dsn();
+      final schemes = DSNType.values.map((e) => e.scheme);
+      final ports = DSNType.values.map((e) => e.port);
+      expect(schemes, contains(result.split('://').first));
+      expect(ports, contains(int.parse(result.split(':').last)));
+
+      final type = DSNType.postgres;
+      final withType = internet.dsn(dsnType: type);
+      expect(withType.startsWith('${type.scheme}://'), true);
+      expect(withType.endsWith(':${type.port}'), true);
+
+      expect(
+        seededInternet.dsn(),
+        equals(seededInternet.dsn()),
       );
     });
   });

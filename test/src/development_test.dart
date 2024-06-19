@@ -95,24 +95,6 @@ void main() {
       );
     });
 
-    test('returns DSN', () {
-      final result = development.dsn();
-      final schemes = DSNType.values.map((e) => e.scheme);
-      final ports = DSNType.values.map((e) => e.port);
-      expect(schemes, contains(result.split('://').first));
-      expect(ports, contains(int.parse(result.split(':').last)));
-
-      final type = DSNType.postgres;
-      final withType = development.dsn(dsnType: type);
-      expect(withType.startsWith('${type.scheme}://'), true);
-      expect(withType.endsWith(':${type.port}'), true);
-
-      expect(
-        seededDevelopment.dsn(),
-        equals(seededDevelopment.dsn()),
-      );
-    });
-
     test('returns system quality attribute', () {
       expect(
         IntDevelopmentData.systemQualityAttributes,

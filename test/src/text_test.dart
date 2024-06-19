@@ -1,4 +1,5 @@
 import 'package:imitatio/imitatio.dart';
+import 'package:imitatio/src/datasets/international/text.dart';
 import 'package:imitatio/src/datasets/text.dart';
 import 'package:test/test.dart';
 
@@ -138,6 +139,18 @@ void main() {
       );
 
       expect(seededText.answer, equals(seededText.answer));
+    });
+
+    test('returns an emoji', () {
+      expect(text.emoji(), isNotEmpty);
+
+      final category = EmojiCategory.activities;
+      expect(
+        IntTextData.emojis(category: category),
+        contains(text.emoji(category: category)),
+      );
+
+      expect(seededText.emoji(), equals(seededText.emoji()));
     });
   });
 }
