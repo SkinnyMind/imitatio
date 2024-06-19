@@ -61,39 +61,6 @@ class Internet {
     return data[Random(seed).nextInt(data.length)];
   }
 
-  /// Returns a random emoji shortcut code.
-  ///
-  /// Example:
-  /// ```dart
-  /// Internet().emoji; // ":congratulations:"
-  /// ```
-  String get emoji {
-    final data = IntInternetData.emojis;
-    return data[Random(seed).nextInt(data.length)];
-  }
-
-  /// Returns a list of hashtags.
-  ///
-  /// [quantity] is optional number of hashtags (default is 4).
-  ///
-  /// Throws [ArgumentError] if [quantity] is not a positive integer.
-  ///
-  /// Example:
-  /// ```dart
-  /// Internet().hashtags(); // ["#plates", "#coat", "#star", "#granted"]
-  /// Internet().hashtags(quantity: 2); // ["#systems", "#experts"]
-  /// ```
-  List<String> hashtags({int quantity = 4}) {
-    if (quantity < 1) {
-      throw ArgumentError.value(
-        quantity,
-        'quantity',
-        'Quantity must be a positive integer',
-      );
-    }
-    return [for (var i = 0; i < quantity; i++) '#${const Text().word}'];
-  }
-
   /// Returns a random hostname without scheme.
   ///
   /// [tldType] is optional [TLDType] group.
@@ -378,5 +345,32 @@ class Internet {
   String get publicDNS {
     final data = IntInternetData.publicDNSes;
     return data[Random(seed).nextInt(data.length)];
+  }
+
+  /// Returns a random DSN (Data Source Name).
+  ///
+  /// [dsnType] is optional [DSNType] group.
+  ///
+  /// [tldType] is optional [TLDType] group.
+  ///
+  /// [subdomains] is optional list of subdomains.
+  ///
+  /// Example:
+  /// ```dart
+  /// Internet().dsn(); // "mysql://kitchen.vn:3306"
+  /// Internet().dsn(dsnType: DSNType.redis); // "redis://losing.gl:6379"
+  /// Internet().dsn(tldType: TLDType.geotld); // "rabbitmq://identifies.moscow:5672"
+  /// Internet().dsn(subdomains: ['app', 'api', 'admin']); // "postgres://api.concentrate.io:5432"
+  /// ```
+  String dsn({
+    DSNType? dsnType,
+    TLDType? tldType,
+    List<String>? subdomains,
+  }) {
+    final hostname = this.hostname(tldType: tldType, subdomains: subdomains);
+    final dsn =
+        dsnType ?? DSNType.values[Random(seed).nextInt(DSNType.values.length)];
+
+    return '${dsn.scheme}://$hostname:${dsn.port}';
   }
 }

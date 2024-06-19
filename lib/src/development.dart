@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:imitatio/imitatio.dart';
 import 'package:imitatio/src/datasets/international/development.dart';
 
 /// Provides data related to the development.
@@ -94,36 +93,6 @@ class Development {
   /// Development().boolean; // true
   /// ```
   bool get boolean => Random(seed).nextBool();
-
-  /// Returns a random DSN (Data Source Name).
-  ///
-  /// [dsnType] is optional [DSNType] group.
-  ///
-  /// [tldType] is optional [TLDType] group.
-  ///
-  /// [subdomains] is optional list of subdomains.
-  ///
-  /// Example:
-  /// ```dart
-  /// Development().dsn(); // "mysql://kitchen.vn:3306"
-  /// Development().dsn(dsnType: DSNType.redis); // "redis://losing.gl:6379"
-  /// Development().dsn(tldType: TLDType.geotld); // "rabbitmq://identifies.moscow:5672"
-  /// Development().dsn(subdomains: ['app', 'api', 'admin']); // "postgres://api.concentrate.io:5432"
-  /// ```
-  String dsn({
-    DSNType? dsnType,
-    TLDType? tldType,
-    List<String>? subdomains,
-  }) {
-    final hostname = Internet(seed: seed).hostname(
-      tldType: tldType,
-      subdomains: subdomains,
-    );
-    final dsn =
-        dsnType ?? DSNType.values[Random(seed).nextInt(DSNType.values.length)];
-
-    return '${dsn.scheme}://$hostname:${dsn.port}';
-  }
 
   /// Returns a random system quality attribute.
   ///
