@@ -165,4 +165,82 @@ class Address {
     final data = IntAddressData.icaoCodes;
     return data[Random(seed).nextInt(data.length)];
   }
+
+  /// Returns a random code of country.
+  ///
+  /// [code] is optional format (default is [CountryCode.a2]).
+  ///
+  /// Example:
+  /// ```dart
+  /// Address().countryCode(); // "AM"
+  /// Address().countryCode(code: CountryCode.numeric); // "850"
+  /// ```
+  String countryCode({CountryCode code = CountryCode.a2}) {
+    final data = IntAddressData.countryCodes(code: code);
+    return data[Random(seed).nextInt(data.length)];
+  }
+
+  /// Returns a random value of latitude.
+  ///
+  /// [asDMS] determines whether to return value in DMS
+  /// (degrees, minutes, seconds) format (default is false).
+  ///
+  /// Example:
+  /// ```dart
+  /// Address().latitude(); // "45.881565"
+  /// Address().latitude(asDMS: true); // "11°21'1.823''"
+  /// ```
+  String latitude({bool asDMS = false}) {
+    final random = Random(seed);
+    final sign = random.nextBool() ? '' : '-';
+    final result = random.nextDouble() * 90;
+    return asDMS
+        ? _convertToDMS(value: result)
+        : '$sign${result.toStringAsFixed(6)}';
+  }
+
+  /// Returns a random value of longitude.
+  ///
+  /// [asDMS] determines whether to return value in DMS
+  /// (degrees, minutes, seconds) format (default is false).
+  ///
+  /// Example:
+  /// ```dart
+  /// Address().longitude(); // "156.296879"
+  /// Address().longitude(asDMS: true); // "63°13'22.104''"
+  /// ```
+  String longitude({bool asDMS = false}) {
+    final random = Random(seed);
+    final sign = random.nextBool() ? '' : '-';
+    final result = random.nextDouble() * 180;
+    return asDMS
+        ? _convertToDMS(value: result)
+        : '$sign${result.toStringAsFixed(6)}';
+  }
+
+  /// Returns a random geo coordinates.
+  ///
+  /// [asDMS] determines whether to return values in DMS
+  /// (degrees, minutes, seconds) format (default is false).
+  ///
+  /// Example:
+  /// ```dart
+  /// Address().coordinates(); // (latitude: -20.642075, longitude: 74.359326)
+  /// Address().coordinates(asDMS: true); // (latitude: 22°52'54.597'', longitude: 57°9'30.192'')
+  /// ```
+  ({String latitude, String longitude}) coordinates({bool asDMS = false}) {
+    return (
+      latitude: latitude(asDMS: asDMS),
+      longitude: longitude(asDMS: asDMS),
+    );
+  }
+
+  /// Converts decimal degrees to DMS format.
+  String _convertToDMS({required double value}) {
+    final degrees = value.toInt();
+    final part = value - degrees;
+    final minutes = (part * 60).toInt();
+    final seconds = ((3600 * part) - (60 * minutes)).toStringAsFixed(3);
+    return "$degrees°$minutes'$seconds''";
+  }
 }
