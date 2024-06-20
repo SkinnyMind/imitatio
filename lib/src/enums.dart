@@ -47,13 +47,7 @@ enum FileType {
 }
 
 /// ISBN formats.
-enum ISBNFormat {
-  isbn13('###-#-#####-###-#'),
-  isbn10('#-#####-###-#');
-
-  const ISBNFormat(this.mask);
-  final String mask;
-}
+enum ISBNFormat { isbn13, isbn10 }
 
 /// EAN formats.
 enum EANFormat {

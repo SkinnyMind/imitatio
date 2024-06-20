@@ -41,8 +41,13 @@ void main() {
 
     test('returns ISBN', () {
       expect(code.isbn(), isNotEmpty);
+
       expect(code.isbn(format: ISBNFormat.isbn10).length >= 10, true);
       expect(code.isbn(format: ISBNFormat.isbn13).length >= 13, true);
+
+      final enCode = code.isbn(locale: Locale.en, format: ISBNFormat.isbn10);
+      expect(enCode.split('-')[0], equals('1'));
+
       expect(seededCode.isbn(), equals(seededCode.isbn()));
     });
 
