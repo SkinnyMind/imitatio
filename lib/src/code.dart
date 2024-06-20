@@ -77,16 +77,25 @@ class Code {
   ///
   /// [format] is optional [ISBNFormat].
   ///
+  /// [locale] is optional [Locale].
+  ///
   /// Example:
   /// ```dart
   /// Code().isbn(); // "886-5-33530-286-4"
   /// Code().isbn(format: ISBNFormat.isbn10); // "8-81232-519-8"
+  /// Code().isbn(format: ISBNFormat.isbn10, locale: Locale.en); // "1-20167-936-0"
   /// ```
-  String isbn({ISBNFormat? format}) {
-    final mask = format?.mask ??
-        (Random(seed).nextBool()
-            ? ISBNFormat.isbn10.mask
-            : ISBNFormat.isbn13.mask);
+  String isbn({ISBNFormat? format, Locale? locale}) {
+    final isbnFormat = format ??
+        (Random(seed).nextBool() ? ISBNFormat.isbn13 : ISBNFormat.isbn10);
+
+    final localeNumber =
+        locale == null ? '#' : IntCodeData.isbnGroups(locale: locale);
+
+    final mask = isbnFormat == ISBNFormat.isbn13
+        ? '###-$localeNumber-#####-###-#'
+        : '$localeNumber-#####-###-#';
+
     return Rng.customCode(mask: mask, seed: seed);
   }
 

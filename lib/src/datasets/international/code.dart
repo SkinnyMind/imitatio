@@ -1,3 +1,5 @@
+import 'package:imitatio/src/enums.dart';
+
 /// Provides all data related to the codes.
 class IntCodeData {
   const IntCodeData._();
@@ -159,4 +161,11 @@ class IntCodeData {
     "35171005",
     "35511405",
   ];
+
+  static String isbnGroups({required Locale locale}) {
+    return switch (locale) {
+      Locale.en => "1",
+      Locale.ru => "5",
+    };
+  }
 }
