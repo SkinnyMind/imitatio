@@ -127,4 +127,4 @@ enum EmojiCategory {
 
 enum CountryCode { a2, a3, numeric, ioc, fifa }
 
-enum Locale { cs, en, ru }
+enum Locale { da, cs, en, ru }
