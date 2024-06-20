@@ -180,5 +180,62 @@ void main() {
         equals(seededAddress.icaoCode),
       );
     });
+
+    test('returns country code', () async {
+      expect(
+        IntAddressData.countryCodes(code: CountryCode.a2),
+        contains(address.countryCode()),
+      );
+
+      final code = CountryCode.numeric;
+      expect(
+        IntAddressData.countryCodes(code: code),
+        contains(address.countryCode(code: code)),
+      );
+
+      expect(
+        seededAddress.countryCode(),
+        equals(seededAddress.countryCode()),
+      );
+    });
+
+    test('returns latitude', () async {
+      final result = double.parse(address.latitude());
+      expect((result >= -90.0) && (result <= 90.0), true);
+
+      expect(address.latitude(asDMS: true), isNotEmpty);
+
+      expect(
+        seededAddress.latitude(),
+        equals(seededAddress.latitude()),
+      );
+    });
+
+    test('returns longitude', () async {
+      final result = double.parse(address.longitude());
+      expect((result >= -180.0) && (result <= 180.0), true);
+
+      expect(address.longitude(asDMS: true), isNotEmpty);
+
+      expect(
+        seededAddress.longitude(),
+        equals(seededAddress.longitude()),
+      );
+    });
+
+    test('returns coordinates', () async {
+      final result = address.coordinates();
+      final lat = double.parse(result.latitude);
+      final long = double.parse(result.longitude);
+      expect((lat >= -90.0) && (lat <= 90.0), true);
+      expect((long >= -180.0) && (long <= 180.0), true);
+
+      expect(address.coordinates(asDMS: true), isA<Record>());
+
+      expect(
+        seededAddress.coordinates(),
+        equals(seededAddress.coordinates()),
+      );
+    });
   });
 }

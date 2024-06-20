@@ -125,4 +125,6 @@ enum EmojiCategory {
   flags,
 }
 
+enum CountryCode { a2, a3, numeric, ioc, fifa }
+
 enum Locale { en, ru }
