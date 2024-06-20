@@ -1,3 +1,5 @@
+import 'package:imitatio/src/enums.dart';
+
 /// Provides all the data related to transports.
 class IntTransportData {
   const IntTransportData._();
@@ -1492,4 +1494,11 @@ class IntTransportData {
     "ZA",
     "ZW",
   ];
+
+  static String vrcByLocale({required Locale locale}) {
+    return switch (locale) {
+      Locale.en => "USA",
+      Locale.ru => "RUS",
+    };
+  }
 }

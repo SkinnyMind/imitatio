@@ -43,12 +43,18 @@ void main() {
     test('returns vehicle registration code', () {
       expect(
         IntTransportData.vrCodes,
-        contains(transport.vehicleRegistrationCode),
+        contains(transport.vehicleRegistrationCode()),
+      );
+
+      final locale = Locale.en;
+      expect(
+        IntTransportData.vrcByLocale(locale: locale),
+        contains(transport.vehicleRegistrationCode(locale: locale)),
       );
 
       expect(
-        seededTransport.vehicleRegistrationCode,
-        equals(seededTransport.vehicleRegistrationCode),
+        seededTransport.vehicleRegistrationCode(),
+        equals(seededTransport.vehicleRegistrationCode()),
       );
     });
   });
