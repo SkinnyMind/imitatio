@@ -123,6 +123,47 @@ class Text {
     return data[Random(seed).nextInt(data.length)];
   }
 
+  /// Returns a random HEX color.
+  ///
+  /// [asSafe] whether to return safe Flat UI hex color (default is false).
+  ///
+  /// Example:
+  /// ```dart
+  /// Text().hexColor(); // "#7c4765"
+  /// Text().hexColor(asSafe: true); // "#95a5a6"
+  /// ```
+  String hexColor({bool asSafe = false}) {
+    final random = Random(seed);
+    if (asSafe) {
+      final data = IntTextData.safeColors;
+      return data[random.nextInt(data.length)];
+    } else {
+      final result = StringBuffer('#');
+      for (var i = 0; i < 6; i++) {
+        result.write(random.nextInt(16).toRadixString(16));
+      }
+      return result.toString();
+    }
+  }
+
+  /// Returns a random RGB color.
+  ///
+  /// [asSafe] whether to return safe Flat UI RGB color (default is false).
+  ///
+  /// Example:
+  /// ```dart
+  /// Text().rgbColor(); // (b: 92, g: 34, r: 106)
+  /// Text().rgbColor(asSafe: true); // (b: 173, g: 68, r: 142)
+  /// ```
+  ({int r, int g, int b}) rgbColor({bool asSafe = false}) {
+    final color = hexColor(asSafe: asSafe);
+    return (
+      r: int.parse(color.substring(1, 3), radix: 16),
+      g: int.parse(color.substring(3, 5), radix: 16),
+      b: int.parse(color.substring(5, 7), radix: 16),
+    );
+  }
+
   /// Returns a random answer.
   ///
   /// Example:

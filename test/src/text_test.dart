@@ -127,6 +127,41 @@ void main() {
       expect(seededText.color, equals(seededText.color));
     });
 
+    test('returns a HEX color', () {
+      expect(text.hexColor().length, equals(7));
+      expect(IntTextData.safeColors, contains(text.hexColor(asSafe: true)));
+      expect(
+        seededText.hexColor(),
+        equals(seededText.hexColor()),
+      );
+      expect(
+        seededText.hexColor(asSafe: true),
+        equals(seededText.hexColor(asSafe: true)),
+      );
+    });
+
+    test('returns a RGB color', () {
+      final result = text.rgbColor();
+      expect((result.r >= 0) && (result.r <= 255), true);
+      expect((result.g >= 0) && (result.g <= 255), true);
+      expect((result.b >= 0) && (result.b <= 255), true);
+
+      final safeResult = text.rgbColor(asSafe: true);
+      expect((safeResult.r >= 0) && (safeResult.r <= 255), true);
+      expect((safeResult.g >= 0) && (safeResult.g <= 255), true);
+      expect((safeResult.b >= 0) && (safeResult.b <= 255), true);
+
+      expect(
+        seededText.rgbColor(),
+        equals(seededText.rgbColor()),
+      );
+
+      expect(
+        seededText.rgbColor(asSafe: true),
+        equals(seededText.rgbColor(asSafe: true)),
+      );
+    });
+
     test('returns an answer', () {
       expect(
         TextData.locale(Locale.en).answers,
