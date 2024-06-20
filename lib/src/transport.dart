@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:imitatio/src/datasets/international/transport.dart';
+import 'package:imitatio/src/enums.dart';
 
 /// Provides data related to transports.
 class Transport {
@@ -47,12 +48,19 @@ class Transport {
 
   /// Returns vehicle registration code.
   ///
+  /// [locale] is optional [Locale].
+  ///
   /// Example:
   /// ```dart
-  /// Transport().vehicleRegistrationCode; // "TO"
+  /// Transport().vehicleRegistrationCode(); // "TO"
+  /// Transport().vehicleRegistrationCode(locale: Locale.en); // "USA"
   /// ```
-  String get vehicleRegistrationCode {
-    final data = IntTransportData.vrCodes;
-    return data[Random(seed).nextInt(data.length)];
+  String vehicleRegistrationCode({Locale? locale}) {
+    if (locale == null) {
+      final data = IntTransportData.vrCodes;
+      return data[Random(seed).nextInt(data.length)];
+    } else {
+      return IntTransportData.vrcByLocale(locale: locale);
+    }
   }
 }
