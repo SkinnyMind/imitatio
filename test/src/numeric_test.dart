@@ -1,3 +1,4 @@
+import 'package:complex/complex.dart';
 import 'package:imitatio/src/numeric.dart';
 import 'package:test/test.dart';
 
@@ -100,6 +101,58 @@ void main() {
       expect(
         () => numeric.integers(start: 10, end: 1),
         throwsA(isA<RangeError>()),
+      );
+    });
+
+    test('returns complex number', () {
+      expect(numeric.complexNumber(), isA<Complex>());
+
+      const realPrecision = 10;
+      const imaginaryPrecision = 10;
+      final result = numeric.complexNumber(
+        realStart: 1.2,
+        realEnd: 10,
+        realPrecision: realPrecision,
+        imaginaryStart: 1,
+        imaginaryEnd: 2.4,
+        imaginaryPrecision: imaginaryPrecision,
+      );
+      expect(
+        result.real.toString().split('.').last.length <= realPrecision,
+        true,
+      );
+      expect(
+        result.imaginary.toString().split('.').last.length <=
+            imaginaryPrecision,
+        true,
+      );
+
+      expect(
+        seededNumeric.complexNumber(),
+        equals(seededNumeric.complexNumber()),
+      );
+    });
+
+    test('returns complex number', () {
+      expect(numeric.complexes().length, equals(10));
+
+      const realPrecision = 10;
+      const imaginaryPrecision = 10;
+      const n = 3;
+      final result = numeric.complexes(
+        realStart: 1.2,
+        realEnd: 10,
+        realPrecision: realPrecision,
+        imaginaryStart: 1,
+        imaginaryEnd: 2.4,
+        imaginaryPrecision: imaginaryPrecision,
+        n: n,
+      );
+      expect(result.length, equals(n));
+
+      expect(
+        seededNumeric.complexes(n: 3),
+        equals(seededNumeric.complexes(n: 3)),
       );
     });
   });

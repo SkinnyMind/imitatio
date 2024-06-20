@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:complex/complex.dart';
+
 /// Provider of data related to generating numeric data.
 class Numeric {
   /// Provider of data related to generating numeric data.
@@ -138,6 +140,88 @@ class Numeric {
     final random = Random(seed);
     return [
       for (var i = 0; i < n; i++) random.nextInt(end + 1 - start) + start,
+    ];
+  }
+
+  /// Returns a random complex number.
+  ///
+  /// [realStart] is optional value for real part range start (default is 0.0).
+  ///
+  /// [realEnd] is optional value for real part range end (default is 1.0).
+  ///
+  /// [realPrecision] is optional value for real part precision (default is 15).
+  ///
+  /// [imaginaryStart] is optional value for imaginary part range start
+  /// (default is 0.0).
+  ///
+  /// [imaginaryEnd] is optional value for imaginary part range end
+  /// (default is 1.0).
+  ///
+  /// [imaginaryPrecision] is optional value for imaginary part precision
+  /// (default is 15).
+  ///
+  /// Example:
+  /// ```dart
+  /// Numeric().complexNumber(); // (0.784949456188452, 0.330969132786893)
+  /// ```
+  Complex complexNumber({
+    double realStart = 0.0,
+    double realEnd = 1.0,
+    int realPrecision = 15,
+    double imaginaryStart = 0.0,
+    double imaginaryEnd = 1.0,
+    int imaginaryPrecision = 15,
+  }) {
+    final random = Random(seed);
+    final real = ((random.nextDouble() + realStart) * realEnd)
+        .toStringAsFixed(realPrecision);
+    final imaginary = ((random.nextDouble() + imaginaryStart) * imaginaryEnd)
+        .toStringAsFixed(imaginaryPrecision);
+    return Complex(double.parse(real), double.parse(imaginary));
+  }
+
+  /// Returns a list of random complex numbers.
+  ///
+  /// [realStart] is optional value for real part range start (default is 0.0).
+  ///
+  /// [realEnd] is optional value for real part range end (default is 1.0).
+  ///
+  /// [realPrecision] is optional value for real part precision (default is 15).
+  ///
+  /// [imaginaryStart] is optional value for imaginary part range start
+  /// (default is 0.0).
+  ///
+  /// [imaginaryEnd] is optional value for imaginary part range end
+  /// (default is 1.0).
+  ///
+  /// [imaginaryPrecision] is optional value for imaginary part precision
+  /// (default is 15).
+  ///
+  /// [n] is optional length of the list (default is 10).
+  ///
+  /// Example:
+  /// ```dart
+  /// Numeric().complexes(); // [(0.143755035934411, 0.401551611483689), ...]
+  /// ```
+  List<Complex> complexes({
+    double realStart = 0.0,
+    double realEnd = 1.0,
+    int realPrecision = 15,
+    double imaginaryStart = 0.0,
+    double imaginaryEnd = 1.0,
+    int imaginaryPrecision = 15,
+    int n = 10,
+  }) {
+    return [
+      for (var i = 0; i < n; i++)
+        complexNumber(
+          realStart: realStart,
+          realEnd: realEnd,
+          realPrecision: realPrecision,
+          imaginaryStart: imaginaryStart,
+          imaginaryEnd: imaginaryEnd,
+          imaginaryPrecision: imaginaryPrecision,
+        ),
     ];
   }
 }
