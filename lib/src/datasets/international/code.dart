@@ -164,6 +164,7 @@ class IntCodeData {
 
   static String isbnGroups({required Locale locale}) {
     return switch (locale) {
+      Locale.cs => "80",
       Locale.en => "1",
       Locale.ru => "5",
     };

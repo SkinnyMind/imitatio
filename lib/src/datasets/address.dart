@@ -1,3 +1,4 @@
+import 'package:imitatio/src/datasets/cs/address.dart';
 import 'package:imitatio/src/datasets/en/address.dart';
 import 'package:imitatio/src/datasets/models/address.dart';
 import 'package:imitatio/src/datasets/ru/address.dart';
@@ -9,6 +10,7 @@ class AddressData {
 
   static AddressDataset locale(Locale locale) {
     return switch (locale) {
+      Locale.cs => CsAddressData(),
       Locale.en => EnAddressData(),
       Locale.ru => RuAddressData(),
     };
