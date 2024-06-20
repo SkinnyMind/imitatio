@@ -1,3 +1,4 @@
+import 'package:imitatio/src/datasets/cs/food.dart';
 import 'package:imitatio/src/datasets/en/food.dart';
 import 'package:imitatio/src/datasets/models/food.dart';
 import 'package:imitatio/src/datasets/ru/food.dart';
@@ -9,6 +10,7 @@ class FoodData {
 
   static FoodDataset locale(Locale locale) {
     return switch (locale) {
+      Locale.cs => CsFoodData(),
       Locale.en => EnFoodData(),
       Locale.ru => RuFoodData(),
     };

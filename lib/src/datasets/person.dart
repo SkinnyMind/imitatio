@@ -1,3 +1,4 @@
+import 'package:imitatio/src/datasets/cs/person.dart';
 import 'package:imitatio/src/datasets/en/person.dart';
 import 'package:imitatio/src/datasets/models/person.dart';
 import 'package:imitatio/src/datasets/ru/person.dart';
@@ -9,6 +10,7 @@ class PersonData {
 
   static PersonDataset locale(Locale locale) {
     return switch (locale) {
+      Locale.cs => CsPersonData(),
       Locale.en => EnPersonData(),
       Locale.ru => RuPersonData(),
     };
