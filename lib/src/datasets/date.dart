@@ -1,5 +1,6 @@
 import 'package:imitatio/src/datasets/cs/date.dart';
 import 'package:imitatio/src/datasets/da/date.dart';
+import 'package:imitatio/src/datasets/de_at/date.dart';
 import 'package:imitatio/src/datasets/en/date.dart';
 import 'package:imitatio/src/datasets/models/date.dart';
 import 'package:imitatio/src/datasets/ru/date.dart';
@@ -13,6 +14,7 @@ class DateData {
     return switch (locale) {
       Locale.cs => CsDateData(),
       Locale.da => DaDateData(),
+      Locale.de_at => DeAtDateData(),
       Locale.en => EnDateData(),
       Locale.ru => RuDateData(),
     };

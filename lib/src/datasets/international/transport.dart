@@ -1499,6 +1499,7 @@ class IntTransportData {
     return switch (locale) {
       Locale.cs => "CZ",
       Locale.da => "DK",
+      Locale.de_at => "A",
       Locale.en => "USA",
       Locale.ru => "RUS",
     };
