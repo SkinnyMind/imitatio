@@ -168,6 +168,7 @@ class IntCodeData {
       Locale.da => "87",
       Locale.de_at => "3",
       Locale.de_ch => "3",
+      Locale.de => "3",
       Locale.en => "1",
       Locale.ru => "5",
     };

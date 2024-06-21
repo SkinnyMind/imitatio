@@ -1,5 +1,6 @@
 import 'package:imitatio/src/datasets/cs/food.dart';
 import 'package:imitatio/src/datasets/da/food.dart';
+import 'package:imitatio/src/datasets/de/food.dart';
 import 'package:imitatio/src/datasets/de_at/food.dart';
 import 'package:imitatio/src/datasets/de_ch/food.dart';
 import 'package:imitatio/src/datasets/en/food.dart';
@@ -17,6 +18,7 @@ class FoodData {
       Locale.da => DaFoodData(),
       Locale.de_at => DeAtFoodData(),
       Locale.de_ch => DeChFoodData(),
+      Locale.de => DeFoodData(),
       Locale.en => EnFoodData(),
       Locale.ru => RuFoodData(),
     };
