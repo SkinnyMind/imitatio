@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 /// Common mime types.
 enum MimeType { application, audio, image, message, text, video }
 
@@ -127,4 +129,4 @@ enum EmojiCategory {
 
 enum CountryCode { a2, a3, numeric, ioc, fifa }
 
-enum Locale { da, cs, en, ru }
+enum Locale { da, cs, de_at, en, ru }
