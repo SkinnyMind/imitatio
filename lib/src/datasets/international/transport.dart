@@ -1500,6 +1500,7 @@ class IntTransportData {
       Locale.cs => "CZ",
       Locale.da => "DK",
       Locale.de_at => "A",
+      Locale.de_ch => "CH",
       Locale.en => "USA",
       Locale.ru => "RUS",
     };
