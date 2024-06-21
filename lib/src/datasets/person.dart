@@ -1,5 +1,6 @@
 import 'package:imitatio/src/datasets/cs/person.dart';
 import 'package:imitatio/src/datasets/da/person.dart';
+import 'package:imitatio/src/datasets/de/person.dart';
 import 'package:imitatio/src/datasets/de_at/person.dart';
 import 'package:imitatio/src/datasets/de_ch/person.dart';
 import 'package:imitatio/src/datasets/en/person.dart';
@@ -17,6 +18,7 @@ class PersonData {
       Locale.da => DaPersonData(),
       Locale.de_at => DeAtPersonData(),
       Locale.de_ch => DeChPersonData(),
+      Locale.de => DePersonData(),
       Locale.en => EnPersonData(),
       Locale.ru => RuPersonData(),
     };
