@@ -1505,6 +1505,7 @@ class IntTransportData {
       Locale.el => "GR",
       Locale.en_au => "AUS",
       Locale.en_ca => "CDN",
+      Locale.en_gb => "GB",
       Locale.en => "USA",
       Locale.ru => "RUS",
     };
