@@ -3,6 +3,7 @@ import 'package:imitatio/src/datasets/da/person.dart';
 import 'package:imitatio/src/datasets/de/person.dart';
 import 'package:imitatio/src/datasets/de_at/person.dart';
 import 'package:imitatio/src/datasets/de_ch/person.dart';
+import 'package:imitatio/src/datasets/el/person.dart';
 import 'package:imitatio/src/datasets/en/person.dart';
 import 'package:imitatio/src/datasets/models/person.dart';
 import 'package:imitatio/src/datasets/ru/person.dart';
@@ -19,6 +20,7 @@ class PersonData {
       Locale.de_at => DeAtPersonData(),
       Locale.de_ch => DeChPersonData(),
       Locale.de => DePersonData(),
+      Locale.el => ElPersonData(),
       Locale.en => EnPersonData(),
       Locale.ru => RuPersonData(),
     };
