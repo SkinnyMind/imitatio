@@ -3,6 +3,7 @@ import 'package:imitatio/src/datasets/da/date.dart';
 import 'package:imitatio/src/datasets/de/date.dart';
 import 'package:imitatio/src/datasets/de_at/date.dart';
 import 'package:imitatio/src/datasets/de_ch/date.dart';
+import 'package:imitatio/src/datasets/el/date.dart';
 import 'package:imitatio/src/datasets/en/date.dart';
 import 'package:imitatio/src/datasets/models/date.dart';
 import 'package:imitatio/src/datasets/ru/date.dart';
@@ -19,6 +20,7 @@ class DateData {
       Locale.de_at => DeAtDateData(),
       Locale.de_ch => DeChDateData(),
       Locale.de => DeDateData(),
+      Locale.el => ElDateData(),
       Locale.en => EnDateData(),
       Locale.ru => RuDateData(),
     };
