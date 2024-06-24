@@ -7,6 +7,7 @@ import 'package:imitatio/src/datasets/el/address.dart';
 import 'package:imitatio/src/datasets/en/address.dart';
 import 'package:imitatio/src/datasets/en_au/address.dart';
 import 'package:imitatio/src/datasets/en_ca/address.dart';
+import 'package:imitatio/src/datasets/en_gb/address.dart';
 import 'package:imitatio/src/datasets/models/address.dart';
 import 'package:imitatio/src/datasets/ru/address.dart';
 import 'package:imitatio/src/enums.dart';
@@ -25,6 +26,7 @@ class AddressData {
       Locale.el => ElAddressData(),
       Locale.en_au => EnAuAddressData(),
       Locale.en_ca => EnCaAddressData(),
+      Locale.en_gb => EnGbAddressData(),
       Locale.en => EnAddressData(),
       Locale.ru => RuAddressData(),
     };

@@ -172,6 +172,7 @@ class IntCodeData {
       Locale.el => "618",
       Locale.en_au => "1",
       Locale.en_ca => "1",
+      Locale.en_gb => "1",
       Locale.en => "1",
       Locale.ru => "5",
     };
