@@ -21,6 +21,7 @@ class AddressData {
       Locale.de_ch => DeChAddressData(),
       Locale.de => DeAddressData(),
       Locale.el => ElAddressData(),
+      Locale.en_au => EnAddressData(),
       Locale.en => EnAddressData(),
       Locale.ru => RuAddressData(),
     };

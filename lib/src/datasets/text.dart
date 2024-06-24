@@ -5,6 +5,7 @@ import 'package:imitatio/src/datasets/de_at/text.dart';
 import 'package:imitatio/src/datasets/de_ch/text.dart';
 import 'package:imitatio/src/datasets/el/text.dart';
 import 'package:imitatio/src/datasets/en/text.dart';
+import 'package:imitatio/src/datasets/en_au/text.dart';
 import 'package:imitatio/src/datasets/models/text.dart';
 import 'package:imitatio/src/datasets/ru/text.dart';
 import 'package:imitatio/src/enums.dart';
@@ -21,6 +22,7 @@ class TextData {
       Locale.de_ch => DeChTextData(),
       Locale.de => DeTextData(),
       Locale.el => ElTextData(),
+      Locale.en_au => EnAuTextData(),
       Locale.en => EnTextData(),
       Locale.ru => RuTextData(),
     };
