@@ -8,6 +8,7 @@ import 'package:imitatio/src/datasets/en/person.dart';
 import 'package:imitatio/src/datasets/en_au/person.dart';
 import 'package:imitatio/src/datasets/en_ca/person.dart';
 import 'package:imitatio/src/datasets/en_gb/person.dart';
+import 'package:imitatio/src/datasets/es_mx/person.dart';
 import 'package:imitatio/src/datasets/models/person.dart';
 import 'package:imitatio/src/datasets/ru/person.dart';
 import 'package:imitatio/src/enums.dart';
@@ -28,6 +29,7 @@ class PersonData {
       Locale.en_ca => EnCaPersonData(),
       Locale.en_gb => EnGbPersonData(),
       Locale.en => EnPersonData(),
+      Locale.es_mx => EsMxPersonData(),
       Locale.ru => RuPersonData(),
     };
   }
