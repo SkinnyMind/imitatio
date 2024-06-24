@@ -136,6 +136,7 @@ enum Locale {
   de_ch,
   de,
   el,
+  en_au,
   en,
   ru,
 }
