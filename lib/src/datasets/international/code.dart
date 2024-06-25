@@ -179,6 +179,7 @@ class IntCodeData {
       Locale.et => "9949",
       Locale.fa => "600",
       Locale.fi => "951",
+      Locale.fr => "2",
       Locale.ru => "5",
     };
   }
