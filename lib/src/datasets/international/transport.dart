@@ -1509,6 +1509,7 @@ class IntTransportData {
       Locale.en => "USA",
       Locale.es_mx => "MEX",
       Locale.es => "E",
+      Locale.et => "EW",
       Locale.ru => "RUS",
     };
   }
