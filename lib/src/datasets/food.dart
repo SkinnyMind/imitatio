@@ -17,6 +17,7 @@ import 'package:imitatio/src/datasets/fr/food.dart';
 import 'package:imitatio/src/datasets/hr/food.dart';
 import 'package:imitatio/src/datasets/hu/food.dart';
 import 'package:imitatio/src/datasets/isl/food.dart';
+import 'package:imitatio/src/datasets/it/food.dart';
 import 'package:imitatio/src/datasets/models/food.dart';
 import 'package:imitatio/src/datasets/ru/food.dart';
 import 'package:imitatio/src/enums.dart';
@@ -46,6 +47,7 @@ class FoodData {
       Locale.hr => HrFoodData(),
       Locale.hu => HuFoodData(),
       Locale.isl => IslFoodData(),
+      Locale.it => ItFoodData(),
       Locale.ru => RuFoodData(),
     };
   }
