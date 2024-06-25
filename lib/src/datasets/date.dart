@@ -11,6 +11,7 @@ import 'package:imitatio/src/datasets/en_gb/date.dart';
 import 'package:imitatio/src/datasets/es/date.dart';
 import 'package:imitatio/src/datasets/es_mx/date.dart';
 import 'package:imitatio/src/datasets/et/date.dart';
+import 'package:imitatio/src/datasets/fa/date.dart';
 import 'package:imitatio/src/datasets/models/date.dart';
 import 'package:imitatio/src/datasets/ru/date.dart';
 import 'package:imitatio/src/enums.dart';
@@ -34,6 +35,7 @@ class DateData {
       Locale.es_mx => EsMxDateData(),
       Locale.es => EsDateData(),
       Locale.et => EtDateData(),
+      Locale.fa => FaDateData(),
       Locale.ru => RuDateData(),
     };
   }
