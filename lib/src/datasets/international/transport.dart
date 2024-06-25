@@ -1513,6 +1513,7 @@ class IntTransportData {
       Locale.fa => "IR",
       Locale.fi => "FIN",
       Locale.fr => "F",
+      Locale.hr => "HR",
       Locale.ru => "RUS",
     };
   }

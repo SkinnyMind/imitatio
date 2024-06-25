@@ -146,5 +146,6 @@ enum Locale {
   fa,
   fi,
   fr,
+  hr,
   ru,
 }
