@@ -10,6 +10,7 @@ import 'package:imitatio/src/datasets/en_ca/food.dart';
 import 'package:imitatio/src/datasets/en_gb/food.dart';
 import 'package:imitatio/src/datasets/es/food.dart';
 import 'package:imitatio/src/datasets/es_mx/food.dart';
+import 'package:imitatio/src/datasets/et/food.dart';
 import 'package:imitatio/src/datasets/models/food.dart';
 import 'package:imitatio/src/datasets/ru/food.dart';
 import 'package:imitatio/src/enums.dart';
@@ -32,6 +33,7 @@ class FoodData {
       Locale.en => EnFoodData(),
       Locale.es_mx => EsMxFoodData(),
       Locale.es => EsFoodData(),
+      Locale.et => EtFoodData(),
       Locale.ru => RuFoodData(),
     };
   }

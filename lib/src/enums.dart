@@ -142,5 +142,6 @@ enum Locale {
   en,
   es_mx,
   es,
+  et,
   ru,
 }
