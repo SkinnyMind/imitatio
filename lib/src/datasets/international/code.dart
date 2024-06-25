@@ -183,6 +183,7 @@ class IntCodeData {
       Locale.hr => "385",
       Locale.hu => "615",
       Locale.isl => "9935",
+      Locale.it => "88",
       Locale.ru => "5",
     };
   }

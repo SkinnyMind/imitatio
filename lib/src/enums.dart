@@ -149,5 +149,6 @@ enum Locale {
   hr,
   hu,
   isl,
+  it,
   ru,
 }
