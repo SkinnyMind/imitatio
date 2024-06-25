@@ -147,5 +147,6 @@ enum Locale {
   fi,
   fr,
   hr,
+  hu,
   ru,
 }
