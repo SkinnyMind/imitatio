@@ -177,6 +177,7 @@ class IntCodeData {
       Locale.es_mx => "607",
       Locale.es => "84",
       Locale.et => "9949",
+      Locale.fa => "600",
       Locale.ru => "5",
     };
   }
