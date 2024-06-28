@@ -61,6 +61,12 @@ class Address {
   /// Address().address; // "160 Cayuga Place"
   /// ```
   String get address {
+    if (locale == Locale.ja) {
+      final random = Random(seed);
+      final numbers = [for (var i = 0; i < 3; i++) random.nextInt(100) + 1];
+      return '$city ${numbers.join('-')}';
+    }
+
     return AddressData.locale(locale).formatAddress(
       suffix: streetSuffix,
       name: streetName,
