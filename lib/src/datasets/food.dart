@@ -19,6 +19,7 @@ import 'package:imitatio/src/datasets/hu/food.dart';
 import 'package:imitatio/src/datasets/isl/food.dart';
 import 'package:imitatio/src/datasets/it/food.dart';
 import 'package:imitatio/src/datasets/ja/food.dart';
+import 'package:imitatio/src/datasets/kk/food.dart';
 import 'package:imitatio/src/datasets/models/food.dart';
 import 'package:imitatio/src/datasets/ru/food.dart';
 import 'package:imitatio/src/enums.dart';
@@ -50,6 +51,7 @@ class FoodData {
       Locale.isl => IslFoodData(),
       Locale.it => ItFoodData(),
       Locale.ja => JaFoodData(),
+      Locale.kk => KkFoodData(),
       Locale.ru => RuFoodData(),
     };
   }
