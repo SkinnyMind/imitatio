@@ -152,5 +152,6 @@ enum Locale {
   it,
   ja,
   kk,
+  ko,
   ru,
 }

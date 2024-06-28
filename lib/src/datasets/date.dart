@@ -20,6 +20,7 @@ import 'package:imitatio/src/datasets/isl/date.dart';
 import 'package:imitatio/src/datasets/it/date.dart';
 import 'package:imitatio/src/datasets/ja/date.dart';
 import 'package:imitatio/src/datasets/kk/date.dart';
+import 'package:imitatio/src/datasets/ko/date.dart';
 import 'package:imitatio/src/datasets/models/date.dart';
 import 'package:imitatio/src/datasets/ru/date.dart';
 import 'package:imitatio/src/enums.dart';
@@ -52,6 +53,7 @@ class DateData {
       Locale.it => ItDateData(),
       Locale.ja => JaDateData(),
       Locale.kk => KkDateData(),
+      Locale.ko => KoDateData(),
       Locale.ru => RuDateData(),
     };
   }

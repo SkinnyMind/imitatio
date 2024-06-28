@@ -20,6 +20,7 @@ import 'package:imitatio/src/datasets/isl/finance.dart';
 import 'package:imitatio/src/datasets/it/finance.dart';
 import 'package:imitatio/src/datasets/ja/finance.dart';
 import 'package:imitatio/src/datasets/kk/finance.dart';
+import 'package:imitatio/src/datasets/ko/finance.dart';
 import 'package:imitatio/src/datasets/models/finance.dart';
 import 'package:imitatio/src/datasets/ru/finance.dart';
 import 'package:imitatio/src/enums.dart';
@@ -52,6 +53,7 @@ class FinanceData {
       Locale.it => ItFinanceData(),
       Locale.ja => JaFinanceData(),
       Locale.kk => KkFinanceData(),
+      Locale.ko => KoFinanceData(),
       Locale.ru => RuFinanceData(),
     };
   }
