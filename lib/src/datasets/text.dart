@@ -18,6 +18,7 @@ import 'package:imitatio/src/datasets/hr/text.dart';
 import 'package:imitatio/src/datasets/hu/text.dart';
 import 'package:imitatio/src/datasets/isl/text.dart';
 import 'package:imitatio/src/datasets/it/text.dart';
+import 'package:imitatio/src/datasets/ja/text.dart';
 import 'package:imitatio/src/datasets/models/text.dart';
 import 'package:imitatio/src/datasets/ru/text.dart';
 import 'package:imitatio/src/enums.dart';
@@ -48,6 +49,7 @@ class TextData {
       Locale.hu => HuTextData(),
       Locale.isl => IslTextData(),
       Locale.it => ItTextData(),
+      Locale.ja => JaTextData(),
       Locale.ru => RuTextData(),
     };
   }

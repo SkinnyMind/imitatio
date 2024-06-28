@@ -184,6 +184,7 @@ class IntCodeData {
       Locale.hu => "615",
       Locale.isl => "9935",
       Locale.it => "88",
+      Locale.ja => "4",
       Locale.ru => "5",
     };
   }

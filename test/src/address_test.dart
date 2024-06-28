@@ -60,6 +60,20 @@ void main() {
         seededAddress.address,
         equals(seededAddress.address),
       );
+
+      final jaLocale = Locale.ja;
+      final jaAddress = Address(locale: jaLocale, seed: 1);
+      final result = jaAddress.address.split(' ');
+      final city = result.first;
+      expect(AddressData.locale(jaLocale).cities, contains(city));
+
+      final numbers = result.last.split('-');
+      expect(numbers.length, equals(3));
+      for (final number in numbers) {
+        expect(int.parse(number), isA<int>());
+      }
+
+      expect(jaAddress.address, equals(jaAddress.address));
     });
 
     test('returns state', () async {
