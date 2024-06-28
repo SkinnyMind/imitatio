@@ -20,6 +20,7 @@ import 'package:imitatio/src/datasets/isl/person.dart';
 import 'package:imitatio/src/datasets/it/person.dart';
 import 'package:imitatio/src/datasets/ja/person.dart';
 import 'package:imitatio/src/datasets/kk/person.dart';
+import 'package:imitatio/src/datasets/ko/person.dart';
 import 'package:imitatio/src/datasets/models/person.dart';
 import 'package:imitatio/src/datasets/ru/person.dart';
 import 'package:imitatio/src/enums.dart';
@@ -52,6 +53,7 @@ class PersonData {
       Locale.it => ItPersonData(),
       Locale.ja => JaPersonData(),
       Locale.kk => KkPersonData(),
+      Locale.ko => KoPersonData(),
       Locale.ru => RuPersonData(),
     };
   }
