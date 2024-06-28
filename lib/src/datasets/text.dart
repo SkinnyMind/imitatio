@@ -22,6 +22,7 @@ import 'package:imitatio/src/datasets/ja/text.dart';
 import 'package:imitatio/src/datasets/kk/text.dart';
 import 'package:imitatio/src/datasets/ko/text.dart';
 import 'package:imitatio/src/datasets/models/text.dart';
+import 'package:imitatio/src/datasets/nl_be/text.dart';
 import 'package:imitatio/src/datasets/ru/text.dart';
 import 'package:imitatio/src/enums.dart';
 
@@ -54,6 +55,7 @@ class TextData {
       Locale.ja => JaTextData(),
       Locale.kk => KkTextData(),
       Locale.ko => KoTextData(),
+      Locale.nl_be => NlBeTextData(),
       Locale.ru => RuTextData(),
     };
   }
