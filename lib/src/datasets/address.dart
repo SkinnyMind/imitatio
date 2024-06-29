@@ -33,6 +33,7 @@ import 'package:imitatio/src/datasets/sk/address.dart';
 import 'package:imitatio/src/datasets/sv/address.dart';
 import 'package:imitatio/src/datasets/tr/address.dart';
 import 'package:imitatio/src/datasets/uk/address.dart';
+import 'package:imitatio/src/datasets/zh/address.dart';
 import 'package:imitatio/src/enums.dart';
 
 /// Provides all data related to the address.
@@ -75,6 +76,7 @@ class AddressData {
       Locale.sv => SvAddressData(),
       Locale.tr => TrAddressData(),
       Locale.uk => UkAddressData(),
+      Locale.zh => ZhAddressData(),
     };
   }
 }

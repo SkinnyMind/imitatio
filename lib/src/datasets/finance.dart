@@ -33,6 +33,7 @@ import 'package:imitatio/src/datasets/sk/finance.dart';
 import 'package:imitatio/src/datasets/sv/finance.dart';
 import 'package:imitatio/src/datasets/tr/finance.dart';
 import 'package:imitatio/src/datasets/uk/finance.dart';
+import 'package:imitatio/src/datasets/zh/finance.dart';
 import 'package:imitatio/src/enums.dart';
 
 /// Provides all data related to the finance.
@@ -75,6 +76,7 @@ class FinanceData {
       Locale.sv => SvFinanceData(),
       Locale.tr => TrFinanceData(),
       Locale.uk => UkFinanceData(),
+      Locale.zh => ZhFinanceData(),
     };
   }
 }
