@@ -160,4 +160,5 @@ enum Locale {
   pt_br,
   pt,
   ru,
+  sk,
 }
