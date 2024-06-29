@@ -110,17 +110,17 @@ class EsMxTextData extends TextDataset {
   @override
   List<String> get quotes {
     return const [
-      "Plata o Plomo",
-      "Agua que no has de beber, déjala correr",
-      "Mejor solo que mal acompañado",
-      "Escoge una persona que te mire como si quizás fueras magia",
-      "Amo el canto del cenzontle pájaro de 400 voces, amo el color del jade, y el enervante perfume de las flores, pero amo más a mi hermano, el hombre",
-      "Todo acto de creación, es un acto de amor",
-      "Amamos a un ser mortal como si fuese inmortal",
-      "Barriga llena, corazón contento",
-      "La panza es primero",
-      "Salió más caro el caldo que las albóndigas",
-      "Echarle mucha crema a sus tacos",
+      "Plata o Plomo.",
+      "Agua que no has de beber, déjala correr.",
+      "Mejor solo que mal acompañado.",
+      "Escoge una persona que te mire como si quizás fueras magia.",
+      "Amo el canto del cenzontle pájaro de 400 voces, amo el color del jade, y el enervante perfume de las flores, pero amo más a mi hermano, el hombre.",
+      "Todo acto de creación, es un acto de amor.",
+      "Amamos a un ser mortal como si fuese inmortal.",
+      "Barriga llena, corazón contento.",
+      "La panza es primero.",
+      "Salió más caro el caldo que las albóndigas.",
+      "Echarle mucha crema a sus tacos.",
     ];
   }
 

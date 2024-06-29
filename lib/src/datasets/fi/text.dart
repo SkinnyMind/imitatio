@@ -122,7 +122,7 @@ class FiTextData extends TextDataset {
   @override
   List<String> get quotes {
     return const [
-      'Vanhan ajattelutavan luomien ongelmien ratkaisemiseksi tarvitaan uutta ajattelutapaa',
+      'Vanhan ajattelutavan luomien ongelmien ratkaisemiseksi tarvitaan uutta ajattelutapaa.',
     ];
   }
 

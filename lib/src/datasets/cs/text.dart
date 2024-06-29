@@ -149,7 +149,7 @@ class CsTextData extends TextDataset {
   List<String> get texts {
     return const [
       "Mimo jiné je v něm implementován aplikační server Zope, instalátor a většina konfiguračních nástrojů Linuxové distribuce firmy Red Hat.",
-      "Python je vyvíjen jako open source projekt, který zdarma nabízí instalační balíky pro většinu běžných platforem",
+      "Python je vyvíjen jako open source projekt, který zdarma nabízí instalační balíky pro většinu běžných platforem.",
     ];
   }
 
