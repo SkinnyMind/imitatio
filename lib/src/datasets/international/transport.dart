@@ -1522,6 +1522,7 @@ class IntTransportData {
       Locale.ko => "ROK",
       Locale.nl_be => "B",
       Locale.nl => "NL",
+      Locale.no => "N",
       Locale.ru => "RUS",
     };
   }

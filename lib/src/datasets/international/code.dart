@@ -189,6 +189,7 @@ class IntCodeData {
       Locale.ko => "89",
       Locale.nl_be => "90",
       Locale.nl => "90",
+      Locale.no => "82",
       Locale.ru => "5",
     };
   }

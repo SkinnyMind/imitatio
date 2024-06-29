@@ -155,5 +155,6 @@ enum Locale {
   ko,
   nl_be,
   nl,
+  no,
   ru,
 }

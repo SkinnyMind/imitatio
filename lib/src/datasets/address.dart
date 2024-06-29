@@ -24,6 +24,7 @@ import 'package:imitatio/src/datasets/ko/address.dart';
 import 'package:imitatio/src/datasets/models/address.dart';
 import 'package:imitatio/src/datasets/nl/address.dart';
 import 'package:imitatio/src/datasets/nl_be/address.dart';
+import 'package:imitatio/src/datasets/no/address.dart';
 import 'package:imitatio/src/datasets/ru/address.dart';
 import 'package:imitatio/src/enums.dart';
 
@@ -58,6 +59,7 @@ class AddressData {
       Locale.ko => KoAddressData(),
       Locale.nl_be => NlBeAddressData(),
       Locale.nl => NlAddressData(),
+      Locale.no => NoAddressData(),
       Locale.ru => RuAddressData(),
     };
   }
