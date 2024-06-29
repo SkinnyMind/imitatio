@@ -198,6 +198,7 @@ class IntCodeData {
       Locale.sv => "91",
       Locale.tr => "605",
       Locale.uk => "966",
+      Locale.zh => "7",
     };
   }
 }

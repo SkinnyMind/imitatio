@@ -33,6 +33,7 @@ import 'package:imitatio/src/datasets/sk/text.dart';
 import 'package:imitatio/src/datasets/sv/text.dart';
 import 'package:imitatio/src/datasets/tr/text.dart';
 import 'package:imitatio/src/datasets/uk/text.dart';
+import 'package:imitatio/src/datasets/zh/text.dart';
 import 'package:imitatio/src/enums.dart';
 
 /// Provides all data related to the text.
@@ -75,6 +76,7 @@ class TextData {
       Locale.sv => SvTextData(),
       Locale.tr => TrTextData(),
       Locale.uk => UkTextData(),
+      Locale.zh => ZhTextData(),
     };
   }
 }
