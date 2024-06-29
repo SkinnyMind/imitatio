@@ -1528,6 +1528,7 @@ class IntTransportData {
       Locale.pt => "P",
       Locale.ru => "RUS",
       Locale.sk => "SK",
+      Locale.sv => "S",
     };
   }
 }

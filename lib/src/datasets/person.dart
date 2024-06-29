@@ -30,6 +30,7 @@ import 'package:imitatio/src/datasets/pt/person.dart';
 import 'package:imitatio/src/datasets/pt_br/person.dart';
 import 'package:imitatio/src/datasets/ru/person.dart';
 import 'package:imitatio/src/datasets/sk/person.dart';
+import 'package:imitatio/src/datasets/sv/person.dart';
 import 'package:imitatio/src/enums.dart';
 
 /// Provides all data related to the person.
@@ -69,6 +70,7 @@ class PersonData {
       Locale.pt => PtPersonData(),
       Locale.ru => RuPersonData(),
       Locale.sk => SkPersonData(),
+      Locale.sv => SvPersonData(),
     };
   }
 }
