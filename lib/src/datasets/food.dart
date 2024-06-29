@@ -31,6 +31,7 @@ import 'package:imitatio/src/datasets/pt_br/food.dart';
 import 'package:imitatio/src/datasets/ru/food.dart';
 import 'package:imitatio/src/datasets/sk/food.dart';
 import 'package:imitatio/src/datasets/sv/food.dart';
+import 'package:imitatio/src/datasets/tr/food.dart';
 import 'package:imitatio/src/enums.dart';
 
 /// Provides all data related to the food.
@@ -71,6 +72,7 @@ class FoodData {
       Locale.ru => RuFoodData(),
       Locale.sk => SkFoodData(),
       Locale.sv => SvFoodData(),
+      Locale.tr => TrFoodData(),
     };
   }
 }
