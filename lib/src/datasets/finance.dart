@@ -29,6 +29,7 @@ import 'package:imitatio/src/datasets/pl/finance.dart';
 import 'package:imitatio/src/datasets/pt/finance.dart';
 import 'package:imitatio/src/datasets/pt_br/finance.dart';
 import 'package:imitatio/src/datasets/ru/finance.dart';
+import 'package:imitatio/src/datasets/sk/finance.dart';
 import 'package:imitatio/src/enums.dart';
 
 /// Provides all data related to the finance.
@@ -67,6 +68,7 @@ class FinanceData {
       Locale.pt_br => PtBrFinanceData(),
       Locale.pt => PtFinanceData(),
       Locale.ru => RuFinanceData(),
+      Locale.sk => SkFinanceData(),
     };
   }
 }

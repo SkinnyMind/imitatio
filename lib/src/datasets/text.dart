@@ -29,6 +29,7 @@ import 'package:imitatio/src/datasets/pl/text.dart';
 import 'package:imitatio/src/datasets/pt/text.dart';
 import 'package:imitatio/src/datasets/pt_br/text.dart';
 import 'package:imitatio/src/datasets/ru/text.dart';
+import 'package:imitatio/src/datasets/sk/text.dart';
 import 'package:imitatio/src/enums.dart';
 
 /// Provides all data related to the text.
@@ -67,6 +68,7 @@ class TextData {
       Locale.pt_br => PtBrTextData(),
       Locale.pt => PtTextData(),
       Locale.ru => RuTextData(),
+      Locale.sk => SkTextData(),
     };
   }
 }

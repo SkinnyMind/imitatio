@@ -29,6 +29,7 @@ import 'package:imitatio/src/datasets/pl/address.dart';
 import 'package:imitatio/src/datasets/pt/address.dart';
 import 'package:imitatio/src/datasets/pt_br/address.dart';
 import 'package:imitatio/src/datasets/ru/address.dart';
+import 'package:imitatio/src/datasets/sk/address.dart';
 import 'package:imitatio/src/enums.dart';
 
 /// Provides all data related to the address.
@@ -67,6 +68,7 @@ class AddressData {
       Locale.pt_br => PtBrAddressData(),
       Locale.pt => PtAddressData(),
       Locale.ru => RuAddressData(),
+      Locale.sk => SkAddressData(),
     };
   }
 }
