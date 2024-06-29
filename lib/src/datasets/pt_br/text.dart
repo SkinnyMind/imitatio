@@ -102,7 +102,7 @@ class PtBrTextData extends TextDataset {
   @override
   List<String> get quotes {
     return const [
-      "Toque Sam. Toque 'As Time Goes By'.",
+      "Toque Sam. Toque.",
       "Toto, eu tenho um sentimento que nós não estamos mais no Kansas.",
       "Tudo bem, Mr. DeMille, eu estou pronto para meu close-up.",
       "Tudo o que temos que decidir é o que fazer com o tempo que nos é dado.",
@@ -140,7 +140,7 @@ class PtBrTextData extends TextDataset {
       "Os argumentos podem ser tipos de dados primitivos ou compostos.",
       "Qualquer elemento de uma tupla pode ser acessado a qualque tempo.",
       "Portas são usadas para comunicar com o mundo externo.",
-      "Portas são criadas com uma função padrão open_port",
+      "Portas são criadas com uma função padrão open_port.",
       'Mensagens podem ser mandadas e recebidas por portas, mas elas devem obedecer o "protocolo da porta".',
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       "Cras ornare mauris dolor, in dignissim mauris semper sit amet.",
