@@ -31,6 +31,7 @@ import 'package:imitatio/src/datasets/pt_br/date.dart';
 import 'package:imitatio/src/datasets/ru/date.dart';
 import 'package:imitatio/src/datasets/sk/date.dart';
 import 'package:imitatio/src/datasets/sv/date.dart';
+import 'package:imitatio/src/datasets/tr/date.dart';
 import 'package:imitatio/src/enums.dart';
 
 /// Provides all data related to the date.
@@ -71,6 +72,7 @@ class DateData {
       Locale.ru => RuDateData(),
       Locale.sk => SkDateData(),
       Locale.sv => SvDateData(),
+      Locale.tr => TrDateData(),
     };
   }
 }

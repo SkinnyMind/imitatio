@@ -162,4 +162,5 @@ enum Locale {
   ru,
   sk,
   sv,
+  tr,
 }
