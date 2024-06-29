@@ -1530,6 +1530,7 @@ class IntTransportData {
       Locale.sk => "SK",
       Locale.sv => "S",
       Locale.tr => "TR",
+      Locale.uk => "UA",
     };
   }
 }
