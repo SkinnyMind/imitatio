@@ -26,6 +26,7 @@ import 'package:imitatio/src/datasets/nl/date.dart';
 import 'package:imitatio/src/datasets/nl_be/date.dart';
 import 'package:imitatio/src/datasets/no/date.dart';
 import 'package:imitatio/src/datasets/pl/date.dart';
+import 'package:imitatio/src/datasets/pt_br/date.dart';
 import 'package:imitatio/src/datasets/ru/date.dart';
 import 'package:imitatio/src/enums.dart';
 
@@ -62,6 +63,7 @@ class DateData {
       Locale.nl => NlDateData(),
       Locale.no => NoDateData(),
       Locale.pl => PlDateData(),
+      Locale.pt_br => PtBrDateData(),
       Locale.ru => RuDateData(),
     };
   }

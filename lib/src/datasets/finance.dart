@@ -26,6 +26,7 @@ import 'package:imitatio/src/datasets/nl/finance.dart';
 import 'package:imitatio/src/datasets/nl_be/finance.dart';
 import 'package:imitatio/src/datasets/no/finance.dart';
 import 'package:imitatio/src/datasets/pl/finance.dart';
+import 'package:imitatio/src/datasets/pt_br/finance.dart';
 import 'package:imitatio/src/datasets/ru/finance.dart';
 import 'package:imitatio/src/enums.dart';
 
@@ -62,6 +63,7 @@ class FinanceData {
       Locale.nl => NlFinanceData(),
       Locale.no => NoFinanceData(),
       Locale.pl => PlFinanceData(),
+      Locale.pt_br => PtBrFinanceData(),
       Locale.ru => RuFinanceData(),
     };
   }

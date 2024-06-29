@@ -157,5 +157,6 @@ enum Locale {
   nl,
   no,
   pl,
+  pt_br,
   ru,
 }

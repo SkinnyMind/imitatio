@@ -26,6 +26,7 @@ import 'package:imitatio/src/datasets/nl/person.dart';
 import 'package:imitatio/src/datasets/nl_be/person.dart';
 import 'package:imitatio/src/datasets/no/person.dart';
 import 'package:imitatio/src/datasets/pl/person.dart';
+import 'package:imitatio/src/datasets/pt_br/person.dart';
 import 'package:imitatio/src/datasets/ru/person.dart';
 import 'package:imitatio/src/enums.dart';
 
@@ -62,6 +63,7 @@ class PersonData {
       Locale.nl => NlPersonData(),
       Locale.no => NoPersonData(),
       Locale.pl => PlPersonData(),
+      Locale.pt_br => PtBrPersonData(),
       Locale.ru => RuPersonData(),
     };
   }

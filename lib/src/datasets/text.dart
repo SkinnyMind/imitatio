@@ -26,6 +26,7 @@ import 'package:imitatio/src/datasets/nl/text.dart';
 import 'package:imitatio/src/datasets/nl_be/text.dart';
 import 'package:imitatio/src/datasets/no/text.dart';
 import 'package:imitatio/src/datasets/pl/text.dart';
+import 'package:imitatio/src/datasets/pt_br/text.dart';
 import 'package:imitatio/src/datasets/ru/text.dart';
 import 'package:imitatio/src/enums.dart';
 
@@ -62,6 +63,7 @@ class TextData {
       Locale.nl => NlTextData(),
       Locale.no => NoTextData(),
       Locale.pl => PlTextData(),
+      Locale.pt_br => PtBrTextData(),
       Locale.ru => RuTextData(),
     };
   }
