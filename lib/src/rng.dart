@@ -1,7 +1,7 @@
 import 'dart:math';
+import 'dart:typed_data';
 
 import 'package:imitatio/src/util.dart';
-import 'package:uuid/uuid.dart';
 
 /// Implements various helpers.
 class Rng {
@@ -21,7 +21,7 @@ class Rng {
   /// Rng.randomString(length: 5); // "pNADq"
   /// ```
   static String randomString({bool unique = false, int? length, int? seed}) {
-    if (unique) return const Uuid().v4();
+    if (unique) return _uuidV4;
     final chars =
         'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
             .split('');
@@ -82,4 +82,35 @@ class Rng {
     }
     return String.fromCharCodes(code);
   }
+
+  // Taken from https://github.com/Daegalus/dart-uuid
+  static String get _uuidV4 {
+    final rng = Uint8List(16);
+
+    for (var i = 0; i < 16; i += 4) {
+      final k = Random().nextInt(pow(2, 32).toInt());
+      rng[i] = k;
+      rng[i + 1] = k >> 8;
+      rng[i + 2] = k >> 16;
+      rng[i + 3] = k >> 24;
+    }
+
+    final List<int> buffer = rng;
+    buffer[6] = (buffer[6] & 0x0f) | 0x40;
+    buffer[8] = (buffer[8] & 0x3f) | 0x80;
+
+    var i = 0;
+    return '${_byteToHex[buffer[i++]]}${_byteToHex[buffer[i++]]}'
+        '${_byteToHex[buffer[i++]]}${_byteToHex[buffer[i++]]}-'
+        '${_byteToHex[buffer[i++]]}${_byteToHex[buffer[i++]]}-'
+        '${_byteToHex[buffer[i++]]}${_byteToHex[buffer[i++]]}-'
+        '${_byteToHex[buffer[i++]]}${_byteToHex[buffer[i++]]}-'
+        '${_byteToHex[buffer[i++]]}${_byteToHex[buffer[i++]]}'
+        '${_byteToHex[buffer[i++]]}${_byteToHex[buffer[i++]]}'
+        '${_byteToHex[buffer[i++]]}${_byteToHex[buffer[i++]]}';
+  }
+
+  static final List<String> _byteToHex = List<String>.generate(256, (i) {
+    return i.toRadixString(16).padLeft(2, '0');
+  });
 }

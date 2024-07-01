@@ -8,7 +8,6 @@ environment:
 dependencies:
   complex: ^0.7.2
   crypto: ^3.0.3
-  uuid: ^4.4.0
 
 dev_dependencies:
   lints: ^4.0.0
