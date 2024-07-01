@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:imitatio/imitatio.dart';
 import 'package:imitatio/src/datasets/international/internet.dart';
 import 'package:imitatio/src/datasets/international/person.dart';
+import 'package:imitatio/src/datasets/text.dart';
 
 /// Provides data related to internet.
 class Internet {
@@ -191,7 +192,11 @@ class Internet {
       );
     }
     final keysSeed = seed != null ? seed! + 69 : null;
-    final keys = Text(seed: keysSeed).words(quantity: quantity);
+    final keys = Choice(seed: keysSeed).choose(
+      items: TextData.locale(Locale.en).words,
+      length: quantity,
+      unique: true,
+    );
     final values = Text(seed: seed).words(quantity: quantity);
 
     return Map.fromIterables(keys, values);
