@@ -637,7 +637,8 @@ class EnAuAddressData extends AddressDataset {
   @override
   List<String> streets({required bool isSuffix}) {
     return switch (isSuffix) {
-      _ => const [
+      true => const [],
+      false => const [
           "Artabrackagh",
           "Artana",
           "Artasooly",

@@ -52,6 +52,9 @@ void main() {
         seededAddress.streetSuffix,
         equals(seededAddress.streetSuffix),
       );
+
+      final noSuffixLocale = Locale.de_ch;
+      expect(Address(locale: noSuffixLocale).streetSuffix, isEmpty);
     });
 
     test('returns full address', () async {

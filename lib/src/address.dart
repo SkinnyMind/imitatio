@@ -43,15 +43,16 @@ class Address {
     return data[Random(seed).nextInt(data.length)];
   }
 
-  /// Returns a random street suffix.
+  /// Returns a random street suffix if [locale] has any.
   ///
   /// Example:
   /// ```dart
   /// Address().streetSuffix; // "Motorway"
+  /// Address(locale: Locale.de_ch).streetSuffix; // ""
   /// ```
   String get streetSuffix {
     final data = AddressData.locale(locale).streets(isSuffix: true);
-    return data[Random(seed).nextInt(data.length)];
+    return data.isNotEmpty ? data[Random(seed).nextInt(data.length)] : '';
   }
 
   /// Returns a random full address.
