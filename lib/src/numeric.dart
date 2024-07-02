@@ -1,7 +1,5 @@
 import 'dart:math';
 
-import 'package:complex/complex.dart';
-
 /// Provider of data related to generating numeric data.
 class Numeric {
   /// Provider of data related to generating numeric data.
@@ -162,9 +160,9 @@ class Numeric {
   ///
   /// Example:
   /// ```dart
-  /// Numeric().complexNumber(); // (0.784949456188452, 0.330969132786893)
+  /// Numeric().complexNumber(); // (imaginary: 0.784949456188452, real: 0.330969132786893)
   /// ```
-  Complex complexNumber({
+  ({double real, double imaginary}) complexNumber({
     double realStart = 0.0,
     double realEnd = 1.0,
     int realPrecision = 15,
@@ -177,7 +175,7 @@ class Numeric {
         .toStringAsFixed(realPrecision);
     final imaginary = ((random.nextDouble() + imaginaryStart) * imaginaryEnd)
         .toStringAsFixed(imaginaryPrecision);
-    return Complex(double.parse(real), double.parse(imaginary));
+    return (real: double.parse(real), imaginary: double.parse(imaginary));
   }
 
   /// Returns a list of random complex numbers.
@@ -201,9 +199,9 @@ class Numeric {
   ///
   /// Example:
   /// ```dart
-  /// Numeric().complexes(); // [(0.143755035934411, 0.401551611483689), ...]
+  /// Numeric().complexes(); // [(imaginary: 0.143755035934411, real: 0.401551611483689), ...]
   /// ```
-  List<Complex> complexes({
+  List<({double real, double imaginary})> complexes({
     double realStart = 0.0,
     double realEnd = 1.0,
     int realPrecision = 15,
