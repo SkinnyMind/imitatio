@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:typed_data';
 
 class Util {
   const Util._();
@@ -52,4 +53,35 @@ class Util {
     }
     return (check * 9 % 10).toString();
   }
+
+  // Taken from https://github.com/Daegalus/dart-uuid
+  static String get uuidV4 {
+    final rng = Uint8List(16);
+
+    for (var i = 0; i < 16; i += 4) {
+      final k = Random().nextInt(pow(2, 32).toInt());
+      rng[i] = k;
+      rng[i + 1] = k >> 8;
+      rng[i + 2] = k >> 16;
+      rng[i + 3] = k >> 24;
+    }
+
+    final List<int> buffer = rng;
+    buffer[6] = (buffer[6] & 0x0f) | 0x40;
+    buffer[8] = (buffer[8] & 0x3f) | 0x80;
+
+    var i = 0;
+    return '${_byteToHex[buffer[i++]]}${_byteToHex[buffer[i++]]}'
+        '${_byteToHex[buffer[i++]]}${_byteToHex[buffer[i++]]}-'
+        '${_byteToHex[buffer[i++]]}${_byteToHex[buffer[i++]]}-'
+        '${_byteToHex[buffer[i++]]}${_byteToHex[buffer[i++]]}-'
+        '${_byteToHex[buffer[i++]]}${_byteToHex[buffer[i++]]}-'
+        '${_byteToHex[buffer[i++]]}${_byteToHex[buffer[i++]]}'
+        '${_byteToHex[buffer[i++]]}${_byteToHex[buffer[i++]]}'
+        '${_byteToHex[buffer[i++]]}${_byteToHex[buffer[i++]]}';
+  }
+
+  static final List<String> _byteToHex = List<String>.generate(256, (i) {
+    return i.toRadixString(16).padLeft(2, '0');
+  });
 }
