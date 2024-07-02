@@ -1,4 +1,3 @@
-import 'package:complex/complex.dart';
 import 'package:imitatio/src/numeric.dart';
 import 'package:test/test.dart';
 
@@ -105,7 +104,7 @@ void main() {
     });
 
     test('returns complex number', () {
-      expect(numeric.complexNumber(), isA<Complex>());
+      expect(numeric.complexNumber(), isA<Record>());
 
       const realPrecision = 10;
       const imaginaryPrecision = 10;
