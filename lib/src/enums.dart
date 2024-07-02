@@ -129,6 +129,28 @@ enum EmojiCategory {
 
 enum CountryCode { a2, a3, numeric, ioc, fifa }
 
+enum PostalService {
+  usps(
+    name: 'USPS',
+    masks: [
+      "#### #### #### #### ####",
+      "@@ ### ### ### US",
+    ],
+  ),
+  fedex(
+    name: 'FedEx',
+    masks: [
+      "#### #### ####",
+      "#### #### #### ###",
+    ],
+  ),
+  ups(name: 'UPS', masks: ["1Z@####@##########"]);
+
+  const PostalService({required this.name, required this.masks});
+  final String name;
+  final List<String> masks;
+}
+
 enum Locale {
   da,
   cs,
