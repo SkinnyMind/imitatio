@@ -3,6 +3,7 @@ library;
 export 'src/address.dart';
 export 'src/choice.dart';
 export 'src/code.dart';
+export 'src/country_specific/country_specific.dart';
 export 'src/date.dart';
 export 'src/development.dart';
 export 'src/enums.dart';

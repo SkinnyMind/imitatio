@@ -84,4 +84,16 @@ class Util {
   static final List<String> _byteToHex = List<String>.generate(256, (i) {
     return i.toRadixString(16).padLeft(2, '0');
   });
+
+  static int calculateCprCheckDigit(String first9Digits) {
+    final weights = [4, 3, 2, 7, 6, 5, 4, 3, 2];
+
+    var sum = 0;
+    for (var i = 0; i < 9; i++) {
+      sum += int.parse(first9Digits[i]) * weights[i];
+    }
+
+    final checkDigit = 11 - (sum % 11);
+    return checkDigit >= 10 ? 0 : checkDigit;
+  }
 }
