@@ -1,4 +1,4 @@
-import 'package:imitatio/src/country_specific/da.dart';
+import 'package:imitatio/src/country_specific/denmark.dart';
 import 'package:imitatio/src/country_specific/italy.dart';
 import 'package:imitatio/src/country_specific/usa.dart';
 
