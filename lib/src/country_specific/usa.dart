@@ -39,10 +39,9 @@ class USA {
   String get ssn {
     final random = Random(seed);
     var area = random.nextInt(899) + 1;
-    area = area == 666 ? 665 : area
-      ..toString().padLeft(3, '0');
+    area = area == 666 ? 665 : area;
     final group = (random.nextInt(99) + 1).toString().padLeft(2, '0');
     final number = (random.nextInt(9999) + 1).toString().padLeft(4, '0');
-    return '$area-$group-$number';
+    return '${area.toString().padLeft(3, '0')}-$group-$number';
   }
 }

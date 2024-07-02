@@ -25,7 +25,7 @@ void main() {
       );
     });
 
-    test('returns tracking number', () async {
+    test('returns ssn', () async {
       final result = usa.ssn.split('-');
       final area = result[0];
       final group = result[1];
