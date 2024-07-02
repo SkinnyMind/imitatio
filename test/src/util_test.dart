@@ -33,5 +33,29 @@ void main() {
       expect(Util.luhnChecksum('7992739871'), '3');
       expect(Util.luhnChecksum('5161675549'), '5');
     });
+
+    test('returns CPR check digit', () {
+      final expectedCheckDigits = [0, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
+      final first9Digits = [
+        "060170000",
+        "260310579",
+        "060558958",
+        "210609428",
+        "171208281",
+        "130208400",
+        "020678688",
+        "050302471",
+        "030670890",
+        "100309468",
+        "250814378",
+      ];
+
+      for (final (i, first9) in first9Digits.indexed) {
+        expect(
+          Util.calculateCprCheckDigit(first9),
+          equals(expectedCheckDigits[i]),
+        );
+      }
+    });
   });
 }
