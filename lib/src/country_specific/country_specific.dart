@@ -1,3 +1,4 @@
+import 'package:imitatio/src/country_specific/brazil.dart';
 import 'package:imitatio/src/country_specific/denmark.dart';
 import 'package:imitatio/src/country_specific/italy.dart';
 import 'package:imitatio/src/country_specific/netherlands.dart';
@@ -36,4 +37,10 @@ class CountrySpecific {
   /// [seed] is optional parameter to initialize the internal state of the
   /// random generator.
   static Poland poland({int? seed}) => Poland(seed: seed);
+
+  /// Provides special data for Brazil.
+  ///
+  /// [seed] is optional parameter to initialize the internal state of the
+  /// random generator.
+  static Brazil brazil({int? seed}) => Brazil(seed: seed);
 }
