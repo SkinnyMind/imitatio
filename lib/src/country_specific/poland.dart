@@ -64,18 +64,13 @@ class Poland {
     gender ??= Gender.values[random.nextInt(Gender.values.length)];
 
     final year = (birthDate.year % 100).toString().padLeft(2, '0');
-    String month;
+    final month = switch (birthDate.year) {
+      >= 1800 && <= 1899 => (birthDate.month + 80).toString().padLeft(2, '0'),
+      >= 2000 && <= 2099 => (birthDate.month + 20).toString().padLeft(2, '0'),
+      >= 2100 && <= 2199 => (birthDate.month + 40).toString().padLeft(2, '0'),
+      _ => (birthDate.month + 60).toString().padLeft(2, '0'),
+    };
     final day = birthDate.day.toString().padLeft(2, '0');
-
-    if ((birthDate.year >= 1800) && (birthDate.year <= 1899)) {
-      month = (birthDate.month + 80).toString().padLeft(2, '0');
-    } else if ((birthDate.year >= 2000) && (birthDate.year <= 2099)) {
-      month = (birthDate.month + 20).toString().padLeft(2, '0');
-    } else if ((birthDate.year >= 2100) && (birthDate.year <= 2199)) {
-      month = (birthDate.month + 40).toString().padLeft(2, '0');
-    } else {
-      month = (birthDate.month + 60).toString().padLeft(2, '0');
-    }
 
     final seriesNumber = random.nextInt(1000).toString().padLeft(3, '0');
 
