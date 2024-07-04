@@ -54,17 +54,12 @@ void main() {
     test('returns patronymic name', () async {
       expect(russia.patronymic(), isNotEmpty);
 
-      final maleResult = russia.patronymic(gender: Gender.male);
-      expect(
-        RussiaSpecificData().patronymics(gender: Gender.male),
-        contains(maleResult),
-      );
-
-      final femaleResult = russia.patronymic(gender: Gender.female);
-      expect(
-        RussiaSpecificData().patronymics(gender: Gender.female),
-        contains(femaleResult),
-      );
+      for (final gender in Gender.values) {
+        expect(
+          RussiaSpecificData().patronymics(gender: gender),
+          contains(russia.patronymic(gender: gender)),
+        );
+      }
 
       expect(seededRussia.patronymic(), equals(seededRussia.patronymic()));
     });

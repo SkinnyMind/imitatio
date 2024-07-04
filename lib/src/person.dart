@@ -55,6 +55,33 @@ class Person {
     return data[random.nextInt(data.length)];
   }
 
+  /// Returns a random patronymic name. Specific to [Locale.ru] and [Locale.uk].
+  ///
+  /// Alias for [CountrySpecific.russia().patronymic()] and
+  /// [CountrySpecific.ukraine().patronymic()] methods.
+  ///
+  /// [gender] is optional [Gender].
+  ///
+  /// Throws on locales other than [Locale.ru] and [Locale.uk].
+  ///
+  /// Example:
+  /// ```dart
+  /// Person(locale: Locale.ru).patronymic(); // "Ерофеевич"
+  /// Person(locale: Locale.uk).patronymic(); // "Трифонівна"
+  /// ```
+  String patronymic({Gender? gender}) {
+    return switch (locale) {
+      Locale.ru =>
+        CountrySpecific.russia(seed: seed).patronymic(gender: gender),
+      Locale.uk =>
+        CountrySpecific.ukraine(seed: seed).patronymic(gender: gender),
+      _ => throw ArgumentError.value(
+          locale,
+          'Works only for Locale.ru and Locale.uk',
+        ),
+    };
+  }
+
   /// Returns a random surname.
   ///
   /// [gender] is optional [Gender].
@@ -80,12 +107,25 @@ class Person {
   /// ```dart
   /// Person().fullName(); // "Kristofer Livingston"
   /// Person().fullName(reverse: true); // "Livingston Kristofer"
+  /// Person(locale: Locale.ru).fullName(); // "Емельян Тарасович Абакумов"
+  /// Person(locale: Locale.uk).fullName(); // "Ігорина Демидівна Бабенко"
   /// ```
   String fullName({Gender? gender, bool reverse = false}) {
     gender ??= Gender.values[Random(seed).nextInt(Gender.values.length)];
     final name = this.name(gender: gender);
     final surname = this.surname(gender: gender);
-    return reverse ? '$surname $name' : '$name $surname';
+    final patronymic = switch (locale) {
+      Locale.ru => this.patronymic(gender: gender),
+      Locale.uk => this.patronymic(gender: gender),
+      _ => '',
+    };
+    return switch (locale) {
+      Locale.ru =>
+        reverse ? '$surname $name $patronymic' : '$name $patronymic $surname',
+      Locale.uk =>
+        reverse ? '$surname $name $patronymic' : '$name $patronymic $surname',
+      _ => reverse ? '$surname $name' : '$name $surname',
+    };
   }
 
   /// Returns a random title for name.

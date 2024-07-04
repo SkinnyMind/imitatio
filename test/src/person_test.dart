@@ -1,4 +1,6 @@
 import 'package:imitatio/imitatio.dart';
+import 'package:imitatio/src/datasets/country_specific/russia.dart';
+import 'package:imitatio/src/datasets/country_specific/ukraine.dart';
 import 'package:imitatio/src/datasets/international/person.dart';
 import 'package:imitatio/src/datasets/person.dart';
 import 'package:test/test.dart';
@@ -33,6 +35,36 @@ void main() {
       );
     });
 
+    test('returns patronymic name', () {
+      for (final gender in Gender.values) {
+        expect(
+          RussiaSpecificData().patronymics(gender: gender),
+          contains(const Person(locale: Locale.ru).patronymic(gender: gender)),
+        );
+      }
+
+      for (final gender in Gender.values) {
+        expect(
+          UkraineSpecificData().patronymics(gender: gender),
+          contains(const Person(locale: Locale.uk).patronymic(gender: gender)),
+        );
+      }
+
+      expect(
+        const Person(locale: Locale.ru, seed: 1).patronymic(),
+        equals(const Person(locale: Locale.ru, seed: 1).patronymic()),
+      );
+
+      expect(
+        const Person(locale: Locale.uk, seed: 1).patronymic(),
+        equals(const Person(locale: Locale.uk, seed: 1).patronymic()),
+      );
+    });
+
+    test('throws when trying to get patronymic name for wrong locale', () {
+      expect(() => person.patronymic(), throwsA(isA<ArgumentError>()));
+    });
+
     test('returns surname', () {
       expect(person.surname(), isNotEmpty);
 
@@ -64,6 +96,18 @@ void main() {
         seededPerson.fullName(),
         equals(seededPerson.fullName()),
       );
+
+      final ruResult = const Person(locale: Locale.ru).fullName().split(' ');
+      expect(ruResult.length, equals(3));
+      expect(ruResult[0], isNotEmpty);
+      expect(ruResult[1], isNotEmpty);
+      expect(ruResult[2], isNotEmpty);
+
+      final ukResult = const Person(locale: Locale.uk).fullName().split(' ');
+      expect(ukResult.length, equals(3));
+      expect(ukResult[0], isNotEmpty);
+      expect(ukResult[1], isNotEmpty);
+      expect(ukResult[2], isNotEmpty);
     });
 
     test('returns title', () {
