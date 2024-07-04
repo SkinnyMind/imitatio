@@ -216,9 +216,9 @@ class Person {
         'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!"#\$%&\'()*+, -./:;<=>?@[\\]^_`{|}~'
             .split('');
     final random = Random(seed);
-    final password = [
-      for (var i = 0; i < length; i++) chars[random.nextInt(chars.length)],
-    ].join();
+    final password =
+        List.generate(length, (_) => chars[random.nextInt(chars.length)])
+            .join();
 
     if (isHashed) {
       final bytes = utf8.encode(password);

@@ -55,9 +55,8 @@ class Text {
   String text({int quantity = 5}) {
     final data = TextData.locale(locale).texts;
     final random = Random(seed);
-    return [
-      for (var i = 0; i < quantity; i++) data[random.nextInt(data.length)],
-    ].join(" ");
+    return List.generate(quantity, (_) => data[random.nextInt(data.length)])
+        .join(" ");
   }
 
   /// Returns a random sentence from the text.
