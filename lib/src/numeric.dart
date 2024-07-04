@@ -77,13 +77,13 @@ class Numeric {
     }
 
     final random = Random(seed);
-    return [
-      for (var i = 0; i < n; i++)
-        double.parse(
-          (random.nextDouble() * (end - start) + start)
-              .toStringAsFixed(precision),
-        ),
-    ];
+    return List.generate(
+      n,
+      (_) => double.parse(
+        (random.nextDouble() * (end - start) + start)
+            .toStringAsFixed(precision),
+      ),
+    );
   }
 
   /// Returns  a random integer in range `[start, end]` (inclusive).
@@ -136,9 +136,7 @@ class Numeric {
     }
 
     final random = Random(seed);
-    return [
-      for (var i = 0; i < n; i++) random.nextInt(end + 1 - start) + start,
-    ];
+    return List.generate(n, (_) => random.nextInt(end + 1 - start) + start);
   }
 
   /// Returns a random complex number.
@@ -210,16 +208,16 @@ class Numeric {
     int imaginaryPrecision = 15,
     int n = 10,
   }) {
-    return [
-      for (var i = 0; i < n; i++)
-        complexNumber(
-          realStart: realStart,
-          realEnd: realEnd,
-          realPrecision: realPrecision,
-          imaginaryStart: imaginaryStart,
-          imaginaryEnd: imaginaryEnd,
-          imaginaryPrecision: imaginaryPrecision,
-        ),
-    ];
+    return List.generate(
+      n,
+      (_) => complexNumber(
+        realStart: realStart,
+        realEnd: realEnd,
+        realPrecision: realPrecision,
+        imaginaryStart: imaginaryStart,
+        imaginaryEnd: imaginaryEnd,
+        imaginaryPrecision: imaginaryPrecision,
+      ),
+    );
   }
 }

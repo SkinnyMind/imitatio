@@ -64,7 +64,7 @@ class Address {
   String get address {
     if (locale == Locale.ja) {
       final random = Random(seed);
-      final numbers = [for (var i = 0; i < 3; i++) random.nextInt(100) + 1];
+      final numbers = List.generate(3, (_) => random.nextInt(100) + 1);
       return '$city ${numbers.join('-')}';
     }
 

@@ -299,7 +299,7 @@ class Internet {
   String ipv4({PortRange? portRange}) {
     final result = StringBuffer();
     final random = Random(seed);
-    final octets = [for (var i = 0; i < 4; i++) random.nextInt(256)].join('.');
+    final octets = List.generate(4, (_) => random.nextInt(256)).join('.');
     result.write(octets);
 
     if (portRange != null) {
@@ -317,10 +317,10 @@ class Internet {
   /// ```
   String get ipv6 {
     final random = Random(seed);
-    return [
-      for (var i = 0; i < 8; i++)
-        random.nextInt(65536).toRadixString(16).padLeft(4, '0'),
-    ].join(':');
+    return List.generate(
+      8,
+      (_) => random.nextInt(65536).toRadixString(16).padLeft(4, '0'),
+    ).join(':');
   }
 
   /// Returns a random MAC address.

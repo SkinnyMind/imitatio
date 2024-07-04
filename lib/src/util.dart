@@ -15,7 +15,7 @@ class Util {
     int? seed,
   }) {
     final random = Random(seed);
-    return [for (var i = 0; i < n; i++) list[random.nextInt(list.length)]];
+    return List.generate(n, (_) => list[random.nextInt(list.length)]);
   }
 
   /// Returns the number of days in the specified month.
