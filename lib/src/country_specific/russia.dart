@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:imitatio/src/datasets/country_specific/russia.dart';
+import 'package:imitatio/src/enums.dart';
 
 class Russia {
   /// Provides special data for Russia.
@@ -149,5 +150,21 @@ class Russia {
     final regCode = (random.nextInt(99) + 1).toString().padLeft(2, '0');
     final regNumber = (random.nextInt(999) + 1).toString().padLeft(3, '0');
     return '$taxCode$regCode$regNumber';
+  }
+
+  /// Returns a random patronymic name.
+  ///
+  /// [gender] is optional [Gender].
+  ///
+  /// Example:
+  /// ```dart
+  /// CountrySpecific.russia().patronymic(); // "Ерофеевич"
+  /// CountrySpecific.russia().patronymic(gender: Gender.female); // "Брониславовна"
+  /// ```
+  String patronymic({Gender? gender}) {
+    final random = Random(seed);
+    gender ??= Gender.values[random.nextInt(Gender.values.length)];
+    final data = RussiaSpecificData().patronymics(gender: gender);
+    return data[random.nextInt(data.length)];
   }
 }
