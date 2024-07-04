@@ -1,4 +1,5 @@
 import 'package:imitatio/imitatio.dart';
+import 'package:imitatio/src/datasets/country_specific/russia.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -48,6 +49,24 @@ void main() {
     test('returns KPP', () async {
       expect(russia.kpp.length, equals(9));
       expect(seededRussia.kpp, equals(seededRussia.kpp));
+    });
+
+    test('returns patronymic name', () async {
+      expect(russia.patronymic(), isNotEmpty);
+
+      final maleResult = russia.patronymic(gender: Gender.male);
+      expect(
+        RussiaSpecificData().patronymics(gender: Gender.male),
+        contains(maleResult),
+      );
+
+      final femaleResult = russia.patronymic(gender: Gender.female);
+      expect(
+        RussiaSpecificData().patronymics(gender: Gender.female),
+        contains(femaleResult),
+      );
+
+      expect(seededRussia.patronymic(), equals(seededRussia.patronymic()));
     });
   });
 }
