@@ -4,6 +4,7 @@ import 'package:imitatio/imitatio.dart';
 import 'package:imitatio/src/datasets/international/internet.dart';
 import 'package:imitatio/src/datasets/international/person.dart';
 import 'package:imitatio/src/datasets/text.dart';
+import 'package:imitatio/src/util.dart';
 
 /// Provides data related to internet.
 class Internet {
@@ -317,10 +318,11 @@ class Internet {
   /// ```
   String get ipv6 {
     final random = Random(seed);
-    return List.generate(
+    final address = List.generate(
       8,
-      (_) => random.nextInt(65536).toRadixString(16).padLeft(4, '0'),
+      (_) => random.nextInt(65536).toRadixString(16),
     ).join(':');
+    return Util.compressIPv6(address);
   }
 
   /// Returns a random MAC address.

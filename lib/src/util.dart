@@ -96,4 +96,27 @@ class Util {
     final checkDigit = 11 - (sum % 11);
     return checkDigit >= 10 ? 0 : checkDigit;
   }
+
+  static String compressIPv6(String address) {
+    final regexp = RegExp(r':?(?:0:|0$){2,}');
+    final matches = regexp.allMatches(address).toList();
+
+    for (final (i, match) in matches.indexed.toList()) {
+      if (!match.group(0)!.contains(':')) matches.removeAt(i);
+    }
+
+    if (matches.isEmpty) {
+      return address;
+    }
+
+    matches.sort((a, b) {
+      return b
+          .group(0)!
+          .replaceAll(':', '')
+          .length
+          .compareTo(a.group(0)!.replaceAll(':', '').length);
+    });
+
+    return address.replaceFirst(matches.first.group(0)!, '::');
+  }
 }
