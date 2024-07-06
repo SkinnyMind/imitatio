@@ -57,5 +57,46 @@ void main() {
         );
       }
     });
+
+    test('correctly compresses ipv6', () {
+      const addresses = [
+        '0:0:0:4e6e:0:0:0:500b',
+        '0:aa6a:0:4e6e:0:0:0:500b',
+        '0:0:5975:4e6e:0:0:0:500b',
+        '0:0:0:4e6e:aa6a:0:0:500b',
+        '0:9253:aa6a:4e6e:aa6a:0:3a8c:500b',
+        '9253:aa6a:5975:cd4:a686:3a8c:ea00:de21',
+        '9253:aa6a:5975:cd4:a686:3a8c:ea00:de00',
+        'ea00:aa6a:5975:cd4:a686:3a8c:ea00:de00',
+        'ea00:aa6a:5975:cd4:a686:3a8c:3a8c:0',
+        'ea00:aa6a:5975:cd4:a686:3a8c:0:0',
+        '2001:db8:0:0:8:800:200c:417a',
+        'ff01:0:0:0:0:0:0:101',
+        '0:0:0:0:0:0:0:1',
+        '0:0:0:0:0:0:0:0',
+      ];
+
+      const expected = [
+        '::4e6e:0:0:0:500b',
+        '0:aa6a:0:4e6e::500b',
+        '0:0:5975:4e6e::500b',
+        '::4e6e:aa6a:0:0:500b',
+        '0:9253:aa6a:4e6e:aa6a:0:3a8c:500b',
+        '9253:aa6a:5975:cd4:a686:3a8c:ea00:de21',
+        '9253:aa6a:5975:cd4:a686:3a8c:ea00:de00',
+        'ea00:aa6a:5975:cd4:a686:3a8c:ea00:de00',
+        'ea00:aa6a:5975:cd4:a686:3a8c:3a8c:0',
+        'ea00:aa6a:5975:cd4:a686:3a8c::',
+        '2001:db8::8:800:200c:417a',
+        'ff01::101',
+        '::1',
+        '::',
+      ];
+
+      for (final (i, address) in addresses.indexed) {
+        final result = Util.compressIPv6(address);
+        expect(result, equals(expected[i]));
+      }
+    });
   });
 }
