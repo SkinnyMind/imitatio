@@ -18,6 +18,35 @@ enum PortRange {
   final int max;
 }
 
+/// IPv4 address ranges for different purposes.
+enum IPv4Purpose {
+  thisNetwork(min: 0, max: 16777215),
+  amt(min: 3224682752, max: 3224683007),
+  loopback(min: 2130706432, max: 2147483647),
+  as112v4(min: 3223307264, max: 3223307519),
+  linkLocal(min: 2851995648, max: 2852061183),
+  testNet1(min: 3221225984, max: 3221226239),
+  testNet2(min: 3325256704, max: 3325256959),
+  testNet3(min: 3405803776, max: 3405804031),
+  benchmarking(min: 3323068416, max: 3323199487),
+  privateUse1(min: 167772160, max: 184549375),
+  privateUse2(min: 2886729728, max: 2887778303),
+  privateUse3(min: 3232235520, max: 3232301055),
+  reserved(min: 4026531840, max: 4294967295),
+  sharedAddressSpace(min: 1681915904, max: 1686110207),
+  limitedBroadcast(min: 4294967295, max: 4294967295),
+  ipv4DummyAddress(min: 3221225480, max: 3221225480),
+  turnRelayAnycast(min: 3221225482, max: 3221225482),
+  ietfProtocolAssignments(min: 3221225472, max: 3221225727),
+  portControlProtocolAnycast(min: 3221225481, max: 3221225481),
+  ipv4ServiceContinuityPrefix(min: 3221225472, max: 3221225479),
+  directDelegationAs112Service(min: 3232706560, max: 3232706815);
+
+  const IPv4Purpose({required this.min, required this.max});
+  final int min;
+  final int max;
+}
+
 /// URL schemes.
 enum URLScheme { ws, wss, ftp, sftp, http, https }
 

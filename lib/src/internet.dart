@@ -290,18 +290,37 @@ class Internet {
 
   /// Returns a random IPv4 address.
   ///
+  /// [purpose] is optional [IPv4Purpose].
+  ///
   /// [portRange] is optional [PortRange] group.
   ///
   /// Example:
   /// ```dart
   /// Internet().ipv4(); // "143.233.12.25"
+  /// Internet().ipv4(purpose: IPv4Purpose.loopback); // "127.80.98.206"
   /// Internet().ipv4(portRange: PortRange.registered); // "171.209.85.41:17455"
   /// ```
-  String ipv4({PortRange? portRange}) {
+  String ipv4({IPv4Purpose? purpose, PortRange? portRange}) {
     final result = StringBuffer();
     final random = Random(seed);
-    final octets = List.generate(4, (_) => random.nextInt(256)).join('.');
-    result.write(octets);
+
+    if (purpose != null) {
+      final intAddress = switch (purpose) {
+        IPv4Purpose.limitedBroadcast => purpose.min,
+        IPv4Purpose.ipv4DummyAddress => purpose.min,
+        IPv4Purpose.turnRelayAnycast => purpose.min,
+        IPv4Purpose.portControlProtocolAnycast => purpose.min,
+        _ => random.nextInt(purpose.max - purpose.min) + purpose.min,
+      };
+      final binaryAddress = intAddress.toRadixString(2).padLeft(32, '0');
+      final octets = [
+        for (int i = 0; i < 32; i += 8) binaryAddress.substring(i, i + 8),
+      ];
+      result.write(octets.map((octet) => int.parse(octet, radix: 2)).join('.'));
+    } else {
+      final octets = List.generate(4, (_) => random.nextInt(256)).join('.');
+      result.write(octets);
+    }
 
     if (portRange != null) {
       result.write(':${port(range: portRange)}');
