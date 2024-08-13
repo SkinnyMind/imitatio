@@ -277,5 +277,17 @@ void main() {
         equals(seededInternet.dsn()),
       );
     });
+
+    test('returns ASN', () {
+      final result = internet.asn;
+      expect(result, startsWith("AS"));
+      final number = int.parse(result.substring(2));
+      expect((number >= 1) && (number <= 4199999999), true);
+
+      expect(
+        seededInternet.asn,
+        equals(seededInternet.asn),
+      );
+    });
   });
 }

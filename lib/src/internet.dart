@@ -380,4 +380,17 @@ class Internet {
 
     return '${dsn.scheme}://$hostname:${dsn.port}';
   }
+
+  /// Returns a random ASN (Autonomous System Number).
+  ///
+  /// ASNs reserved for private use are not considered.
+  ///
+  /// Example:
+  /// ```dart
+  /// Internet().asn; // "AS709911205"
+  /// ```
+  String get asn {
+    final number = Random(seed).nextInt(4199999998) + 1;
+    return 'AS$number';
+  }
 }
