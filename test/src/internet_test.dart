@@ -226,6 +226,28 @@ void main() {
       );
     });
 
+    test('returns an IPv4 address in specific purpose range', () {
+      for (final purpose in IPv4Purpose.values) {
+        final result = internet.ipv4(purpose: purpose);
+        final octets = result.split('.');
+        expect(octets.length, 4);
+        for (final octet in octets) {
+          expect(int.tryParse(octet), isA<int>());
+        }
+        final intOctets = octets.map((octet) => int.parse(octet)).toList();
+        final intAddress = (intOctets[0] << 24) +
+            (intOctets[1] << 16) +
+            (intOctets[2] << 8) +
+            intOctets[3];
+        expect(intAddress >= purpose.min && intAddress <= purpose.max, true);
+      }
+
+      expect(
+        seededInternet.ipv4(purpose: IPv4Purpose.loopback),
+        equals(seededInternet.ipv4(purpose: IPv4Purpose.loopback)),
+      );
+    });
+
     test('returns an IPv6 address', () {
       final result = internet.ipv6;
       final regexp = RegExp(
