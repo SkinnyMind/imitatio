@@ -312,11 +312,10 @@ class Internet {
         IPv4Purpose.portControlProtocolAnycast => purpose.min,
         _ => random.nextInt(purpose.max - purpose.min) + purpose.min,
       };
-      final binaryAddress = intAddress.toRadixString(2).padLeft(32, '0');
-      final octets = [
-        for (int i = 0; i < 32; i += 8) binaryAddress.substring(i, i + 8),
-      ];
-      result.write(octets.map((octet) => int.parse(octet, radix: 2)).join('.'));
+      result.write(
+        '${intAddress >> 24 & 255}.${intAddress >> 16 & 255}.'
+        '${intAddress >> 8 & 255}.${intAddress & 255}',
+      );
     } else {
       final octets = List.generate(4, (_) => random.nextInt(256)).join('.');
       result.write(octets);
