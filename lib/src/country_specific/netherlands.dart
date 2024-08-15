@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:imitatio/src/extensions.dart';
+
 class Netherlands {
   /// Provides special data for Netherlands.
   ///
@@ -22,7 +24,7 @@ class Netherlands {
     String sample;
 
     do {
-      sample = (random.nextInt(max - min + 1) + min).toString();
+      sample = random.integer(min: min, max: max).toString();
     } while (!_isValidBsn(sample));
 
     return sample;

@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:imitatio/src/extensions.dart';
+
 class Brazil {
   /// Provides special data for Brazil.
   ///
@@ -21,7 +23,7 @@ class Brazil {
   /// ```
   String cpf({bool withMask = true}) {
     final random = Random(seed);
-    final cpf = List.generate(9, (_) => random.nextInt(10));
+    final cpf = List.generate(9, (_) => random.integer(max: 9));
     final firstVd = _getCpfVerifyingDigit(cpf: cpf, weight: 10);
     cpf.add(firstVd);
     final secondVd = _getCpfVerifyingDigit(cpf: cpf, weight: 11);
@@ -57,7 +59,7 @@ class Brazil {
   /// ```
   String cnpj({bool withMask = true}) {
     final random = Random(seed);
-    final cnpj = List.generate(12, (_) => random.nextInt(10));
+    final cnpj = List.generate(12, (_) => random.integer(max: 9));
     final firstVd = _getCnpjVerifyingDigit(cnpj: cnpj, weight: 5);
     cnpj.add(firstVd);
     final secondVd = _getCnpjVerifyingDigit(cnpj: cnpj, weight: 6);

@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:imitatio/imitatio.dart';
 import 'package:imitatio/src/datasets/international/code.dart';
+import 'package:imitatio/src/extensions.dart';
 import 'package:imitatio/src/rng.dart';
 import 'package:imitatio/src/util.dart';
 
@@ -23,7 +24,7 @@ class Code {
   /// ```
   String get localeCode {
     final data = IntCodeData.localeCodes;
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random IMEI.
@@ -35,10 +36,9 @@ class Code {
   String get imei {
     final random = Random(seed);
     final number = StringBuffer();
-    number.write(
-      IntCodeData.imeiTacs[random.nextInt(IntCodeData.imeiTacs.length)],
-    );
-    number.write(random.nextInt(1000000 - 100000) + 100000);
+    final tacs = IntCodeData.imeiTacs;
+    number.write(tacs[random.integer(max: tacs.length - 1)]);
+    number.write(random.integer(min: 100000, max: 999999));
     number.write(Util.luhnChecksum(number.toString()));
     return number.toString();
   }

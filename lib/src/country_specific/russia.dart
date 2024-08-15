@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:imitatio/src/datasets/country_specific/russia.dart';
 import 'package:imitatio/src/enums.dart';
+import 'package:imitatio/src/extensions.dart';
 
 class Russia {
   /// Provides special data for Russia.
@@ -31,10 +32,10 @@ class Russia {
 
     final random = Random(seed);
     final currentYear = DateTime.now().year % 100;
-    year ??= random.nextInt(currentYear + 1);
-    final region = (random.nextInt(99) + 1).toString().padLeft(2, '0');
+    year ??= random.integer(max: currentYear);
+    final region = random.integer(min: 1, max: 99).toString().padLeft(2, '0');
     final series = '$region ${year.toString().padLeft(2, '0')}';
-    final number = List.generate(6, (_) => random.nextInt(10)).join();
+    final number = List.generate(6, (_) => random.integer(max: 9)).join();
     return '$series $number';
   }
 
@@ -46,7 +47,7 @@ class Russia {
   /// ```
   String get snils {
     final random = Random(seed);
-    final numbers = List.generate(9, (_) => random.nextInt(10));
+    final numbers = List.generate(9, (_) => random.integer(max: 9));
     final controlCodes = [for (var i = 9; i > 0; i--) numbers[9 - i] * i];
     var controlCode = controlCodes.reduce((a, b) => a + b);
     final code = numbers.join();
@@ -79,7 +80,7 @@ class Russia {
     final random = Random(seed);
     final numbers = List.generate(
       10,
-      (i) => random.nextInt(9) + (i == 0 ? 1 : 0),
+      (i) => random.integer(min: i == 0 ? 1 : 0, max: 9),
     );
     final n2 = _innControlSum(numbers: numbers, digit: 2);
     numbers.add(n2);
@@ -113,7 +114,7 @@ class Russia {
     final random = Random(seed);
     final numbers = List.generate(
       12,
-      (i) => random.nextInt(9) + (i == 0 ? 1 : 0),
+      (i) => random.integer(min: i == 0 ? 1 : 0, max: 9),
     );
 
     final ogrn = numbers.join();
@@ -131,9 +132,10 @@ class Russia {
   String get bic {
     final random = Random(seed);
     final countryCode = '04';
-    final code = (random.nextInt(10) + 1).toString().padLeft(2, '0');
-    final bankNumber = random.nextInt(100).toString().padLeft(2, '0');
-    final bankOffice = (random.nextInt(950) + 50).toString().padLeft(3, '0');
+    final code = random.integer(min: 1, max: 10).toString().padLeft(2, '0');
+    final bankNumber = random.integer(max: 99).toString().padLeft(2, '0');
+    final bankOffice =
+        random.integer(min: 50, max: 999).toString().padLeft(3, '0');
     return '$countryCode$code$bankNumber$bankOffice';
   }
 
@@ -146,9 +148,10 @@ class Russia {
   String get kpp {
     final random = Random(seed);
     final taxCodes = RussiaSpecificData.taxCodes;
-    final taxCode = taxCodes[random.nextInt(taxCodes.length)];
-    final regCode = (random.nextInt(99) + 1).toString().padLeft(2, '0');
-    final regNumber = (random.nextInt(999) + 1).toString().padLeft(3, '0');
+    final taxCode = taxCodes[random.integer(max: taxCodes.length - 1)];
+    final regCode = random.integer(min: 1, max: 99).toString().padLeft(2, '0');
+    final regNumber =
+        random.integer(min: 1, max: 999).toString().padLeft(3, '0');
     return '$taxCode$regCode$regNumber';
   }
 
@@ -163,8 +166,9 @@ class Russia {
   /// ```
   String patronymic({Gender? gender}) {
     final random = Random(seed);
-    gender ??= Gender.values[random.nextInt(Gender.values.length)];
+    final genderData = Gender.values;
+    gender ??= genderData[random.integer(max: genderData.length - 1)];
     final data = RussiaSpecificData().patronymics(gender: gender);
-    return data[random.nextInt(data.length)];
+    return data[random.integer(max: data.length - 1)];
   }
 }

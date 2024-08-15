@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:imitatio/src/datasets/country_specific/ukraine.dart';
 import 'package:imitatio/src/enums.dart';
+import 'package:imitatio/src/extensions.dart';
 
 class Ukraine {
   /// Provides special data for Ukraine.
@@ -23,8 +24,9 @@ class Ukraine {
   /// ```
   String patronymic({Gender? gender}) {
     final random = Random(seed);
-    gender ??= Gender.values[random.nextInt(Gender.values.length)];
+    final genderData = Gender.values;
+    gender ??= genderData[random.integer(max: genderData.length - 1)];
     final data = UkraineSpecificData().patronymics(gender: gender);
-    return data[random.nextInt(data.length)];
+    return data[random.integer(max: data.length - 1)];
   }
 }

@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:imitatio/src/datasets/international/science.dart';
 import 'package:imitatio/src/enums.dart';
+import 'package:imitatio/src/extensions.dart';
 import 'package:imitatio/src/util.dart';
 
 /// Provides data related to science.
@@ -41,7 +42,7 @@ class Science {
   /// ```
   String measureUnit({MeasureUnit? name, bool asSymbol = false}) {
     final data = MeasureUnit.values;
-    final unit = name ?? data[Random(seed).nextInt(data.length)];
+    final unit = name ?? data[Random(seed).integer(max: data.length - 1)];
     return asSymbol ? unit.symbol : unit.name;
   }
 
@@ -59,12 +60,12 @@ class Science {
   String metricPrefix({MetricPrefixSign? sign, bool asSymbol = false}) {
     final random = Random(seed);
     final signs = MetricPrefixSign.values;
-    final prefixSign = sign ?? signs[random.nextInt(signs.length)];
+    final prefixSign = sign ?? signs[random.integer(max: signs.length - 1)];
 
     final data = asSymbol
         ? IntScienceData.prefixesSymbols(prefixSign)
         : IntScienceData.prefixes(prefixSign);
 
-    return data[random.nextInt(data.length)];
+    return data[random.integer(max: data.length - 1)];
   }
 }
