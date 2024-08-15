@@ -4,6 +4,7 @@ import 'package:imitatio/imitatio.dart';
 import 'package:imitatio/src/datasets/international/internet.dart';
 import 'package:imitatio/src/datasets/international/person.dart';
 import 'package:imitatio/src/datasets/text.dart';
+import 'package:imitatio/src/extensions.dart';
 import 'package:imitatio/src/util.dart';
 
 /// Provides data related to internet.
@@ -305,13 +306,7 @@ class Internet {
     final random = Random(seed);
 
     if (purpose != null) {
-      final intAddress = switch (purpose) {
-        IPv4Purpose.limitedBroadcast => purpose.min,
-        IPv4Purpose.ipv4DummyAddress => purpose.min,
-        IPv4Purpose.turnRelayAnycast => purpose.min,
-        IPv4Purpose.portControlProtocolAnycast => purpose.min,
-        _ => random.nextInt(purpose.max - purpose.min) + purpose.min,
-      };
+      final intAddress = random.integer(min: purpose.min, max: purpose.max);
       result.write(
         '${intAddress >> 24 & 255}.${intAddress >> 16 & 255}.'
         '${intAddress >> 8 & 255}.${intAddress & 255}',
