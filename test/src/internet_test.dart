@@ -141,6 +141,17 @@ void main() {
       );
     });
 
+    test('returns path', () {
+      final result = internet.path().split('/').length;
+      expect(result >= 2 && result <= 12, true);
+      expect(internet.path(parts: 5).split('/').length, 5);
+
+      expect(
+        seededInternet.path(),
+        equals(seededInternet.path()),
+      );
+    });
+
     test('returns slug', () {
       final result = internet.slug().split('-').length;
       expect(result >= 2 && result <= 12, true);

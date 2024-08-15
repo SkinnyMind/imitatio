@@ -255,7 +255,22 @@ class Internet {
     return Random(seed).integer(min: range.min, max: range.max);
   }
 
-  /// Returns a random slug of given parts count.
+  /// Returns a random path of given [parts] count.
+  ///
+  /// [parts] is optional number of slug's parts (default is between 2 and 12).
+  ///
+  /// Throws [ArgumentError] if [parts] is lesser than 2 or greater than 12.
+  ///
+  /// Example:
+  /// ```dart
+  /// Internet().path(); // "flights/trademarks/suppose/migration"
+  /// Internet().path(parts: 2); // "wrote/fortune"
+  /// ```
+  String path({int? parts}) {
+    return slug(parts: parts).replaceAll('-', '/');
+  }
+
+  /// Returns a random slug of given [parts] count.
   ///
   /// [parts] is optional number of slug's parts (default is between 2 and 12).
   ///
