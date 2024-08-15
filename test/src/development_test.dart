@@ -48,20 +48,24 @@ void main() {
       final major = int.parse(version[0]);
       final minor = int.parse(version[1]);
       final patch = int.parse(version[2]);
-      expect(major >= 2020 && major <= 2022, true);
+      expect(major >= 2016 && major <= DateTime.now().year, true);
       expect(minor >= 0 && minor <= 12, true);
-      expect(patch >= 0 && patch <= 12, true);
+      expect(patch >= 0 && patch <= 29, true);
     });
 
     test(
       'returns version number in Calendar Versioning format with pre-release',
       () {
-        final version =
-            development.version(calVer: true, preRelease: true).split('.');
+        final version = development
+            .version(
+              calVer: true,
+              preRelease: true,
+            )
+            .split('.');
         expect(version.length, 4);
 
         final major = int.parse(version[0]);
-        expect(major >= 2020 && major <= 2022, true);
+        expect(major >= 2016 && major <= DateTime.now().year, true);
       },
     );
 

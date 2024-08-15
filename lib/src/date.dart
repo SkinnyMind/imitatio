@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:imitatio/src/datasets/date.dart';
 import 'package:imitatio/src/datasets/international/date.dart';
 import 'package:imitatio/src/enums.dart';
+import 'package:imitatio/src/extensions.dart';
 import 'package:imitatio/src/util.dart';
 
 /// Provides data related to date and time.
@@ -51,9 +52,12 @@ class Date {
     }
 
     final random = Random(seed);
-    final year = random.nextInt(endYear + 1 - start) + start;
-    final month = random.nextInt(12) + 1;
-    final day = random.nextInt(Util.daysInMonth(year: year, month: month)) + 1;
+    final year = random.integer(min: start, max: endYear);
+    final month = random.integer(min: 1, max: 12);
+    final day = random.integer(
+      min: 1,
+      max: Util.daysInMonth(year: year, month: month),
+    );
     final paddedMonth = month.toString().padLeft(2, '0');
     final paddedDay = day.toString().padLeft(2, '0');
     return '$year-$paddedMonth-$paddedDay';
@@ -90,9 +94,12 @@ class Date {
     }
 
     final random = Random(seed);
-    final year = random.nextInt(endYear + 1 - start) + start;
-    final month = random.nextInt(12) + 1;
-    final day = random.nextInt(Util.daysInMonth(year: year, month: month)) + 1;
+    final year = random.integer(min: start, max: endYear);
+    final month = random.integer(min: 1, max: 12);
+    final day = random.integer(
+      min: 1,
+      max: Util.daysInMonth(year: year, month: month),
+    );
     final paddedMonth = month.toString().padLeft(2, '0');
     final paddedDay = day.toString().padLeft(2, '0');
     return DateData.locale(locale).formatDate(
@@ -110,9 +117,9 @@ class Date {
   /// ```
   String get time {
     final random = Random(seed);
-    final hour = random.nextInt(24).toString().padLeft(2, '0');
-    final minute = random.nextInt(60).toString().padLeft(2, '0');
-    final second = random.nextInt(60).toString().padLeft(2, '0');
+    final hour = random.integer(max: 23).toString().padLeft(2, '0');
+    final minute = random.integer(max: 59).toString().padLeft(2, '0');
+    final second = random.integer(max: 59).toString().padLeft(2, '0');
     return "$hour:$minute:$second";
   }
 
@@ -124,9 +131,9 @@ class Date {
   /// ```
   String get formattedTime {
     final random = Random(seed);
-    final hour = random.nextInt(24).toString().padLeft(2, '0');
-    final minute = random.nextInt(60).toString().padLeft(2, '0');
-    final second = random.nextInt(60).toString().padLeft(2, '0');
+    final hour = random.integer(max: 23).toString().padLeft(2, '0');
+    final minute = random.integer(max: 59).toString().padLeft(2, '0');
+    final second = random.integer(max: 59).toString().padLeft(2, '0');
     return DateData.locale(locale).formatTime(
       hour: hour,
       minute: minute,
@@ -167,7 +174,7 @@ class Date {
   /// ```
   String dayOfWeek({bool isAbbr = false}) {
     final data = DateData.locale(locale).days(isAbbr: isAbbr);
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random year.
@@ -201,7 +208,7 @@ class Date {
       );
     }
 
-    return Random(seed).nextInt(maxYear + 1 - min) + min;
+    return Random(seed).integer(min: min, max: maxYear);
   }
 
   /// Returns a random week number with year.
@@ -233,7 +240,7 @@ class Date {
       );
     }
 
-    final week = Random(seed).nextInt(52) + 1;
+    final week = Random(seed).integer(min: 1, max: 52);
     return "$year-W$week";
   }
 
@@ -248,7 +255,7 @@ class Date {
   /// ```
   String month({bool isAbbr = false}) {
     final data = DateData.locale(locale).months(isAbbr: isAbbr);
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random century.
@@ -257,8 +264,10 @@ class Date {
   /// ```dart
   /// Date().century; // "XIII"
   /// ```
-  String get century =>
-      IntDateData.romanNums[Random(seed).nextInt(IntDateData.romanNums.length)];
+  String get century {
+    final data = IntDateData.romanNums;
+    return data[Random(seed).integer(max: data.length - 1)];
+  }
 
   /// Returns a random periodicity string.
   ///
@@ -267,8 +276,8 @@ class Date {
   /// Date().periodicity; // "Often"
   /// ```
   String get periodicity {
-    final periodicities = DateData.locale(locale).periodicities;
-    return periodicities[Random(seed).nextInt(periodicities.length)];
+    final data = DateData.locale(locale).periodicities;
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random day of the month, from 1 to 31.
@@ -277,7 +286,7 @@ class Date {
   /// ```dart
   /// Date().dayOfMonth; // 18
   /// ```
-  int get dayOfMonth => Random(seed).nextInt(31) + 1;
+  int get dayOfMonth => Random(seed).integer(min: 1, max: 31);
 
   /// Returns a random timezone.
   ///
@@ -289,11 +298,11 @@ class Date {
   /// Date().timezone(region: TimezoneRegion.europe) // "Europe/Stockholm"
   /// ```
   String timezone({TimezoneRegion? region}) {
-    final timezone = region ??
-        TimezoneRegion
-            .values[Random(seed).nextInt(TimezoneRegion.values.length)];
+    final tzData = TimezoneRegion.values;
+    final timezone =
+        region ?? tzData[Random(seed).integer(max: tzData.length - 1)];
     final data = IntDateData.timezones(timezone);
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random GMT offset value.
@@ -304,6 +313,6 @@ class Date {
   /// ```
   String get gmtOffset {
     final data = IntDateData.gmtOffsets;
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 }

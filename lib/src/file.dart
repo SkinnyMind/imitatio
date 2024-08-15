@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:imitatio/imitatio.dart';
 import 'package:imitatio/src/datasets/international/file.dart';
+import 'package:imitatio/src/extensions.dart';
 
 /// Provides data related to file.
 class File {
@@ -24,10 +25,10 @@ class File {
   /// ```
   String ext({FileType? fileType}) {
     final random = Random(seed);
-    final type =
-        fileType ?? FileType.values[random.nextInt(FileType.values.length)];
+    final types = FileType.values;
+    final type = fileType ?? types[random.integer(max: types.length - 1)];
     final extensions = IntFileData.extensions(type);
-    return extensions[random.nextInt(extensions.length)];
+    return extensions[random.integer(max: extensions.length - 1)];
   }
 
   /// Returns a random mime type.
@@ -41,10 +42,10 @@ class File {
   /// ```
   String mimeType({MimeType? type}) {
     final random = Random(seed);
-    final mime =
-        type ?? MimeType.values[random.nextInt(MimeType.values.length)];
+    final mimes = MimeType.values;
+    final mime = type ?? mimes[random.integer(max: mimes.length - 1)];
     final types = IntFileData.mimeTypes(mime);
-    return types[random.nextInt(types.length)];
+    return types[random.integer(max: types.length - 1)];
   }
 
   /// Returns size of a file.
@@ -77,9 +78,9 @@ class File {
     }
 
     final random = Random(seed);
-    final number = random.nextInt(max + 1 - min) + min;
+    final number = random.integer(min: min, max: max);
     final units = ['bytes', 'kB', 'MB', 'GB', 'TB'];
-    final unit = units[random.nextInt(units.length)];
+    final unit = units[random.integer(max: units.length - 1)];
     return '$number $unit';
   }
 

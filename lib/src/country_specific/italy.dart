@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:imitatio/src/enums.dart';
+import 'package:imitatio/src/extensions.dart';
 import 'package:imitatio/src/rng.dart';
 import 'package:imitatio/src/util.dart';
 
@@ -24,7 +25,8 @@ class Italy {
   /// ```
   String fiscalCode({Gender? gender}) {
     final random = Random(seed);
-    gender ??= Gender.values[random.nextInt(Gender.values.length)];
+    final data = Gender.values;
+    gender ??= data[random.integer(max: data.length - 1)];
 
     final code = StringBuffer();
     code.write(
@@ -34,9 +36,9 @@ class Italy {
     code.write(Rng.customCode(mask: '##', seed: seed));
 
     final monthCodes = ["A", "B", "C", "E", "H", "L", "M", "P", "R", "S", "T"];
-    code.write(monthCodes[random.nextInt(monthCodes.length)]);
+    code.write(monthCodes[random.integer(max: monthCodes.length - 1)]);
 
-    var birthDay = random.nextInt(31) + 101;
+    var birthDay = random.integer(min: 101, max: 131);
     if (gender == Gender.female) birthDay += 40;
     code.write(birthDay.toString().substring(1));
 
@@ -54,7 +56,7 @@ class Italy {
       "M",
       "Z",
     ];
-    code.write(cityLetters[random.nextInt(cityLetters.length)]);
+    code.write(cityLetters[random.integer(max: cityLetters.length - 1)]);
     code.write(Rng.customCode(mask: '###@', seed: seed));
 
     return code.toString();

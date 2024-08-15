@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:imitatio/src/datasets/international/development.dart';
 import 'package:imitatio/src/datasets/international/person.dart';
+import 'package:imitatio/src/extensions.dart';
 
 /// Provides data related to paths.
 class Path {
@@ -59,7 +60,7 @@ class Path {
   /// ```
   String get user {
     final data = IntPersonData.usernames;
-    final user = data[Random(seed).nextInt(data.length)];
+    final user = data[Random(seed).integer(max: data.length - 1)];
     return platform == 'windows'
         ? '$home${user[0].toUpperCase()}${user.substring(1)}'
         : '$home$user';
@@ -74,7 +75,7 @@ class Path {
   /// ```
   String get usersFolder {
     final data = IntDevelopmentData.folders;
-    final folder = data[Random(seed).nextInt(data.length)];
+    final folder = data[Random(seed).integer(max: data.length - 1)];
     return '$user$_pathSeparator$folder';
   }
 
@@ -89,7 +90,7 @@ class Path {
     final random = Random(seed);
     final folder = random.nextBool() ? 'Development' : 'Dev';
     final data = IntDevelopmentData.programmingLanguages;
-    final stack = data[random.nextInt(data.length)];
+    final stack = data[random.integer(max: data.length - 1)];
     return '$user$_pathSeparator$folder$_pathSeparator$stack';
   }
 
@@ -102,7 +103,7 @@ class Path {
   /// ```
   String get projectDir {
     final data = IntDevelopmentData.projectNames;
-    final project = data[Random(seed).nextInt(data.length)];
+    final project = data[Random(seed).integer(max: data.length - 1)];
     return '$devDir$_pathSeparator$project';
   }
 }

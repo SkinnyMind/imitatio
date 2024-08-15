@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:imitatio/src/extensions.dart';
 import 'package:imitatio/src/util.dart';
 
 /// Implements various helpers.
@@ -27,7 +28,7 @@ class Rng {
 
     return Util.pickN(
       list: chars,
-      n: length ?? Random(seed).nextInt(113) + 16,
+      n: length ?? Random(seed).integer(min: 16, max: 128),
       seed: seed,
     ).join();
   }
@@ -72,9 +73,9 @@ class Rng {
 
     for (var i = 0; i < maskCodes.length; i++) {
       if (maskCodes[i] == digitCode) {
-        code.add(random.nextInt(58 - 48) + 48);
+        code.add(random.integer(min: 48, max: 57));
       } else if (maskCodes[i] == charCode) {
-        code.add(random.nextInt(91 - 65) + 65);
+        code.add(random.integer(min: 65, max: 90));
       } else {
         code.add(maskCodes[i]);
       }

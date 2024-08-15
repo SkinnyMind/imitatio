@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:imitatio/imitatio.dart';
 import 'package:imitatio/src/datasets/food.dart';
+import 'package:imitatio/src/extensions.dart';
 
 /// Provides data related to food.
 class Food {
@@ -24,7 +25,7 @@ class Food {
   /// ```
   String get vegetable {
     final data = FoodData.locale(locale).vegetables;
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random fruit or berry name.
@@ -35,7 +36,7 @@ class Food {
   /// ```
   String get fruit {
     final data = FoodData.locale(locale).fruits;
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random dish name.
@@ -46,7 +47,7 @@ class Food {
   /// ```
   String get dish {
     final data = FoodData.locale(locale).dishes;
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random spice/herb name.
@@ -57,7 +58,7 @@ class Food {
   /// ```
   String get spice {
     final data = FoodData.locale(locale).spices;
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random drink name.
@@ -68,6 +69,6 @@ class Food {
   /// ```
   String get drink {
     final data = FoodData.locale(locale).drinks;
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 }

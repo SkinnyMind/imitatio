@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:imitatio/imitatio.dart';
 import 'package:imitatio/src/datasets/international/payment.dart';
+import 'package:imitatio/src/extensions.dart';
 import 'package:imitatio/src/rng.dart';
 import 'package:imitatio/src/util.dart';
 
@@ -21,7 +22,8 @@ class Payment {
   /// ```dart
   /// Payment().cid; // "1945"
   /// ```
-  String get cid => (Random(seed).nextInt(9999) + 1).toString().padLeft(4, '0');
+  String get cid =>
+      Random(seed).integer(min: 1, max: 9999).toString().padLeft(4, '0');
 
   /// Returns a random email of PayPal account.
   ///
@@ -39,7 +41,7 @@ class Payment {
   /// ```
   String get bitcoinAddress {
     final address = StringBuffer();
-    address.write(Random(seed).nextInt(3) + 1);
+    address.write(Random(seed).integer(min: 1, max: 3));
     address.write(Rng.randomString(length: 33, seed: seed));
     return address.toString();
   }
@@ -55,7 +57,7 @@ class Payment {
     final random = Random(seed);
     final result = StringBuffer('0x');
     for (var i = 0; i < 40; i++) {
-      result.write(chars[random.nextInt(chars.length)]);
+      result.write(chars[random.integer(max: chars.length - 1)]);
     }
     return result.toString();
   }
@@ -68,7 +70,7 @@ class Payment {
   /// ```
   String get creditCardNetwork {
     final data = IntPaymentData.creditCardNetworks;
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random credit card number.
@@ -88,11 +90,11 @@ class Payment {
     late final int number;
 
     if (cardType == CardType.visa) {
-      number = random.nextInt(1000) + 4000;
+      number = random.integer(min: 4000, max: 4999);
     } else if (cardType == CardType.masterCard) {
       number = random.nextBool()
-          ? random.nextInt(500) + 2221
-          : random.nextInt(500) + 5100;
+          ? random.integer(min: 2221, max: 2720)
+          : random.integer(min: 5100, max: 5599);
     } else {
       number = random.nextBool() ? 34 : 37;
       length = 15;
@@ -101,7 +103,7 @@ class Payment {
     result.write(number);
 
     while (result.length < length - 1) {
-      result.write(random.nextInt(10));
+      result.write(random.integer(max: 9));
     }
 
     result.write(Util.luhnChecksum(result.toString()));
@@ -126,8 +128,8 @@ class Payment {
   /// ```
   String creditCardExpirationDate({int min = 18, int max = 25}) {
     final random = Random(seed);
-    final month = (random.nextInt(12) + 1).toString().padLeft(2, '0');
-    final year = random.nextInt(max + 1 - min) + min;
+    final month = random.integer(min: 1, max: 12).toString().padLeft(2, '0');
+    final year = random.integer(min: min, max: max);
     return '$month/$year';
   }
 
@@ -137,7 +139,8 @@ class Payment {
   /// ```dart
   /// Payment().cvv; // "420"
   /// ```
-  String get cvv => (Random(seed).nextInt(999) + 1).toString().padLeft(3, '0');
+  String get cvv =>
+      Random(seed).integer(min: 1, max: 999).toString().padLeft(3, '0');
 
   /// Returns credit card owner.
   ///

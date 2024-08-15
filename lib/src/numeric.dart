@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:imitatio/src/extensions.dart';
+
 /// Provider of data related to generating numeric data.
 class Numeric {
   /// Provider of data related to generating numeric data.
@@ -108,7 +110,7 @@ class Numeric {
       );
     }
 
-    return Random(seed).nextInt(end + 1 - start) + start;
+    return Random(seed).integer(min: start, max: end);
   }
 
   /// Returns a list of random integers.
@@ -136,7 +138,7 @@ class Numeric {
     }
 
     final random = Random(seed);
-    return List.generate(n, (_) => random.nextInt(end + 1 - start) + start);
+    return List.generate(n, (_) => random.integer(min: start, max: end));
   }
 
   /// Returns a random complex number.

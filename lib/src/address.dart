@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:imitatio/src/datasets/address.dart';
 import 'package:imitatio/src/datasets/international/address.dart';
 import 'package:imitatio/src/enums.dart';
+import 'package:imitatio/src/extensions.dart';
 import 'package:imitatio/src/rng.dart';
 
 /// Provides data related to geographical location.
@@ -29,7 +30,7 @@ class Address {
   /// Address().streetNumber(max: 1); // 1
   /// ```
   int streetNumber({int max = 1400}) {
-    return Random(seed).nextInt(max) + 1;
+    return Random(seed).integer(min: 1, max: max);
   }
 
   /// Returns a random street name.
@@ -40,7 +41,7 @@ class Address {
   /// ```
   String get streetName {
     final data = AddressData.locale(locale).streets(isSuffix: false);
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random street suffix if [locale] has any.
@@ -52,7 +53,9 @@ class Address {
   /// ```
   String get streetSuffix {
     final data = AddressData.locale(locale).streets(isSuffix: true);
-    return data.isNotEmpty ? data[Random(seed).nextInt(data.length)] : '';
+    return data.isNotEmpty
+        ? data[Random(seed).integer(max: data.length - 1)]
+        : '';
   }
 
   /// Returns a random full address.
@@ -64,7 +67,7 @@ class Address {
   String get address {
     if (locale == Locale.ja) {
       final random = Random(seed);
-      final numbers = List.generate(3, (_) => random.nextInt(100) + 1);
+      final numbers = List.generate(3, (_) => random.integer(min: 1, max: 100));
       return '$city ${numbers.join('-')}';
     }
 
@@ -87,7 +90,7 @@ class Address {
   /// ```
   String state({bool isAbbr = false}) {
     final data = AddressData.locale(locale).states(isAbbr: isAbbr);
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a postal code for provided [locale].
@@ -109,7 +112,7 @@ class Address {
   /// ```
   String get country {
     final data = AddressData.locale(locale).countries;
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random city.
@@ -120,7 +123,7 @@ class Address {
   /// ```
   String get city {
     final data = AddressData.locale(locale).cities;
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random continent name or continent code.
@@ -137,7 +140,7 @@ class Address {
         ? IntAddressData.continentCodes
         : AddressData.locale(locale).continents;
 
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random calling code of random country.
@@ -148,7 +151,7 @@ class Address {
   /// ```
   String get callingCode {
     final data = IntAddressData.callingCodes;
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random a random IATA code.
@@ -159,7 +162,7 @@ class Address {
   /// ```
   String get iataCode {
     final data = IntAddressData.iataCodes;
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random a random ICAO code.
@@ -170,7 +173,7 @@ class Address {
   /// ```
   String get icaoCode {
     final data = IntAddressData.icaoCodes;
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random code of country.
@@ -184,7 +187,7 @@ class Address {
   /// ```
   String countryCode({CountryCode code = CountryCode.a2}) {
     final data = IntAddressData.countryCodes(code: code);
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random value of latitude.

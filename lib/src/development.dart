@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:imitatio/src/datasets/international/development.dart';
+import 'package:imitatio/src/extensions.dart';
 
 /// Provides data related to the development.
 class Development {
@@ -20,7 +21,7 @@ class Development {
   /// ```
   String get softwareLicense {
     final data = IntDevelopmentData.licenses;
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns version number.
@@ -36,28 +37,28 @@ class Development {
   /// Development().version(preRelease: true); // "9.7.11-rc.8"
   /// ```
   String version({bool calVer = false, bool preRelease = false}) {
-    late final int major;
-    late final int minor;
-    late final int patch;
+    late final String major;
+    late final String minor;
+    late final String patch;
 
     final random = Random(seed);
 
     if (calVer) {
-      major = random.nextInt(3) + 2020;
-      minor = random.nextInt(12) + 1;
-      patch = random.nextInt(12) + 1;
+      major = random.integer(min: 2016, max: DateTime.now().year).toString();
+      minor = random.integer(min: 1, max: 12).toString().padLeft(2, '0');
+      patch = random.integer(min: 1, max: 29).toString().padLeft(2, '0');
     } else {
-      major = random.nextInt(12);
-      minor = random.nextInt(12);
-      patch = random.nextInt(12);
+      major = random.integer(max: 11).toString();
+      minor = random.integer(max: 11).toString();
+      patch = random.integer(max: 11).toString();
     }
 
     var version = '$major.$minor.$patch';
 
     if (preRelease) {
       const suffixes = ['alpha', 'beta', 'rc'];
-      final suffix = suffixes[random.nextInt(suffixes.length)];
-      final number = random.nextInt(11) + 1;
+      final suffix = suffixes[random.integer(max: suffixes.length - 1)];
+      final number = random.integer(min: 1, max: 12);
       version = '$version-$suffix.$number';
     }
 
@@ -72,7 +73,7 @@ class Development {
   /// ```
   String get programmingLanguage {
     final data = IntDevelopmentData.programmingLanguages;
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random operating system or distributive name.
@@ -83,7 +84,7 @@ class Development {
   /// ```
   String get os {
     final data = IntDevelopmentData.oses;
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random boolean value.
@@ -107,7 +108,7 @@ class Development {
   /// ```
   String get systemQualityAttribute {
     final data = IntDevelopmentData.systemQualityAttributes;
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random system quality attribute.

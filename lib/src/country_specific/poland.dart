@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:imitatio/src/date.dart';
 import 'package:imitatio/src/enums.dart';
+import 'package:imitatio/src/extensions.dart';
 
 class Poland {
   /// Provides special data for Poland.
@@ -61,7 +62,8 @@ class Poland {
   String pesel({DateTime? birthDate, Gender? gender}) {
     final random = Random(seed);
     birthDate ??= DateTime.parse(Date(seed: seed).date(start: 1940));
-    gender ??= Gender.values[random.nextInt(Gender.values.length)];
+    final genderData = Gender.values;
+    gender ??= genderData[random.integer(max: genderData.length - 1)];
 
     final year = (birthDate.year % 100).toString().padLeft(2, '0');
     final month = switch (birthDate.year) {
@@ -72,7 +74,7 @@ class Poland {
     };
     final day = birthDate.day.toString().padLeft(2, '0');
 
-    final seriesNumber = random.nextInt(1000).toString().padLeft(3, '0');
+    final seriesNumber = random.integer(max: 999).toString().padLeft(3, '0');
 
     final peselDigits = [
       for (final digit in '$year$month$day$seriesNumber'.split(''))
@@ -82,8 +84,8 @@ class Poland {
     final maleDigits = [1, 3, 5, 7, 9];
     final femaleDigits = [0, 2, 4, 6, 8];
     final genderDigit = gender == Gender.male
-        ? maleDigits[random.nextInt(maleDigits.length)]
-        : femaleDigits[random.nextInt(femaleDigits.length)];
+        ? maleDigits[random.integer(max: maleDigits.length - 1)]
+        : femaleDigits[random.integer(max: femaleDigits.length - 1)];
     peselDigits.add(genderDigit);
 
     final peselCoefficients = [9, 7, 3, 1, 9, 7, 3, 1, 9, 7];
@@ -105,7 +107,7 @@ class Poland {
   String get regon {
     final random = Random(seed);
     final regonCoefficients = [8, 9, 2, 3, 4, 5, 6, 7];
-    final regonDigits = List.generate(8, (_) => random.nextInt(10));
+    final regonDigits = List.generate(8, (_) => random.integer(max: 9));
     var sumV = 0;
     for (var i = 0; i < regonCoefficients.length; i++) {
       sumV += regonCoefficients[i] * regonDigits[i];

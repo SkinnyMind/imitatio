@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:imitatio/src/enums.dart';
+import 'package:imitatio/src/extensions.dart';
 import 'package:imitatio/src/rng.dart';
 
 class USA {
@@ -25,7 +26,7 @@ class USA {
   String trackingNumber({PostalService service = PostalService.usps}) {
     final masks = service.masks;
     return Rng.customCode(
-      mask: masks[Random(seed).nextInt(masks.length)],
+      mask: masks[Random(seed).integer(max: masks.length - 1)],
       seed: seed,
     );
   }
@@ -38,10 +39,10 @@ class USA {
   /// ```
   String get ssn {
     final random = Random(seed);
-    var area = random.nextInt(899) + 1;
+    var area = random.integer(min: 1, max: 899);
     area = area == 666 ? 665 : area;
-    final group = (random.nextInt(99) + 1).toString().padLeft(2, '0');
-    final number = (random.nextInt(9999) + 1).toString().padLeft(4, '0');
+    final group = random.integer(min: 1, max: 99).toString().padLeft(2, '0');
+    final number = random.integer(min: 1, max: 9999).toString().padLeft(4, '0');
     return '${area.toString().padLeft(3, '0')}-$group-$number';
   }
 }

@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:imitatio/src/extensions.dart';
+
 class Choice {
   /// [seed] is optional parameter to initialize the internal state of the
   /// random generator.
@@ -50,7 +52,7 @@ class Choice {
     final result = <T>[];
     final random = Random(seed);
     while (result.length < length) {
-      final item = items[random.nextInt(items.length)];
+      final item = items[random.integer(max: items.length - 1)];
       if (!unique || (unique && !result.contains(item))) {
         result.add(item);
       }

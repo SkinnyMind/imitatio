@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:imitatio/src/datasets/finance.dart';
 import 'package:imitatio/src/datasets/international/finance.dart';
 import 'package:imitatio/src/enums.dart';
+import 'package:imitatio/src/extensions.dart';
 
 class Finance {
   /// Provides finance and business related data.
@@ -24,7 +25,7 @@ class Finance {
   /// ```
   String get company {
     final data = FinanceData.locale(locale).companies;
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random type of business entity.
@@ -38,7 +39,7 @@ class Finance {
   /// ```
   String companyType({bool isAbbr = false}) {
     final data = FinanceData.locale(locale).companyTypes(isAbbr: isAbbr);
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a currency code for current [locale].
@@ -54,7 +55,7 @@ class Finance {
   String currencyIsoCode({bool allowRandom = false}) {
     if (allowRandom) {
       final data = IntFinanceData.currencyIsoCodes;
-      return data[Random(seed).nextInt(data.length)];
+      return data[Random(seed).integer(max: data.length - 1)];
     } else {
       return FinanceData.locale(locale).currencyCode;
     }
@@ -68,7 +69,7 @@ class Finance {
   /// ```
   String get bank {
     final data = FinanceData.locale(locale).banks;
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random cryptocurrency ISO code.
@@ -79,7 +80,7 @@ class Finance {
   /// ```
   String get cryptocurrencyIsoCode {
     final data = IntFinanceData.cryptocurrencyIsoCodes;
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a currency symbol for current [locale].
@@ -98,7 +99,7 @@ class Finance {
   /// ```
   String get cryptocurrencySymbol {
     final data = IntFinanceData.cryptocurrencySymbols;
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random stock ticker.
@@ -109,7 +110,7 @@ class Finance {
   /// ```
   String get stockTicker {
     final data = IntFinanceData.stockTickers;
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random stock name.
@@ -120,7 +121,7 @@ class Finance {
   /// ```
   String get stockName {
     final data = IntFinanceData.stockNames;
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random stock exchange.
@@ -131,7 +132,7 @@ class Finance {
   /// ```
   String get stockExchange {
     final data = IntFinanceData.stockExchanges;
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random price.

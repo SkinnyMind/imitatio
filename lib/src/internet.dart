@@ -39,7 +39,7 @@ class Internet {
   /// ```
   String get httpStatusMessage {
     final data = IntInternetData.httpStatusMessages;
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random HTTP status code.
@@ -50,7 +50,7 @@ class Internet {
   /// ```
   int get httpStatusCode {
     final data = IntInternetData.httpStatusCodes;
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random HTTP method.
@@ -61,7 +61,7 @@ class Internet {
   /// ```
   String get httpMethod {
     final data = IntInternetData.httpMethods;
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random hostname without scheme.
@@ -83,15 +83,12 @@ class Internet {
         tldType != null ? topLevelDomain(type: tldType) : topLevelDomain();
 
     if (subdomains != null) {
-      host.write('${subdomains[random.nextInt(subdomains.length)]}.');
+      host.write('${subdomains[random.integer(max: subdomains.length - 1)]}.');
     }
 
-    host.write(
-      IntPersonData.usernames[random.nextInt(IntPersonData.usernames.length)],
-    );
-
+    final data = IntPersonData.usernames;
+    host.write(data[random.integer(max: data.length - 1)]);
     host.write(tld);
-
     return host.toString();
   }
 
@@ -231,7 +228,7 @@ class Internet {
   /// ```
   String topLevelDomain({TLDType type = TLDType.cctld}) {
     final data = IntInternetData.tlds(type);
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random user agent.
@@ -242,7 +239,7 @@ class Internet {
   /// ```
   String get userAgent {
     final data = IntInternetData.userAgents;
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns random port.
@@ -255,7 +252,7 @@ class Internet {
   /// Internet().port(range: PortRange.wellKnown); // 59
   /// ```
   int port({PortRange range = PortRange.all}) {
-    return Random(seed).nextInt(range.max - range.min) + range.min;
+    return Random(seed).integer(min: range.min, max: range.max);
   }
 
   /// Returns a random slug of given parts count.
@@ -270,7 +267,7 @@ class Internet {
   /// Internet().slug(parts: 2); // "payable-jokes"
   /// ```
   String slug({int? parts}) {
-    final count = parts ?? Random(seed).nextInt(11) + 2;
+    final count = parts ?? Random(seed).integer(min: 2, max: 12);
     if (count < 2) {
       throw ArgumentError.value(
         parts,
@@ -312,7 +309,8 @@ class Internet {
         '${intAddress >> 8 & 255}.${intAddress & 255}',
       );
     } else {
-      final octets = List.generate(4, (_) => random.nextInt(256)).join('.');
+      final octets =
+          List.generate(4, (_) => random.integer(max: 255)).join('.');
       result.write(octets);
     }
 
@@ -333,7 +331,7 @@ class Internet {
     final random = Random(seed);
     final address = List.generate(
       8,
-      (_) => random.nextInt(65536).toRadixString(16),
+      (_) => random.integer(max: 65535).toRadixString(16),
     ).join(':');
     return Util.compressIPv6(address);
   }
@@ -350,9 +348,9 @@ class Internet {
       0.toRadixString(16).padLeft(2, '0'),
       22.toRadixString(16),
       62.toRadixString(16),
-      random.nextInt(128).toRadixString(16).padLeft(2, '0'),
-      random.nextInt(256).toRadixString(16).padLeft(2, '0'),
-      random.nextInt(256).toRadixString(16).padLeft(2, '0'),
+      random.integer(max: 127).toRadixString(16).padLeft(2, '0'),
+      random.integer(max: 255).toRadixString(16).padLeft(2, '0'),
+      random.integer(max: 255).toRadixString(16).padLeft(2, '0'),
     ].join(':');
   }
 
@@ -364,7 +362,7 @@ class Internet {
   /// ```
   String get publicDNS {
     final data = IntInternetData.publicDNSes;
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random DSN (Data Source Name).
@@ -387,9 +385,9 @@ class Internet {
     TLDType? tldType,
     List<String>? subdomains,
   }) {
+    final data = DSNType.values;
     final hostname = this.hostname(tldType: tldType, subdomains: subdomains);
-    final dsn =
-        dsnType ?? DSNType.values[Random(seed).nextInt(DSNType.values.length)];
+    final dsn = dsnType ?? data[Random(seed).integer(max: data.length - 1)];
 
     return '${dsn.scheme}://$hostname:${dsn.port}';
   }
@@ -403,7 +401,7 @@ class Internet {
   /// Internet().asn; // "AS709911205"
   /// ```
   String get asn {
-    final number = Random(seed).nextInt(4199999998) + 1;
+    final number = Random(seed).integer(min: 1, max: 4199999999);
     return 'AS$number';
   }
 }

@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:imitatio/src/datasets/international/text.dart';
 import 'package:imitatio/src/datasets/text.dart';
 import 'package:imitatio/src/enums.dart';
+import 'package:imitatio/src/extensions.dart';
 import 'package:imitatio/src/util.dart';
 
 /// Provides data related to text.
@@ -41,7 +42,7 @@ class Text {
   /// ```
   String get level {
     final data = TextData.locale(locale).levels;
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns the text.
@@ -55,8 +56,10 @@ class Text {
   String text({int quantity = 5}) {
     final data = TextData.locale(locale).texts;
     final random = Random(seed);
-    return List.generate(quantity, (_) => data[random.nextInt(data.length)])
-        .join(" ");
+    return List.generate(
+      quantity,
+      (_) => data[random.integer(max: data.length - 1)],
+    ).join(" ");
   }
 
   /// Returns a random sentence from the text.
@@ -108,7 +111,7 @@ class Text {
   /// ```
   String get quote {
     final data = TextData.locale(locale).quotes;
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random color name.
@@ -119,7 +122,7 @@ class Text {
   /// ```
   String get color {
     final data = TextData.locale(locale).colors;
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random HEX color.
@@ -135,11 +138,11 @@ class Text {
     final random = Random(seed);
     if (asSafe) {
       final data = IntTextData.safeColors;
-      return data[random.nextInt(data.length)];
+      return data[random.integer(max: data.length - 1)];
     } else {
       final result = StringBuffer('#');
       for (var i = 0; i < 6; i++) {
-        result.write(random.nextInt(16).toRadixString(16));
+        result.write(random.integer(max: 15).toRadixString(16));
       }
       return result.toString();
     }
@@ -171,7 +174,7 @@ class Text {
   /// ```
   String get answer {
     final data = TextData.locale(locale).answers;
-    return data[Random(seed).nextInt(data.length)];
+    return data[Random(seed).integer(max: data.length - 1)];
   }
 
   /// Returns a random emoji. If [category] is not specified returns emoji from
@@ -188,8 +191,8 @@ class Text {
     final random = Random(seed);
     final categories = EmojiCategory.values;
     final emojiCategory =
-        category ?? categories[random.nextInt(categories.length)];
+        category ?? categories[random.integer(max: categories.length - 1)];
     final data = IntTextData.emojis(category: emojiCategory);
-    return data[random.nextInt(data.length)];
+    return data[random.integer(max: data.length - 1)];
   }
 }
