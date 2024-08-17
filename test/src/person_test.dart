@@ -16,7 +16,7 @@ void main() {
       final currentYear = DateTime.now().year;
       final result = person.birthdate(minYear: currentYear);
       final resultYear = int.parse(result.split('-')[0]);
-      expect(resultYear, currentYear);
+      expect(resultYear, equals(currentYear));
     });
 
     test('returns name', () {
@@ -62,7 +62,7 @@ void main() {
     });
 
     test('throws when trying to get patronymic name for wrong locale', () {
-      expect(() => person.patronymic(), throwsA(isA<ArgumentError>()));
+      expect(() => person.patronymic(), throwsArgumentError);
     });
 
     test('returns surname', () {
@@ -83,12 +83,12 @@ void main() {
 
     test('returns full name', () {
       final result = person.fullName().split(' ');
-      expect(result.length, 2);
+      expect(result.length, equals(2));
       expect(result[0], isNotEmpty);
       expect(result[1], isNotEmpty);
 
       final reversed = person.fullName(reverse: true).split(' ');
-      expect(reversed.length, 2);
+      expect(reversed.length, equals(2));
       expect(reversed[0], isNotEmpty);
       expect(reversed[1], isNotEmpty);
 
@@ -156,7 +156,7 @@ void main() {
       final digitsRange = int.parse(
         person.username(digitsMin: 10, digitsMax: 20).split('_').last,
       );
-      expect(digitsRange >= 10 && digitsRange <= 20, true);
+      expect(digitsRange, inInclusiveRange(10, 20));
 
       expect(
         seededPerson.username(),
@@ -165,7 +165,7 @@ void main() {
     });
 
     test('throws when trying to get username with invalid mask', () {
-      expect(() => person.username(mask: ''), throwsA(isA<ArgumentError>()));
+      expect(() => person.username(mask: ''), throwsArgumentError);
     });
 
     test('returns an email', () {
@@ -177,7 +177,7 @@ void main() {
       final domains = ['@example.com', 'example.com'];
       final result = person.email(domains: domains);
       expect(emailRegex.hasMatch(result), true);
-      expect(result.split('@').last, 'example.com');
+      expect(result.split('@').last, equals('example.com'));
 
       final count = 1000000;
       final generated = <String>{};
@@ -185,7 +185,7 @@ void main() {
         final email = person.email(domains: ['example.com'], unique: true);
         generated.add(email.split('@').first);
       }
-      expect(generated.length, count);
+      expect(generated.length, equals(count));
 
       expect(
         seededPerson.email(),
@@ -238,12 +238,12 @@ void main() {
 
     test('returns random height in meters', () {
       final defaultResult = double.parse(person.height());
-      expect((defaultResult >= 1.5) && (defaultResult <= 2.0), true);
+      expect(defaultResult, inInclusiveRange(1.5, 2.0));
 
       final min = 1.7;
       final max = 1.8;
       final minMaxResult = double.parse(person.height(min: min, max: max));
-      expect((minMaxResult >= min) && (minMaxResult <= max), true);
+      expect(minMaxResult, inInclusiveRange(min, max));
 
       expect(
         seededPerson.height(),
@@ -253,12 +253,12 @@ void main() {
 
     test('returns random weight in kg', () {
       final defaultResult = person.weight();
-      expect((defaultResult >= 38) && (defaultResult <= 90), true);
+      expect(defaultResult, inInclusiveRange(38, 90));
 
       final min = 69;
       final max = 69;
       final minMaxResult = person.weight(min: min, max: max);
-      expect((minMaxResult >= min) && (minMaxResult <= max), true);
+      expect(minMaxResult, inInclusiveRange(min, max));
 
       expect(
         seededPerson.weight(),
@@ -396,7 +396,7 @@ void main() {
 
       final result = person.phoneNumber(mask: "123#");
       expect(result, startsWith("123"));
-      expect(result.length, 4);
+      expect(result.length, equals(4));
 
       expect(
         seededPerson.phoneNumber(),
@@ -405,11 +405,11 @@ void main() {
     });
 
     test('returns identifier by mask', () {
-      expect(person.identifier().length, 8);
+      expect(person.identifier().length, equals(8));
 
       final result = person.identifier(mask: "123#");
       expect(result, startsWith("123"));
-      expect(result.length, 4);
+      expect(result.length, equals(4));
 
       expect(
         seededPerson.identifier(),

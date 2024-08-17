@@ -42,7 +42,7 @@ void main() {
 
     test('returns cpu frequency', () {
       final result = hardware.cpuFrequency;
-      expect(double.parse(result.split('G').first) <= 5, true);
+      expect(double.parse(result.split('G').first), lessThanOrEqualTo(5));
 
       expect(
         seededHardware.cpuFrequency,

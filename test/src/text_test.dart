@@ -11,10 +11,10 @@ void main() {
     const seededText = Text(seed: 1);
 
     test('returns list of words', () {
-      expect(text.words().length, 5);
+      expect(text.words().length, equals(5));
 
       final result = localeText.words(quantity: 1);
-      expect(result.length, 1);
+      expect(result.length, equals(1));
       expect(
         TextData.locale(locale).words,
         contains(result.first),
@@ -38,12 +38,12 @@ void main() {
     test('returns alphabet', () {
       expect(
         TextData.locale(Locale.en).alphabet(isLowerCase: false),
-        text.alphabet(),
+        equals(text.alphabet()),
       );
 
       expect(
         TextData.locale(locale).alphabet(isLowerCase: true),
-        localeText.alphabet(isLowerCase: true),
+        equals(localeText.alphabet(isLowerCase: true)),
       );
     });
 
@@ -142,14 +142,14 @@ void main() {
 
     test('returns a RGB color', () {
       final result = text.rgbColor();
-      expect((result.r >= 0) && (result.r <= 255), true);
-      expect((result.g >= 0) && (result.g <= 255), true);
-      expect((result.b >= 0) && (result.b <= 255), true);
+      expect(result.r, inInclusiveRange(0, 255));
+      expect(result.g, inInclusiveRange(0, 255));
+      expect(result.b, inInclusiveRange(0, 255));
 
       final safeResult = text.rgbColor(asSafe: true);
-      expect((safeResult.r >= 0) && (safeResult.r <= 255), true);
-      expect((safeResult.g >= 0) && (safeResult.g <= 255), true);
-      expect((safeResult.b >= 0) && (safeResult.b <= 255), true);
+      expect(safeResult.r, inInclusiveRange(0, 255));
+      expect(safeResult.g, inInclusiveRange(0, 255));
+      expect(safeResult.b, inInclusiveRange(0, 255));
 
       expect(
         seededText.rgbColor(),

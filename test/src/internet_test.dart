@@ -9,11 +9,11 @@ void main() {
     const seededInternet = Internet(seed: 1);
 
     test('returns hostname', () {
-      expect(internet.hostname().split('.').length, 2);
+      expect(internet.hostname().split('.').length, equals(2));
 
       final subdomains = ['api', 'admin'];
       final hostname = internet.hostname(subdomains: subdomains).split('.');
-      expect(hostname.length, 3);
+      expect(hostname.length, equals(3));
       expect(subdomains, contains(hostname.first));
 
       expect(
@@ -55,7 +55,7 @@ void main() {
 
     test('returns http status code', () {
       final result = internet.httpStatusCode;
-      expect(result >= 100 && result <= 511, true);
+      expect(result, inInclusiveRange(100, 511));
 
       expect(
         seededInternet.httpStatusCode,
@@ -76,7 +76,7 @@ void main() {
 
     test('returns Map of query parameters', () {
       final result = internet.queryParameters(count: 5);
-      expect(result.length, 5);
+      expect(result.length, equals(5));
 
       expect(
         seededInternet.queryParameters(),
@@ -85,15 +85,12 @@ void main() {
     });
 
     test('throws when trying to get more than 32 query parameters', () {
-      expect(
-        () => internet.queryParameters(count: 33),
-        throwsA(isA<ArgumentError>()),
-      );
+      expect(() => internet.queryParameters(count: 33), throwsArgumentError);
     });
 
     test('returns query string', () {
       final result = internet.queryString().split('&').length;
-      expect(result >= 1 && result <= 10, true);
+      expect(result, inInclusiveRange(1, 10));
 
       expect(
         seededInternet.queryString(),
@@ -102,16 +99,13 @@ void main() {
     });
 
     test('returns query string with provided number of parameters', () {
-      expect(internet.queryString(count: 5).split('&').length, 5);
+      expect(internet.queryString(count: 5).split('&').length, equals(5));
     });
 
     test(
       'throws when trying to get string with more than 32 query parameters',
       () {
-        expect(
-          () => internet.queryString(count: 33),
-          throwsA(isA<ArgumentError>()),
-        );
+        expect(() => internet.queryString(count: 33), throwsArgumentError);
       },
     );
 
@@ -143,8 +137,8 @@ void main() {
 
     test('returns path', () {
       final result = internet.path().split('/').length;
-      expect(result >= 2 && result <= 12, true);
-      expect(internet.path(parts: 5).split('/').length, 5);
+      expect(result, inInclusiveRange(2, 12));
+      expect(internet.path(parts: 5).split('/').length, equals(5));
 
       expect(
         seededInternet.path(),
@@ -154,8 +148,8 @@ void main() {
 
     test('returns slug', () {
       final result = internet.slug().split('-').length;
-      expect(result >= 2 && result <= 12, true);
-      expect(internet.slug(parts: 5).split('-').length, 5);
+      expect(result, inInclusiveRange(2, 12));
+      expect(internet.slug(parts: 5).split('-').length, equals(5));
 
       expect(
         seededInternet.slug(),
@@ -164,14 +158,14 @@ void main() {
     });
 
     test('throws when trying to return slug with wrong number of parts', () {
-      expect(() => internet.slug(parts: 1), throwsA(isA<ArgumentError>()));
-      expect(() => internet.slug(parts: 13), throwsA(isA<ArgumentError>()));
+      expect(() => internet.slug(parts: 1), throwsArgumentError);
+      expect(() => internet.slug(parts: 13), throwsArgumentError);
     });
 
     test('returns port number', () {
       for (final range in PortRange.values) {
         final result = internet.port(range: range);
-        expect(result >= range.min && result <= range.max, true);
+        expect(result, inInclusiveRange(range.min, range.max));
       }
 
       expect(
@@ -196,7 +190,7 @@ void main() {
       final port = int.parse(
         internet.url(portRange: range).split(':').last.replaceFirst('/', ''),
       );
-      expect(port >= range.min && port <= range.max, true);
+      expect(port, inInclusiveRange(range.min, range.max));
 
       expect(
         seededInternet.url(),
@@ -229,7 +223,7 @@ void main() {
 
       final port =
           int.parse(internet.ipv4(portRange: PortRange.all).split(':').last);
-      expect(port >= PortRange.all.min && port <= PortRange.all.max, true);
+      expect(port, inInclusiveRange(PortRange.all.min, PortRange.all.max));
 
       expect(
         seededInternet.ipv4(),
@@ -250,7 +244,7 @@ void main() {
             (intOctets[1] << 16) +
             (intOctets[2] << 8) +
             intOctets[3];
-        expect(intAddress >= purpose.min && intAddress <= purpose.max, true);
+        expect(intAddress, inInclusiveRange(purpose.min, purpose.max));
       }
 
       expect(
@@ -302,8 +296,8 @@ void main() {
 
       final type = DSNType.postgres;
       final withType = internet.dsn(dsnType: type);
-      expect(withType.startsWith('${type.scheme}://'), true);
-      expect(withType.endsWith(':${type.port}'), true);
+      expect(withType, startsWith('${type.scheme}://'));
+      expect(withType, endsWith(':${type.port}'));
 
       expect(
         seededInternet.dsn(),
@@ -315,7 +309,7 @@ void main() {
       final result = internet.asn;
       expect(result, startsWith("AS"));
       final number = int.parse(result.substring(2));
-      expect((number >= 1) && (number <= 4199999999), true);
+      expect(number, inInclusiveRange(1, 4199999999));
 
       expect(
         seededInternet.asn,

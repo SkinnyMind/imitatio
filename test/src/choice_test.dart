@@ -7,15 +7,18 @@ void main() {
     const seededChoice = Choice(seed: 1);
 
     test('randomly chooses from provided list', () {
-      expect(choice.choose(items: ['a', 'b', 'c']).length, 1);
-      expect(choice.choose(items: ['a', 'b', 'c'], length: 5).length, 5);
+      expect(choice.choose(items: ['a', 'b', 'c']).length, equals(1));
+      expect(
+        choice.choose(items: ['a', 'b', 'c'], length: 5).length,
+        equals(5),
+      );
       final uniqueResult = choice.choose(
         items: ['a', 'b', 'c', 'd', 'c', 'b', 'a'],
         length: 4,
         unique: true,
       );
-      expect(uniqueResult.length, 4);
-      expect(uniqueResult, uniqueResult.toSet());
+      expect(uniqueResult.length, equals(4));
+      expect(uniqueResult, equals(uniqueResult.toSet()));
 
       expect(
         seededChoice.choose(items: ['a', 'b', 'c'], length: 5),
@@ -24,10 +27,7 @@ void main() {
     });
 
     test('throws when trying to choose with invalid length', () {
-      expect(
-        () => choice.choose(items: [], length: -1),
-        throwsA(isA<ArgumentError>()),
-      );
+      expect(() => choice.choose(items: [], length: -1), throwsArgumentError);
     });
 
     test(
@@ -36,7 +36,7 @@ void main() {
       () {
         expect(
           () => choice.choose(items: ['a', 'b'], length: 3, unique: true),
-          throwsA(isA<ArgumentError>()),
+          throwsArgumentError,
         );
       },
     );

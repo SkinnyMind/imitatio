@@ -7,7 +7,7 @@ void main() {
       const list = ['one', 'two', 'three', 'four'];
       final picked = Util.pickN(list: list, n: 2);
 
-      expect(picked.length, 2);
+      expect(picked.length, equals(2));
       for (final pick in picked) {
         expect(list, contains(pick));
       }
@@ -19,8 +19,8 @@ void main() {
     });
 
     test('returns number of days in provided month', () {
-      expect(Util.daysInMonth(year: 2020, month: 02), 29);
-      expect(Util.daysInMonth(year: 2021, month: 02), 28);
+      expect(Util.daysInMonth(year: 2020, month: 02), equals(29));
+      expect(Util.daysInMonth(year: 2021, month: 02), equals(28));
     });
 
     test('checks if provided year is a leap year', () {
@@ -29,9 +29,9 @@ void main() {
     });
 
     test('returns luhn checksum', () {
-      expect(Util.luhnChecksum('5563455651'), '2');
-      expect(Util.luhnChecksum('7992739871'), '3');
-      expect(Util.luhnChecksum('5161675549'), '5');
+      expect(Util.luhnChecksum('5563455651'), equals('2'));
+      expect(Util.luhnChecksum('7992739871'), equals('3'));
+      expect(Util.luhnChecksum('5161675549'), equals('5'));
     });
 
     test('returns CPR check digit', () {

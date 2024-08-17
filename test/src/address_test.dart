@@ -12,8 +12,8 @@ void main() {
 
     test('returns street number', () async {
       final result = address.streetNumber();
-      expect((result >= 1) && (result <= 1400), true);
-      expect(address.streetNumber(max: 1) == 1, true);
+      expect(result, inInclusiveRange(1, 1400));
+      expect(address.streetNumber(max: 1), equals(1));
       expect(
         seededAddress.streetNumber(),
         equals(seededAddress.streetNumber()),
@@ -98,7 +98,7 @@ void main() {
 
     test('returns postal code', () async {
       expect(address.postalCode, isNotEmpty);
-      expect(localeAddress.postalCode.length, 6);
+      expect(localeAddress.postalCode.length, equals(6));
 
       expect(
         seededAddress.postalCode,
@@ -218,7 +218,7 @@ void main() {
 
     test('returns latitude', () async {
       final result = double.parse(address.latitude());
-      expect((result >= -90.0) && (result <= 90.0), true);
+      expect(result, inInclusiveRange(-90.0, 90.0));
 
       expect(address.latitude(asDMS: true), isNotEmpty);
 
@@ -230,7 +230,7 @@ void main() {
 
     test('returns longitude', () async {
       final result = double.parse(address.longitude());
-      expect((result >= -180.0) && (result <= 180.0), true);
+      expect(result, inInclusiveRange(-180.0, 180.0));
 
       expect(address.longitude(asDMS: true), isNotEmpty);
 
@@ -244,8 +244,8 @@ void main() {
       final result = address.coordinates();
       final lat = double.parse(result.latitude);
       final long = double.parse(result.longitude);
-      expect((lat >= -90.0) && (lat <= 90.0), true);
-      expect((long >= -180.0) && (long <= 180.0), true);
+      expect(lat, inInclusiveRange(-90.0, 90.0));
+      expect(long, inInclusiveRange(-180.0, 180.0));
 
       expect(address.coordinates(asDMS: true), isA<Record>());
 

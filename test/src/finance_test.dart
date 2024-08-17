@@ -149,33 +149,30 @@ void main() {
 
     test('returns price', () {
       final result = finance.price();
-      expect((result >= 500.0) && (result <= 1500.0), true);
+      expect(result, inInclusiveRange(500.0, 1500.0));
 
       final min = 10.0;
       final max = 15.0;
       final minMaxResult = finance.price(min: min, max: max);
-      expect((minMaxResult >= min) && (minMaxResult <= max), true);
+      expect(minMaxResult, inInclusiveRange(min, max));
 
       final precisionDigits = minMaxResult.toString().split('.')[1];
-      expect(precisionDigits.length <= 2, true);
+      expect(precisionDigits.length, lessThanOrEqualTo(2));
 
-      expect(
-        seededFinance.price(),
-        equals(seededFinance.price()),
-      );
+      expect(seededFinance.price(), equals(seededFinance.price()));
     });
 
     test('returns price in BTC', () {
       final result = finance.priceInBTC();
-      expect((result >= 0.0) && (result <= 2.0), true);
+      expect(result, inInclusiveRange(0.0, 2.0));
 
       final min = 10.0;
       final max = 15.0;
       final minMaxResult = finance.priceInBTC(min: min, max: max);
-      expect((minMaxResult >= min) && (minMaxResult <= max), true);
+      expect(minMaxResult, inInclusiveRange(min, max));
 
       final precisionDigits = minMaxResult.toString().split('.')[1];
-      expect(precisionDigits.length <= 7, true);
+      expect(precisionDigits.length, lessThanOrEqualTo(7));
 
       expect(
         seededFinance.priceInBTC(),

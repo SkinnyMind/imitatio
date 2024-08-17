@@ -13,20 +13,13 @@ void main() {
     test('returns date', () {
       final currentYear = DateTime.now().year;
       final result = date.date(start: currentYear);
-      expect(int.parse(result.split('-')[0]), currentYear);
+      expect(int.parse(result.split('-')[0]), equals(currentYear));
       expect(seededDate.date(), equals(seededDate.date()));
     });
 
     test('throws when trying to return date in wrong range', () {
-      expect(
-        () => date.date(start: 2420, end: 2000),
-        throwsA(isA<RangeError>()),
-      );
-
-      expect(
-        () => date.date(start: -1, end: -10),
-        throwsA(isA<RangeError>()),
-      );
+      expect(() => date.date(start: 2420, end: 2000), throwsRangeError);
+      expect(() => date.date(start: -1, end: -10), throwsRangeError);
     });
 
     test('returns formatted date', () {
@@ -41,13 +34,9 @@ void main() {
     test('throws when trying to return formatted date in wrong range', () {
       expect(
         () => date.formattedDate(start: 2420, end: 2000),
-        throwsA(isA<RangeError>()),
+        throwsRangeError,
       );
-
-      expect(
-        () => date.formattedDate(start: -1, end: -10),
-        throwsA(isA<RangeError>()),
-      );
+      expect(() => date.formattedDate(start: -1, end: -10), throwsRangeError);
     });
 
     test('returns time', () {
@@ -96,29 +85,19 @@ void main() {
     test('returns a year', () {
       final currentYear = DateTime.now().year;
       final defaultResult = date.year();
-      expect((defaultResult >= 1990) && (defaultResult <= currentYear), true);
+      expect(defaultResult, inInclusiveRange(1990, currentYear));
 
       final min = 1800;
       final max = 2000;
       final minMaxResult = date.year(min: min, max: max);
-      expect((minMaxResult >= min) && (minMaxResult <= max), true);
+      expect(minMaxResult, inInclusiveRange(min, max));
 
-      expect(
-        seededDate.year(),
-        equals(seededDate.year()),
-      );
+      expect(seededDate.year(), equals(seededDate.year()));
     });
 
     test('throws when trying to return year in wrong range', () {
-      expect(
-        () => date.year(min: 2420, max: 2000),
-        throwsA(isA<RangeError>()),
-      );
-
-      expect(
-        () => date.year(min: -1, max: -10),
-        throwsA(isA<RangeError>()),
-      );
+      expect(() => date.year(min: 2420, max: 2000), throwsRangeError);
+      expect(() => date.year(min: -1, max: -10), throwsRangeError);
     });
 
     test('returns a week number with year', () {
@@ -128,8 +107,8 @@ void main() {
           defaultResult.replaceFirst('-', ' ').replaceFirst('W', '').split(' ');
       final (year, week) =
           (int.parse(splitDefault[0]), int.parse(splitDefault[1]));
-      expect((year >= 2017) && (year <= currentYear), true);
-      expect((week >= 1) && (week <= 52), true);
+      expect(year, inInclusiveRange(2017, currentYear));
+      expect(week, inInclusiveRange(1, 52));
 
       final start = 1800;
       final end = 2000;
@@ -138,25 +117,15 @@ void main() {
           minMaxResult.replaceFirst('-', ' ').replaceFirst('W', '').split(' ');
       final (minMaxYear, minMaxWeek) =
           (int.parse(splitMinMax[0]), int.parse(splitMinMax[1]));
-      expect((minMaxYear >= start) && (minMaxYear <= end), true);
-      expect((minMaxWeek >= 1) && (minMaxWeek <= 52), true);
+      expect(minMaxYear, inInclusiveRange(start, end));
+      expect(minMaxWeek, inInclusiveRange(1, 52));
 
-      expect(
-        seededDate.weekDate(),
-        equals(seededDate.weekDate()),
-      );
+      expect(seededDate.weekDate(), equals(seededDate.weekDate()));
     });
 
     test('throws when trying to return weekDate in wrong range', () {
-      expect(
-        () => date.weekDate(start: 2420, end: 2000),
-        throwsA(isA<RangeError>()),
-      );
-
-      expect(
-        () => date.weekDate(start: -1, end: -10),
-        throwsA(isA<RangeError>()),
-      );
+      expect(() => date.weekDate(start: 2420, end: 2000), throwsRangeError);
+      expect(() => date.weekDate(start: -1, end: -10), throwsRangeError);
     });
 
     test('returns name of the month', () {
@@ -170,10 +139,7 @@ void main() {
         contains(localeDate.month()),
       );
 
-      expect(
-        seededDate.month(),
-        equals(seededDate.month()),
-      );
+      expect(seededDate.month(), equals(seededDate.month()));
     });
 
     test('returns abbreviated name of the month', () {
@@ -207,7 +173,7 @@ void main() {
 
     test('returns day of month', () {
       final result = date.dayOfMonth;
-      expect((result >= 1) && (result <= 31), true);
+      expect(result, inInclusiveRange(1, 31));
       expect(seededDate.dayOfMonth, equals(seededDate.dayOfMonth));
     });
 

@@ -31,21 +31,14 @@ void main() {
 
     test('returns size of a file', () {
       final result = file.size(min: 10, max: 10);
-      expect(int.parse(result.split(' ').first), 10);
+      expect(int.parse(result.split(' ').first), equals(10));
 
       expect(seededFile.size(), equals(seededFile.size()));
     });
 
     test('throws when trying to return size of a file in wrong range', () {
-      expect(
-        () => file.size(min: 10, max: 1),
-        throwsA(isA<RangeError>()),
-      );
-
-      expect(
-        () => file.size(min: -1, max: -10),
-        throwsA(isA<RangeError>()),
-      );
+      expect(() => file.size(min: 10, max: 1), throwsRangeError);
+      expect(() => file.size(min: -1, max: -10), throwsRangeError);
     });
 
     test('returns file name with extension', () {
