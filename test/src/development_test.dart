@@ -21,14 +21,14 @@ void main() {
 
     test('returns version number', () {
       final version = development.version().split('.');
-      expect(version.length, 3);
+      expect(version.length, equals(3));
 
       final major = int.parse(version[0]);
       final minor = int.parse(version[1]);
       final patch = int.parse(version[2]);
-      expect(major >= 0 && major <= 11, true);
-      expect(minor >= 0 && minor <= 11, true);
-      expect(patch >= 0 && patch <= 11, true);
+      expect(major, inInclusiveRange(0, 11));
+      expect(minor, inInclusiveRange(0, 11));
+      expect(patch, inInclusiveRange(0, 11));
 
       expect(
         seededDevelopment.version(),
@@ -38,19 +38,19 @@ void main() {
 
     test('returns version number with pre-release', () {
       final version = development.version(preRelease: true).split('.');
-      expect(version.length, 4);
+      expect(version.length, equals(4));
     });
 
     test('returns version number in Calendar Versioning format', () {
       final version = development.version(calVer: true).split('.');
-      expect(version.length, 3);
+      expect(version.length, equals(3));
 
       final major = int.parse(version[0]);
       final minor = int.parse(version[1]);
       final patch = int.parse(version[2]);
-      expect(major >= 2016 && major <= DateTime.now().year, true);
-      expect(minor >= 0 && minor <= 12, true);
-      expect(patch >= 0 && patch <= 29, true);
+      expect(major, inInclusiveRange(2016, DateTime.now().year));
+      expect(minor, inInclusiveRange(0, 12));
+      expect(patch, inInclusiveRange(0, 29));
     });
 
     test(
@@ -62,10 +62,10 @@ void main() {
               preRelease: true,
             )
             .split('.');
-        expect(version.length, 4);
+        expect(version.length, equals(4));
 
         final major = int.parse(version[0]);
-        expect(major >= 2016 && major <= DateTime.now().year, true);
+        expect(major, inInclusiveRange(2016, DateTime.now().year));
       },
     );
 
@@ -81,14 +81,8 @@ void main() {
     });
 
     test('returns os', () {
-      expect(
-        IntDevelopmentData.oses,
-        contains(development.os),
-      );
-      expect(
-        seededDevelopment.os,
-        equals(seededDevelopment.os),
-      );
+      expect(IntDevelopmentData.oses, contains(development.os));
+      expect(seededDevelopment.os, equals(seededDevelopment.os));
     });
 
     test('returns boolean value', () {

@@ -8,17 +8,17 @@ void main() {
 
     test('returns float number', () {
       final result = numeric.floatNumber();
-      expect((result >= -1000.0) && (result <= 1000.0), true);
+      expect(result, inInclusiveRange(-1000.0, 1000.0));
 
       final min = 10.0;
       final max = 15.0;
       final precision = 3;
       final minMaxResult =
           numeric.floatNumber(start: min, end: max, precision: precision);
-      expect((minMaxResult >= min) && (minMaxResult <= max), true);
+      expect(minMaxResult, inInclusiveRange(min, max));
 
       final precisionDigits = minMaxResult.toString().split('.')[1];
-      expect(precisionDigits.length <= precision, true);
+      expect(precisionDigits.length, lessThanOrEqualTo(precision));
 
       expect(
         seededNumeric.floatNumber(),
@@ -27,22 +27,19 @@ void main() {
     });
 
     test('throws when trying to return float number in wrong range', () {
-      expect(
-        () => numeric.floatNumber(start: 10, end: 1),
-        throwsA(isA<RangeError>()),
-      );
+      expect(() => numeric.floatNumber(start: 10, end: 1), throwsRangeError);
     });
 
     test('returns list of float numbers', () {
       final result = numeric.floats();
       expect(result.length, 10);
       for (final float in result) {
-        expect((float >= 0.0) && (float <= 1.0), true);
+        expect(float, inInclusiveRange(0.0, 1.0));
       }
 
       final n = 3;
       final nResult = numeric.floats(n: n, precision: 3);
-      expect(nResult.length, 3);
+      expect(nResult.length, equals(3));
 
       expect(
         seededNumeric.floats(),
@@ -51,20 +48,17 @@ void main() {
     });
 
     test('throws when trying to return floats in wrong range', () {
-      expect(
-        () => numeric.floats(start: 10, end: 2),
-        throwsA(isA<RangeError>()),
-      );
+      expect(() => numeric.floats(start: 10, end: 2), throwsRangeError);
     });
 
     test('returns integer number', () {
       final result = numeric.integerNumber();
-      expect((result >= -1000) && (result <= 1000), true);
+      expect(result, inInclusiveRange(-1000, 1000));
 
       final min = 10;
       final max = 15;
       final minMaxResult = numeric.integerNumber(start: min, end: max);
-      expect((minMaxResult >= min) && (minMaxResult <= max), true);
+      expect(minMaxResult, inInclusiveRange(min, max));
 
       expect(
         seededNumeric.integerNumber(),
@@ -73,22 +67,19 @@ void main() {
     });
 
     test('throws when trying to return integer in wrong range', () {
-      expect(
-        () => numeric.integerNumber(start: 10, end: 1),
-        throwsA(isA<RangeError>()),
-      );
+      expect(() => numeric.integerNumber(start: 10, end: 1), throwsRangeError);
     });
 
     test('returns list of integer numbers', () {
       final result = numeric.integers();
       expect(result.length, 10);
       for (final integer in result) {
-        expect((integer >= 0) && (integer <= 10), true);
+        expect(integer, inInclusiveRange(0, 10));
       }
 
       final n = 3;
       final nResult = numeric.integers(n: n);
-      expect(nResult.length, 3);
+      expect(nResult.length, equals(3));
 
       expect(
         seededNumeric.integers(),
@@ -97,10 +88,7 @@ void main() {
     });
 
     test('throws when trying to return integers in wrong range', () {
-      expect(
-        () => numeric.integers(start: 10, end: 1),
-        throwsA(isA<RangeError>()),
-      );
+      expect(() => numeric.integers(start: 10, end: 1), throwsRangeError);
     });
 
     test('returns complex number', () {
@@ -117,13 +105,12 @@ void main() {
         imaginaryPrecision: imaginaryPrecision,
       );
       expect(
-        result.real.toString().split('.').last.length <= realPrecision,
-        true,
+        result.real.toString().split('.').last.length,
+        lessThanOrEqualTo(realPrecision),
       );
       expect(
-        result.imaginary.toString().split('.').last.length <=
-            imaginaryPrecision,
-        true,
+        result.imaginary.toString().split('.').last.length,
+        lessThanOrEqualTo(imaginaryPrecision),
       );
 
       expect(

@@ -8,7 +8,7 @@ void main() {
     const seededPayment = Payment(seed: 1);
 
     test('returns CID code', () {
-      expect(payment.cid.length, 4);
+      expect(payment.cid.length, equals(4));
       expect(seededPayment.cid, equals(seededPayment.cid));
     });
 
@@ -20,8 +20,8 @@ void main() {
     test('returns bitcoin address', () {
       final result = payment.bitcoinAddress;
       final type = int.parse(result[0]);
-      expect(type >= 1 && type <= 3, true);
-      expect(result.length, 34);
+      expect(type, inInclusiveRange(1, 3));
+      expect(result.length, equals(34));
       expect(
         seededPayment.bitcoinAddress,
         equals(seededPayment.bitcoinAddress),
@@ -60,7 +60,7 @@ void main() {
               .split(' ')
               .first,
         );
-        expect(result >= 2221 && result <= 5599, true);
+        expect(result, inInclusiveRange(2221, 5599));
       }
 
       expect(
@@ -73,7 +73,7 @@ void main() {
       final year = int.parse(
         payment.creditCardExpirationDate(min: 22, max: 27).split('/').last,
       );
-      expect(year >= 22 && year <= 27, true);
+      expect(year, inInclusiveRange(22, 27));
 
       expect(
         seededPayment.creditCardExpirationDate(),
@@ -82,7 +82,7 @@ void main() {
     });
 
     test('returns CVV code', () {
-      expect(payment.cvv.length, 3);
+      expect(payment.cvv.length, equals(3));
       expect(seededPayment.cvv, equals(seededPayment.cvv));
     });
 
@@ -92,7 +92,7 @@ void main() {
       expect(result.card, isNotEmpty);
       expect(result.expirationDate, isNotEmpty);
       expect(result.owner, isNotEmpty);
-      expect(result.owner, result.owner.toUpperCase());
+      expect(result.owner, equals(result.owner.toUpperCase()));
 
       expect(
         seededPayment.creditCardOwner(),
