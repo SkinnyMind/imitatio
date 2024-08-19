@@ -19,3 +19,7 @@ print(person.email(domains: ['example.com']); // "complaints1927@example.com"
 
 print(person.phoneNumber(mask: "1-2##-3##-4##5")); // "1-224-322-4755"
 ```
+
+## License
+
+MIT. See [LICENSE](LICENSE) file for more information.
