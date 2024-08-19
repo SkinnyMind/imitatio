@@ -1,9 +1,10 @@
 name: imitatio
 description: Generate different types of fake data in multiple languages.
 version: 1.0.0
+homepage: https://github.com/SkinnyMind/imitatio
 
 environment:
-  sdk: ">=3.5.0-323.2.beta <4.0.0"
+  sdk: ">=3.4.0 <4.0.0"
 
 dependencies:
   crypto: ^3.0.3
