@@ -1,5 +1,5 @@
 name: imitatio
-description: A starting point for Dart libraries or applications.
+description: Generate different types of fake data in multiple languages.
 version: 1.0.0
 
 environment:
