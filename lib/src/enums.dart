@@ -182,6 +182,7 @@ enum PostalService {
 
 enum Locale {
   az,
+  ar_ae,
   da,
   cs,
   de_at,
