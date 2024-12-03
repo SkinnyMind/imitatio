@@ -1,3 +1,4 @@
+import 'package:imitatio/src/datasets/az/person.dart';
 import 'package:imitatio/src/datasets/cs/person.dart';
 import 'package:imitatio/src/datasets/da/person.dart';
 import 'package:imitatio/src/datasets/de/person.dart';
@@ -42,6 +43,7 @@ class PersonData {
 
   static PersonDataset locale(Locale locale) {
     return switch (locale) {
+      Locale.az => AzPersonData(),
       Locale.cs => CsPersonData(),
       Locale.da => DaPersonData(),
       Locale.de_at => DeAtPersonData(),
