@@ -1,3 +1,4 @@
+import 'package:imitatio/src/datasets/ar_ae/finance.dart';
 import 'package:imitatio/src/datasets/az/finance.dart';
 import 'package:imitatio/src/datasets/cs/finance.dart';
 import 'package:imitatio/src/datasets/da/finance.dart';
@@ -43,6 +44,7 @@ class FinanceData {
 
   static FinanceDataset locale(Locale locale) {
     return switch (locale) {
+      Locale.ar_ae => ArAeFinanceData(),
       Locale.az => AzFinanceData(),
       Locale.cs => CsFinanceData(),
       Locale.da => DaFinanceData(),

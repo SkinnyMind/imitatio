@@ -1,3 +1,4 @@
+import 'package:imitatio/src/datasets/ar_ae/food.dart';
 import 'package:imitatio/src/datasets/az/food.dart';
 import 'package:imitatio/src/datasets/cs/food.dart';
 import 'package:imitatio/src/datasets/da/food.dart';
@@ -43,6 +44,7 @@ class FoodData {
 
   static FoodDataset locale(Locale locale) {
     return switch (locale) {
+      Locale.ar_ae => ArAeFoodData(),
       Locale.az => AzFoodData(),
       Locale.cs => CsFoodData(),
       Locale.da => DaFoodData(),
