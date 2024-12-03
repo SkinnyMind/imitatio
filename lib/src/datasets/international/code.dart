@@ -174,6 +174,7 @@ class IntCodeData {
       Locale.ar_om => "99969",
       Locale.ar_qa => "9927",
       Locale.ar_sa => "9960",
+      Locale.ar_sy => "9933",
       Locale.az => "9952",
       Locale.cs => "80",
       Locale.da => "87",

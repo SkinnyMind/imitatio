@@ -7,6 +7,7 @@ import 'package:imitatio/src/datasets/ar_ma/finance.dart';
 import 'package:imitatio/src/datasets/ar_om/finance.dart';
 import 'package:imitatio/src/datasets/ar_qa/finance.dart';
 import 'package:imitatio/src/datasets/ar_sa/finance.dart';
+import 'package:imitatio/src/datasets/at_sy/finance.dart';
 import 'package:imitatio/src/datasets/az/finance.dart';
 import 'package:imitatio/src/datasets/cs/finance.dart';
 import 'package:imitatio/src/datasets/da/finance.dart';
@@ -61,6 +62,7 @@ class FinanceData {
       Locale.ar_om => ArOmFinanceData(),
       Locale.ar_qa => ArQaFinanceData(),
       Locale.ar_sa => ArSaFinanceData(),
+      Locale.ar_sy => ArSyFinanceData(),
       Locale.az => AzFinanceData(),
       Locale.cs => CsFinanceData(),
       Locale.da => DaFinanceData(),
