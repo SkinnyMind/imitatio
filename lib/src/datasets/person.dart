@@ -2,6 +2,7 @@ import 'package:imitatio/src/datasets/ar_ae/person.dart';
 import 'package:imitatio/src/datasets/ar_dz/person.dart';
 import 'package:imitatio/src/datasets/ar_eg/person.dart';
 import 'package:imitatio/src/datasets/ar_jo/person.dart';
+import 'package:imitatio/src/datasets/ar_kw/person.dart';
 import 'package:imitatio/src/datasets/az/person.dart';
 import 'package:imitatio/src/datasets/cs/person.dart';
 import 'package:imitatio/src/datasets/da/person.dart';
@@ -51,6 +52,7 @@ class PersonData {
       Locale.ar_dz => ArDzPersonData(),
       Locale.ar_eg => ArEgPersonData(),
       Locale.ar_jo => ArJoPersonData(),
+      Locale.ar_kw => ArKwPersonData(),
       Locale.az => AzPersonData(),
       Locale.cs => CsPersonData(),
       Locale.da => DaPersonData(),
