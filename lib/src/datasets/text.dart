@@ -2,6 +2,7 @@ import 'package:imitatio/src/datasets/ar_ae/text.dart';
 import 'package:imitatio/src/datasets/ar_dz/text.dart';
 import 'package:imitatio/src/datasets/ar_eg/text.dart';
 import 'package:imitatio/src/datasets/ar_jo/text.dart';
+import 'package:imitatio/src/datasets/ar_kw/text.dart';
 import 'package:imitatio/src/datasets/az/text.dart';
 import 'package:imitatio/src/datasets/cs/text.dart';
 import 'package:imitatio/src/datasets/da/text.dart';
@@ -51,6 +52,7 @@ class TextData {
       Locale.ar_dz => ArDzTextData(),
       Locale.ar_eg => ArEgTextData(),
       Locale.ar_jo => ArJoTextData(),
+      Locale.ar_kw => ArKwTextData(),
       Locale.az => AzTextData(),
       Locale.cs => CsTextData(),
       Locale.da => DaTextData(),

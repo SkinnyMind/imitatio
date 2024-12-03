@@ -2,6 +2,7 @@ import 'package:imitatio/src/datasets/ar_ae/food.dart';
 import 'package:imitatio/src/datasets/ar_dz/food.dart';
 import 'package:imitatio/src/datasets/ar_eg/food.dart';
 import 'package:imitatio/src/datasets/ar_jo/food.dart';
+import 'package:imitatio/src/datasets/ar_kw/food.dart';
 import 'package:imitatio/src/datasets/az/food.dart';
 import 'package:imitatio/src/datasets/cs/food.dart';
 import 'package:imitatio/src/datasets/da/food.dart';
@@ -51,6 +52,7 @@ class FoodData {
       Locale.ar_dz => ArDzFoodData(),
       Locale.ar_eg => ArEgFoodData(),
       Locale.ar_jo => ArJoFoodData(),
+      Locale.ar_kw => ArKwFoodData(),
       Locale.az => AzFoodData(),
       Locale.cs => CsFoodData(),
       Locale.da => DaFoodData(),
