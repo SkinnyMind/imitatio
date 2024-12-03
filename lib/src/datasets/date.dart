@@ -1,3 +1,4 @@
+import 'package:imitatio/src/datasets/az/date.dart';
 import 'package:imitatio/src/datasets/cs/date.dart';
 import 'package:imitatio/src/datasets/da/date.dart';
 import 'package:imitatio/src/datasets/de/date.dart';
@@ -42,6 +43,7 @@ class DateData {
 
   static DateDataset locale(Locale locale) {
     return switch (locale) {
+      Locale.az => AzDateData(),
       Locale.cs => CsDateData(),
       Locale.da => DaDateData(),
       Locale.de_at => DeAtDateData(),

@@ -1497,6 +1497,7 @@ class IntTransportData {
 
   static String vrcByLocale({required Locale locale}) {
     return switch (locale) {
+      Locale.az => "AZ",
       Locale.cs => "CZ",
       Locale.da => "DK",
       Locale.de_at => "A",

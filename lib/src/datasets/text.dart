@@ -1,3 +1,4 @@
+import 'package:imitatio/src/datasets/az/text.dart';
 import 'package:imitatio/src/datasets/cs/text.dart';
 import 'package:imitatio/src/datasets/da/text.dart';
 import 'package:imitatio/src/datasets/de/text.dart';
@@ -42,6 +43,7 @@ class TextData {
 
   static TextDataset locale(Locale locale) {
     return switch (locale) {
+      Locale.az => AzTextData(),
       Locale.cs => CsTextData(),
       Locale.da => DaTextData(),
       Locale.de_at => DeAtTextData(),
