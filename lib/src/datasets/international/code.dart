@@ -167,6 +167,7 @@ class IntCodeData {
     return switch (locale) {
       Locale.ar_ae => "9948",
       Locale.ar_dz => "9931",
+      Locale.ar_eg => "977",
       Locale.az => "9952",
       Locale.cs => "80",
       Locale.da => "87",

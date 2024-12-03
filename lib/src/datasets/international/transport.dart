@@ -1499,6 +1499,7 @@ class IntTransportData {
     return switch (locale) {
       Locale.ar_ae => "UAE",
       Locale.ar_dz => "DZ",
+      Locale.ar_eg => "EG",
       Locale.az => "AZ",
       Locale.cs => "CZ",
       Locale.da => "DK",
