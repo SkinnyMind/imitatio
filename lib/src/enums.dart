@@ -187,6 +187,7 @@ enum Locale {
   ar_eg,
   ar_jo,
   ar_kw,
+  ar_ma,
   da,
   cs,
   de_at,

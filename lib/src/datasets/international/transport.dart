@@ -1502,6 +1502,7 @@ class IntTransportData {
       Locale.ar_eg => "EG",
       Locale.ar_jo => "HKJ",
       Locale.ar_kw => "KWT",
+      Locale.ar_ma => "MA",
       Locale.az => "AZ",
       Locale.cs => "CZ",
       Locale.da => "DK",
