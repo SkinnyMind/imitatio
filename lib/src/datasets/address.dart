@@ -3,6 +3,7 @@ import 'package:imitatio/src/datasets/ar_dz/address.dart';
 import 'package:imitatio/src/datasets/ar_eg/address.dart';
 import 'package:imitatio/src/datasets/ar_jo/address.dart';
 import 'package:imitatio/src/datasets/ar_kw/address.dart';
+import 'package:imitatio/src/datasets/ar_ma/address.dart';
 import 'package:imitatio/src/datasets/az/address.dart';
 import 'package:imitatio/src/datasets/cs/address.dart';
 import 'package:imitatio/src/datasets/da/address.dart';
@@ -53,6 +54,7 @@ class AddressData {
       Locale.ar_eg => ArEgAddressData(),
       Locale.ar_jo => ArJoAdressData(),
       Locale.ar_kw => ArKwAddressData(),
+      Locale.ar_ma => ArMaAddressData(),
       Locale.az => AzAddressData(),
       Locale.cs => CsAddressData(),
       Locale.da => DaAddressData(),
