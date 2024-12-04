@@ -8,6 +8,7 @@ import 'package:imitatio/src/datasets/ar_om/address.dart';
 import 'package:imitatio/src/datasets/ar_qa/address.dart';
 import 'package:imitatio/src/datasets/ar_sa/address.dart';
 import 'package:imitatio/src/datasets/ar_tn/address.dart';
+import 'package:imitatio/src/datasets/ar_ye/address.dart';
 import 'package:imitatio/src/datasets/at_sy/address.dart';
 import 'package:imitatio/src/datasets/az/address.dart';
 import 'package:imitatio/src/datasets/cs/address.dart';
@@ -65,6 +66,7 @@ class AddressData {
       Locale.ar_sa => ArSaAddressData(),
       Locale.ar_sy => ArSyAddressData(),
       Locale.ar_tn => ArTnAddressData(),
+      Locale.ar_ye => ArYeAddressData(),
       Locale.az => AzAddressData(),
       Locale.cs => CsAddressData(),
       Locale.da => DaAddressData(),

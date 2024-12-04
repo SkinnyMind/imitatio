@@ -8,6 +8,7 @@ import 'package:imitatio/src/datasets/ar_om/text.dart';
 import 'package:imitatio/src/datasets/ar_qa/text.dart';
 import 'package:imitatio/src/datasets/ar_sa/text.dart';
 import 'package:imitatio/src/datasets/ar_tn/text.dart';
+import 'package:imitatio/src/datasets/ar_ye/text.dart';
 import 'package:imitatio/src/datasets/at_sy/text.dart';
 import 'package:imitatio/src/datasets/az/text.dart';
 import 'package:imitatio/src/datasets/cs/text.dart';
@@ -65,6 +66,7 @@ class TextData {
       Locale.ar_sa => ArSaTextData(),
       Locale.ar_sy => ArSyTextData(),
       Locale.ar_tn => ArTnTextData(),
+      Locale.ar_ye => ArYeTextData(),
       Locale.az => AzTextData(),
       Locale.cs => CsTextData(),
       Locale.da => DaTextData(),

@@ -193,6 +193,7 @@ enum Locale {
   ar_sa,
   ar_sy,
   ar_tn,
+  ar_ye,
   da,
   cs,
   de_at,
