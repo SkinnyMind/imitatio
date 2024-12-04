@@ -8,6 +8,7 @@ import 'package:imitatio/src/datasets/ar_om/date.dart';
 import 'package:imitatio/src/datasets/ar_qa/date.dart';
 import 'package:imitatio/src/datasets/ar_sa/date.dart';
 import 'package:imitatio/src/datasets/ar_tn/date.dart';
+import 'package:imitatio/src/datasets/ar_ye/date.dart';
 import 'package:imitatio/src/datasets/at_sy/date.dart';
 import 'package:imitatio/src/datasets/az/date.dart';
 import 'package:imitatio/src/datasets/cs/date.dart';
@@ -65,6 +66,7 @@ class DateData {
       Locale.ar_sa => ArSaDateData(),
       Locale.ar_sy => ArSyDateData(),
       Locale.ar_tn => ArTnDateData(),
+      Locale.ar_ye => ArYeDateData(),
       Locale.az => AzDateData(),
       Locale.cs => CsDateData(),
       Locale.da => DaDateData(),
