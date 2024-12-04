@@ -109,5 +109,5 @@ class ArDzFinanceData extends FinanceDataset {
   String get currencyCode => "DZD";
 
   @override
-  String get currencySymbol => 'دج';
+  String get currencySymbol => 'DA';
 }
