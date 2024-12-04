@@ -79,5 +79,5 @@ class ArKwFinanceData extends FinanceDataset {
   String get currencyCode => "KWD";
 
   @override
-  String get currencySymbol => 'د.ك';
+  String get currencySymbol => 'KD';
 }

@@ -120,5 +120,5 @@ class ArAeFinanceData extends FinanceDataset {
   String get currencyCode => "AED";
 
   @override
-  String get currencySymbol => "د.إ";
+  String get currencySymbol => "DH";
 }
