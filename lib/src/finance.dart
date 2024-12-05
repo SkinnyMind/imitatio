@@ -5,6 +5,7 @@ import 'package:imitatio/src/datasets/international/finance.dart';
 import 'package:imitatio/src/enums.dart';
 import 'package:imitatio/src/extensions.dart';
 
+/// Provides finance and business related data.
 class Finance {
   /// Provides finance and business related data.
   ///
