@@ -110,8 +110,8 @@ class Payment {
 
     final str = result.toString();
     return str.length == 16
-        // ignore: lines_longer_than_80_chars
-        ? '${str.substring(0, 4)} ${str.substring(4, 8)} ${str.substring(8, 12)} ${str.substring(12)}'
+        ? '${str.substring(0, 4)} ${str.substring(4, 8)} '
+            '${str.substring(8, 12)} ${str.substring(12)}'
         : '${str.substring(0, 4)} ${str.substring(4, 10)} ${str.substring(10)}';
   }
 

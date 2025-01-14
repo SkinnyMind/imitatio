@@ -30,8 +30,8 @@ class Brazil {
     cpf.add(secondVd);
     final result = cpf.join();
     return withMask
-        // ignore: lines_longer_than_80_chars
-        ? '${result.substring(0, 3)}.${result.substring(3, 6)}.${result.substring(6, 9)}-${result.substring(9)}'
+        ? '${result.substring(0, 3)}.${result.substring(3, 6)}.'
+            '${result.substring(6, 9)}-${result.substring(9)}'
         : result;
   }
 
