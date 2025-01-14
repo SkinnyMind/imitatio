@@ -34,6 +34,7 @@ linter:
     - collection_methods_unrelated_type
     - deprecated_consistency
     - directives_ordering
+    - document_ignores
     - eol_at_end_of_file
     - invalid_case_patterns
     - join_return_with_assignment
@@ -82,3 +83,4 @@ linter:
     - use_string_in_part_of_directives
     - use_super_parameters
     - use_test_throws_matchers
+    - use_truncating_division

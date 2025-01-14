@@ -1,3 +1,4 @@
+// It's ok to have long strings in that file
 // ignore_for_file: lines_longer_than_80_chars
 
 import 'package:imitatio/src/datasets/models/address.dart';

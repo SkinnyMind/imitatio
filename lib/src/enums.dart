@@ -1,3 +1,4 @@
+// It's ok to have long strings in that file
 // ignore_for_file: constant_identifier_names
 
 /// Common mime types.
