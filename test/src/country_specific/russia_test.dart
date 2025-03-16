@@ -7,7 +7,7 @@ void main() {
     final russia = CountrySpecific.russia();
     final seededRussia = CountrySpecific.russia(seed: 1);
 
-    test('returns passport number', () async {
+    test('returns passport number', () {
       final result = russia.passportNumber().split(' ');
       expect(result[0].length, equals(2));
       expect(result[1].length, equals(2));
@@ -22,36 +22,36 @@ void main() {
       );
     });
 
-    test('throws when provided year for passport is not 2 digits', () async {
+    test('throws when provided year for passport is not 2 digits', () {
       expect(() => russia.passportNumber(year: 1999), throwsArgumentError);
     });
 
-    test('returns SNILS', () async {
+    test('returns SNILS', () {
       expect(russia.snils.length, equals(11));
       expect(seededRussia.snils, equals(seededRussia.snils));
     });
 
-    test('returns INN', () async {
+    test('returns INN', () {
       expect(russia.inn.length, equals(12));
       expect(seededRussia.inn, equals(seededRussia.inn));
     });
 
-    test('returns OGRN', () async {
+    test('returns OGRN', () {
       expect(russia.ogrn.length, equals(13));
       expect(seededRussia.ogrn, equals(seededRussia.ogrn));
     });
 
-    test('returns BIC', () async {
+    test('returns BIC', () {
       expect(russia.bic.length, equals(9));
       expect(seededRussia.bic, equals(seededRussia.bic));
     });
 
-    test('returns KPP', () async {
+    test('returns KPP', () {
       expect(russia.kpp.length, equals(9));
       expect(seededRussia.kpp, equals(seededRussia.kpp));
     });
 
-    test('returns patronymic name', () async {
+    test('returns patronymic name', () {
       expect(russia.patronymic(), isNotEmpty);
 
       for (final gender in Gender.values) {

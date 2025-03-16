@@ -69,10 +69,7 @@ void main() {
         contains(localeDate.dayOfWeek()),
       );
 
-      expect(
-        seededDate.dayOfWeek(),
-        equals(seededDate.dayOfWeek()),
-      );
+      expect(seededDate.dayOfWeek(), equals(seededDate.dayOfWeek()));
     });
 
     test('returns abbreviated day of the week', () {
@@ -103,20 +100,28 @@ void main() {
     test('returns a week number with year', () {
       final currentYear = DateTime.now().year;
       final defaultResult = date.weekDate();
-      final splitDefault =
-          defaultResult.replaceFirst('-', ' ').replaceFirst('W', '').split(' ');
-      final (year, week) =
-          (int.parse(splitDefault[0]), int.parse(splitDefault[1]));
+      final splitDefault = defaultResult
+          .replaceFirst('-', ' ')
+          .replaceFirst('W', '')
+          .split(' ');
+      final (year, week) = (
+        int.parse(splitDefault[0]),
+        int.parse(splitDefault[1]),
+      );
       expect(year, inInclusiveRange(2017, currentYear));
       expect(week, inInclusiveRange(1, 52));
 
       final start = 1800;
       final end = 2000;
       final minMaxResult = date.weekDate(start: start, end: end);
-      final splitMinMax =
-          minMaxResult.replaceFirst('-', ' ').replaceFirst('W', '').split(' ');
-      final (minMaxYear, minMaxWeek) =
-          (int.parse(splitMinMax[0]), int.parse(splitMinMax[1]));
+      final splitMinMax = minMaxResult
+          .replaceFirst('-', ' ')
+          .replaceFirst('W', '')
+          .split(' ');
+      final (minMaxYear, minMaxWeek) = (
+        int.parse(splitMinMax[0]),
+        int.parse(splitMinMax[1]),
+      );
       expect(minMaxYear, inInclusiveRange(start, end));
       expect(minMaxWeek, inInclusiveRange(1, 52));
 
@@ -165,10 +170,7 @@ void main() {
         contains(localeDate.periodicity),
       );
 
-      expect(
-        seededDate.periodicity,
-        equals(seededDate.periodicity),
-      );
+      expect(seededDate.periodicity, equals(seededDate.periodicity));
     });
 
     test('returns day of month', () {

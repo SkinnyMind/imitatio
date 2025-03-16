@@ -136,9 +136,10 @@ class Address {
   /// Address().continent(asCode: true); // "AN"
   /// ```
   String continent({bool asCode = false}) {
-    final data = asCode
-        ? IntAddressData.continentCodes
-        : AddressData.locale(locale).continents;
+    final data =
+        asCode
+            ? IntAddressData.continentCodes
+            : AddressData.locale(locale).continents;
 
     return data[Random(seed).integer(max: data.length - 1)];
   }

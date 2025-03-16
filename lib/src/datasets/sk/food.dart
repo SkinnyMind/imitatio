@@ -13,15 +13,7 @@ class SkFoodData extends FoodDataset {
 
   @override
   List<String> get drinks {
-    return const [
-      "kofola",
-      "káva",
-      "pivo",
-      "slivovica",
-      "voda",
-      "víno",
-      "čaj",
-    ];
+    return const ["kofola", "káva", "pivo", "slivovica", "voda", "víno", "čaj"];
   }
 
   @override
@@ -39,16 +31,11 @@ class SkFoodData extends FoodDataset {
 
   @override
   List<String> get spices {
-    return const [
-      "chili",
-    ];
+    return const ["chili"];
   }
 
   @override
   List<String> get vegetables {
-    return const [
-      "mrkva",
-      "zemiak",
-    ];
+    return const ["mrkva", "zemiak"];
   }
 }

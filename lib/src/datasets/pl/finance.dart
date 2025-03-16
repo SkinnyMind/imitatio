@@ -1055,23 +1055,23 @@ class PlFinanceData extends FinanceDataset {
   List<String> companyTypes({required bool isAbbr}) {
     return switch (isAbbr) {
       true => const [
-          "S.A.",
-          "s.c.",
-          "sp.j.",
-          "sp.k.",
-          "S.K.A.",
-          "sp.p.",
-          "Sp. z o.o.",
-        ],
+        "S.A.",
+        "s.c.",
+        "sp.j.",
+        "sp.k.",
+        "S.K.A.",
+        "sp.p.",
+        "Sp. z o.o.",
+      ],
       false => const [
-          "Spółka akcyjna",
-          "Spółka cywilna",
-          "Spółka jawna",
-          "Spółka komandytowa",
-          "Spółka komandytowo-akcyjna",
-          "Spółka partnerska",
-          "Spółka z ograniczoną odpowiedzialnością",
-        ],
+        "Spółka akcyjna",
+        "Spółka cywilna",
+        "Spółka jawna",
+        "Spółka komandytowa",
+        "Spółka komandytowo-akcyjna",
+        "Spółka partnerska",
+        "Spółka z ograniczoną odpowiedzialnością",
+      ],
     };
   }
 

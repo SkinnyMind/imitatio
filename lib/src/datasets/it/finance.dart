@@ -347,23 +347,23 @@ class ItFinanceData extends FinanceDataset {
   List<String> companyTypes({required bool isAbbr}) {
     return switch (isAbbr) {
       true => const [
-          "S.s.",
-          "S.n.c.",
-          "S.a.s.",
-          "S.p.a.",
-          "S.a.p.a.",
-          "S.r.l.",
-          "S.c.r.l.",
-        ],
+        "S.s.",
+        "S.n.c.",
+        "S.a.s.",
+        "S.p.a.",
+        "S.a.p.a.",
+        "S.r.l.",
+        "S.c.r.l.",
+      ],
       false => const [
-          "Società semplice",
-          "Società in nome collettivo",
-          "Società in accomandita semplice",
-          "Società per azioni",
-          "Società in accomandita per azioni",
-          "Società a responsabilità limitata",
-          "Società cooperativa a responsabilità limitat",
-        ],
+        "Società semplice",
+        "Società in nome collettivo",
+        "Società in accomandita semplice",
+        "Società per azioni",
+        "Società in accomandita per azioni",
+        "Società a responsabilità limitata",
+        "Società cooperativa a responsabilità limitat",
+      ],
     };
   }
 

@@ -6,7 +6,7 @@ void main() {
     final brazil = CountrySpecific.brazil();
     final seededBrazil = CountrySpecific.brazil(seed: 1);
 
-    test('returns CPF', () async {
+    test('returns CPF', () {
       final result = brazil.cpf();
       expect(result.length, equals(14));
 
@@ -16,7 +16,7 @@ void main() {
       expect(seededBrazil.cpf(), equals(seededBrazil.cpf()));
     });
 
-    test('returns CNPJ', () async {
+    test('returns CNPJ', () {
       final result = brazil.cnpj();
       expect(result.length, equals(18));
 

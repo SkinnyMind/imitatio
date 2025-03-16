@@ -24,14 +24,7 @@ class KkFoodData extends FoodDataset {
 
   @override
   List<String> get drinks {
-    return const [
-      'Шекер',
-      'Кымыз',
-      'Айран',
-      'Боза',
-      'Таркотан',
-      'Коктал',
-    ];
+    return const ['Шекер', 'Кымыз', 'Айран', 'Боза', 'Таркотан', 'Коктал'];
   }
 
   @override

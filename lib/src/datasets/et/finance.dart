@@ -397,20 +397,15 @@ class EtFinanceData extends FinanceDataset {
   @override
   List<String> companyTypes({required bool isAbbr}) {
     return switch (isAbbr) {
-      true => const [
-          "OÜ",
-          "AS",
-          "FIE",
-          "TÜ",
-        ],
+      true => const ["OÜ", "AS", "FIE", "TÜ"],
       false => const [
-          "täisühing",
-          "usaldusühing",
-          "osaühing",
-          "aktsiaselts",
-          "tulundusühistu",
-          "füüsilisest isikust ettevõtja ehk FIE",
-        ],
+        "täisühing",
+        "usaldusühing",
+        "osaühing",
+        "aktsiaselts",
+        "tulundusühistu",
+        "füüsilisest isikust ettevõtja ehk FIE",
+      ],
     };
   }
 

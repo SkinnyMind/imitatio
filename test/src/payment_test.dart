@@ -47,8 +47,9 @@ void main() {
     test('returns credit card number', () {
       for (final type in CardType.values) {
         expect(
-          RegExp(r'[\d]+((-|\s)?[\d]+)+')
-              .hasMatch(payment.creditCardNumber(cardType: type)),
+          RegExp(
+            r'[\d]+((-|\s)?[\d]+)+',
+          ).hasMatch(payment.creditCardNumber(cardType: type)),
           true,
         );
       }

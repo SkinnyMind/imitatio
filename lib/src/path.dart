@@ -15,9 +15,9 @@ class Path {
   /// [seed] is optional parameter to initialize the internal state of the
   /// random generator.
   Path({String? platform, this.seed})
-      : platform = platform ?? Platform.operatingSystem,
-        _platformHome = _getPlatformHome(platform ?? Platform.operatingSystem),
-        _pathSeparator = platform == 'windows' ? r'\' : '/';
+    : platform = platform ?? Platform.operatingSystem,
+      _platformHome = _getPlatformHome(platform ?? Platform.operatingSystem),
+      _pathSeparator = platform == 'windows' ? r'\' : '/';
 
   final String platform;
   final String _platformHome;

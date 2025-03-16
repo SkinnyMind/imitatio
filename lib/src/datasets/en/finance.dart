@@ -1358,25 +1358,25 @@ class EnFinanceData extends FinanceDataset {
   List<String> companyTypes({required bool isAbbr}) {
     return switch (isAbbr) {
       true => const [
-          "Corp.",
-          "Inc.",
-          "Ltd.",
-          "LLLP",
-          "LLP",
-          "LP",
-          "PLLC",
-          "P.C",
-        ],
+        "Corp.",
+        "Inc.",
+        "Ltd.",
+        "LLLP",
+        "LLP",
+        "LP",
+        "PLLC",
+        "P.C",
+      ],
       false => const [
-          "Corporation",
-          "Incorporated",
-          "Limited Liability Company",
-          "Limited Liability Limited Partnership",
-          "Limited Liability Partnership",
-          "Limited Partnership",
-          "Professional Limited Liability Company",
-          "Professional corporation",
-        ],
+        "Corporation",
+        "Incorporated",
+        "Limited Liability Company",
+        "Limited Liability Limited Partnership",
+        "Limited Liability Partnership",
+        "Limited Partnership",
+        "Professional Limited Liability Company",
+        "Professional corporation",
+      ],
     };
   }
 

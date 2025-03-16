@@ -324,8 +324,10 @@ class Internet {
         '${intAddress >> 8 & 255}.${intAddress & 255}',
       );
     } else {
-      final octets =
-          List.generate(4, (_) => random.integer(max: 255)).join('.');
+      final octets = List.generate(
+        4,
+        (_) => random.integer(max: 255),
+      ).join('.');
       result.write(octets);
     }
 
@@ -395,11 +397,7 @@ class Internet {
   /// Internet().dsn(tldType: TLDType.geotld); // "rabbitmq://identifies.moscow:5672"
   /// Internet().dsn(subdomains: ['app', 'api', 'admin']); // "postgres://api.concentrate.io:5432"
   /// ```
-  String dsn({
-    DSNType? dsnType,
-    TLDType? tldType,
-    List<String>? subdomains,
-  }) {
+  String dsn({DSNType? dsnType, TLDType? tldType, List<String>? subdomains}) {
     final data = DSNType.values;
     final hostname = this.hostname(tldType: tldType, subdomains: subdomains);
     final dsn = dsnType ?? data[Random(seed).integer(max: data.length - 1)];

@@ -68,25 +68,25 @@ class CsFinanceData extends FinanceDataset {
   List<String> companyTypes({required bool isAbbr}) {
     return switch (isAbbr) {
       true => const [
-          "a.s.",
-          "akc.",
-          "k.s.",
-          "o.p.s.",
-          "s.p.",
-          "s.r.o.",
-          "spol.",
-          "v.o.s.",
-          "z.s.",
-        ],
+        "a.s.",
+        "akc.",
+        "k.s.",
+        "o.p.s.",
+        "s.p.",
+        "s.r.o.",
+        "spol.",
+        "v.o.s.",
+        "z.s.",
+      ],
       false => const [
-          "Akciová společnost",
-          "Komanditní společnost",
-          "Obecně prospěšná společnost",
-          "Společnost s ručením omezeným",
-          "Státní podnik",
-          "Veřejná obchodní společnost",
-          "Zapsaný spolek",
-        ],
+        "Akciová společnost",
+        "Komanditní společnost",
+        "Obecně prospěšná společnost",
+        "Společnost s ručením omezeným",
+        "Státní podnik",
+        "Veřejná obchodní společnost",
+        "Zapsaný spolek",
+      ],
     };
   }
 

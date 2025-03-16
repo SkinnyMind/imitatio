@@ -62,9 +62,10 @@ class Science {
     final signs = MetricPrefixSign.values;
     final prefixSign = sign ?? signs[random.integer(max: signs.length - 1)];
 
-    final data = asSymbol
-        ? IntScienceData.prefixesSymbols(prefixSign)
-        : IntScienceData.prefixes(prefixSign);
+    final data =
+        asSymbol
+            ? IntScienceData.prefixesSymbols(prefixSign)
+            : IntScienceData.prefixes(prefixSign);
 
     return data[random.integer(max: data.length - 1)];
   }

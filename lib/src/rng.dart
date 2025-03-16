@@ -23,8 +23,9 @@ class Rng {
   static String randomString({bool unique = false, int? length, int? seed}) {
     if (unique) return Util.uuidV4;
     final chars =
-        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-            .split('');
+        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'.split(
+          '',
+        );
 
     return Util.pickN(
       list: chars,

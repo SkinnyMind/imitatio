@@ -73,11 +73,14 @@ class Person {
   /// ```
   String patronymic({Gender? gender}) {
     return switch (locale) {
-      Locale.ru =>
-        CountrySpecific.russia(seed: seed).patronymic(gender: gender),
-      Locale.uk =>
-        CountrySpecific.ukraine(seed: seed).patronymic(gender: gender),
-      _ => throw ArgumentError.value(
+      Locale.ru => CountrySpecific.russia(
+        seed: seed,
+      ).patronymic(gender: gender),
+      Locale.uk => CountrySpecific.ukraine(
+        seed: seed,
+      ).patronymic(gender: gender),
+      _ =>
+        throw ArgumentError.value(
           locale,
           'Works only for Locale.ru and Locale.uk',
         ),
@@ -149,10 +152,9 @@ class Person {
     final genders = Gender.values;
     gender ??= genders[random.integer(max: genders.length - 1)];
     titleType ??= TitleType.values[random.nextInt(TitleType.values.length)];
-    final data = PersonData.locale(locale).titles(
-      gender: gender,
-      titleType: titleType,
-    );
+    final data = PersonData.locale(
+      locale,
+    ).titles(gender: gender, titleType: titleType);
     return data[random.integer(max: data.length - 1)];
   }
 
@@ -203,7 +205,8 @@ class Person {
       final username = data[random.integer(max: data.length - 1)];
       switch (tag) {
         case 'C':
-          final capitalized = '${username[0].toUpperCase()}'
+          final capitalized =
+              '${username[0].toUpperCase()}'
               '${username.substring(1).toLowerCase()}';
           result.write(capitalized);
         case 'U':
@@ -261,10 +264,11 @@ class Person {
         'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!"#\$%&\'()*+, -./:;<=>?@[\\]^_`{|}~'
             .split('');
     final random = Random(seed);
-    final password = List.generate(
-      length,
-      (_) => chars[random.integer(max: chars.length - 1)],
-    ).join();
+    final password =
+        List.generate(
+          length,
+          (_) => chars[random.integer(max: chars.length - 1)],
+        ).join();
 
     if (isHashed) {
       final bytes = utf8.encode(password);

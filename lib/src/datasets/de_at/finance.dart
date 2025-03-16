@@ -188,22 +188,22 @@ class DeAtFinanceData extends FinanceDataset {
   List<String> companyTypes({required bool isAbbr}) {
     return switch (isAbbr) {
       true => const [
-          "AG",
-          "GesbR",
-          "GmbH",
-          "GmbH & Co. KG",
-          "KEG",
-          "KG",
-          "OEG",
-          "OG",
-        ],
+        "AG",
+        "GesbR",
+        "GmbH",
+        "GmbH & Co. KG",
+        "KEG",
+        "KG",
+        "OEG",
+        "OG",
+      ],
       false => const [
-          "Aktiengesellschaft",
-          "Gesellschaft des bürgerlichen Rechts",
-          "Gesellschaft mit beschränkter Haftung",
-          "Kommanditerwerbsgesellschaft",
-          "Offene Erwerbsgesellschaft",
-        ],
+        "Aktiengesellschaft",
+        "Gesellschaft des bürgerlichen Rechts",
+        "Gesellschaft mit beschränkter Haftung",
+        "Kommanditerwerbsgesellschaft",
+        "Offene Erwerbsgesellschaft",
+      ],
     };
   }
 

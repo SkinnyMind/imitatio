@@ -148,18 +148,13 @@ class NlFinanceData extends FinanceDataset {
   @override
   List<String> companyTypes({required bool isAbbr}) {
     return switch (isAbbr) {
-      true => const [
-          "VOF",
-          "C.V.",
-          "BV",
-          "N.V.",
-        ],
+      true => const ["VOF", "C.V.", "BV", "N.V."],
       false => const [
-          "Vennootschap onder firma",
-          "Commanditaire vennootschap",
-          "Besloten vennootschap",
-          "Naamloze vennootschap",
-        ],
+        "Vennootschap onder firma",
+        "Commanditaire vennootschap",
+        "Besloten vennootschap",
+        "Naamloze vennootschap",
+      ],
     };
   }
 

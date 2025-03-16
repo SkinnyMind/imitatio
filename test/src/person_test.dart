@@ -29,10 +29,7 @@ void main() {
         );
       }
 
-      expect(
-        seededPerson.name(),
-        equals(seededPerson.name()),
-      );
+      expect(seededPerson.name(), equals(seededPerson.name()));
     });
 
     test('returns patronymic name', () {
@@ -75,10 +72,7 @@ void main() {
         );
       }
 
-      expect(
-        seededPerson.surname(),
-        equals(seededPerson.surname()),
-      );
+      expect(seededPerson.surname(), equals(seededPerson.surname()));
     });
 
     test('returns full name', () {
@@ -92,10 +86,7 @@ void main() {
       expect(reversed[0], isNotEmpty);
       expect(reversed[1], isNotEmpty);
 
-      expect(
-        seededPerson.fullName(),
-        equals(seededPerson.fullName()),
-      );
+      expect(seededPerson.fullName(), equals(seededPerson.fullName()));
 
       final ruResult = const Person(locale: Locale.ru).fullName().split(' ');
       expect(ruResult.length, equals(3));
@@ -115,21 +106,14 @@ void main() {
 
       final titleType = TitleType.academic;
       for (final gender in Gender.values) {
-        final data = PersonData.locale(locale).titles(
-          gender: gender,
-          titleType: titleType,
-        );
-        final result = localePerson.title(
-          gender: gender,
-          titleType: titleType,
-        );
+        final data = PersonData.locale(
+          locale,
+        ).titles(gender: gender, titleType: titleType);
+        final result = localePerson.title(gender: gender, titleType: titleType);
         expect(data, contains(result));
       }
 
-      expect(
-        seededPerson.title(),
-        equals(seededPerson.title()),
-      );
+      expect(seededPerson.title(), equals(seededPerson.title()));
     });
 
     test('returns username', () {
@@ -158,10 +142,7 @@ void main() {
       );
       expect(digitsRange, inInclusiveRange(10, 20));
 
-      expect(
-        seededPerson.username(),
-        equals(seededPerson.username()),
-      );
+      expect(seededPerson.username(), equals(seededPerson.username()));
     });
 
     test('throws when trying to get username with invalid mask', () {
@@ -187,10 +168,7 @@ void main() {
       }
       expect(generated.length, equals(count));
 
-      expect(
-        seededPerson.email(),
-        equals(seededPerson.email()),
-      );
+      expect(seededPerson.email(), equals(seededPerson.email()));
     });
 
     test('returns password', () {
@@ -201,39 +179,21 @@ void main() {
     });
 
     test('returns gender symbol', () {
-      expect(
-        IntPersonData.genderSymbols,
-        contains(person.genderSymbol),
-      );
-      expect(
-        seededPerson.genderSymbol,
-        equals(seededPerson.genderSymbol),
-      );
+      expect(IntPersonData.genderSymbols, contains(person.genderSymbol));
+      expect(seededPerson.genderSymbol, equals(seededPerson.genderSymbol));
     });
 
     test('returns gender code', () {
-      expect(
-        IntPersonData.genderCodes,
-        contains(person.genderCode),
-      );
-      expect(
-        seededPerson.genderCode,
-        equals(seededPerson.genderCode),
-      );
+      expect(IntPersonData.genderCodes, contains(person.genderCode));
+      expect(seededPerson.genderCode, equals(seededPerson.genderCode));
     });
 
     test('returns gender title', () {
       expect(person.gender, isNotEmpty);
 
-      expect(
-        PersonData.locale(locale).genders,
-        contains(localePerson.gender),
-      );
+      expect(PersonData.locale(locale).genders, contains(localePerson.gender));
 
-      expect(
-        seededPerson.gender,
-        equals(seededPerson.gender),
-      );
+      expect(seededPerson.gender, equals(seededPerson.gender));
     });
 
     test('returns random height in meters', () {
@@ -245,10 +205,7 @@ void main() {
       final minMaxResult = double.parse(person.height(min: min, max: max));
       expect(minMaxResult, inInclusiveRange(min, max));
 
-      expect(
-        seededPerson.height(),
-        equals(seededPerson.height()),
-      );
+      expect(seededPerson.height(), equals(seededPerson.height()));
     });
 
     test('returns random weight in kg', () {
@@ -260,21 +217,12 @@ void main() {
       final minMaxResult = person.weight(min: min, max: max);
       expect(minMaxResult, inInclusiveRange(min, max));
 
-      expect(
-        seededPerson.weight(),
-        equals(seededPerson.weight()),
-      );
+      expect(seededPerson.weight(), equals(seededPerson.weight()));
     });
 
     test('returns random blood type', () {
-      expect(
-        IntPersonData.bloodGroups,
-        contains(person.bloodType),
-      );
-      expect(
-        seededPerson.bloodType,
-        equals(seededPerson.bloodType),
-      );
+      expect(IntPersonData.bloodGroups, contains(person.bloodType));
+      expect(seededPerson.bloodType, equals(seededPerson.bloodType));
     });
 
     test('returns occupation', () {
@@ -285,10 +233,7 @@ void main() {
         contains(localePerson.occupation),
       );
 
-      expect(
-        seededPerson.occupation,
-        equals(seededPerson.occupation),
-      );
+      expect(seededPerson.occupation, equals(seededPerson.occupation));
     });
 
     test('returns political views', () {
@@ -299,10 +244,7 @@ void main() {
         contains(localePerson.politicalViews),
       );
 
-      expect(
-        seededPerson.politicalViews,
-        equals(seededPerson.politicalViews),
-      );
+      expect(seededPerson.politicalViews, equals(seededPerson.politicalViews));
     });
 
     test('returns worldview', () {
@@ -313,24 +255,15 @@ void main() {
         contains(localePerson.worldview),
       );
 
-      expect(
-        seededPerson.worldview,
-        equals(seededPerson.worldview),
-      );
+      expect(seededPerson.worldview, equals(seededPerson.worldview));
     });
 
     test('returns views on something', () {
       expect(person.viewsOn, isNotEmpty);
 
-      expect(
-        PersonData.locale(locale).viewsOn,
-        contains(localePerson.viewsOn),
-      );
+      expect(PersonData.locale(locale).viewsOn, contains(localePerson.viewsOn));
 
-      expect(
-        seededPerson.viewsOn,
-        equals(seededPerson.viewsOn),
-      );
+      expect(seededPerson.viewsOn, equals(seededPerson.viewsOn));
     });
 
     test('returns nationality', () {
@@ -343,10 +276,7 @@ void main() {
         );
       }
 
-      expect(
-        seededPerson.nationality(),
-        equals(seededPerson.nationality()),
-      );
+      expect(seededPerson.nationality(), equals(seededPerson.nationality()));
     });
 
     test('returns university', () {
@@ -357,10 +287,7 @@ void main() {
         contains(localePerson.university),
       );
 
-      expect(
-        seededPerson.university,
-        equals(seededPerson.university),
-      );
+      expect(seededPerson.university, equals(seededPerson.university));
     });
 
     test('returns academic degree', () {
@@ -371,10 +298,7 @@ void main() {
         contains(localePerson.academicDegree),
       );
 
-      expect(
-        seededPerson.academicDegree,
-        equals(seededPerson.academicDegree),
-      );
+      expect(seededPerson.academicDegree, equals(seededPerson.academicDegree));
     });
 
     test('returns language name', () {
@@ -385,10 +309,7 @@ void main() {
         contains(localePerson.language),
       );
 
-      expect(
-        seededPerson.language,
-        equals(seededPerson.language),
-      );
+      expect(seededPerson.language, equals(seededPerson.language));
     });
 
     test('returns phone number', () {
@@ -398,10 +319,7 @@ void main() {
       expect(result, startsWith("123"));
       expect(result.length, equals(4));
 
-      expect(
-        seededPerson.phoneNumber(),
-        equals(seededPerson.phoneNumber()),
-      );
+      expect(seededPerson.phoneNumber(), equals(seededPerson.phoneNumber()));
     });
 
     test('returns identifier by mask', () {
@@ -411,10 +329,7 @@ void main() {
       expect(result, startsWith("123"));
       expect(result.length, equals(4));
 
-      expect(
-        seededPerson.identifier(),
-        equals(seededPerson.identifier()),
-      );
+      expect(seededPerson.identifier(), equals(seededPerson.identifier()));
     });
   });
 }

@@ -86,15 +86,17 @@ class Code {
   /// Code().isbn(format: ISBNFormat.isbn10, locale: Locale.en); // "1-20167-936-0"
   /// ```
   String isbn({ISBNFormat? format, Locale? locale}) {
-    final isbnFormat = format ??
+    final isbnFormat =
+        format ??
         (Random(seed).nextBool() ? ISBNFormat.isbn13 : ISBNFormat.isbn10);
 
     final localeNumber =
         locale == null ? '#' : IntCodeData.isbnGroups(locale: locale);
 
-    final mask = isbnFormat == ISBNFormat.isbn13
-        ? '###-$localeNumber-#####-###-#'
-        : '$localeNumber-#####-###-#';
+    final mask =
+        isbnFormat == ISBNFormat.isbn13
+            ? '###-$localeNumber-#####-###-#'
+            : '$localeNumber-#####-###-#';
 
     return Rng.customCode(mask: mask, seed: seed);
   }
@@ -109,7 +111,8 @@ class Code {
   /// Code().ean(format: EANFormat.ean13); // "1059922466156"
   /// ```
   String ean({EANFormat? format}) {
-    final mask = format?.mask ??
+    final mask =
+        format?.mask ??
         (Random(seed).nextBool() ? EANFormat.ean8.mask : EANFormat.ean13.mask);
     return Rng.customCode(mask: mask, seed: seed);
   }

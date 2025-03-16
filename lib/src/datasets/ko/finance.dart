@@ -1027,20 +1027,8 @@ class KoFinanceData extends FinanceDataset {
   @override
   List<String> companyTypes({required bool isAbbr}) {
     return switch (isAbbr) {
-      true => const [
-          "(유)",
-          "LLC",
-          "(주)",
-          "(합)",
-          "(자)",
-        ],
-      false => const [
-          "유한회사",
-          "유한책임회사",
-          "주식회사",
-          "합명회사",
-          "합자회사",
-        ],
+      true => const ["(유)", "LLC", "(주)", "(합)", "(자)"],
+      false => const ["유한회사", "유한책임회사", "주식회사", "합명회사", "합자회사"],
     };
   }
 

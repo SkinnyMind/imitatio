@@ -13,18 +13,9 @@ class IntPersonData {
     "AB-",
   ];
 
-  static const genderSymbols = <String>[
-    "♂",
-    "♀",
-    "⚲",
-  ];
+  static const genderSymbols = <String>["♂", "♀", "⚲"];
 
-  static const genderCodes = <int>[
-    0,
-    1,
-    2,
-    9,
-  ];
+  static const genderCodes = <int>[0, 1, 2, 9];
 
   static const usernames = <String>[
     "aaa",

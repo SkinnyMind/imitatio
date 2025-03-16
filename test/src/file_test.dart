@@ -11,20 +11,14 @@ void main() {
       expect(file.ext(), isNotEmpty);
 
       final type = FileType.audio;
-      expect(
-        IntFileData.extensions(type),
-        contains(file.ext(fileType: type)),
-      );
+      expect(IntFileData.extensions(type), contains(file.ext(fileType: type)));
 
       expect(seededFile.ext(), equals(seededFile.ext()));
     });
 
     test('returns mime type of provided group', () {
       final type = MimeType.audio;
-      expect(
-        IntFileData.mimeTypes(type),
-        contains(file.mimeType(type: type)),
-      );
+      expect(IntFileData.mimeTypes(type), contains(file.mimeType(type: type)));
 
       expect(seededFile.mimeType(), equals(seededFile.mimeType()));
     });

@@ -30,15 +30,12 @@ void main() {
       expect(() => choice.choose(items: [], length: -1), throwsArgumentError);
     });
 
-    test(
-      'throws when trying to choose unique elements and there is not enough '
-      'of them to provide the specified length',
-      () {
-        expect(
-          () => choice.choose(items: ['a', 'b'], length: 3, unique: true),
-          throwsArgumentError,
-        );
-      },
-    );
+    test('throws when trying to choose unique elements and there is not enough '
+        'of them to provide the specified length', () {
+      expect(
+        () => choice.choose(items: ['a', 'b'], length: 3, unique: true),
+        throwsArgumentError,
+      );
+    });
   });
 }

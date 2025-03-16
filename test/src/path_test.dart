@@ -42,64 +42,37 @@ void main() {
     test("returns path to user's folders", () {
       final unixPath = path.usersFolder.split('/');
       expect(unixPath.length, equals(4));
-      expect(
-        IntDevelopmentData.folders,
-        contains(unixPath.last),
-      );
+      expect(IntDevelopmentData.folders, contains(unixPath.last));
 
       final winPath = windowsPath.usersFolder.split(r'\');
       expect(winPath.length, equals(4));
-      expect(
-        IntDevelopmentData.folders,
-        contains(winPath.last),
-      );
+      expect(IntDevelopmentData.folders, contains(winPath.last));
 
-      expect(
-        seededPath.usersFolder,
-        equals(seededPath.usersFolder),
-      );
+      expect(seededPath.usersFolder, equals(seededPath.usersFolder));
     });
 
     test("returns path to development directory", () {
       final unixPath = path.devDir.split('/');
       expect(unixPath.length, equals(5));
-      expect(
-        IntDevelopmentData.programmingLanguages,
-        contains(unixPath.last),
-      );
+      expect(IntDevelopmentData.programmingLanguages, contains(unixPath.last));
 
       final winPath = windowsPath.devDir.split(r'\');
       expect(winPath.length, equals(5));
-      expect(
-        IntDevelopmentData.programmingLanguages,
-        contains(winPath.last),
-      );
+      expect(IntDevelopmentData.programmingLanguages, contains(winPath.last));
 
-      expect(
-        seededPath.devDir,
-        equals(seededPath.devDir),
-      );
+      expect(seededPath.devDir, equals(seededPath.devDir));
     });
 
     test("returns path to project directory", () {
       final unixPath = path.projectDir.split('/');
       expect(unixPath.length, equals(6));
-      expect(
-        IntDevelopmentData.projectNames,
-        contains(unixPath.last),
-      );
+      expect(IntDevelopmentData.projectNames, contains(unixPath.last));
 
       final winPath = windowsPath.projectDir.split(r'\');
       expect(winPath.length, equals(6));
-      expect(
-        IntDevelopmentData.projectNames,
-        contains(winPath.last),
-      );
+      expect(IntDevelopmentData.projectNames, contains(winPath.last));
 
-      expect(
-        seededPath.projectDir,
-        equals(seededPath.projectDir),
-      );
+      expect(seededPath.projectDir, equals(seededPath.projectDir));
     });
   });
 }

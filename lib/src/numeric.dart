@@ -42,8 +42,9 @@ class Numeric {
     }
 
     return double.parse(
-      (Random(seed).nextDouble() * (end - start) + start)
-          .toStringAsFixed(precision),
+      (Random(seed).nextDouble() * (end - start) + start).toStringAsFixed(
+        precision,
+      ),
     );
   }
 
@@ -82,8 +83,9 @@ class Numeric {
     return List.generate(
       n,
       (_) => double.parse(
-        (random.nextDouble() * (end - start) + start)
-            .toStringAsFixed(precision),
+        (random.nextDouble() * (end - start) + start).toStringAsFixed(
+          precision,
+        ),
       ),
     );
   }
@@ -171,8 +173,9 @@ class Numeric {
     int imaginaryPrecision = 15,
   }) {
     final random = Random(seed);
-    final real = ((random.nextDouble() + realStart) * realEnd)
-        .toStringAsFixed(realPrecision);
+    final real = ((random.nextDouble() + realStart) * realEnd).toStringAsFixed(
+      realPrecision,
+    );
     final imaginary = ((random.nextDouble() + imaginaryStart) * imaginaryEnd)
         .toStringAsFixed(imaginaryPrecision);
     return (real: double.parse(real), imaginary: double.parse(imaginary));

@@ -41,13 +41,7 @@ class DaFoodData extends FoodDataset {
 
   @override
   List<String> get drinks {
-    return const [
-      "Tekïlla",
-      "Vin",
-      "Vodka",
-      "Whisky",
-      "Øl",
-    ];
+    return const ["Tekïlla", "Vin", "Vodka", "Whisky", "Øl"];
   }
 
   @override

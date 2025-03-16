@@ -1349,25 +1349,25 @@ class PtBrFinanceData extends FinanceDataset {
   List<String> companyTypes({required bool isAbbr}) {
     return switch (isAbbr) {
       true => const [
-          "Corp.",
-          "Inc.",
-          "Ltd.",
-          "EIRELI",
-          "LLP",
-          "LP",
-          "PLLC",
-          "P.C",
-        ],
+        "Corp.",
+        "Inc.",
+        "Ltd.",
+        "EIRELI",
+        "LLP",
+        "LP",
+        "PLLC",
+        "P.C",
+      ],
       false => const [
-          "Corporação",
-          "Incorporação",
-          "Sociedade Limitada",
-          "Empresa Individual de Resposabilidade Limitada",
-          "Empresa Individual",
-          "Parceria Limitada",
-          "Sociedade Simples",
-          "Corporação Profissional",
-        ],
+        "Corporação",
+        "Incorporação",
+        "Sociedade Limitada",
+        "Empresa Individual de Resposabilidade Limitada",
+        "Empresa Individual",
+        "Parceria Limitada",
+        "Sociedade Simples",
+        "Corporação Profissional",
+      ],
     };
   }
 

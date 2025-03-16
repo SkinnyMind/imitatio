@@ -205,11 +205,7 @@ class IntFinanceData {
     "ZEC",
   ];
 
-  static const cryptocurrencySymbols = <String>[
-    "₿",
-    "Ł",
-    "Ξ",
-  ];
+  static const cryptocurrencySymbols = <String>["₿", "Ł", "Ξ"];
 
   static const stockTickers = <String>[
     "A",

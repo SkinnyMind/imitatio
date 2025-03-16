@@ -3,11 +3,7 @@ import 'package:imitatio/src/datasets/models/finance.dart';
 class IslFinanceData extends FinanceDataset {
   @override
   List<String> get banks {
-    return const [
-      "Arion Banki hf.",
-      "Islandsbanki hf.",
-      "Landsbankinn hf.",
-    ];
+    return const ["Arion Banki hf.", "Islandsbanki hf.", "Landsbankinn hf."];
   }
 
   @override
@@ -88,22 +84,17 @@ class IslFinanceData extends FinanceDataset {
   @override
   List<String> companyTypes({required bool isAbbr}) {
     return switch (isAbbr) {
-      true => const [
-          "ehf.",
-          "hf.",
-          "ohf.",
-          "sf.",
-        ],
+      true => const ["ehf.", "hf.", "ohf.", "sf."],
       false => const [
-          "Einkahlutafélag",
-          "Einstaklingsfyrirtæki",
-          "Hlutafélag",
-          "Opinbert hlutafélag",
-          "Sameignarfélag",
-          "Samlagsfélag",
-          "Samvinnufélag",
-          "Sjálfseignarstofnun",
-        ],
+        "Einkahlutafélag",
+        "Einstaklingsfyrirtæki",
+        "Hlutafélag",
+        "Opinbert hlutafélag",
+        "Sameignarfélag",
+        "Samlagsfélag",
+        "Samvinnufélag",
+        "Sjálfseignarstofnun",
+      ],
     };
   }
 
