@@ -7,7 +7,7 @@ void main() {
     final ukraine = CountrySpecific.ukraine();
     final seededUkraine = CountrySpecific.ukraine(seed: 1);
 
-    test('returns patronymic name', () async {
+    test('returns patronymic name', () {
       expect(ukraine.patronymic(), isNotEmpty);
 
       for (final gender in Gender.values) {

@@ -165,16 +165,12 @@ class EnCaFinanceData extends FinanceDataset {
   @override
   List<String> companyTypes({required bool isAbbr}) {
     return switch (isAbbr) {
-      true => const [
-          "SP.",
-          "GP",
-          "LP",
-        ],
+      true => const ["SP.", "GP", "LP"],
       false => const [
-          "Sole Proprietorship",
-          "General Partnership",
-          "Limited Partnership",
-        ],
+        "Sole Proprietorship",
+        "General Partnership",
+        "Limited Partnership",
+      ],
     };
   }
 

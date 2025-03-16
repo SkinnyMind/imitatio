@@ -56,16 +56,8 @@ class ArOmFinanceData extends FinanceDataset {
   @override
   List<String> companyTypes({required bool isAbbr}) {
     return switch (isAbbr) {
-      true => const [
-          "شركة",
-          "مؤسسة",
-          "مجموعة",
-        ],
-      false => const [
-          "شركة",
-          "مؤسسة",
-          "مجموعة",
-        ],
+      true => const ["شركة", "مؤسسة", "مجموعة"],
+      false => const ["شركة", "مؤسسة", "مجموعة"],
     };
   }
 

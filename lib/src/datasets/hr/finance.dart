@@ -87,25 +87,25 @@ class HrFinanceData extends FinanceDataset {
   List<String> companyTypes({required bool isAbbr}) {
     return switch (isAbbr) {
       true => const [
-          "d.d.",
-          "d.o.o.",
-          "j.d.o.o.",
-          "j.u.",
-          "k.d.",
-          "s.d.d.",
-          "s.o.",
-        ],
+        "d.d.",
+        "d.o.o.",
+        "j.d.o.o.",
+        "j.u.",
+        "k.d.",
+        "s.d.d.",
+        "s.o.",
+      ],
       false => const [
-          "dioničko društvo",
-          "društvo s ograničenom odgovornošću",
-          "javna ustanova",
-          "javno dioničko društvo",
-          "komanditno društvo",
-          "udruga",
-          "zadruga",
-          "zajedničko društvo",
-          "zaklada",
-        ],
+        "dioničko društvo",
+        "društvo s ograničenom odgovornošću",
+        "javna ustanova",
+        "javno dioničko društvo",
+        "komanditno društvo",
+        "udruga",
+        "zadruga",
+        "zajedničko društvo",
+        "zaklada",
+      ],
     };
   }
 

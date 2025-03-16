@@ -232,16 +232,12 @@ class AzFinanceData extends FinanceDataset {
   @override
   List<String> companyTypes({required bool isAbbr}) {
     return switch (isAbbr) {
-      true => const [
-          "MMC",
-          "Holding",
-          "ASC",
-        ],
+      true => const ["MMC", "Holding", "ASC"],
       false => const [
-          "Məhdud məsuliyyətli cəmiyyət",
-          "Holding",
-          "Açıq Səhmdar Cəmiyyəti",
-        ]
+        "Məhdud məsuliyyətli cəmiyyət",
+        "Holding",
+        "Açıq Səhmdar Cəmiyyəti",
+      ],
     };
   }
 

@@ -1144,18 +1144,8 @@ class JaFinanceData extends FinanceDataset {
   @override
   List<String> companyTypes({required bool isAbbr}) {
     return switch (isAbbr) {
-      true => const [
-          "株式会社",
-          "有限会社",
-          "合資会社",
-          "合名会社",
-        ],
-      false => const [
-          "株式会社",
-          "有限会社",
-          "合資会社",
-          "合名会社",
-        ],
+      true => const ["株式会社", "有限会社", "合資会社", "合名会社"],
+      false => const ["株式会社", "有限会社", "合資会社", "合名会社"],
     };
   }
 

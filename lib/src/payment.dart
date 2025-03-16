@@ -92,9 +92,10 @@ class Payment {
     if (cardType == CardType.visa) {
       number = random.integer(min: 4000, max: 4999);
     } else if (cardType == CardType.masterCard) {
-      number = random.nextBool()
-          ? random.integer(min: 2221, max: 2720)
-          : random.integer(min: 5100, max: 5599);
+      number =
+          random.nextBool()
+              ? random.integer(min: 2221, max: 2720)
+              : random.integer(min: 5100, max: 5599);
     } else {
       number = random.nextBool() ? 34 : 37;
       length = 15;

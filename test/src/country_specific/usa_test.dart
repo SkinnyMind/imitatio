@@ -6,7 +6,7 @@ void main() {
     final usa = CountrySpecific.usa();
     final seededUSA = CountrySpecific.usa(seed: 1);
 
-    test('returns tracking number', () async {
+    test('returns tracking number', () {
       expect(usa.trackingNumber().length, lessThanOrEqualTo(24));
 
       expect(
@@ -14,18 +14,12 @@ void main() {
         lessThanOrEqualTo(18),
       );
 
-      expect(
-        usa.trackingNumber(service: PostalService.ups).length,
-        equals(18),
-      );
+      expect(usa.trackingNumber(service: PostalService.ups).length, equals(18));
 
-      expect(
-        seededUSA.trackingNumber(),
-        equals(seededUSA.trackingNumber()),
-      );
+      expect(seededUSA.trackingNumber(), equals(seededUSA.trackingNumber()));
     });
 
-    test('returns ssn', () async {
+    test('returns ssn', () {
       final result = usa.ssn.split('-');
       final area = result[0];
       final group = result[1];

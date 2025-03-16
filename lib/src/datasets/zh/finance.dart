@@ -153,20 +153,8 @@ class ZhFinanceData extends FinanceDataset {
   @override
   List<String> companyTypes({required bool isAbbr}) {
     return switch (isAbbr) {
-      true => const [
-          "公司",
-          "有限公司",
-          "总公司",
-          "责任公司",
-          "集团",
-        ],
-      false => const [
-          "公司",
-          "有限公司",
-          "总公司",
-          "责任公司",
-          "集团",
-        ],
+      true => const ["公司", "有限公司", "总公司", "责任公司", "集团"],
+      false => const ["公司", "有限公司", "总公司", "责任公司", "集团"],
     };
   }
 

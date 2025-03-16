@@ -126,22 +126,15 @@ class PtFinanceData extends FinanceDataset {
   @override
   List<String> companyTypes({required bool isAbbr}) {
     return switch (isAbbr) {
-      true => const [
-          "CRL",
-          "S.A.",
-          "S.A.",
-          "S.F.",
-          "Lda.",
-          "SGPS",
-        ],
+      true => const ["CRL", "S.A.", "S.A.", "S.F.", "Lda.", "SGPS"],
       false => const [
-          "Cooperativa de Responsabilidade Limitada",
-          "Sociedade Anónima",
-          "Sociedade Abert",
-          "Sociedade Fechada",
-          "Limitada",
-          "Sociedade Gestora de Participações Sociais",
-        ],
+        "Cooperativa de Responsabilidade Limitada",
+        "Sociedade Anónima",
+        "Sociedade Abert",
+        "Sociedade Fechada",
+        "Limitada",
+        "Sociedade Gestora de Participações Sociais",
+      ],
     };
   }
 

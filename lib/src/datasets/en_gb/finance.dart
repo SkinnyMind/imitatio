@@ -423,24 +423,24 @@ class EnGbFinanceData extends FinanceDataset {
   List<String> companyTypes({required bool isAbbr}) {
     return switch (isAbbr) {
       true => const [
-          "Corp.",
-          "Inc.",
-          "Ltd.",
-          "CIC",
-          "CIO",
-          "IPS",
-          "LLP",
-          "LP",
-          "PLC",
-        ],
+        "Corp.",
+        "Inc.",
+        "Ltd.",
+        "CIC",
+        "CIO",
+        "IPS",
+        "LLP",
+        "LP",
+        "PLC",
+      ],
       false => const [
-          "Corporation",
-          "Incorporated",
-          "Limited Liability Company",
-          "Limited Liability Partnership",
-          "Limited Partnership",
-          "Private company limited by guarantee",
-        ],
+        "Corporation",
+        "Incorporated",
+        "Limited Liability Company",
+        "Limited Liability Partnership",
+        "Limited Partnership",
+        "Private company limited by guarantee",
+      ],
     };
   }
 

@@ -38,9 +38,7 @@ class Date {
     final endYear = end ?? DateTime.now().year;
 
     if (start.isNegative || endYear.isNegative) {
-      throw RangeError(
-        'start and end should be positive integers',
-      );
+      throw RangeError('start and end should be positive integers');
     }
 
     if (start > endYear) {
@@ -80,9 +78,7 @@ class Date {
     final endYear = end ?? DateTime.now().year;
 
     if (start.isNegative || endYear.isNegative) {
-      throw RangeError(
-        'start and end should be positive integers',
-      );
+      throw RangeError('start and end should be positive integers');
     }
 
     if (start > endYear) {
@@ -102,11 +98,9 @@ class Date {
     );
     final paddedMonth = month.toString().padLeft(2, '0');
     final paddedDay = day.toString().padLeft(2, '0');
-    return DateData.locale(locale).formatDate(
-      year: year.toString(),
-      month: paddedMonth,
-      day: paddedDay,
-    );
+    return DateData.locale(
+      locale,
+    ).formatDate(year: year.toString(), month: paddedMonth, day: paddedDay);
   }
 
   /// Returns a random time.
@@ -134,11 +128,9 @@ class Date {
     final hour = random.integer(max: 23).toString().padLeft(2, '0');
     final minute = random.integer(max: 59).toString().padLeft(2, '0');
     final second = random.integer(max: 59).toString().padLeft(2, '0');
-    return DateData.locale(locale).formatTime(
-      hour: hour,
-      minute: minute,
-      second: second,
-    );
+    return DateData.locale(
+      locale,
+    ).formatTime(hour: hour, minute: minute, second: second);
   }
 
   /// Returns a random [DateTime].
@@ -195,17 +187,11 @@ class Date {
     final maxYear = max ?? DateTime.now().year;
 
     if (min.isNegative || maxYear.isNegative) {
-      throw RangeError(
-        'min and max should be positive integers',
-      );
+      throw RangeError('min and max should be positive integers');
     }
 
     if (min > maxYear) {
-      throw RangeError.value(
-        min,
-        'min',
-        'min cannot be greater than end',
-      );
+      throw RangeError.value(min, 'min', 'min cannot be greater than end');
     }
 
     return Random(seed).integer(min: min, max: maxYear);

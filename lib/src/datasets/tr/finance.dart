@@ -459,16 +459,8 @@ class TrFinanceData extends FinanceDataset {
   @override
   List<String> companyTypes({required bool isAbbr}) {
     return switch (isAbbr) {
-      true => const [
-          "Ltd. Şti.",
-          "Hld.",
-          "A.Ş.",
-        ],
-      false => const [
-          "Limited Şirketi",
-          "Holding",
-          "Anonim Şirketi",
-        ],
+      true => const ["Ltd. Şti.", "Hld.", "A.Ş."],
+      false => const ["Limited Şirketi", "Holding", "Anonim Şirketi"],
     };
   }
 

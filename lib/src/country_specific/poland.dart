@@ -83,9 +83,10 @@ class Poland {
 
     final maleDigits = [1, 3, 5, 7, 9];
     final femaleDigits = [0, 2, 4, 6, 8];
-    final genderDigit = gender == Gender.male
-        ? maleDigits[random.integer(max: maleDigits.length - 1)]
-        : femaleDigits[random.integer(max: femaleDigits.length - 1)];
+    final genderDigit =
+        gender == Gender.male
+            ? maleDigits[random.integer(max: maleDigits.length - 1)]
+            : femaleDigits[random.integer(max: femaleDigits.length - 1)];
     peselDigits.add(genderDigit);
 
     final peselCoefficients = [9, 7, 3, 1, 9, 7, 3, 1, 9, 7];

@@ -134,8 +134,10 @@ class Russia {
     final countryCode = '04';
     final code = random.integer(min: 1, max: 10).toString().padLeft(2, '0');
     final bankNumber = random.integer(max: 99).toString().padLeft(2, '0');
-    final bankOffice =
-        random.integer(min: 50, max: 999).toString().padLeft(3, '0');
+    final bankOffice = random
+        .integer(min: 50, max: 999)
+        .toString()
+        .padLeft(3, '0');
     return '$countryCode$code$bankNumber$bankOffice';
   }
 
@@ -150,8 +152,10 @@ class Russia {
     final taxCodes = RussiaSpecificData.taxCodes;
     final taxCode = taxCodes[random.integer(max: taxCodes.length - 1)];
     final regCode = random.integer(min: 1, max: 99).toString().padLeft(2, '0');
-    final regNumber =
-        random.integer(min: 1, max: 999).toString().padLeft(3, '0');
+    final regNumber = random
+        .integer(min: 1, max: 999)
+        .toString()
+        .padLeft(3, '0');
     return '$taxCode$regCode$regNumber';
   }
 

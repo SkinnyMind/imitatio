@@ -22,8 +22,9 @@ class Denmark {
   String get cpr {
     final date = DateTime.parse(Date(seed: seed).date(start: 1858));
     final centuryDigit = (date.year ~/ 100) % 10;
-    final sequenceNumber =
-        Random(seed).integer(max: 99).toString().padLeft(2, '0');
+    final sequenceNumber = Random(
+      seed,
+    ).integer(max: 99).toString().padLeft(2, '0');
     final day = date.day.toString().padLeft(2, '0');
     final month = date.month.toString().padLeft(2, '0');
     final year = (date.year % 100).toString().padLeft(2, '0');

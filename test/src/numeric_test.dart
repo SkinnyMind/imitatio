@@ -13,17 +13,17 @@ void main() {
       final min = 10.0;
       final max = 15.0;
       final precision = 3;
-      final minMaxResult =
-          numeric.floatNumber(start: min, end: max, precision: precision);
+      final minMaxResult = numeric.floatNumber(
+        start: min,
+        end: max,
+        precision: precision,
+      );
       expect(minMaxResult, inInclusiveRange(min, max));
 
       final precisionDigits = minMaxResult.toString().split('.')[1];
       expect(precisionDigits.length, lessThanOrEqualTo(precision));
 
-      expect(
-        seededNumeric.floatNumber(),
-        equals(seededNumeric.floatNumber()),
-      );
+      expect(seededNumeric.floatNumber(), equals(seededNumeric.floatNumber()));
     });
 
     test('throws when trying to return float number in wrong range', () {
@@ -41,10 +41,7 @@ void main() {
       final nResult = numeric.floats(n: n, precision: 3);
       expect(nResult.length, equals(3));
 
-      expect(
-        seededNumeric.floats(),
-        equals(seededNumeric.floats()),
-      );
+      expect(seededNumeric.floats(), equals(seededNumeric.floats()));
     });
 
     test('throws when trying to return floats in wrong range', () {
@@ -81,10 +78,7 @@ void main() {
       final nResult = numeric.integers(n: n);
       expect(nResult.length, equals(3));
 
-      expect(
-        seededNumeric.integers(),
-        equals(seededNumeric.integers()),
-      );
+      expect(seededNumeric.integers(), equals(seededNumeric.integers()));
     });
 
     test('throws when trying to return integers in wrong range', () {

@@ -15,24 +15,15 @@ void main() {
 
       final result = localeText.words(quantity: 1);
       expect(result.length, equals(1));
-      expect(
-        TextData.locale(locale).words,
-        contains(result.first),
-      );
+      expect(TextData.locale(locale).words, contains(result.first));
 
       expect(seededText.words(), equals(seededText.words()));
     });
 
     test('returns word', () {
-      expect(
-        TextData.locale(Locale.en).words,
-        contains(text.word),
-      );
+      expect(TextData.locale(Locale.en).words, contains(text.word));
 
-      expect(
-        TextData.locale(locale).words,
-        contains(localeText.word),
-      );
+      expect(TextData.locale(locale).words, contains(localeText.word));
     });
 
     test('returns alphabet', () {
@@ -48,20 +39,11 @@ void main() {
     });
 
     test('returns level of something', () {
-      expect(
-        TextData.locale(Locale.en).levels,
-        contains(text.level),
-      );
+      expect(TextData.locale(Locale.en).levels, contains(text.level));
 
-      expect(
-        TextData.locale(locale).levels,
-        contains(localeText.level),
-      );
+      expect(TextData.locale(locale).levels, contains(localeText.level));
 
-      expect(
-        seededText.level,
-        equals(seededText.level),
-      );
+      expect(seededText.level, equals(seededText.level));
     });
 
     test('returns the text', () {
@@ -76,53 +58,29 @@ void main() {
     });
 
     test('returns the sentence', () {
-      expect(
-        TextData.locale(Locale.en).texts,
-        contains(text.sentence),
-      );
+      expect(TextData.locale(Locale.en).texts, contains(text.sentence));
 
-      expect(
-        TextData.locale(locale).texts,
-        contains(localeText.sentence),
-      );
+      expect(TextData.locale(locale).texts, contains(localeText.sentence));
     });
 
     test('returns a title', () {
-      expect(
-        TextData.locale(Locale.en).texts,
-        contains(text.title),
-      );
+      expect(TextData.locale(Locale.en).texts, contains(text.title));
 
-      expect(
-        TextData.locale(locale).texts,
-        contains(localeText.title),
-      );
+      expect(TextData.locale(locale).texts, contains(localeText.title));
     });
 
     test('returns a quote', () {
-      expect(
-        TextData.locale(Locale.en).quotes,
-        contains(text.quote),
-      );
+      expect(TextData.locale(Locale.en).quotes, contains(text.quote));
 
-      expect(
-        TextData.locale(locale).quotes,
-        contains(localeText.quote),
-      );
+      expect(TextData.locale(locale).quotes, contains(localeText.quote));
 
       expect(seededText.quote, equals(seededText.quote));
     });
 
     test('returns a color name', () {
-      expect(
-        TextData.locale(Locale.en).colors,
-        contains(text.color),
-      );
+      expect(TextData.locale(Locale.en).colors, contains(text.color));
 
-      expect(
-        TextData.locale(locale).colors,
-        contains(localeText.color),
-      );
+      expect(TextData.locale(locale).colors, contains(localeText.color));
 
       expect(seededText.color, equals(seededText.color));
     });
@@ -130,10 +88,7 @@ void main() {
     test('returns a HEX color', () {
       expect(text.hexColor().length, equals(7));
       expect(IntTextData.safeColors, contains(text.hexColor(asSafe: true)));
-      expect(
-        seededText.hexColor(),
-        equals(seededText.hexColor()),
-      );
+      expect(seededText.hexColor(), equals(seededText.hexColor()));
       expect(
         seededText.hexColor(asSafe: true),
         equals(seededText.hexColor(asSafe: true)),
@@ -151,10 +106,7 @@ void main() {
       expect(safeResult.g, inInclusiveRange(0, 255));
       expect(safeResult.b, inInclusiveRange(0, 255));
 
-      expect(
-        seededText.rgbColor(),
-        equals(seededText.rgbColor()),
-      );
+      expect(seededText.rgbColor(), equals(seededText.rgbColor()));
 
       expect(
         seededText.rgbColor(asSafe: true),
@@ -163,15 +115,9 @@ void main() {
     });
 
     test('returns an answer', () {
-      expect(
-        TextData.locale(Locale.en).answers,
-        contains(text.answer),
-      );
+      expect(TextData.locale(Locale.en).answers, contains(text.answer));
 
-      expect(
-        TextData.locale(locale).answers,
-        contains(localeText.answer),
-      );
+      expect(TextData.locale(locale).answers, contains(localeText.answer));
 
       expect(seededText.answer, equals(seededText.answer));
     });

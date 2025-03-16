@@ -26,13 +26,7 @@ class IslFoodData extends FoodDataset {
 
   @override
   List<String> get drinks {
-    return const [
-      "Brennivín",
-      "Vodka",
-      "Bjór",
-      "Vín",
-      "Cognac",
-    ];
+    return const ["Brennivín", "Vodka", "Bjór", "Vín", "Cognac"];
   }
 
   @override

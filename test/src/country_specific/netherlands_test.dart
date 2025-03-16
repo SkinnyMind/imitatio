@@ -6,11 +6,12 @@ void main() {
     final netherlands = CountrySpecific.netherlands();
     final seededNetherlands = CountrySpecific.netherlands(seed: 1);
 
-    test('returns BSN number', () async {
+    test('returns BSN number', () {
       final result = netherlands.bsn;
       expect(result.length, equals(9));
 
-      final test11 = int.parse(result[0]) * 9 +
+      final test11 =
+          int.parse(result[0]) * 9 +
           int.parse(result[1]) * 8 +
           int.parse(result[2]) * 7 +
           int.parse(result[3]) * 6 +

@@ -662,16 +662,12 @@ class RuFinanceData extends FinanceDataset {
   @override
   List<String> companyTypes({required bool isAbbr}) {
     return switch (isAbbr) {
-      true => const [
-          "ПAO",
-          "АО",
-          "ООО",
-        ],
+      true => const ["ПAO", "АО", "ООО"],
       false => const [
-          "Публичное акционерное общество",
-          "Акционерное общество",
-          "Общество с ограниченной ответственностью",
-        ],
+        "Публичное акционерное общество",
+        "Акционерное общество",
+        "Общество с ограниченной ответственностью",
+      ],
     };
   }
 

@@ -39,10 +39,7 @@ class SkFinanceData extends FinanceDataset {
   List<String> companyTypes({required bool isAbbr}) {
     return switch (isAbbr) {
       true => const ["a.s.", "s.r.o."],
-      false => const [
-          "Akciová spoločnosť",
-          "Spoločnosť s ručením obmedzeným",
-        ],
+      false => const ["Akciová spoločnosť", "Spoločnosť s ručením obmedzeným"],
     };
   }
 

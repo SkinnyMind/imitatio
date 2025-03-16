@@ -64,17 +64,11 @@ class File {
   /// ```
   String size({int min = 1, int max = 100}) {
     if (min.isNegative || max.isNegative) {
-      throw RangeError(
-        'min and max should be positive integers',
-      );
+      throw RangeError('min and max should be positive integers');
     }
 
     if (min > max) {
-      throw RangeError.value(
-        min,
-        'min',
-        'min cannot be greater than end',
-      );
+      throw RangeError.value(min, 'min', 'min cannot be greater than end');
     }
 
     final random = Random(seed);

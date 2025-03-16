@@ -10,7 +10,7 @@ void main() {
     const localeFinance = Finance(locale: locale);
     const seededFinance = Finance(seed: 1);
 
-    test('returns company name', () async {
+    test('returns company name', () {
       expect(
         FinanceData.locale(Locale.en).companies,
         contains(finance.company),
@@ -22,7 +22,7 @@ void main() {
       expect(seededFinance.company, equals(seededFinance.company));
     });
 
-    test('returns company type', () async {
+    test('returns company type', () {
       expect(
         FinanceData.locale(Locale.en).companyTypes(isAbbr: false),
         contains(finance.companyType()),
@@ -40,7 +40,7 @@ void main() {
       expect(seededFinance.companyType(), equals(seededFinance.companyType()));
     });
 
-    test('returns currency code', () async {
+    test('returns currency code', () {
       expect(
         FinanceData.locale(Locale.en).currencyCode,
         equals(finance.currencyIsoCode()),
@@ -61,21 +61,15 @@ void main() {
       );
     });
 
-    test('returns bank name', () async {
-      expect(
-        FinanceData.locale(Locale.en).banks,
-        contains(finance.bank),
-      );
+    test('returns bank name', () {
+      expect(FinanceData.locale(Locale.en).banks, contains(finance.bank));
 
-      expect(
-        FinanceData.locale(locale).banks,
-        contains(localeFinance.bank),
-      );
+      expect(FinanceData.locale(locale).banks, contains(localeFinance.bank));
 
       expect(seededFinance.bank, equals(seededFinance.bank));
     });
 
-    test('returns cryptocurrency ISO code', () async {
+    test('returns cryptocurrency ISO code', () {
       expect(
         IntFinanceData.cryptocurrencyIsoCodes,
         contains(finance.cryptocurrencyIsoCode),
@@ -87,7 +81,7 @@ void main() {
       );
     });
 
-    test('returns currency symbol', () async {
+    test('returns currency symbol', () {
       expect(
         FinanceData.locale(Locale.en).currencySymbol,
         equals(finance.currencySymbol),
@@ -99,7 +93,7 @@ void main() {
       );
     });
 
-    test('returns cryptocurrency symbol', () async {
+    test('returns cryptocurrency symbol', () {
       expect(
         IntFinanceData.cryptocurrencySymbols,
         contains(finance.cryptocurrencySymbol),
@@ -111,40 +105,22 @@ void main() {
       );
     });
 
-    test('returns stock ticker', () async {
-      expect(
-        IntFinanceData.stockTickers,
-        contains(finance.stockTicker),
-      );
+    test('returns stock ticker', () {
+      expect(IntFinanceData.stockTickers, contains(finance.stockTicker));
 
-      expect(
-        seededFinance.stockTicker,
-        equals(seededFinance.stockTicker),
-      );
+      expect(seededFinance.stockTicker, equals(seededFinance.stockTicker));
     });
 
-    test('returns stock name', () async {
-      expect(
-        IntFinanceData.stockNames,
-        contains(finance.stockName),
-      );
+    test('returns stock name', () {
+      expect(IntFinanceData.stockNames, contains(finance.stockName));
 
-      expect(
-        seededFinance.stockName,
-        equals(seededFinance.stockName),
-      );
+      expect(seededFinance.stockName, equals(seededFinance.stockName));
     });
 
-    test('returns stock exchange', () async {
-      expect(
-        IntFinanceData.stockExchanges,
-        contains(finance.stockExchange),
-      );
+    test('returns stock exchange', () {
+      expect(IntFinanceData.stockExchanges, contains(finance.stockExchange));
 
-      expect(
-        seededFinance.stockExchange,
-        equals(seededFinance.stockExchange),
-      );
+      expect(seededFinance.stockExchange, equals(seededFinance.stockExchange));
     });
 
     test('returns price', () {
@@ -174,10 +150,7 @@ void main() {
       final precisionDigits = minMaxResult.toString().split('.')[1];
       expect(precisionDigits.length, lessThanOrEqualTo(7));
 
-      expect(
-        seededFinance.priceInBTC(),
-        equals(seededFinance.priceInBTC()),
-      );
+      expect(seededFinance.priceInBTC(), equals(seededFinance.priceInBTC()));
     });
   });
 }

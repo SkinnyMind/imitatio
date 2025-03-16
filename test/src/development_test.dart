@@ -30,10 +30,7 @@ void main() {
       expect(minor, inInclusiveRange(0, 11));
       expect(patch, inInclusiveRange(0, 11));
 
-      expect(
-        seededDevelopment.version(),
-        equals(seededDevelopment.version()),
-      );
+      expect(seededDevelopment.version(), equals(seededDevelopment.version()));
     });
 
     test('returns version number with pre-release', () {
@@ -57,10 +54,7 @@ void main() {
       'returns version number in Calendar Versioning format with pre-release',
       () {
         final version = development
-            .version(
-              calVer: true,
-              preRelease: true,
-            )
+            .version(calVer: true, preRelease: true)
             .split('.');
         expect(version.length, equals(4));
 
@@ -87,10 +81,7 @@ void main() {
 
     test('returns boolean value', () {
       expect(development.boolean, isA<bool>());
-      expect(
-        seededDevelopment.boolean,
-        equals(seededDevelopment.boolean),
-      );
+      expect(seededDevelopment.boolean, equals(seededDevelopment.boolean));
     });
 
     test('returns system quality attribute', () {

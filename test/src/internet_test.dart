@@ -16,17 +16,11 @@ void main() {
       expect(hostname.length, equals(3));
       expect(subdomains, contains(hostname.first));
 
-      expect(
-        seededInternet.hostname(),
-        equals(seededInternet.hostname()),
-      );
+      expect(seededInternet.hostname(), equals(seededInternet.hostname()));
     });
 
     test('returns content type', () {
-      expect(
-        internet.contentType(),
-        startsWith('Content-Type:'),
-      );
+      expect(internet.contentType(), startsWith('Content-Type:'));
 
       expect(
         seededInternet.contentType(),
@@ -64,14 +58,8 @@ void main() {
     });
 
     test('returns http method', () {
-      expect(
-        IntInternetData.httpMethods,
-        contains(internet.httpMethod),
-      );
-      expect(
-        seededInternet.httpMethod,
-        equals(seededInternet.httpMethod),
-      );
+      expect(IntInternetData.httpMethods, contains(internet.httpMethod));
+      expect(seededInternet.httpMethod, equals(seededInternet.httpMethod));
     });
 
     test('returns Map of query parameters', () {
@@ -129,10 +117,7 @@ void main() {
 
     test('returns user agent', () {
       expect(IntInternetData.userAgents, contains(internet.userAgent));
-      expect(
-        seededInternet.userAgent,
-        equals(seededInternet.userAgent),
-      );
+      expect(seededInternet.userAgent, equals(seededInternet.userAgent));
     });
 
     test('returns path', () {
@@ -140,10 +125,7 @@ void main() {
       expect(result, inInclusiveRange(2, 12));
       expect(internet.path(parts: 5).split('/').length, equals(5));
 
-      expect(
-        seededInternet.path(),
-        equals(seededInternet.path()),
-      );
+      expect(seededInternet.path(), equals(seededInternet.path()));
     });
 
     test('returns slug', () {
@@ -151,10 +133,7 @@ void main() {
       expect(result, inInclusiveRange(2, 12));
       expect(internet.slug(parts: 5).split('-').length, equals(5));
 
-      expect(
-        seededInternet.slug(),
-        equals(seededInternet.slug()),
-      );
+      expect(seededInternet.slug(), equals(seededInternet.slug()));
     });
 
     test('throws when trying to return slug with wrong number of parts', () {
@@ -168,23 +147,14 @@ void main() {
         expect(result, inInclusiveRange(range.min, range.max));
       }
 
-      expect(
-        seededInternet.port(),
-        equals(seededInternet.port()),
-      );
+      expect(seededInternet.port(), equals(seededInternet.port()));
     });
 
     test('returns URL', () {
-      expect(
-        internet.url(),
-        startsWith(URLScheme.https.name),
-      );
+      expect(internet.url(), startsWith(URLScheme.https.name));
 
       final scheme = URLScheme.ws;
-      expect(
-        internet.url(urlScheme: scheme),
-        startsWith(scheme.name),
-      );
+      expect(internet.url(urlScheme: scheme), startsWith(scheme.name));
 
       final range = PortRange.wellKnown;
       final port = int.parse(
@@ -192,17 +162,11 @@ void main() {
       );
       expect(port, inInclusiveRange(range.min, range.max));
 
-      expect(
-        seededInternet.url(),
-        equals(seededInternet.url()),
-      );
+      expect(seededInternet.url(), equals(seededInternet.url()));
     });
 
     test('returns URI', () {
-      expect(
-        internet.uri(),
-        startsWith(URLScheme.https.name),
-      );
+      expect(internet.uri(), startsWith(URLScheme.https.name));
 
       final urlScheme = URLScheme.http;
       final result = internet.uri(
@@ -221,14 +185,12 @@ void main() {
         expect(int.tryParse(octet), isA<int>());
       }
 
-      final port =
-          int.parse(internet.ipv4(portRange: PortRange.all).split(':').last);
+      final port = int.parse(
+        internet.ipv4(portRange: PortRange.all).split(':').last,
+      );
       expect(port, inInclusiveRange(PortRange.all.min, PortRange.all.max));
 
-      expect(
-        seededInternet.ipv4(),
-        equals(seededInternet.ipv4()),
-      );
+      expect(seededInternet.ipv4(), equals(seededInternet.ipv4()));
     });
 
     test('returns an IPv4 address in specific purpose range', () {
@@ -240,7 +202,8 @@ void main() {
           expect(int.tryParse(octet), isA<int>());
         }
         final intOctets = octets.map((octet) => int.parse(octet)).toList();
-        final intAddress = (intOctets[0] << 24) +
+        final intAddress =
+            (intOctets[0] << 24) +
             (intOctets[1] << 16) +
             (intOctets[2] << 8) +
             intOctets[3];
@@ -260,31 +223,23 @@ void main() {
       );
       expect(regexp.hasMatch(result), true);
 
-      expect(
-        seededInternet.ipv6,
-        equals(seededInternet.ipv6),
-      );
+      expect(seededInternet.ipv6, equals(seededInternet.ipv6));
     });
 
     test('returns a mac address', () {
       expect(
-        RegExp(r'^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$')
-            .hasMatch(internet.macAddress),
+        RegExp(
+          r'^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$',
+        ).hasMatch(internet.macAddress),
         true,
       );
 
-      expect(
-        seededInternet.macAddress,
-        equals(seededInternet.macAddress),
-      );
+      expect(seededInternet.macAddress, equals(seededInternet.macAddress));
     });
 
     test('returns a public DNS', () {
       expect(IntInternetData.publicDNSes, contains(internet.publicDNS));
-      expect(
-        seededInternet.publicDNS,
-        equals(seededInternet.publicDNS),
-      );
+      expect(seededInternet.publicDNS, equals(seededInternet.publicDNS));
     });
 
     test('returns DSN', () {
@@ -299,10 +254,7 @@ void main() {
       expect(withType, startsWith('${type.scheme}://'));
       expect(withType, endsWith(':${type.port}'));
 
-      expect(
-        seededInternet.dsn(),
-        equals(seededInternet.dsn()),
-      );
+      expect(seededInternet.dsn(), equals(seededInternet.dsn()));
     });
 
     test('returns ASN', () {
@@ -311,10 +263,7 @@ void main() {
       final number = int.parse(result.substring(2));
       expect(number, inInclusiveRange(1, 4199999999));
 
-      expect(
-        seededInternet.asn,
-        equals(seededInternet.asn),
-      );
+      expect(seededInternet.asn, equals(seededInternet.asn));
     });
   });
 }

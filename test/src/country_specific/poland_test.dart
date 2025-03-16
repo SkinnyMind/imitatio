@@ -6,7 +6,7 @@ void main() {
     final poland = CountrySpecific.poland();
     final seededPoland = CountrySpecific.poland(seed: 1);
 
-    test('returns NIP number', () async {
+    test('returns NIP number', () {
       final result = poland.nip;
       expect(result.length, equals(10));
 
@@ -21,7 +21,7 @@ void main() {
       expect(seededPoland.nip, equals(seededPoland.nip));
     });
 
-    test('returns PESEL number', () async {
+    test('returns PESEL number', () {
       final result = poland.pesel();
       expect(result.length, equals(11));
 
@@ -51,7 +51,7 @@ void main() {
       expect(seededPoland.pesel(), equals(seededPoland.pesel()));
     });
 
-    test('returns REGON number', () async {
+    test('returns REGON number', () {
       final result = poland.regon;
       expect(result.length, equals(9));
 

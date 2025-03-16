@@ -8,10 +8,7 @@ void main() {
     const seededTransport = Transport(seed: 1);
 
     test('returns manufacturer', () {
-      expect(
-        IntTransportData.manufacturers,
-        contains(transport.manufacturer),
-      );
+      expect(IntTransportData.manufacturers, contains(transport.manufacturer));
 
       expect(
         seededTransport.manufacturer,
@@ -20,24 +17,15 @@ void main() {
     });
 
     test('returns car', () {
-      expect(
-        IntTransportData.cars,
-        contains(transport.car),
-      );
+      expect(IntTransportData.cars, contains(transport.car));
 
       expect(seededTransport.car, equals(seededTransport.car));
     });
 
     test('returns airplane', () {
-      expect(
-        IntTransportData.airplanes,
-        contains(transport.airplane),
-      );
+      expect(IntTransportData.airplanes, contains(transport.airplane));
 
-      expect(
-        seededTransport.airplane,
-        equals(seededTransport.airplane),
-      );
+      expect(seededTransport.airplane, equals(seededTransport.airplane));
     });
 
     test('returns vehicle registration code', () {

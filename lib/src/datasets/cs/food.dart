@@ -21,12 +21,7 @@ class CsFoodData extends FoodDataset {
 
   @override
   List<String> get drinks {
-    return const [
-      "Víno",
-      "Vodka",
-      "Pivo",
-      "Cognac",
-    ];
+    return const ["Víno", "Vodka", "Pivo", "Cognac"];
   }
 
   @override

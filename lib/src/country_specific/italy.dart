@@ -30,8 +30,11 @@ class Italy {
 
     final code = StringBuffer();
     code.write(
-      Util.pickN(list: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''), n: 6, seed: seed)
-          .join(),
+      Util.pickN(
+        list: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''),
+        n: 6,
+        seed: seed,
+      ).join(),
     );
     code.write(Rng.customCode(mask: '##', seed: seed));
 

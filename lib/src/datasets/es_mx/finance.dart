@@ -156,21 +156,21 @@ class EsMxFinanceData extends FinanceDataset {
   List<String> companyTypes({required bool isAbbr}) {
     return switch (isAbbr) {
       true => const [
-          "S.A.",
-          "S. de R.L.",
-          "S. en C.",
-          "S. en C. por A. ",
-          "S.A.B.",
-          "S.A.P.I.",
-        ],
+        "S.A.",
+        "S. de R.L.",
+        "S. en C.",
+        "S. en C. por A. ",
+        "S.A.B.",
+        "S.A.P.I.",
+      ],
       false => const [
-          "Sociedad Anónima",
-          "Sociedad de Responsabilidad Limitada",
-          "Sociedad en Comandita Simple",
-          "Sociedad en Comandita por Acciones",
-          "Sociedad Anónima Bursátil",
-          "Sociedad Anónima Promotora de Inversión",
-        ],
+        "Sociedad Anónima",
+        "Sociedad de Responsabilidad Limitada",
+        "Sociedad en Comandita Simple",
+        "Sociedad en Comandita por Acciones",
+        "Sociedad Anónima Bursátil",
+        "Sociedad Anónima Promotora de Inversión",
+      ],
     };
   }
 
