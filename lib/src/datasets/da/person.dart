@@ -2260,26 +2260,26 @@ class DaPersonData extends PersonDataset {
         titleType == TitleType.typical
             ? const ["Fru.", "Frk."]
             : const [
-              "Cand.oecon.",
-              "Cand.polit.",
-              "Cand.psychol.",
-              "Cand.scient.",
-              "Cand.scient.pol.",
-              "Cand.med.",
-              "Civiløkonom",
-            ],
+                "Cand.oecon.",
+                "Cand.polit.",
+                "Cand.psychol.",
+                "Cand.scient.",
+                "Cand.scient.pol.",
+                "Cand.med.",
+                "Civiløkonom",
+              ],
       Gender.male =>
         titleType == TitleType.typical
             ? const ["Hr."]
             : const [
-              "Cand.oecon.",
-              "Cand.polit.",
-              "Cand.psychol.",
-              "Cand.scient.",
-              "Cand.scient.pol.",
-              "Cand.med.",
-              "Civiløkonom",
-            ],
+                "Cand.oecon.",
+                "Cand.polit.",
+                "Cand.psychol.",
+                "Cand.scient.",
+                "Cand.scient.pol.",
+                "Cand.med.",
+                "Civiløkonom",
+              ],
     };
   }
 

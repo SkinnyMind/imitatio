@@ -3053,32 +3053,32 @@ class SvPersonData extends PersonDataset {
       Gender.female =>
         titleType == TitleType.academic
             ? const [
-              "Prof.",
-              "Dr.",
-              "FD",
-              "Fil.dr",
-              "FL",
-              "Fil.lic.",
-              "FM",
-              "Fil.mag.",
-              "FK",
-              "Fil.kand.",
-            ]
+                "Prof.",
+                "Dr.",
+                "FD",
+                "Fil.dr",
+                "FL",
+                "Fil.lic.",
+                "FM",
+                "Fil.mag.",
+                "FK",
+                "Fil.kand.",
+              ]
             : const ["Fröken", "Fru"],
       Gender.male =>
         titleType == TitleType.academic
             ? const [
-              "Prof.",
-              "Dr.",
-              "FD",
-              "Fil.dr",
-              "FL",
-              "Fil.lic.",
-              "FM",
-              "Fil.mag.",
-              "FK",
-              "Fil.kand.",
-            ]
+                "Prof.",
+                "Dr.",
+                "FD",
+                "Fil.dr",
+                "FL",
+                "Fil.lic.",
+                "FM",
+                "Fil.mag.",
+                "FK",
+                "Fil.kand.",
+              ]
             : const ["Herr"],
     };
   }
