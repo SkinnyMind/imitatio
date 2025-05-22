@@ -79,8 +79,9 @@ class Internet {
   String hostname({TLDType? tldType, List<String>? subdomains}) {
     final random = Random(seed);
     final host = StringBuffer();
-    final tld =
-        tldType != null ? topLevelDomain(type: tldType) : topLevelDomain();
+    final tld = tldType != null
+        ? topLevelDomain(type: tldType)
+        : topLevelDomain();
 
     if (subdomains != null) {
       host.write('${subdomains[random.integer(max: subdomains.length - 1)]}.');

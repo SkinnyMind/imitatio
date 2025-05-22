@@ -79,11 +79,10 @@ class Person {
       Locale.uk => CountrySpecific.ukraine(
         seed: seed,
       ).patronymic(gender: gender),
-      _ =>
-        throw ArgumentError.value(
-          locale,
-          'Works only for Locale.ru and Locale.uk',
-        ),
+      _ => throw ArgumentError.value(
+        locale,
+        'Works only for Locale.ru and Locale.uk',
+      ),
     };
   }
 
@@ -264,11 +263,10 @@ class Person {
         'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!"#\$%&\'()*+, -./:;<=>?@[\\]^_`{|}~'
             .split('');
     final random = Random(seed);
-    final password =
-        List.generate(
-          length,
-          (_) => chars[random.integer(max: chars.length - 1)],
-        ).join();
+    final password = List.generate(
+      length,
+      (_) => chars[random.integer(max: chars.length - 1)],
+    ).join();
 
     if (isHashed) {
       final bytes = utf8.encode(password);

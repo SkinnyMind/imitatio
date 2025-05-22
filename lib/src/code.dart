@@ -90,13 +90,13 @@ class Code {
         format ??
         (Random(seed).nextBool() ? ISBNFormat.isbn13 : ISBNFormat.isbn10);
 
-    final localeNumber =
-        locale == null ? '#' : IntCodeData.isbnGroups(locale: locale);
+    final localeNumber = locale == null
+        ? '#'
+        : IntCodeData.isbnGroups(locale: locale);
 
-    final mask =
-        isbnFormat == ISBNFormat.isbn13
-            ? '###-$localeNumber-#####-###-#'
-            : '$localeNumber-#####-###-#';
+    final mask = isbnFormat == ISBNFormat.isbn13
+        ? '###-$localeNumber-#####-###-#'
+        : '$localeNumber-#####-###-#';
 
     return Rng.customCode(mask: mask, seed: seed);
   }

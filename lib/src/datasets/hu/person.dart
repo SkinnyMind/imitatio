@@ -2556,38 +2556,38 @@ class HuPersonData extends PersonDataset {
       Gender.female =>
         titleType == TitleType.academic
             ? const [
-              "Adjunktus",
-              "Dékán",
-              "Dr.",
-              "Egyetemi docens",
-              "Egyetemi tanár",
-              "Főiskolai docens",
-              "Főiskolai tanár",
-              "PhD.",
-              "Professzor",
-              "Rektor",
-              "Rektorhelyettes",
-              "Tanársegéd",
-              "Tanszékvezető",
-            ]
+                "Adjunktus",
+                "Dékán",
+                "Dr.",
+                "Egyetemi docens",
+                "Egyetemi tanár",
+                "Főiskolai docens",
+                "Főiskolai tanár",
+                "PhD.",
+                "Professzor",
+                "Rektor",
+                "Rektorhelyettes",
+                "Tanársegéd",
+                "Tanszékvezető",
+              ]
             : const ["Mrs.", "Ms.", "Miss"],
       Gender.male =>
         titleType == TitleType.academic
             ? const [
-              "Adjunktus",
-              "Dékán",
-              "Dr.",
-              "Egyetemi docens",
-              "Egyetemi tanár",
-              "Főiskolai docens",
-              "Főiskolai tanár",
-              "PhD.",
-              "Professzor",
-              "Rektor",
-              "Rektorhelyettes",
-              "Tanársegéd",
-              "Tanszékvezető",
-            ]
+                "Adjunktus",
+                "Dékán",
+                "Dr.",
+                "Egyetemi docens",
+                "Egyetemi tanár",
+                "Főiskolai docens",
+                "Főiskolai tanár",
+                "PhD.",
+                "Professzor",
+                "Rektor",
+                "Rektorhelyettes",
+                "Tanársegéd",
+                "Tanszékvezető",
+              ]
             : const ["Mr.", "Sir"],
     };
   }
