@@ -10,5 +10,6 @@ dependencies:
   crypto: ^3.0.3
 
 dev_dependencies:
-  lints: ^6.0.0
+  custom_lints:
+    git: https://github.com/SkinnyMind/custom_lints
   test: ^1.25.1
