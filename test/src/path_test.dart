@@ -15,7 +15,7 @@ void main() {
       expect(linuxPath.root, equals('/'));
       expect(macosPath.root, equals('/'));
       expect(windowsPath.root, equals(r'C:\'));
-      expect(() => Path(platform: 'ios').root, throwsException);
+      expect(Path(platform: 'browser').root, equals('/'));
     });
 
     test('returns home path', () {

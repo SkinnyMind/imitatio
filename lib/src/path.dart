@@ -1,22 +1,22 @@
-import 'dart:io';
 import 'dart:math';
 
 import 'package:imitatio/src/datasets/international/development.dart';
 import 'package:imitatio/src/datasets/international/person.dart';
 import 'package:imitatio/src/extensions.dart';
+import 'package:os_detect/os_detect.dart';
 
 /// Provides data related to paths.
 class Path {
   /// Provides data related to paths.
   ///
   /// [platform] is optional platform (operating system). Possible values
-  /// are: `linux`, `macos` or `windows`.
+  /// are: `linux`, `macos`, `windows`, etc.
   ///
   /// [seed] is optional parameter to initialize the internal state of the
   /// random generator.
   Path({String? platform, this.seed})
-    : platform = platform ?? Platform.operatingSystem,
-      _platformHome = _getPlatformHome(platform ?? Platform.operatingSystem),
+    : platform = platform ?? operatingSystem,
+      _platformHome = _getPlatformHome(platform ?? operatingSystem),
       _pathSeparator = platform == 'windows' ? r'\' : '/';
 
   final String platform;
@@ -29,7 +29,7 @@ class Path {
       'linux' => '/home/',
       'macos' => '/home/',
       'windows' => r'C:\Users\',
-      _ => throw Exception('$platform is not supported'),
+      _ => '/home/',
     };
   }
 
