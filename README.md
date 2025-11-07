@@ -11,20 +11,20 @@ Imitatio has many classes that can be used to generate fake data. For example, c
 ```dart
 import 'package:imitatio/imitatio.dart';
 
-final person = Person();
+final person = const Person();
 print(person.fullName()); // "Kristofer Livingston"
-print(person.email(domains: ['example.com']); // "complaints1927@example.com"
+print(person.email(domains: ['example.com'])); // "complaints1927@example.com"
 print(person.phoneNumber(mask: "1-2##-3##-4##5")); // "1-224-322-4755"
 
 // Generate data for specific locale (default is Locale.en)
-final dePerson = Person(locale: Locale.de);
+final dePerson = const Person(locale: Locale.de);
 print(dePerson.fullName()); // Lorelei Krämer
 print(dePerson.occupation); // Dolmetscher / Dolmetscherin
 print(dePerson.university); // Universität Karlsruhe
 
 // Generate data with specific seed (internal state of random generator)
-final seeded1 = Person(seed: 420);
-final seeded2 = Person(seed: 420);
+final seeded1 = const Person(seed: 420);
+final seeded2 = const Person(seed: 420);
 print(seeded1.fullName()); // Maurice Lynn
 print(seeded2.fullName()); // Maurice Lynn
 ```
