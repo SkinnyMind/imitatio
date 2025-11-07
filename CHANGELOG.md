@@ -1,3 +1,10 @@
+## 1.2.0
+
+- feat: WASM compatibility
+- docs(example): add example
+- deps: bump Dart SDK to 3.9.0
+- fix(person): clean up names dataset for Ukrainian locale
+
 ## 1.1.0
 
 - docs: add API reference link to README
