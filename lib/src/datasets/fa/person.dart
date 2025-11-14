@@ -121,7 +121,7 @@ class FaPersonData extends PersonDataset {
   @override
   List<String> names(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "آبگینه",
         "آبنوس",
         "آتنا",
@@ -507,7 +507,7 @@ class FaPersonData extends PersonDataset {
         "یسنا",
         "یوتاب",
       ],
-      Gender.male => const [
+      .male => const [
         "آبتین",
         "آتش",
         "آترین",
@@ -1556,12 +1556,12 @@ class FaPersonData extends PersonDataset {
   @override
   List<String> titles({required Gender gender, required TitleType titleType}) {
     return switch (gender) {
-      Gender.female =>
-        titleType == TitleType.academic
+      .female =>
+        titleType == .academic
             ? const ["دکتر", "پروفسور", "مهندس", "کارشناس ارشد مدیریت"]
             : const ["خانم", "بانو", "دوشیزه"],
-      Gender.male =>
-        titleType == TitleType.academic
+      .male =>
+        titleType == .academic
             ? const ["دکتر", "پروفسور", "مهندس", "کارشناس ارشد مدیریت"]
             : const ["آقای", "استاد"],
     };

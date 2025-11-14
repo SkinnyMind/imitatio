@@ -433,7 +433,7 @@ class IslPersonData extends PersonDataset {
   @override
   List<String> names(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "Aagot",
         "Abela",
         "Abigael",
@@ -2526,7 +2526,7 @@ class IslPersonData extends PersonDataset {
         "Þöll",
         "Þúfa",
       ],
-      Gender.male => const [
+      .male => const [
         "Aage",
         "Aaron",
         "Abel",
@@ -4460,7 +4460,7 @@ class IslPersonData extends PersonDataset {
   @override
   List<String> surnames(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "Alreksdóttir",
         "Arnaldsdóttir",
         "Arnbergsdóttir",
@@ -5181,7 +5181,7 @@ class IslPersonData extends PersonDataset {
         "Úlfkelsdóttir",
         "Þorkelsdóttir",
       ],
-      Gender.male => const [
+      .male => const [
         "Addason",
         "Agnarsson",
         "Agnason",
@@ -5935,14 +5935,12 @@ class IslPersonData extends PersonDataset {
   @override
   List<String> titles({required Gender gender, required TitleType titleType}) {
     return switch (gender) {
-      Gender.female =>
-        titleType == TitleType.academic
+      .female =>
+        titleType == .academic
             ? const ["Dr.", "Prófessor"]
             : const ["Frú", "Ungfrú"],
-      Gender.male =>
-        titleType == TitleType.academic
-            ? const ["Dr.", "Prófessor"]
-            : const ["Herra"],
+      .male =>
+        titleType == .academic ? const ["Dr.", "Prófessor"] : const ["Herra"],
     };
   }
 

@@ -42,7 +42,7 @@ class Italy {
     code.write(monthCodes[random.integer(max: monthCodes.length - 1)]);
 
     var birthDay = random.integer(min: 101, max: 131);
-    if (gender == Gender.female) birthDay += 40;
+    if (gender == .female) birthDay += 40;
     code.write(birthDay.toString().substring(1));
 
     final cityLetters = [

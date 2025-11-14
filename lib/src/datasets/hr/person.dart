@@ -61,7 +61,7 @@ class HrPersonData extends PersonDataset {
   @override
   List<String> names(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "Adela",
         "Adriana",
         "Aida",
@@ -235,7 +235,7 @@ class HrPersonData extends PersonDataset {
         "Visnja",
         "Vita",
       ],
-      Gender.male => const [
+      .male => const [
         "Adrian",
         "Albert",
         "Aleks",
@@ -949,8 +949,8 @@ class HrPersonData extends PersonDataset {
   @override
   List<String> titles({required Gender gender, required TitleType titleType}) {
     return switch (gender) {
-      Gender.female =>
-        titleType == TitleType.academic
+      .female =>
+        titleType == .academic
             ? const [
                 "dr. sc.",
                 "mag. art.",
@@ -1012,8 +1012,8 @@ class HrPersonData extends PersonDataset {
                 "univ. spec. sus.",
               ]
             : const ["Gospodična", "Gospođo", "Gđa.", "Gđica"],
-      Gender.male =>
-        titleType == TitleType.academic
+      .male =>
+        titleType == .academic
             ? const [
                 "dr. sc.",
                 "mag. art.",

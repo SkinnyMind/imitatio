@@ -226,7 +226,7 @@ class KoPersonData extends PersonDataset {
   @override
   List<String> names(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "가영",
         "가현",
         "경미",
@@ -680,7 +680,7 @@ class KoPersonData extends PersonDataset {
         "희윤",
         "희진",
       ],
-      Gender.male => const [
+      .male => const [
         "강훈",
         "건영",
         "건우",
@@ -2478,12 +2478,12 @@ class KoPersonData extends PersonDataset {
   @override
   List<String> titles({required Gender gender, required TitleType titleType}) {
     return switch (gender) {
-      Gender.female =>
-        titleType == TitleType.academic
+      .female =>
+        titleType == .academic
             ? const ["박사", "교수", "조교", "교사", "교장"]
             : const ["씨", "님", "아주머니", "어머니"],
-      Gender.male =>
-        titleType == TitleType.academic
+      .male =>
+        titleType == .academic
             ? const ["박사", "교수", "조교", "교사", "교장"]
             : const ["씨", "님", "아저씨", "아버지"],
     };

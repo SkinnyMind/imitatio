@@ -219,7 +219,7 @@ class PtPersonData extends PersonDataset {
   @override
   List<String> names(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "Abigail",
         "Abna",
         "Abília",
@@ -1848,7 +1848,7 @@ class PtPersonData extends PersonDataset {
         "Íris",
         "Úrsula",
       ],
-      Gender.male => const [
+      .male => const [
         "Aarão",
         "Abdias",
         "Abdul",
@@ -3699,12 +3699,12 @@ class PtPersonData extends PersonDataset {
   @override
   List<String> titles({required Gender gender, required TitleType titleType}) {
     return switch (gender) {
-      Gender.female =>
-        titleType == TitleType.academic
+      .female =>
+        titleType == .academic
             ? const ["Doutor", "Mestre", "Professor Doutor"]
             : const ["Sra."],
-      Gender.male =>
-        titleType == TitleType.academic
+      .male =>
+        titleType == .academic
             ? const ["Doutor", "Mestre", "Professor Doutor"]
             : const ["Sr."],
     };

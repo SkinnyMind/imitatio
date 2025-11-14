@@ -54,7 +54,7 @@ class ElPersonData extends PersonDataset {
   @override
   List<String> names(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "Άλκηστις",
         "Άννα",
         "Άντζελα",
@@ -171,7 +171,7 @@ class ElPersonData extends PersonDataset {
         "Χριστίνα",
         "Χρύσα",
       ],
-      Gender.male => const [
+      .male => const [
         "Άγγελος",
         "Άδωνις",
         "Έκτορας",
@@ -464,7 +464,7 @@ class ElPersonData extends PersonDataset {
   @override
   List<String> surnames(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "Αβραμίδη",
         "Αγγελίδη",
         "Αθανασίου",
@@ -522,7 +522,7 @@ class ElPersonData extends PersonDataset {
         "Μήτζου",
         "Μόσχου",
       ],
-      Gender.male => const [
+      .male => const [
         "Αβραμίδης",
         "Αγγελίδης",
         "Αθανασίου",
@@ -591,12 +591,12 @@ class ElPersonData extends PersonDataset {
   @override
   List<String> titles({required Gender gender, required TitleType titleType}) {
     return switch (gender) {
-      Gender.female =>
-        titleType == TitleType.academic
+      .female =>
+        titleType == .academic
             ? const ["PhD", "Δρ.", "Καθ."]
             : const ["Κα.", "Κυρία"],
-      Gender.male =>
-        titleType == TitleType.academic
+      .male =>
+        titleType == .academic
             ? const ["PhD", "Δr.", "Καθ."]
             : const ["Κ.", "Κύριος."],
     };

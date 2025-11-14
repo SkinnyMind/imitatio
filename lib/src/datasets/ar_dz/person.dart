@@ -99,7 +99,7 @@ class ArDzPersonData extends PersonDataset {
   @override
   List<String> names(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "زيرة",
         "رشا",
         "فلة",
@@ -440,7 +440,7 @@ class ArDzPersonData extends PersonDataset {
         "جوهر",
         "ضاوية",
       ],
-      Gender.male => const [
+      .male => const [
         "أنس",
         "صادق",
         "بوسعد",
@@ -1859,14 +1859,12 @@ class ArDzPersonData extends PersonDataset {
   @override
   List<String> titles({required Gender gender, required TitleType titleType}) {
     return switch (gender) {
-      Gender.female =>
-        titleType == TitleType.typical
+      .female =>
+        titleType == .typical
             ? const ["السيدة"]
             : const ["الدكتورة", "الاستاذة"],
-      Gender.male =>
-        titleType == TitleType.typical
-            ? const ["السيد"]
-            : const ["الدكتور", "الاستاذ"],
+      .male =>
+        titleType == .typical ? const ["السيد"] : const ["الدكتور", "الاستاذ"],
     };
   }
 

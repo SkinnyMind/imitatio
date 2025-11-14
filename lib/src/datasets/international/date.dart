@@ -29,7 +29,7 @@ class IntDateData {
 
   static List<String> timezones(TimezoneRegion region) {
     return switch (region) {
-      TimezoneRegion.africa => const [
+      .africa => const [
         "Africa/Abidjan",
         "Africa/Accra",
         "Africa/Addis_Ababa",
@@ -83,7 +83,7 @@ class IntDateData {
         "Africa/Tunis",
         "Africa/Windhoek",
       ],
-      TimezoneRegion.america => const [
+      .america => const [
         "America/Adak",
         "America/Anchorage",
         "America/Anguilla",
@@ -232,7 +232,7 @@ class IntDateData {
         "America/Yakutat",
         "America/Yellowknife",
       ],
-      TimezoneRegion.antarctica => const [
+      .antarctica => const [
         "Antarctica/Casey",
         "Antarctica/Davis",
         "Antarctica/DumontDUrville",
@@ -245,8 +245,8 @@ class IntDateData {
         "Antarctica/Troll",
         "Antarctica/Vostok",
       ],
-      TimezoneRegion.arctic => const ["Arctic/Longyearbyen"],
-      TimezoneRegion.asia => const [
+      .arctic => const ["Arctic/Longyearbyen"],
+      .asia => const [
         "Asia/Aden",
         "Asia/Almaty",
         "Asia/Amman",
@@ -330,7 +330,7 @@ class IntDateData {
         "Asia/Yekaterinburg",
         "Asia/Yerevan",
       ],
-      TimezoneRegion.atlantic => const [
+      .atlantic => const [
         "Atlantic/Azores",
         "Atlantic/Bermuda",
         "Atlantic/Canary",
@@ -342,7 +342,7 @@ class IntDateData {
         "Atlantic/St_Helena",
         "Atlantic/Stanley",
       ],
-      TimezoneRegion.australia => const [
+      .australia => const [
         "Australia/Adelaide",
         "Australia/Brisbane",
         "Australia/Broken_Hill",
@@ -356,7 +356,7 @@ class IntDateData {
         "Australia/Perth",
         "Australia/Sydney",
       ],
-      TimezoneRegion.europe => const [
+      .europe => const [
         "Europe/Amsterdam",
         "Europe/Andorra",
         "Europe/Astrakhan",
@@ -418,7 +418,7 @@ class IntDateData {
         "Europe/Zaporozhye",
         "Europe/Zurich",
       ],
-      TimezoneRegion.indian => const [
+      .indian => const [
         "Indian/Antananarivo",
         "Indian/Chagos",
         "Indian/Christmas",
@@ -431,7 +431,7 @@ class IntDateData {
         "Indian/Mayotte",
         "Indian/Reunion",
       ],
-      TimezoneRegion.pacific => const [
+      .pacific => const [
         "Pacific/Apia",
         "Pacific/Auckland",
         "Pacific/Bougainville",

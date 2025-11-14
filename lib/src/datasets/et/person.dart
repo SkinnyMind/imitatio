@@ -680,7 +680,7 @@ class EtPersonData extends PersonDataset {
   @override
   List<String> names(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "Aada",
         "Aale",
         "Aare",
@@ -1533,12 +1533,12 @@ class EtPersonData extends PersonDataset {
         "Xenia",
         "Yvonne",
       ],
-      Gender.male => const [
+      .male => const [
         "Aadu",
         "Aage",
         "Aago",
         "Aap",
-        "‎Aapo",
+        "Aapo",
         "Aare",
         "Aarne",
         "Aaron",
@@ -1562,9 +1562,9 @@ class EtPersonData extends PersonDataset {
         "Ainar",
         "Airo",
         "Airon",
-        "‎Aivar",
+        "",
         "Aivo",
-        "‎Aksel",
+        "Aksel",
         "Alar",
         "Alari",
         "Albert",
@@ -1592,7 +1592,7 @@ class EtPersonData extends PersonDataset {
         "Andro",
         "Andrus",
         "Anti",
-        "‎Anto",
+        "Anto",
         "Anton",
         "Antoni",
         "Ants",
@@ -2132,7 +2132,7 @@ class EtPersonData extends PersonDataset {
         "Rainer",
         "Raino",
         "Rait",
-        "‎Raivo",
+        "Raivo",
         "Ralf",
         "Ralph",
         "Ramon",
@@ -3286,8 +3286,8 @@ class EtPersonData extends PersonDataset {
   @override
   List<String> titles({required Gender gender, required TitleType titleType}) {
     return switch (gender) {
-      Gender.female =>
-        titleType == TitleType.academic
+      .female =>
+        titleType == .academic
             ? const [
                 "Dr.",
                 "Prof.",
@@ -3308,8 +3308,8 @@ class EtPersonData extends PersonDataset {
                 "M.Sc.Tech.",
               ]
             : const ["Pr", "Ms", "Prl", "Proua"],
-      Gender.male =>
-        titleType == TitleType.academic
+      .male =>
+        titleType == .academic
             ? const [
                 "Dr.",
                 "Prof.",

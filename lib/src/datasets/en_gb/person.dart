@@ -118,7 +118,7 @@ class EnGbPersonData extends PersonDataset {
   @override
   List<String> names(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "Aaron",
         "Adah",
         "Adaline",
@@ -2395,7 +2395,7 @@ class EnGbPersonData extends PersonDataset {
         "Zulema",
         "Zulma",
       ],
-      Gender.male => const [
+      .male => const [
         "Aaron",
         "Abe",
         "Abel",
@@ -5879,8 +5879,8 @@ class EnGbPersonData extends PersonDataset {
   @override
   List<String> titles({required Gender gender, required TitleType titleType}) {
     return switch (gender) {
-      Gender.female =>
-        titleType == TitleType.typical
+      .female =>
+        titleType == .typical
             ? const ["Mrs.", "Ms.", "Miss", "Madam"]
             : const [
                 "Dr.",
@@ -5901,8 +5901,8 @@ class EnGbPersonData extends PersonDataset {
                 "MSc",
                 "M.Sc.Tech.",
               ],
-      Gender.male =>
-        titleType == TitleType.typical
+      .male =>
+        titleType == .typical
             ? const ["Mr.", "Sir", "Master"]
             : const [
                 "Dr.",

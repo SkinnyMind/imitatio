@@ -181,7 +181,7 @@ class FrPersonData extends PersonDataset {
   @override
   List<String> names(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "Aaliyah",
         "Abigael",
         "Adriana",
@@ -731,7 +731,7 @@ class FrPersonData extends PersonDataset {
         "Éloïse",
         "Émilie",
       ],
-      Gender.male => const [
+      .male => const [
         "Aaron",
         "Abdallah",
         "Abdoulaye",
@@ -1336,16 +1336,16 @@ class FrPersonData extends PersonDataset {
   @override
   List<String> nationalities(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
-        'Afghane'
-            'Algérienne'
-            'Américaine'
-            'Anglaise'
-            'Australienne'
-            'Autrichienne'
-            'Belge'
-            'Brésilienne'
-            'Canadienne',
+      .female => const [
+        'Afghane',
+        'Algérienne',
+        'Américaine',
+        'Anglaise',
+        'Australienne',
+        'Autrichienne',
+        'Belge',
+        'Brésilienne',
+        'Canadienne',
         'Chinoise',
         'Danoise',
         'Égyptienne',
@@ -1372,7 +1372,7 @@ class FrPersonData extends PersonDataset {
         'Turque',
         'Amérindienne',
       ],
-      Gender.male => const [
+      .male => const [
         'Afghan',
         'Algérien',
         'Américain',
@@ -3686,12 +3686,12 @@ class FrPersonData extends PersonDataset {
   @override
   List<String> titles({required Gender gender, required TitleType titleType}) {
     return switch (gender) {
-      Gender.female =>
-        titleType == TitleType.academic
+      .female =>
+        titleType == .academic
             ? const ["PhD", "Dr.", "Prof."]
             : const ["Mme.", "Madame"],
-      Gender.male =>
-        titleType == TitleType.academic
+      .male =>
+        titleType == .academic
             ? const ["PhD", "Dr.", "Prof."]
             : const ["M.", "Mr."],
     };

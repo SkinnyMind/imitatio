@@ -119,7 +119,7 @@ class DeChPersonData extends PersonDataset {
   @override
   List<String> names(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "Abby",
         "Abeba",
         "Abigail",
@@ -2621,7 +2621,7 @@ class DeChPersonData extends PersonDataset {
         "Özge",
         "Özlem",
       ],
-      Gender.male => const [
+      .male => const [
         "Aaron",
         "Abaz",
         "Abbas",
@@ -5129,7 +5129,7 @@ class DeChPersonData extends PersonDataset {
   @override
   List<String> nationalities(Gender gender) {
     return switch (gender) {
-      Gender.male => const [
+      .male => const [
         "Afghane",
         "Albaner",
         "Amerikaner",
@@ -5195,7 +5195,7 @@ class DeChPersonData extends PersonDataset {
         "Ungare",
         "Weißrusse",
       ],
-      Gender.female => const [
+      .female => const [
         "Afghanin",
         "Albanerin",
         "Amerikanerin",
@@ -7850,14 +7850,9 @@ class DeChPersonData extends PersonDataset {
   @override
   List<String> titles({required Gender gender, required TitleType titleType}) {
     return switch (gender) {
-      Gender.female =>
-        titleType == TitleType.academic
-            ? const ["Dr.", "Prof."]
-            : const ["Frau"],
-      Gender.male =>
-        titleType == TitleType.academic
-            ? const ["Dr.", "Prof."]
-            : const ["Herr"],
+      .female =>
+        titleType == .academic ? const ["Dr.", "Prof."] : const ["Frau"],
+      .male => titleType == .academic ? const ["Dr.", "Prof."] : const ["Herr"],
     };
   }
 

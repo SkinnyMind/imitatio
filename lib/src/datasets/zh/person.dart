@@ -103,7 +103,7 @@ class ZhPersonData extends PersonDataset {
   @override
   List<String> names(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "朵雯",
         "雨杭",
         "贞荪",
@@ -1105,7 +1105,7 @@ class ZhPersonData extends PersonDataset {
         "若菀",
         "若未",
       ],
-      Gender.male => const [
+      .male => const [
         "彦龙",
         "浩鹏",
         "天一",
@@ -2461,8 +2461,8 @@ class ZhPersonData extends PersonDataset {
   @override
   List<String> titles({required Gender gender, required TitleType titleType}) {
     return switch (gender) {
-      Gender.female =>
-        titleType == TitleType.academic
+      .female =>
+        titleType == .academic
             ? const [
                 "工学硕士",
                 "文学学士",
@@ -2480,8 +2480,8 @@ class ZhPersonData extends PersonDataset {
                 "教授",
               ]
             : const ["小姐", "女士"],
-      Gender.male =>
-        titleType == TitleType.academic
+      .male =>
+        titleType == .academic
             ? const [
                 "工学硕士",
                 "文学学士",

@@ -107,7 +107,7 @@ class RussiaSpecificData {
 
   List<String> patronymics({required Gender gender}) {
     return switch (gender) {
-      Gender.male => const [
+      .male => const [
         "Ааронович",
         "Абрамович",
         "Августович",
@@ -249,7 +249,7 @@ class RussiaSpecificData {
         "Якубович",
         "Ярославович",
       ],
-      Gender.female => const [
+      .female => const [
         "Аароновна",
         "Абрамовна",
         "Августовна",

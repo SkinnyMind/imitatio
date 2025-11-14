@@ -41,7 +41,7 @@ class Numeric {
       );
     }
 
-    return double.parse(
+    return .parse(
       (Random(seed).nextDouble() * (end - start) + start).toStringAsFixed(
         precision,
       ),
@@ -80,9 +80,9 @@ class Numeric {
     }
 
     final random = Random(seed);
-    return List.generate(
+    return .generate(
       n,
-      (_) => double.parse(
+      (_) => .parse(
         (random.nextDouble() * (end - start) + start).toStringAsFixed(
           precision,
         ),
@@ -140,7 +140,7 @@ class Numeric {
     }
 
     final random = Random(seed);
-    return List.generate(n, (_) => random.integer(min: start, max: end));
+    return .generate(n, (_) => random.integer(min: start, max: end));
   }
 
   /// Returns a random complex number.
@@ -213,7 +213,7 @@ class Numeric {
     int imaginaryPrecision = 15,
     int n = 10,
   }) {
-    return List.generate(
+    return .generate(
       n,
       (_) => complexNumber(
         realStart: realStart,

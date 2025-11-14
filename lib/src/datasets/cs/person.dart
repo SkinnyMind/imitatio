@@ -141,7 +141,7 @@ class CsPersonData extends PersonDataset {
   @override
   List<String> names(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "Aba",
         "Abigail",
         "Ada",
@@ -1093,7 +1093,7 @@ class CsPersonData extends PersonDataset {
         "Živana",
         "Žofie",
       ],
-      Gender.male => const [
+      .male => const [
         "Abadon",
         "Abd",
         "Abdon",
@@ -2022,7 +2022,7 @@ class CsPersonData extends PersonDataset {
   @override
   List<String> nationalities(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "Afričanka",
         "Američanka",
         "Američanka",
@@ -2056,7 +2056,7 @@ class CsPersonData extends PersonDataset {
         "Švédka",
         "Švýcarka",
       ],
-      Gender.male => const [
+      .male => const [
         "Afričan",
         "Američan",
         "Američan",
@@ -2891,8 +2891,8 @@ class CsPersonData extends PersonDataset {
   @override
   List<String> titles({required Gender gender, required TitleType titleType}) {
     return switch (gender) {
-      Gender.female =>
-        titleType == TitleType.typical
+      .female =>
+        titleType == .typical
             ? const ["Paní"]
             : const [
                 "Bc.",
@@ -2913,8 +2913,8 @@ class CsPersonData extends PersonDataset {
                 "ThDr.",
                 "ThLic.",
               ],
-      Gender.male =>
-        titleType == TitleType.typical
+      .male =>
+        titleType == .typical
             ? const ["Pane"]
             : const [
                 "Bc.",

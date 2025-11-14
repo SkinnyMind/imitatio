@@ -751,7 +751,7 @@ class JaPersonData extends PersonDataset {
   @override
   List<String> names(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "アイ",
         "あいか",
         "あいこ",
@@ -928,7 +928,7 @@ class JaPersonData extends PersonDataset {
         "麗奈",
         "若菜",
       ],
-      Gender.male => const [
+      .male => const [
         "葵",
         "アキラ",
         "悪太郎",
@@ -3958,8 +3958,8 @@ class JaPersonData extends PersonDataset {
   @override
   List<String> titles({required Gender gender, required TitleType titleType}) {
     return switch (gender) {
-      Gender.female =>
-        titleType == TitleType.academic
+      .female =>
+        titleType == .academic
             ? const [
                 "博士",
                 "教授",
@@ -3971,8 +3971,8 @@ class JaPersonData extends PersonDataset {
                 "薬学博士",
               ]
             : const ["さん"],
-      Gender.male =>
-        titleType == TitleType.academic
+      .male =>
+        titleType == .academic
             ? const [
                 "博士",
                 "教授",

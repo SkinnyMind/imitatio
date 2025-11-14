@@ -100,7 +100,7 @@ class RuPersonData extends PersonDataset {
   @override
   List<String> names(Gender gender) {
     return switch (gender) {
-      Gender.male => const [
+      .male => const [
         "Авдей",
         "Авксентий",
         "Агафон",
@@ -305,7 +305,7 @@ class RuPersonData extends PersonDataset {
         "Ярослав",
         "Иосиф",
       ],
-      Gender.female => const [
+      .female => const [
         "Ава",
         "Августа",
         "Августина",
@@ -793,7 +793,7 @@ class RuPersonData extends PersonDataset {
   @override
   List<String> nationalities(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "Русская",
         "Белоруска",
         "Француженка",
@@ -814,7 +814,7 @@ class RuPersonData extends PersonDataset {
         "Ирландка",
         "Пуэрториканка",
       ],
-      Gender.male => const [
+      .male => const [
         "Русский",
         "Белорус",
         "Француз",
@@ -1249,7 +1249,7 @@ class RuPersonData extends PersonDataset {
   @override
   List<String> surnames(Gender gender) {
     return switch (gender) {
-      Gender.male => const [
+      .male => const [
         "Абакумов",
         "Абдуллаев",
         "Абрамов",
@@ -3032,7 +3032,7 @@ class RuPersonData extends PersonDataset {
         "Яськов",
         "Яхин",
       ],
-      Gender.female => const [
+      .female => const [
         "Абакумова",
         "Абдуллаева",
         "Абрамова",
@@ -4503,12 +4503,12 @@ class RuPersonData extends PersonDataset {
   @override
   List<String> titles({required Gender gender, required TitleType titleType}) {
     return switch (gender) {
-      Gender.female =>
-        titleType == TitleType.typical
+      .female =>
+        titleType == .typical
             ? const ["Мисс", "Миссис"]
             : const ["Доктор", "Проф."],
-      Gender.male =>
-        titleType == TitleType.typical
+      .male =>
+        titleType == .typical
             ? const ["Мистер", "Профессор", "Доктор"]
             : const ["Доктор", "Профессор"],
     };

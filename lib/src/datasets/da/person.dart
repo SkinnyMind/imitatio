@@ -214,7 +214,7 @@ class DaPersonData extends PersonDataset {
   @override
   List<String> names(Gender gender) {
     return switch (gender) {
-      Gender.male => const [
+      .male => const [
         "Abiorn",
         "Absalon",
         "Absolon",
@@ -884,7 +884,7 @@ class DaPersonData extends PersonDataset {
         "Øthkil",
         "Øthulf",
       ],
-      Gender.female => const [
+      .female => const [
         "Abelone",
         "Adele",
         "Adelheid",
@@ -2256,8 +2256,8 @@ class DaPersonData extends PersonDataset {
   @override
   List<String> titles({required Gender gender, required TitleType titleType}) {
     return switch (gender) {
-      Gender.female =>
-        titleType == TitleType.typical
+      .female =>
+        titleType == .typical
             ? const ["Fru.", "Frk."]
             : const [
                 "Cand.oecon.",
@@ -2268,8 +2268,8 @@ class DaPersonData extends PersonDataset {
                 "Cand.med.",
                 "Civiløkonom",
               ],
-      Gender.male =>
-        titleType == TitleType.typical
+      .male =>
+        titleType == .typical
             ? const ["Hr."]
             : const [
                 "Cand.oecon.",

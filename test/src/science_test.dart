@@ -16,13 +16,10 @@ void main() {
     test('returns measure unit', () {
       expect(science.measureUnit(), isNotEmpty);
 
-      expect(
-        science.measureUnit(name: MeasureUnit.mass),
-        equals(MeasureUnit.mass.name),
-      );
+      expect(science.measureUnit(name: .mass), equals(MeasureUnit.mass.name));
 
       expect(
-        science.measureUnit(name: MeasureUnit.mass, asSymbol: true),
+        science.measureUnit(name: .mass, asSymbol: true),
         equals(MeasureUnit.mass.symbol),
       );
 

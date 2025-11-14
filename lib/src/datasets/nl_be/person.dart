@@ -287,7 +287,7 @@ class NlBePersonData extends PersonDataset {
   @override
   List<String> names(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "Aaliyah",
         "Aaltje",
         "Abby",
@@ -809,7 +809,7 @@ class NlBePersonData extends PersonDataset {
         "Zoë",
         "Zuzanna",
       ],
-      Gender.male => const [
+      .male => const [
         "Aaron",
         "Abel",
         "Abraham",
@@ -1748,12 +1748,12 @@ class NlBePersonData extends PersonDataset {
   @override
   List<String> titles({required Gender gender, required TitleType titleType}) {
     return switch (gender) {
-      Gender.female =>
-        titleType == TitleType.academic
+      .female =>
+        titleType == .academic
             ? const ["Prof.", "Dr", "Drs.", "Mr.", "Ing.", "Ir."]
             : const ["Mevr.", "Mej."],
-      Gender.male =>
-        titleType == TitleType.academic
+      .male =>
+        titleType == .academic
             ? const ["Prof.", "Dr", "Drs.", "Mr.", "Ing.", "Ir."]
             : const ["Dhr."],
     };

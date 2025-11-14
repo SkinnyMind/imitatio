@@ -42,7 +42,7 @@ class KkPersonData extends PersonDataset {
   @override
   List<String> names(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "Абира",
         "Адлия",
         "Ажар",
@@ -279,7 +279,7 @@ class KkPersonData extends PersonDataset {
         "Әмира",
         "Әтина",
       ],
-      Gender.male => const [
+      .male => const [
         "Абай",
         "Аббас",
         "Абзал",
@@ -722,7 +722,7 @@ class KkPersonData extends PersonDataset {
   @override
   List<String> surnames(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "Абдильдина",
         "Абдирова",
         "Абдрахманова",
@@ -926,7 +926,7 @@ class KkPersonData extends PersonDataset {
         "Әлімжанова",
         "Әуез қызы",
       ],
-      Gender.male => const [
+      .male => const [
         "Абдиров",
         "Абдрахманов",
         "Абдрашев",
@@ -1152,12 +1152,12 @@ class KkPersonData extends PersonDataset {
   @override
   List<String> titles({required Gender gender, required TitleType titleType}) {
     return switch (gender) {
-      Gender.female =>
-        titleType == TitleType.academic
+      .female =>
+        titleType == .academic
             ? const ["Дәрігер", "Проф."]
             : const ["Мисс", "Миссис"],
-      Gender.male =>
-        titleType == TitleType.academic
+      .male =>
+        titleType == .academic
             ? const ["Дәрігер", "Профессор"]
             : const ['Мистер'],
     };

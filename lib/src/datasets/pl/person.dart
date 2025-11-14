@@ -65,7 +65,7 @@ class PlPersonData extends PersonDataset {
   @override
   List<String> names(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "Ada",
         "Adela",
         "Adelajda",
@@ -394,7 +394,7 @@ class PlPersonData extends PersonDataset {
         "Łucja",
         "Żaneta",
       ],
-      Gender.male => const [
+      .male => const [
         "Abel",
         "Adam",
         "Adolf",
@@ -658,7 +658,7 @@ class PlPersonData extends PersonDataset {
   @override
   List<String> nationalities(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "Polka",
         "Afganka",
         "Albanka",
@@ -736,7 +736,7 @@ class PlPersonData extends PersonDataset {
         "Włoszka",
         "Łotyszka",
       ],
-      Gender.male => const [
+      .male => const [
         "Polak",
         "Afgańczyk",
         "Albańczyk",
@@ -1022,7 +1022,7 @@ class PlPersonData extends PersonDataset {
   @override
   List<String> surnames(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "Abakanowicz",
         "Abramczyk",
         "Adamiec",
@@ -1622,7 +1622,7 @@ class PlPersonData extends PersonDataset {
         "Żyborska",
         "Żądło",
       ],
-      Gender.male => const [
+      .male => const [
         "Abakanowicz",
         "Abramczyk",
         "Adamiec",
@@ -2238,12 +2238,12 @@ class PlPersonData extends PersonDataset {
   @override
   List<String> titles({required Gender gender, required TitleType titleType}) {
     return switch (gender) {
-      Gender.female =>
-        titleType == TitleType.academic
+      .female =>
+        titleType == .academic
             ? const ["Dr", "Inż.", "Mgr", "Mgr inż.", "Dr hab.", "Prof."]
             : const ["Pani"],
-      Gender.male =>
-        titleType == TitleType.academic
+      .male =>
+        titleType == .academic
             ? const ["Dr", "Inż.", "Mgr", "Mgr inż.", "Dr hab.", "Prof."]
             : const ["Pan"],
     };
