@@ -61,7 +61,7 @@ class Poland {
   /// ```
   String pesel({DateTime? birthDate, Gender? gender}) {
     final random = Random(seed);
-    birthDate ??= DateTime.parse(Date(seed: seed).date(start: 1940));
+    birthDate ??= .parse(Date(seed: seed).date(start: 1940));
     final genderData = Gender.values;
     gender ??= genderData[random.integer(max: genderData.length - 1)];
 
@@ -83,7 +83,7 @@ class Poland {
 
     final maleDigits = [1, 3, 5, 7, 9];
     final femaleDigits = [0, 2, 4, 6, 8];
-    final genderDigit = gender == Gender.male
+    final genderDigit = gender == .male
         ? maleDigits[random.integer(max: maleDigits.length - 1)]
         : femaleDigits[random.integer(max: femaleDigits.length - 1)];
     peselDigits.add(genderDigit);

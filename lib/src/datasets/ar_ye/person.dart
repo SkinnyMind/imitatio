@@ -99,7 +99,7 @@ class ArYePersonData extends PersonDataset {
   @override
   List<String> names(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "فاطمة",
         "زينب",
         "صباح",
@@ -166,7 +166,7 @@ class ArYePersonData extends PersonDataset {
         "نور الهدى",
         "نورا",
       ],
-      Gender.male => const [
+      .male => const [
         "آدم",
         "أنيس",
         "أكرم",
@@ -557,12 +557,12 @@ class ArYePersonData extends PersonDataset {
   @override
   List<String> titles({required Gender gender, required TitleType titleType}) {
     return switch (gender) {
-      Gender.female =>
-        titleType == TitleType.typical
+      .female =>
+        titleType == .typical
             ? const ["السيدة"]
             : const ["الدكتورة", "الأستاذة", "المهندسة"],
-      Gender.male =>
-        titleType == TitleType.typical
+      .male =>
+        titleType == .typical
             ? const ["السيد"]
             : const ["الدكتور", "الأستاذ", "المهندس"],
     };

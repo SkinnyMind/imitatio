@@ -94,7 +94,7 @@ class UkPersonData extends PersonDataset {
   @override
   List<String> names(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "Августа",
         "Аврелія",
         "Аврора",
@@ -588,7 +588,7 @@ class UkPersonData extends PersonDataset {
         "Юстина",
         "Юхимія",
       ],
-      Gender.male => const [
+      .male => const [
         "Августин",
         "Авксентій",
         "Аврелій",
@@ -1135,7 +1135,7 @@ class UkPersonData extends PersonDataset {
   @override
   List<String> nationalities(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "Росіянка",
         "Білоруска",
         "Француженка",
@@ -1156,7 +1156,7 @@ class UkPersonData extends PersonDataset {
         "Ірландка",
         "Пуерториканка",
       ],
-      Gender.male => const [
+      .male => const [
         "Росіянин",
         "Білорус",
         "Француз",
@@ -1401,7 +1401,7 @@ class UkPersonData extends PersonDataset {
   @override
   List<String> surnames(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "Абраменко",
         "Абрамець",
         "Авдєєнко",
@@ -1563,7 +1563,7 @@ class UkPersonData extends PersonDataset {
         "Бенюк",
         "Бердаль",
       ],
-      Gender.male => const [
+      .male => const [
         "Абраменко",
         "Абрамець",
         "Авдєєнко",
@@ -1745,14 +1745,10 @@ class UkPersonData extends PersonDataset {
   @override
   List<String> titles({required Gender gender, required TitleType titleType}) {
     return switch (gender) {
-      Gender.female =>
-        titleType == TitleType.academic
-            ? const ["Доктор", "Проф."]
-            : const ["Пані"],
-      Gender.male =>
-        titleType == TitleType.academic
-            ? const ["Доктор", "Проф."]
-            : const ["Пан"],
+      .female =>
+        titleType == .academic ? const ["Доктор", "Проф."] : const ["Пані"],
+      .male =>
+        titleType == .academic ? const ["Доктор", "Проф."] : const ["Пан"],
     };
   }
 

@@ -119,7 +119,7 @@ class DeAtPersonData extends PersonDataset {
   @override
   List<String> names(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "Ada",
         "Adalgisa",
         "Adalia",
@@ -398,7 +398,7 @@ class DeAtPersonData extends PersonDataset {
         "Hilde",
         "Hildegard",
         "Hulda",
-        "ILMA",
+        "Ilma",
         "Ida",
         "Idonia",
         "Ilsa",
@@ -834,7 +834,7 @@ class DeAtPersonData extends PersonDataset {
         "Zäzilia",
         "Zäzilie",
       ],
-      Gender.male => const [
+      .male => const [
         "Achim",
         "Adel",
         "Adelbert",
@@ -1258,7 +1258,7 @@ class DeAtPersonData extends PersonDataset {
   @override
   List<String> nationalities(Gender gender) {
     return switch (gender) {
-      Gender.male => const [
+      .male => const [
         "Afghane",
         "Albaner",
         "Amerikaner",
@@ -1324,7 +1324,7 @@ class DeAtPersonData extends PersonDataset {
         "Ungare",
         "Weißrusse",
       ],
-      Gender.female => const [
+      .female => const [
         "Afghanin",
         "Albanerin",
         "Amerikanerin",
@@ -3169,12 +3169,12 @@ class DeAtPersonData extends PersonDataset {
   @override
   List<String> titles({required Gender gender, required TitleType titleType}) {
     return switch (gender) {
-      Gender.female =>
-        titleType == TitleType.academic
+      .female =>
+        titleType == .academic
             ? const ["Dr.", "Dr. rer. nat."]
             : const ["Frau"],
-      Gender.male =>
-        titleType == TitleType.academic
+      .male =>
+        titleType == .academic
             ? const ["Dr.", "Dr. rer. nat."]
             : const ["Herr"],
     };

@@ -83,15 +83,15 @@ class Payment {
   /// Payment().creditCardNumber(); // "4567 0238 9444 1885"
   /// Payment().creditCardNumber(cardType: CardType.americanExpress); // "3754 483800 01097"
   /// ```
-  String creditCardNumber({CardType cardType = CardType.visa}) {
+  String creditCardNumber({CardType cardType = .visa}) {
     final random = Random(seed);
     var length = 16;
     final result = StringBuffer();
     late final int number;
 
-    if (cardType == CardType.visa) {
+    if (cardType == .visa) {
       number = random.integer(min: 4000, max: 4999);
-    } else if (cardType == CardType.masterCard) {
+    } else if (cardType == .masterCard) {
       number = random.nextBool()
           ? random.integer(min: 2221, max: 2720)
           : random.integer(min: 5100, max: 5599);

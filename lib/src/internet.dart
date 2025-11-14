@@ -199,7 +199,7 @@ class Internet {
     );
     final values = Text(seed: seed).words(quantity: quantity);
 
-    return Map.fromIterables(keys, values);
+    return .fromIterables(keys, values);
   }
 
   /// Returns arbitrary query string.

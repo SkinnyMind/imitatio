@@ -32,16 +32,10 @@ void main() {
     test('returns ISBN', () {
       expect(code.isbn(), isNotEmpty);
 
-      expect(
-        code.isbn(format: ISBNFormat.isbn10).length,
-        greaterThanOrEqualTo(10),
-      );
-      expect(
-        code.isbn(format: ISBNFormat.isbn13).length,
-        greaterThanOrEqualTo(13),
-      );
+      expect(code.isbn(format: .isbn10).length, greaterThanOrEqualTo(10));
+      expect(code.isbn(format: .isbn13).length, greaterThanOrEqualTo(13));
 
-      final enCode = code.isbn(locale: Locale.en, format: ISBNFormat.isbn10);
+      final enCode = code.isbn(locale: .en, format: .isbn10);
       expect(enCode.split('-')[0], equals('1'));
 
       expect(seededCode.isbn(), equals(seededCode.isbn()));
@@ -49,8 +43,8 @@ void main() {
 
     test('returns EAN', () {
       expect(code.ean(), isNotEmpty);
-      expect(code.ean(format: EANFormat.ean8).length, equals(8));
-      expect(code.ean(format: EANFormat.ean13).length, equals(13));
+      expect(code.ean(format: .ean8).length, equals(8));
+      expect(code.ean(format: .ean13).length, equals(13));
       expect(seededCode.ean(), equals(seededCode.ean()));
     });
   });

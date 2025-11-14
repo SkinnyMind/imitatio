@@ -11605,7 +11605,7 @@ class IntAddressData {
 
   static List<String> countryCodes({required CountryCode code}) {
     return switch (code) {
-      CountryCode.a2 => const [
+      .a2 => const [
         "AD",
         "AE",
         "AF",
@@ -11853,7 +11853,7 @@ class IntAddressData {
         "ZM",
         "ZW",
       ],
-      CountryCode.a3 => const [
+      .a3 => const [
         "AND",
         "ARE",
         "AFG",
@@ -12102,7 +12102,7 @@ class IntAddressData {
         "ZMB",
         "ZWE",
       ],
-      CountryCode.fifa => const [
+      .fifa => const [
         "AFG",
         "AIA",
         "ALB",
@@ -12326,7 +12326,7 @@ class IntAddressData {
         "ZAN",
         "ZIM",
       ],
-      CountryCode.ioc => const [
+      .ioc => const [
         "AFG",
         "ALB",
         "ALG",
@@ -12532,7 +12532,7 @@ class IntAddressData {
         "ZAM",
         "ZIM",
       ],
-      CountryCode.numeric => const [
+      .numeric => const [
         "020",
         "784",
         "004",

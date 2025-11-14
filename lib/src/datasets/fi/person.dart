@@ -148,7 +148,7 @@ class FiPersonData extends PersonDataset {
   @override
   List<String> names(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "Aada",
         "Aallotar",
         "Aamu",
@@ -596,7 +596,7 @@ class FiPersonData extends PersonDataset {
         "Vuokko",
         "Wilhelmiina",
       ],
-      Gender.male => const [
+      .male => const [
         "Aadolf",
         "Aake",
         "Aapeli",
@@ -2206,14 +2206,12 @@ class FiPersonData extends PersonDataset {
   @override
   List<String> titles({required Gender gender, required TitleType titleType}) {
     return switch (gender) {
-      Gender.female =>
-        titleType == TitleType.academic
+      .female =>
+        titleType == .academic
             ? const ["LkT", "Lic.Sc."]
             : const ["Rouva", "Neiti"],
-      Gender.male =>
-        titleType == TitleType.academic
-            ? const ["LkT", "Lic.Sc."]
-            : const ["Herra"],
+      .male =>
+        titleType == .academic ? const ["LkT", "Lic.Sc."] : const ["Herra"],
     };
   }
 

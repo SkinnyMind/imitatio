@@ -62,7 +62,7 @@ class AzPersonData extends PersonDataset {
   @override
   List<String> names(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "Afaq",
         "Aida",
         "Aqşin",
@@ -122,7 +122,7 @@ class AzPersonData extends PersonDataset {
         "Zərifə",
         "Züleyxa",
       ],
-      Gender.male => const [
+      .male => const [
         "Abbas",
         "Abdulla",
         "Adil",
@@ -394,10 +394,8 @@ class AzPersonData extends PersonDataset {
   @override
   List<String> titles({required Gender gender, required TitleType titleType}) {
     return switch (gender) {
-      Gender.female =>
-        titleType == TitleType.typical ? ["Xanım"] : ["Dr.", "Prof."],
-      Gender.male =>
-        titleType == TitleType.typical ? ["Bəy", "Cənab"] : ["Dr.", "Prof."],
+      .female => titleType == .typical ? ["Xanım"] : ["Dr.", "Prof."],
+      .male => titleType == .typical ? ["Bəy", "Cənab"] : ["Dr.", "Prof."],
     };
   }
 

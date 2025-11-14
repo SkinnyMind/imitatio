@@ -148,7 +148,7 @@ class Finance {
   /// Finance().price(min: 10.0, max: 15.0); // 13.37
   /// ```
   double price({double min = 500.0, double max = 1500.0}) {
-    return double.parse(
+    return .parse(
       (Random(seed).nextDouble() * (max - min) + min).toStringAsFixed(2),
     );
   }
@@ -165,7 +165,7 @@ class Finance {
   /// Finance().priceInBTC(min: 10.0, max: 15.0); // 14.6666517
   /// ```
   double priceInBTC({double min = 0.0, double max = 2.0}) {
-    return double.parse(
+    return .parse(
       (Random(seed).nextDouble() * (max - min) + min).toStringAsFixed(7),
     );
   }

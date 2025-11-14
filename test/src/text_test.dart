@@ -21,14 +21,14 @@ void main() {
     });
 
     test('returns word', () {
-      expect(TextData.locale(Locale.en).words, contains(text.word));
+      expect(TextData.locale(.en).words, contains(text.word));
 
       expect(TextData.locale(locale).words, contains(localeText.word));
     });
 
     test('returns alphabet', () {
       expect(
-        TextData.locale(Locale.en).alphabet(isLowerCase: false),
+        TextData.locale(.en).alphabet(isLowerCase: false),
         equals(text.alphabet()),
       );
 
@@ -39,7 +39,7 @@ void main() {
     });
 
     test('returns level of something', () {
-      expect(TextData.locale(Locale.en).levels, contains(text.level));
+      expect(TextData.locale(.en).levels, contains(text.level));
 
       expect(TextData.locale(locale).levels, contains(localeText.level));
 
@@ -58,19 +58,19 @@ void main() {
     });
 
     test('returns the sentence', () {
-      expect(TextData.locale(Locale.en).texts, contains(text.sentence));
+      expect(TextData.locale(.en).texts, contains(text.sentence));
 
       expect(TextData.locale(locale).texts, contains(localeText.sentence));
     });
 
     test('returns a title', () {
-      expect(TextData.locale(Locale.en).texts, contains(text.title));
+      expect(TextData.locale(.en).texts, contains(text.title));
 
       expect(TextData.locale(locale).texts, contains(localeText.title));
     });
 
     test('returns a quote', () {
-      expect(TextData.locale(Locale.en).quotes, contains(text.quote));
+      expect(TextData.locale(.en).quotes, contains(text.quote));
 
       expect(TextData.locale(locale).quotes, contains(localeText.quote));
 
@@ -78,7 +78,7 @@ void main() {
     });
 
     test('returns a color name', () {
-      expect(TextData.locale(Locale.en).colors, contains(text.color));
+      expect(TextData.locale(.en).colors, contains(text.color));
 
       expect(TextData.locale(locale).colors, contains(localeText.color));
 
@@ -115,7 +115,7 @@ void main() {
     });
 
     test('returns an answer', () {
-      expect(TextData.locale(Locale.en).answers, contains(text.answer));
+      expect(TextData.locale(.en).answers, contains(text.answer));
 
       expect(TextData.locale(locale).answers, contains(localeText.answer));
 

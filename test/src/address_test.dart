@@ -22,7 +22,7 @@ void main() {
 
     test('returns street name', () {
       expect(
-        AddressData.locale(Locale.en).streets(isSuffix: false),
+        AddressData.locale(.en).streets(isSuffix: false),
         contains(address.streetName),
       );
 
@@ -36,7 +36,7 @@ void main() {
 
     test('returns street suffix', () {
       expect(
-        AddressData.locale(Locale.en).streets(isSuffix: true),
+        AddressData.locale(.en).streets(isSuffix: true),
         contains(address.streetSuffix),
       );
 
@@ -72,7 +72,7 @@ void main() {
 
     test('returns state', () {
       expect(
-        AddressData.locale(Locale.en).states(isAbbr: false),
+        AddressData.locale(.en).states(isAbbr: false),
         contains(address.state()),
       );
 
@@ -92,10 +92,7 @@ void main() {
     });
 
     test('returns country', () {
-      expect(
-        AddressData.locale(Locale.en).countries,
-        contains(address.country),
-      );
+      expect(AddressData.locale(.en).countries, contains(address.country));
 
       expect(
         AddressData.locale(locale).countries,
@@ -106,7 +103,7 @@ void main() {
     });
 
     test('returns city', () {
-      expect(AddressData.locale(Locale.en).cities, contains(address.city));
+      expect(AddressData.locale(.en).cities, contains(address.city));
 
       expect(AddressData.locale(locale).cities, contains(localeAddress.city));
 
@@ -114,10 +111,7 @@ void main() {
     });
 
     test('returns continent', () {
-      expect(
-        AddressData.locale(Locale.en).continents,
-        contains(address.continent()),
-      );
+      expect(AddressData.locale(.en).continents, contains(address.continent()));
       expect(
         IntAddressData.continentCodes,
         contains(address.continent(asCode: true)),
@@ -152,7 +146,7 @@ void main() {
 
     test('returns country code', () {
       expect(
-        IntAddressData.countryCodes(code: CountryCode.a2),
+        IntAddressData.countryCodes(code: .a2),
         contains(address.countryCode()),
       );
 

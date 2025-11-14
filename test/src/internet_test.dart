@@ -98,10 +98,7 @@ void main() {
     );
 
     test('returns top level domain', () {
-      expect(
-        IntInternetData.tlds(TLDType.cctld),
-        contains(internet.topLevelDomain()),
-      );
+      expect(IntInternetData.tlds(.cctld), contains(internet.topLevelDomain()));
 
       final type = TLDType.geotld;
       expect(
@@ -171,7 +168,7 @@ void main() {
       final urlScheme = URLScheme.http;
       final result = internet.uri(
         urlScheme: urlScheme,
-        tldType: TLDType.gtld,
+        tldType: .gtld,
         subdomains: ['test', 'dev', 'app'],
         queryParameters: 5,
       );
@@ -185,9 +182,7 @@ void main() {
         expect(int.tryParse(octet), isA<int>());
       }
 
-      final port = int.parse(
-        internet.ipv4(portRange: PortRange.all).split(':').last,
-      );
+      final port = int.parse(internet.ipv4(portRange: .all).split(':').last);
       expect(port, inInclusiveRange(PortRange.all.min, PortRange.all.max));
 
       expect(seededInternet.ipv4(), equals(seededInternet.ipv4()));
@@ -211,8 +206,8 @@ void main() {
       }
 
       expect(
-        seededInternet.ipv4(purpose: IPv4Purpose.loopback),
-        equals(seededInternet.ipv4(purpose: IPv4Purpose.loopback)),
+        seededInternet.ipv4(purpose: .loopback),
+        equals(seededInternet.ipv4(purpose: .loopback)),
       );
     });
 

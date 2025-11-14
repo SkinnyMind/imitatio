@@ -127,7 +127,7 @@ class EnCaPersonData extends PersonDataset {
   @override
   List<String> names(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "Alexa",
         "Alexandra",
         "Alice",
@@ -229,7 +229,7 @@ class EnCaPersonData extends PersonDataset {
         "Émilie",
         "Émy",
       ],
-      Gender.male => const [
+      .male => const [
         "Aaron",
         "Adam",
         "Aidan",
@@ -2585,8 +2585,8 @@ class EnCaPersonData extends PersonDataset {
   @override
   List<String> titles({required Gender gender, required TitleType titleType}) {
     return switch (gender) {
-      Gender.female =>
-        titleType == TitleType.academic
+      .female =>
+        titleType == .academic
             ? const [
                 "Dr.",
                 "Prof.",
@@ -2604,8 +2604,8 @@ class EnCaPersonData extends PersonDataset {
                 "P.Eng.",
               ]
             : const ["Mrs.", "Ms.", "Miss", "Madam"],
-      Gender.male =>
-        titleType == TitleType.academic
+      .male =>
+        titleType == .academic
             ? const [
                 "Dr.",
                 "Prof.",

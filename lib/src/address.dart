@@ -14,7 +14,7 @@ class Address {
   ///
   /// [seed] is optional parameter to initialize the internal state of the
   /// random generator.
-  const Address({this.locale = Locale.en, this.seed});
+  const Address({this.locale = .en, this.seed});
 
   final Locale locale;
 
@@ -65,7 +65,7 @@ class Address {
   /// Address().address; // "160 Cayuga Place"
   /// ```
   String get address {
-    if (locale == Locale.ja) {
+    if (locale == .ja) {
       final random = Random(seed);
       final numbers = List.generate(3, (_) => random.integer(min: 1, max: 100));
       return '$city ${numbers.join('-')}';
@@ -185,7 +185,7 @@ class Address {
   /// Address().countryCode(); // "AM"
   /// Address().countryCode(code: CountryCode.numeric); // "850"
   /// ```
-  String countryCode({CountryCode code = CountryCode.a2}) {
+  String countryCode({CountryCode code = .a2}) {
     final data = IntAddressData.countryCodes(code: code);
     return data[Random(seed).integer(max: data.length - 1)];
   }

@@ -3,7 +3,7 @@ import 'package:imitatio/src/enums.dart';
 class UkraineSpecificData {
   List<String> patronymics({required Gender gender}) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "Ааронівна",
         "Абрамівна",
         "Августівна",
@@ -141,7 +141,7 @@ class UkraineSpecificData {
         "Якубівна",
         "Ярославівна",
       ],
-      Gender.male => const [
+      .male => const [
         "Ааронович",
         "Абрамович",
         "Августович",

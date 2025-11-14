@@ -121,14 +121,14 @@ class Person {
     final name = this.name(gender: gender);
     final surname = this.surname(gender: gender);
     final patronymic = switch (locale) {
-      Locale.ru => this.patronymic(gender: gender),
-      Locale.uk => this.patronymic(gender: gender),
+      .ru => this.patronymic(gender: gender),
+      .uk => this.patronymic(gender: gender),
       _ => '',
     };
     return switch (locale) {
-      Locale.ru =>
+      .ru =>
         reverse ? '$surname $name $patronymic' : '$name $patronymic $surname',
-      Locale.uk =>
+      .uk =>
         reverse ? '$surname $name $patronymic' : '$name $patronymic $surname',
       _ => reverse ? '$surname $name' : '$name $surname',
     };

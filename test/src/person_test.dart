@@ -36,25 +36,25 @@ void main() {
       for (final gender in Gender.values) {
         expect(
           RussiaSpecificData().patronymics(gender: gender),
-          contains(const Person(locale: Locale.ru).patronymic(gender: gender)),
+          contains(const Person(locale: .ru).patronymic(gender: gender)),
         );
       }
 
       for (final gender in Gender.values) {
         expect(
           UkraineSpecificData().patronymics(gender: gender),
-          contains(const Person(locale: Locale.uk).patronymic(gender: gender)),
+          contains(const Person(locale: .uk).patronymic(gender: gender)),
         );
       }
 
       expect(
-        const Person(locale: Locale.ru, seed: 1).patronymic(),
-        equals(const Person(locale: Locale.ru, seed: 1).patronymic()),
+        const Person(locale: .ru, seed: 1).patronymic(),
+        equals(const Person(locale: .ru, seed: 1).patronymic()),
       );
 
       expect(
-        const Person(locale: Locale.uk, seed: 1).patronymic(),
-        equals(const Person(locale: Locale.uk, seed: 1).patronymic()),
+        const Person(locale: .uk, seed: 1).patronymic(),
+        equals(const Person(locale: .uk, seed: 1).patronymic()),
       );
     });
 
@@ -88,13 +88,13 @@ void main() {
 
       expect(seededPerson.fullName(), equals(seededPerson.fullName()));
 
-      final ruResult = const Person(locale: Locale.ru).fullName().split(' ');
+      final ruResult = const Person(locale: .ru).fullName().split(' ');
       expect(ruResult.length, equals(3));
       expect(ruResult[0], isNotEmpty);
       expect(ruResult[1], isNotEmpty);
       expect(ruResult[2], isNotEmpty);
 
-      final ukResult = const Person(locale: Locale.uk).fullName().split(' ');
+      final ukResult = const Person(locale: .uk).fullName().split(' ');
       expect(ukResult.length, equals(3));
       expect(ukResult[0], isNotEmpty);
       expect(ukResult[1], isNotEmpty);

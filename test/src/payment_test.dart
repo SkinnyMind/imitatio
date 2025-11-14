@@ -56,10 +56,7 @@ void main() {
 
       for (var i = 0; i < 10; i++) {
         final result = int.parse(
-          payment
-              .creditCardNumber(cardType: CardType.masterCard)
-              .split(' ')
-              .first,
+          payment.creditCardNumber(cardType: .masterCard).split(' ').first,
         );
         expect(result, inInclusiveRange(2221, 5599));
       }

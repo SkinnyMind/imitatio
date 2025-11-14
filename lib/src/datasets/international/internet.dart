@@ -144,7 +144,7 @@ class IntInternetData {
 
   static List<String> tlds(TLDType type) {
     return switch (type) {
-      TLDType.cctld => const [
+      .cctld => const [
         ".ac",
         ".ad",
         ".ae",
@@ -402,7 +402,7 @@ class IntInternetData {
         ".zr",
         ".zw",
       ],
-      TLDType.gtld => const [
+      .gtld => const [
         ".academy",
         ".accountant",
         ".accountants",
@@ -945,7 +945,7 @@ class IntInternetData {
         ".zuerich",
         ".zulu",
       ],
-      TLDType.geotld => const [
+      .geotld => const [
         ".abudhabi",
         ".africa",
         ".africa",
@@ -1005,8 +1005,8 @@ class IntInternetData {
         ".zuerich",
         ".zulu",
       ],
-      TLDType.utld => const [".com", ".org", ".net", ".biz", ".info", ".name"],
-      TLDType.stld => const [
+      .utld => const [".com", ".org", ".net", ".biz", ".info", ".name"],
+      .stld => const [
         ".aero",
         ".asia",
         ".cat",

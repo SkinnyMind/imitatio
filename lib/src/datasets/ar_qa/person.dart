@@ -99,7 +99,7 @@ class ArQaPersonData extends PersonDataset {
   @override
   List<String> names(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "فاطمة",
         "زينب",
         "صباح",
@@ -172,7 +172,7 @@ class ArQaPersonData extends PersonDataset {
         "نور الهدى",
         "نور الايمان",
       ],
-      Gender.male => const [
+      .male => const [
         "آدم",
         "أنيس",
         "أكرم",
@@ -554,14 +554,12 @@ class ArQaPersonData extends PersonDataset {
   @override
   List<String> titles({required Gender gender, required TitleType titleType}) {
     return switch (gender) {
-      Gender.female =>
-        titleType == TitleType.typical
+      .female =>
+        titleType == .typical
             ? const ["السيدة"]
             : const ["الدكتورة", "الاستاذة"],
-      Gender.male =>
-        titleType == TitleType.typical
-            ? const ["السيد"]
-            : const ["الدكتور", "الاستاذ"],
+      .male =>
+        titleType == .typical ? const ["السيد"] : const ["الدكتور", "الاستاذ"],
     };
   }
 

@@ -28,7 +28,7 @@ class IntTextData {
 
   static List<String> emojis({required EmojiCategory category}) {
     return switch (category) {
-      EmojiCategory.smileysAndEmotion => const [
+      .smileysAndEmotion => const [
         "\u{1F600}",
         "\u{1F603}",
         "\u{1F604}",
@@ -196,7 +196,7 @@ class IntTextData {
         "\u{1F4AD}",
         "\u{1F4A4}",
       ],
-      EmojiCategory.peopleAndBody => const [
+      .peopleAndBody => const [
         "\u{1F44B}",
         "\u{1F91A}",
         "\u{1F590}",
@@ -560,7 +560,7 @@ class IntTextData {
         "\u{1FAC2}",
         "\u{1F46}3",
       ],
-      EmojiCategory.animalsAndNature => const [
+      .animalsAndNature => const [
         "\u{1F435}",
         "\u{1F412}",
         "\u{1F98D}",
@@ -714,7 +714,7 @@ class IntTextData {
         "\u{1FABA}",
         "\u{1F344}",
       ],
-      EmojiCategory.foodAndDrink => const [
+      .foodAndDrink => const [
         "\u{1F347}",
         "\u{1F348}",
         "\u{1F349}",
@@ -849,7 +849,7 @@ class IntTextData {
         "\u{1FAD9}",
         "\u{1F3FA}",
       ],
-      EmojiCategory.travelAndPlaces => const [
+      .travelAndPlaces => const [
         "\u{1F30D}",
         "\u{1F30E}",
         "\u{1F30F}",
@@ -1069,7 +1069,7 @@ class IntTextData {
         "\u{1F4A7}",
         "\u{1F30A}",
       ],
-      EmojiCategory.activities => const [
+      .activities => const [
         "\u{1F383}",
         "\u{1F384}",
         "\u{1F386}",
@@ -1156,7 +1156,7 @@ class IntTextData {
         "\u{1F9F6}",
         "\u{1FAA2}",
       ],
-      EmojiCategory.objects => const [
+      .objects => const [
         "\u{1F453}",
         "\u{1F576}",
         "\u{1F97D}",
@@ -1419,7 +1419,7 @@ class IntTextData {
         "\u{1FAA7}",
         "\u{1FAAA}",
       ],
-      EmojiCategory.symbols => const [
+      .symbols => const [
         "\u{1F3E7}",
         "\u{1F6AE}",
         "\u{1F6B0}",
@@ -1644,7 +1644,7 @@ class IntTextData {
         "\u{1F533}",
         "\u{1F532}",
       ],
-      EmojiCategory.flags => const [
+      .flags => const [
         "\u{1F3C1}",
         "\u{1F6A9}",
         "\u{1F38C}",

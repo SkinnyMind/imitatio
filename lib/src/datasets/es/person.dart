@@ -324,7 +324,7 @@ class EsPersonData extends PersonDataset {
   @override
   List<String> names(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         "Ababa",
         "Abigaíl",
         "Adela",
@@ -664,7 +664,7 @@ class EsPersonData extends PersonDataset {
         "Ángeles",
         "Úrsula",
       ],
-      Gender.male => const [
+      .male => const [
         "Aarón",
         "Adrián",
         "Agapetus",
@@ -887,7 +887,7 @@ class EsPersonData extends PersonDataset {
   @override
   List<String> nationalities(Gender gender) {
     return switch (gender) {
-      Gender.female => const [
+      .female => const [
         'Albana',
         'Afgana',
         'Argelina',
@@ -1069,7 +1069,7 @@ class EsPersonData extends PersonDataset {
         'Zambiana',
         'Zimbabuense',
       ],
-      Gender.male => const [
+      .male => const [
         'Albano',
         'Afgano',
         'Argelino',
@@ -1556,8 +1556,8 @@ class EsPersonData extends PersonDataset {
   @override
   List<String> titles({required Gender gender, required TitleType titleType}) {
     return switch (gender) {
-      Gender.female =>
-        titleType == TitleType.academic
+      .female =>
+        titleType == .academic
             ? const [
                 "Doctorado",
                 "Grado",
@@ -1575,8 +1575,8 @@ class EsPersonData extends PersonDataset {
                 "PSM",
               ]
             : const ["Doña", "D.ª"],
-      Gender.male =>
-        titleType == TitleType.academic
+      .male =>
+        titleType == .academic
             ? const [
                 "Doctorado",
                 "Grado",

@@ -6,7 +6,7 @@ class IntFileData {
 
   static List<String> extensions(FileType fileType) {
     return switch (fileType) {
-      FileType.source => const [
+      .source => const [
         ".a",
         ".asm",
         ".asp",
@@ -43,7 +43,7 @@ class IntFileData {
         ".sql",
         ".dart",
       ],
-      FileType.text => const [
+      .text => const [
         ".doc",
         ".docx",
         ".log",
@@ -53,27 +53,12 @@ class IntFileData {
         ".odt",
         ".txt",
       ],
-      FileType.data => const [".csv", ".dat", ".ged", ".pps", ".ppt", ".pptx"],
-      FileType.audio => const [".flac", ".mp3", ".m3u", ".m4a", ".wav", ".wma"],
-      FileType.video => const [
-        ".3gp",
-        ".mp4",
-        ".abi",
-        ".m4v",
-        ".mov",
-        ".mpg",
-        ".wmv",
-      ],
-      FileType.image => const [".bmp", ".jpg", ".jpeg", ".png", ".svg"],
-      FileType.executable => const [
-        ".apk",
-        ".app",
-        ".bat",
-        ".jar",
-        ".com",
-        ".exe",
-      ],
-      FileType.compressed => const [
+      .data => const [".csv", ".dat", ".ged", ".pps", ".ppt", ".pptx"],
+      .audio => const [".flac", ".mp3", ".m3u", ".m4a", ".wav", ".wma"],
+      .video => const [".3gp", ".mp4", ".abi", ".m4v", ".mov", ".mpg", ".wmv"],
+      .image => const [".bmp", ".jpg", ".jpeg", ".png", ".svg"],
+      .executable => const [".apk", ".app", ".bat", ".jar", ".com", ".exe"],
+      .compressed => const [
         ".7z",
         ".war",
         ".zip",
@@ -86,7 +71,7 @@ class IntFileData {
 
   static List<String> mimeTypes(MimeType mimeType) {
     return switch (mimeType) {
-      MimeType.application => const [
+      .application => const [
         "application/1d-interleaved-parityfec",
         "application/3gpdash-qoe-report+xml",
         "application/3gpp-ims+xml",
@@ -1137,7 +1122,7 @@ class IntFileData {
         "application/zip",
         "application/zlib",
       ],
-      MimeType.audio => const [
+      .audio => const [
         "audio/1d-interleaved-parityfec",
         "audio/32kadpcm",
         "audio/3gpp",
@@ -1280,7 +1265,7 @@ class IntFileData {
         "audio/vorbis",
         "audio/vorbis-config",
       ],
-      MimeType.image => const [
+      .image => const [
         "image/cgm",
         "image/example",
         "image/fits",
@@ -1330,7 +1315,7 @@ class IntFileData {
         "image/vnd.xiff",
         "image/vnd.zbrush.pcx",
       ],
-      MimeType.message => const [
+      .message => const [
         "message/CPIM",
         "message/delivery-status",
         "message/disposition-notification",
@@ -1353,7 +1338,7 @@ class IntFileData {
         "message/vnd.si.simp",
         "message/vnd.wfa.wsc",
       ],
-      MimeType.text => const [
+      .text => const [
         "text/1d-interleaved-parityfec",
         "text/cache-manifest",
         "text/calendar",
@@ -1423,7 +1408,7 @@ class IntFileData {
         "text/xml",
         "text/xml-external-parsed-entity",
       ],
-      MimeType.video => const [
+      .video => const [
         "video/1d-interleaved-parityfec",
         "video/3gpp",
         "video/3gpp-tt",

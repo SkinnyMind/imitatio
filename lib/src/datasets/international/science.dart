@@ -6,7 +6,7 @@ class IntScienceData {
 
   static List<String> prefixes(MetricPrefixSign sign) {
     return switch (sign) {
-      MetricPrefixSign.negative => const [
+      .negative => const [
         "deci",
         "centi",
         "milli",
@@ -18,7 +18,7 @@ class IntScienceData {
         "zepto",
         "yocto",
       ],
-      MetricPrefixSign.positive => const [
+      .positive => const [
         "yotta",
         "zetta",
         "exa",
@@ -35,30 +35,8 @@ class IntScienceData {
 
   static List<String> prefixesSymbols(MetricPrefixSign sign) {
     return switch (sign) {
-      MetricPrefixSign.negative => const [
-        "d",
-        "c",
-        "m",
-        "μ",
-        "n",
-        "p",
-        "f",
-        "a",
-        "z",
-        "y",
-      ],
-      MetricPrefixSign.positive => const [
-        "Y",
-        "Z",
-        "E",
-        "P",
-        "T",
-        "G",
-        "M",
-        "k",
-        "h",
-        "da",
-      ],
+      .negative => const ["d", "c", "m", "μ", "n", "p", "f", "a", "z", "y"],
+      .positive => const ["Y", "Z", "E", "P", "T", "G", "M", "k", "h", "da"],
     };
   }
 }
