@@ -455,4 +455,31 @@ class Internet {
     final number = Random(seed).integer(min: 1, max: 4199999999);
     return 'AS$number';
   }
+
+  /// Returns a random cloud provider region identifier.
+  ///
+  /// This generates region identifiers commonly used by cloud providers
+  /// like AWS, Azure, GCP, etc.
+  ///
+  /// [separator] is optional separator between parts (default is "-").
+  /// Example:
+  /// ```dart
+  /// Internet().cloudRegion();  // "ca-south-1"
+  /// Internet().cloudRegion(separator: '_');  // "af_central_4"
+  /// ```
+  String cloudRegion({String? separator = '-'}) {
+    final random = Random(seed);
+    final prefixesData = IntInternetData.cloudRegionPrefixes;
+    final directionsData = IntInternetData.cloudRegionDirections;
+
+    final prefix = prefixesData[random.integer(max: prefixesData.length - 1)];
+    final direction =
+        directionsData[random.integer(max: directionsData.length - 1)];
+    final zoneNumber = random.nextInt(5) + 1;
+
+    final result = StringBuffer();
+    result.writeAll([prefix, separator, direction, separator, zoneNumber]);
+
+    return result.toString();
+  }
 }

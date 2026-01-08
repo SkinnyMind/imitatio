@@ -281,5 +281,32 @@ void main() {
 
       expect(seededInternet.asn, equals(seededInternet.asn));
     });
+
+    test('returns cloud region', () {
+      final result = internet.cloudRegion();
+      final parts = result.split('-');
+      expect(parts.length, equals(3));
+
+      final prefix = parts[0];
+      final direction = parts[1];
+      final zone = parts[2];
+      expect(IntInternetData.cloudRegionPrefixes, contains(prefix));
+      expect(IntInternetData.cloudRegionDirections, contains(direction));
+      expect(int.parse(zone), inInclusiveRange(1, 5));
+    });
+
+    test('returns cloud region with custom separator', () {
+      final separator = '_';
+      final result = internet.cloudRegion(separator: separator);
+      final parts = result.split(separator);
+      expect(parts.length, equals(3));
+
+      final prefix = parts[0];
+      final direction = parts[1];
+      final zone = parts[2];
+      expect(IntInternetData.cloudRegionPrefixes, contains(prefix));
+      expect(IntInternetData.cloudRegionDirections, contains(direction));
+      expect(int.parse(zone), inInclusiveRange(1, 5));
+    });
   });
 }
