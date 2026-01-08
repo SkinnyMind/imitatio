@@ -374,6 +374,23 @@ class Internet {
     return Util.compressIPv6(address);
   }
 
+  /// Returns a random IPv6 CIDR address.
+  ///
+  /// Example:
+  /// ```dart
+  /// Internet().ipv6CIDR; // "23:1d07:e4eb:e741:cd2c:a01:6b11:da3/106"
+  /// ```
+  String get ipv6CIDR {
+    final random = Random(seed);
+
+    final ip = ipv6;
+    final prefixLength = random.nextInt(129);
+
+    final result = StringBuffer();
+    result.writeAll([ip, '/', prefixLength]);
+    return result.toString();
+  }
+
   /// Returns a random MAC address.
   ///
   /// Example:
