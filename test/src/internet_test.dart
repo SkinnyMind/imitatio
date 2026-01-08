@@ -188,6 +188,18 @@ void main() {
       expect(seededInternet.ipv4(), equals(seededInternet.ipv4()));
     });
 
+    test('returns an IPv4 CIDR address', () {
+      final result = internet.ipv4CIDR();
+
+      final cidrRegex = RegExp(r'^.+/\d{1,2}$');
+      expect(result, matches(cidrRegex));
+
+      final prefix = int.parse(result.split('/').last);
+      expect(prefix, inInclusiveRange(0, 32));
+
+      expect(seededInternet.ipv4CIDR(), seededInternet.ipv4CIDR());
+    });
+
     test('returns an IPv4 address in specific purpose range', () {
       for (final purpose in IPv4Purpose.values) {
         final result = internet.ipv4(purpose: purpose);

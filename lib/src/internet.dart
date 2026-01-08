@@ -339,6 +339,26 @@ class Internet {
     return result.toString();
   }
 
+  /// Returns a random IPv4 CIDR address.
+  ///
+  /// [purpose] is optional [IPv4Purpose].
+  ///
+  /// Example:
+  /// ```dart
+  /// Internet().ipv4CIDR(); // "14.162.244.105/31"
+  /// Internet().ipv4CIDR(purpose: IPv4Purpose.loopback); // "127.147.72.165/28"
+  /// ```
+  String ipv4CIDR({IPv4Purpose? purpose}) {
+    final random = Random(seed);
+
+    final ip = ipv4(purpose: purpose);
+    final prefixLength = random.nextInt(33);
+
+    final result = StringBuffer();
+    result.writeAll([ip, '/', prefixLength]);
+    return result.toString();
+  }
+
   /// Returns a random IPv6 address.
   ///
   /// Example:
