@@ -293,6 +293,11 @@ void main() {
       expect(IntInternetData.cloudRegionPrefixes, contains(prefix));
       expect(IntInternetData.cloudRegionDirections, contains(direction));
       expect(int.parse(zone), inInclusiveRange(1, 5));
+
+      expect(
+        seededInternet.cloudRegion(),
+        equals(seededInternet.cloudRegion()),
+      );
     });
 
     test('returns cloud region with custom separator', () {
@@ -307,6 +312,11 @@ void main() {
       expect(IntInternetData.cloudRegionPrefixes, contains(prefix));
       expect(IntInternetData.cloudRegionDirections, contains(direction));
       expect(int.parse(zone), inInclusiveRange(1, 5));
+
+      expect(
+        seededInternet.cloudRegion(separator: separator),
+        equals(seededInternet.cloudRegion(separator: separator)),
+      );
     });
   });
 }
