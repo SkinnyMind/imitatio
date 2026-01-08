@@ -1961,4 +1961,26 @@ class IntInternetData {
     "@example.com",
     "@example.org",
   ];
+
+  static const cloudRegionPrefixes = <String>[
+    "us",
+    "eu",
+    "ap",
+    "ca",
+    "sa",
+    "af",
+    "me",
+  ];
+
+  static const cloudRegionDirections = <String>[
+    "north",
+    "south",
+    "east",
+    "west",
+    "central",
+    "northeast",
+    "northwest",
+    "southeast",
+    "southwest",
+  ];
 }
