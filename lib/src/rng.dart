@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:typed_data';
 
 import 'package:imitatio/src/extensions.dart';
 import 'package:imitatio/src/util.dart';
@@ -70,15 +71,16 @@ class Rng {
       );
     }
 
-    final code = <int>[];
+    final length = maskCodes.length;
+    final code = Uint16List(length);
 
-    for (var i = 0; i < maskCodes.length; i++) {
+    for (var i = 0; i < length; i++) {
       if (maskCodes[i] == digitCode) {
-        code.add(random.integer(min: 48, max: 57));
+        code[i] = 48 + random.nextInt(10);
       } else if (maskCodes[i] == charCode) {
-        code.add(random.integer(min: 65, max: 90));
+        code[i] = 65 + random.nextInt(26);
       } else {
-        code.add(maskCodes[i]);
+        code[i] = maskCodes[i];
       }
     }
     return String.fromCharCodes(code);
