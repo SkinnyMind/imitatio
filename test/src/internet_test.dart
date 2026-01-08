@@ -188,18 +188,6 @@ void main() {
       expect(seededInternet.ipv4(), equals(seededInternet.ipv4()));
     });
 
-    test('returns an IPv4 CIDR address', () {
-      final result = internet.ipv4CIDR();
-
-      final cidrRegex = RegExp(r'^.+/\d{1,2}$');
-      expect(result, matches(cidrRegex));
-
-      final prefix = int.parse(result.split('/').last);
-      expect(prefix, inInclusiveRange(0, 32));
-
-      expect(seededInternet.ipv4CIDR(), seededInternet.ipv4CIDR());
-    });
-
     test('returns an IPv4 address in specific purpose range', () {
       for (final purpose in IPv4Purpose.values) {
         final result = internet.ipv4(purpose: purpose);
@@ -223,23 +211,44 @@ void main() {
       );
     });
 
+    test('returns an IPv4 CIDR address', () {
+      final result = internet.ipv4CIDR();
+      final cidrRegex = RegExp(r'^.+/\d{1,2}$');
+      expect(result, matches(cidrRegex));
+
+      final prefix = int.parse(result.split('/').last);
+      expect(prefix, inInclusiveRange(0, 32));
+
+      expect(seededInternet.ipv4CIDR(), equals(seededInternet.ipv4CIDR()));
+    });
+
     test('returns an IPv6 address', () {
       final result = internet.ipv6;
       final regexp = RegExp(
         r'^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))$',
       );
-      expect(regexp.hasMatch(result), true);
+      expect(result, matches(regexp));
 
       expect(seededInternet.ipv6, equals(seededInternet.ipv6));
     });
 
+    test('returns an IPv6 CIDR address', () {
+      final result = internet.ipv6CIDR;
+
+      final ipv6CidrRegex = RegExp(r'^[:a-fA-F0-9]+/\d{1,3}$');
+      expect(result, matches(ipv6CidrRegex));
+
+      final prefixPart = result.split('/').last;
+      final prefix = int.parse(prefixPart);
+      expect(prefix, inInclusiveRange(0, 128));
+
+      expect(seededInternet.ipv6CIDR, equals(seededInternet.ipv6CIDR));
+    });
+
     test('returns a mac address', () {
-      expect(
-        RegExp(
-          r'^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$',
-        ).hasMatch(internet.macAddress),
-        true,
-      );
+      final result = internet.macAddress;
+      final regexp = RegExp(r'^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$');
+      expect(result, matches(regexp));
 
       expect(seededInternet.macAddress, equals(seededInternet.macAddress));
     });
