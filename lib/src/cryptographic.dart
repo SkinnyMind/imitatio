@@ -2,7 +2,9 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:crypto/crypto.dart';
+import 'package:imitatio/src/datasets/international/cryptographic.dart';
 import 'package:imitatio/src/enums.dart';
+import 'package:imitatio/src/extensions.dart';
 import 'package:imitatio/src/util.dart';
 
 /// Provides pseudo-cryptographic data.
@@ -90,5 +92,22 @@ class Cryptographic {
   String tokenUrlSafe({int entropy = 32}) {
     final bytes = tokenBytes(entropy: entropy);
     return base64UrlEncode(bytes);
+  }
+
+  /// Returns BIP-39 looking mnemonic phrase.
+  ///
+  /// Example:
+  /// ```dart
+  /// Cryptographic().mnemonicPhrase; // "fee unveil paper author island often weekend basket beef meadow wool draft nut ecology"
+  /// ```
+  String get mnemonicPhrase {
+    final random = Random(seed);
+    final length = random.integer(min: 12, max: 24);
+    final words = Util.pickN(
+      list: IntCryptographicData.wordlist,
+      n: length,
+      seed: seed,
+    );
+    return words.join(' ');
   }
 }
