@@ -33,5 +33,20 @@ void main() {
         );
       }
     });
+
+    test('returns list with token bytes', () {
+      final result = crypto.tokenBytes();
+      expect(result.length, equals(32));
+      expect(seededCrypto.tokenBytes(), equals(seededCrypto.tokenBytes()));
+
+      for (final entropy in [64, 128]) {
+        final result = crypto.tokenBytes(entropy: entropy);
+        expect(result.length, equals(entropy));
+        expect(
+          seededCrypto.tokenBytes(entropy: entropy),
+          equals(seededCrypto.tokenBytes(entropy: entropy)),
+        );
+      }
+    });
   });
 }

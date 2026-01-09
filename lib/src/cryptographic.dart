@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:crypto/crypto.dart';
 import 'package:imitatio/src/enums.dart';
@@ -40,5 +41,22 @@ class Cryptographic {
       .sha384 => sha384.convert(bytes).toString(),
       .sha512 => sha512.convert(bytes).toString(),
     };
+  }
+
+  /// Returns list of bytes with [entropy] length.
+  ///
+  /// [entropy] is optional number of bytes (default is 32).
+  ///
+  /// Example:
+  /// ```dart
+  /// Cryptographic().tokenBytes(); // "[254, 81, 131, 131, 13, 58, 16, 194, 130, 176, 115, 27, 161, 15, 36, 244, 146, 3, 189, 115, 119, 10, 49, 26, 9, 40, 16, 219, 94, 146, 2, 227]"
+  /// ```
+  List<int> tokenBytes({int entropy = 32}) {
+    final random = Random(seed);
+    return List<int>.generate(
+      entropy,
+      (i) => random.nextInt(256),
+      growable: false,
+    );
   }
 }
