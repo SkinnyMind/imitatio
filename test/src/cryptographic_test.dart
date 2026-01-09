@@ -78,5 +78,11 @@ void main() {
         );
       }
     });
+
+    test('returns mnemonic phrase', () {
+      final result = crypto.mnemonicPhrase;
+      expect(result.split(' ').length, inInclusiveRange(12, 24));
+      expect(seededCrypto.mnemonicPhrase, equals(seededCrypto.mnemonicPhrase));
+    });
   });
 }
