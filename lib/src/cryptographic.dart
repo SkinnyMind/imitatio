@@ -77,4 +77,18 @@ class Cryptographic {
     }
     return result.toString();
   }
+
+  /// Returns a random URL-safe Base64-encoded string (padded).
+  ///
+  /// [entropy] is optional number of bytes (default is 32).
+  ///
+  /// Example:
+  /// ```dart
+  /// Cryptographic().tokenUrlSafe(); // "ti3YgkBb5xftxifepAgtKSWNM6uDEgr0R_OZV6XpfRs="
+  /// Cryptographic().tokenUrlSafe(entropy: 64); // "HgudGr6yXgulDTK23x49-WPv3PqB7mn-D7n4fgNWMDGGCaffLD_0eXj4KpnAfPWImV5FzZiGFL4t3irb8FH29A=="
+  /// ```
+  String tokenUrlSafe({int entropy = 32}) {
+    final bytes = tokenBytes(entropy: entropy);
+    return base64UrlEncode(bytes);
+  }
 }

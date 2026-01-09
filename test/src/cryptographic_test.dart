@@ -63,5 +63,20 @@ void main() {
         );
       }
     });
+
+    test('returns url-safe base64 padded string', () {
+      final result = crypto.tokenUrlSafe();
+      expect(result.length, greaterThan(32));
+      expect(seededCrypto.tokenUrlSafe(), equals(seededCrypto.tokenUrlSafe()));
+
+      for (final entropy in [64, 128]) {
+        final result = crypto.tokenUrlSafe(entropy: entropy);
+        expect(result.length, greaterThan(entropy));
+        expect(
+          seededCrypto.tokenUrlSafe(entropy: entropy),
+          equals(seededCrypto.tokenUrlSafe(entropy: entropy)),
+        );
+      }
+    });
   });
 }
