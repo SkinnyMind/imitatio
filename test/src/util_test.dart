@@ -28,6 +28,14 @@ void main() {
       expect(Util.isLeapYear(year: 2021), false);
     });
 
+    test('returns uuidv4 string', () {
+      final uuidRegex = RegExp(
+        '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}',
+      );
+      expect(Util.uuidV4(), matches(uuidRegex));
+      expect(Util.uuidV4(seed: 69), equals(Util.uuidV4(seed: 69)));
+    });
+
     test('returns luhn checksum', () {
       expect(Util.luhnChecksum('5563455651'), equals('2'));
       expect(Util.luhnChecksum('7992739871'), equals('3'));

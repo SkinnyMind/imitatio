@@ -55,11 +55,12 @@ class Util {
   }
 
   // Taken from https://github.com/Daegalus/dart-uuid
-  static String get uuidV4 {
+  static String uuidV4({int? seed}) {
+    final random = Random(seed);
     final rng = Uint8List(16);
 
     for (var i = 0; i < 16; i += 4) {
-      final k = Random().nextInt(pow(2, 32).toInt());
+      final k = random.nextInt(pow(2, 32).toInt());
       rng[i] = k;
       rng[i + 1] = k >> 8;
       rng[i + 2] = k >> 16;
