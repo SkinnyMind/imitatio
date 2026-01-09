@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:imitatio/imitatio.dart';
 import 'package:test/test.dart';
 
@@ -83,6 +85,76 @@ void main() {
       final result = crypto.mnemonicPhrase;
       expect(result.split(' ').length, inInclusiveRange(12, 24));
       expect(seededCrypto.mnemonicPhrase, equals(seededCrypto.mnemonicPhrase));
+    });
+
+    test('returns JWT with default params', () {
+      final result = crypto.jwt();
+      final parts = result.split('.');
+      expect(parts.length, equals(3));
+
+      final headerJson = base64.decode(base64Url.normalize(parts[0]));
+      final header =
+          jsonDecode(utf8.decode(headerJson)) as Map<String, dynamic>;
+      expect(header['alg'], equals('HS256'));
+      expect(header['typ'], equals('JWT'));
+
+      final payloadJson = base64.decode(base64Url.normalize(parts[1]));
+      final payload =
+          jsonDecode(utf8.decode(payloadJson)) as Map<String, dynamic>;
+      expect(payload['sub'], isNotEmpty);
+      expect(payload['name'], equals('Test User'));
+      expect(payload['iat'], isA<int>());
+      expect(payload['exp'], isA<int>());
+
+      expect(seededCrypto.jwt(), equals(seededCrypto.jwt()));
+    });
+
+    test('returns JWT with provided algorithm', () {
+      const algorithm = 'HS512';
+
+      final result = crypto.jwt(algorithm: algorithm);
+      final parts = result.split('.');
+      expect(parts.length, equals(3));
+
+      final headerJson = base64.decode(base64Url.normalize(parts[0]));
+      final header =
+          jsonDecode(utf8.decode(headerJson)) as Map<String, dynamic>;
+      expect(header['alg'], equals(algorithm));
+
+      expect(
+        seededCrypto.jwt(algorithm: algorithm),
+        equals(seededCrypto.jwt(algorithm: algorithm)),
+      );
+    });
+
+    test('returns JWT with provided payload', () {
+      const payloads = [
+        {'user_id': 123, 'role': 'admin'},
+        {
+          'sub': 'user@example.com',
+          'permissions': ['read', 'write'],
+        },
+        {
+          'custom_field': 'value',
+          'nested': {'key': 'value'},
+        },
+        {'empty': null, 'bool': true, "number": 42},
+      ];
+
+      for (final p in payloads) {
+        final result = crypto.jwt(payload: p);
+        final parts = result.split('.');
+        expect(parts.length, equals(3));
+
+        final payloadJson = base64.decode(base64Url.normalize(parts[1]));
+        final payload =
+            jsonDecode(utf8.decode(payloadJson)) as Map<String, dynamic>;
+        expect(payload, equals(p));
+        expect(
+          seededCrypto.jwt(payload: p),
+          equals(seededCrypto.jwt(payload: p)),
+        );
+      }
     });
   });
 }

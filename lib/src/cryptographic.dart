@@ -110,4 +110,35 @@ class Cryptographic {
     );
     return words.join(' ');
   }
+
+  /// Returns JWT-like token structure.
+  ///
+  /// [payload] is optional JWT payload (claims). If none provided default
+  /// payload is used.
+  ///
+  /// [algorithm] is optional JWT algorithm (default is "HS256").
+  ///
+  /// Example:
+  /// ```dart
+  /// Cryptographic().jwt(); // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3NjZmZGFjNi0yNjU3LTQ1NTQtYTNiMy01MGI2ODIyOTRmNmUiLCJuYW1lIjoiVGVzdCBVc2VyIiwiaWF0IjoxNzY3OTY5NDM2LCJleHAiOjE3Njc5NzMwMzZ9.OLkALspgIX982pMKceErTpSOwNLSv-Uhtyu-ZO7yi5U"
+  /// ```
+  String jwt({Map<String, dynamic>? payload, String algorithm = 'HS256'}) {
+    final header = {'alg': algorithm, 'typ': 'JWT'};
+
+    final now = DateTime.now();
+    final iat = now.millisecondsSinceEpoch ~/ 1000;
+    final exp = iat + 3600;
+
+    payload ??= {'sub': uuid, 'name': 'Test User', 'iat': iat, 'exp': exp};
+
+    final headerJson = jsonEncode(header);
+    final payloadJson = jsonEncode(payload);
+
+    final base64UrlEncoder = utf8.fuse(base64Url);
+    final header64 = base64UrlEncoder.encode(headerJson).replaceAll('=', '');
+    final payload64 = base64UrlEncoder.encode(payloadJson).replaceAll('=', '');
+    final signature = base64UrlEncode(tokenBytes()).replaceAll('=', '');
+
+    return '$header64.$payload64.$signature';
+  }
 }
