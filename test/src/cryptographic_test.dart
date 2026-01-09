@@ -48,5 +48,20 @@ void main() {
         );
       }
     });
+
+    test('returns hex string', () {
+      final result = crypto.tokenHex();
+      expect(result.length, equals(32 * 2));
+      expect(seededCrypto.tokenHex(), equals(seededCrypto.tokenHex()));
+
+      for (final entropy in [64, 128]) {
+        final result = crypto.tokenHex(entropy: entropy);
+        expect(result.length, equals(entropy * 2));
+        expect(
+          seededCrypto.tokenHex(entropy: entropy),
+          equals(seededCrypto.tokenHex(entropy: entropy)),
+        );
+      }
+    });
   });
 }

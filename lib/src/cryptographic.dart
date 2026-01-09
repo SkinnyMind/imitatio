@@ -59,4 +59,22 @@ class Cryptographic {
       growable: false,
     );
   }
+
+  /// Returns a random hex string list.
+  ///
+  /// [entropy] is optional number of bytes (default is 32), each byte is
+  /// converted to two hex digits.
+  ///
+  /// Example:
+  /// ```dart
+  /// Cryptographic().tokenHex(); // "3d69585754a350a66ceed077a875dc740d402b75d8b2c748ad7226f7b6ee7140"
+  /// ```
+  String tokenHex({int entropy = 32}) {
+    final bytes = tokenBytes(entropy: entropy);
+    final result = StringBuffer();
+    for (final byte in bytes) {
+      result.write(byte.toRadixString(16).padLeft(2, '0'));
+    }
+    return result.toString();
+  }
 }
