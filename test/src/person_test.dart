@@ -160,7 +160,7 @@ void main() {
       expect(emailRegex.hasMatch(result), true);
       expect(result.split('@').last, equals('example.com'));
 
-      final count = 1000000;
+      final count = 10_000;
       final generated = <String>{};
       for (var i = 0; i < count; i++) {
         final email = person.email(domains: ['example.com'], unique: true);

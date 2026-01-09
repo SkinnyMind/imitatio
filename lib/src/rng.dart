@@ -22,7 +22,7 @@ class Rng {
   /// Rng.randomString(length: 5); // "pNADq"
   /// ```
   static String randomString({bool unique = false, int? length, int? seed}) {
-    if (unique) return Util.uuidV4;
+    if (unique) return Util.uuidV4(seed: seed);
     final chars =
         'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'.split(
           '',
