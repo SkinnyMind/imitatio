@@ -13,5 +13,25 @@ void main() {
       expect(crypto.uuid, matches(uuidRegex));
       expect(seededCrypto.uuid, equals(seededCrypto.uuid));
     });
+
+    test('returns hash string', () {
+      final expectedLength = {
+        Algorithm.md5: 32,
+        Algorithm.sha1: 40,
+        Algorithm.sha224: 56,
+        Algorithm.sha256: 64,
+        Algorithm.sha384: 96,
+        Algorithm.sha512: 128,
+      };
+
+      for (final alg in expectedLength.entries) {
+        final result = crypto.hash(algorithm: alg.key);
+        expect(result.length, equals(alg.value));
+        expect(
+          seededCrypto.hash(algorithm: alg.key),
+          equals(seededCrypto.hash(algorithm: alg.key)),
+        );
+      }
+    });
   });
 }
