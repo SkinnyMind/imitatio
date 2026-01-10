@@ -1,3 +1,21 @@
+## 1.3.0
+
+- feat(cryptographic): add `certificateFingerprint` API method
+- feat(cryptographic): add `apiKey` API method
+- feat(cryptographic): add `jwt` API method
+- feat(cryptographic): add `mnemonicPhrase` API method
+- feat(cryptographic): add `tokenUrlSafe` API method
+- feat(cryptographic): add `tokenHex` API method
+- feat(cryptographic): add `tokenBytes` API method
+- feat(cryptographic): add `hash` API method
+- feat(cryptographic): add `uuid` API method
+- feat(internet): add `cloudRegion` API method
+- feat(internet): add `ipv6CIDR` API method
+- feat(internet): add `ipv4CIDR` API method
+- perf(rng): improve performance of `customCode` mask
+- deps: upgrade versions and checkin `pubspec.lock`
+- deps: bump Dart SDK to 3.10.0
+
 ## 1.2.0
 
 - feat: WASM compatibility
