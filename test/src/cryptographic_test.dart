@@ -156,5 +156,41 @@ void main() {
         );
       }
     });
+
+    test('returns api key with default params', () {
+      final result = crypto.apiKey();
+      expect(result.length, equals(32));
+      expect(seededCrypto.apiKey(), equals(seededCrypto.apiKey()));
+    });
+
+    test('returns api key with provided params', () {
+      const params = [
+        // [prefix, length, asHex, expectedMinLength]
+        ('', 32, true, 32),
+        ('sk_', 32, true, 35),
+        ('pk_', 32, true, 35),
+        ('api_', 32, true, 36),
+        ('', 64, true, 64),
+        ('test_', 16, true, 21),
+        ('', 32, false, 32),
+        ('sk_', 32, false, 35),
+        ('pk_', 48, false, 51),
+      ];
+
+      for (final (prefix, length, asHex, expectedMinLength) in params) {
+        final result = crypto.apiKey(
+          prefix: prefix,
+          length: length,
+          asHex: asHex,
+        );
+        expect(result.length, equals(expectedMinLength));
+        expect(
+          seededCrypto.apiKey(prefix: prefix, length: length, asHex: asHex),
+          equals(
+            seededCrypto.apiKey(prefix: prefix, length: length, asHex: asHex),
+          ),
+        );
+      }
+    });
   });
 }

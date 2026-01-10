@@ -141,4 +141,29 @@ class Cryptographic {
 
     return '$header64.$payload64.$signature';
   }
+
+  /// Returns API key.
+  ///
+  /// [prefix] is optional prefix string (e.g. `sk_`, `pk_`, `api_`).
+  /// Default is no prefix.
+  ///
+  /// [length] is optiontal legnth of the random part (default is 32).
+  ///
+  /// [asHex] determines whether returned string should be in hex or base64
+  /// (default is hex).
+  ///
+  /// Example:
+  /// ```dart
+  /// Cryptographic().apiKey(); // "f59e6e027fd23b6721cfa79eb28f58ae"
+  /// Cryptographic().apiKey(prefix: 'sk_'); // "sk_e95cabd07b0ac9222799ecd4937e6137"
+  /// Cryptographic().apiKey(prefix: 'pk_', length: 48, asHex: false); // "pk_F7gwa47ywr3yi6UDG-El4sqNUCN_maLAcjZY5omAONoa2WBR"
+  /// ```
+  String apiKey({String prefix = '', int length = 32, bool asHex = true}) {
+    final key = asHex
+        ? tokenHex(entropy: length ~/ 2)
+        : tokenUrlSafe(
+            entropy: length,
+          ).replaceAll('=', '').substring(0, length);
+    return '$prefix$key';
+  }
 }
