@@ -192,5 +192,35 @@ void main() {
         );
       }
     });
+
+    test('returns certificate fingerprint with default params', () {
+      final result = crypto.certificateFingerprint();
+      expect(result.length, equals(95)); // 32 bytes * 2 hex chars + 31 colons
+      expect(":".allMatches(result).length, 31);
+      expect(result.contains(RegExp('[A-Z]')), isTrue);
+      expect(
+        seededCrypto.certificateFingerprint(),
+        equals(seededCrypto.certificateFingerprint()),
+      );
+    });
+
+    test('returns ertificate fingerprint with provided params', () {
+      const params = [
+        // [asSha256, expectedLength, expectedColons]
+        (true, 95, 31), // 32 bytes = 64 hex chars + 31 colons = 95 total
+        (false, 59, 19), // 20 bytes = 40 hex chars + 19 colons = 59 total
+      ];
+
+      for (final (asSha256, expectedLength, expectedColons) in params) {
+        final result = crypto.certificateFingerprint(asSha256: asSha256);
+        expect(result.length, equals(expectedLength));
+        expect(":".allMatches(result).length, expectedColons);
+        expect(result.contains(RegExp('[A-Z]')), isTrue);
+        expect(
+          seededCrypto.certificateFingerprint(asSha256: asSha256),
+          equals(seededCrypto.certificateFingerprint(asSha256: asSha256)),
+        );
+      }
+    });
   });
 }

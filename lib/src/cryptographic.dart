@@ -166,4 +166,22 @@ class Cryptographic {
           ).replaceAll('=', '').substring(0, length);
     return '$prefix$key';
   }
+
+  /// Returns certificate fingerprint.
+  ///
+  /// [asSha256] determines whether returned string looks like sha256 or sha1
+  /// (default is true).
+  ///
+  /// Example:
+  /// ```dart
+  /// Cryptographic().certificateFingerprint(); // "74:67:A0:9C:B6:49:9B:B1:51:74:C2:9F:6C:42:81:52:5C:7A:31:F5:72:75:09:A0:41:08:1F:53:31:E7:D7:41"
+  /// Cryptographic().certificateFingerprint(asSha256: false); // "93:5E:AE:6E:89:6B:CF:C4:76:DD:6D:23:50:10:80:6C:22:9D:55:90"
+  /// ```
+  String certificateFingerprint({bool asSha256 = true}) {
+    final hexString = asSha256 ? tokenHex() : tokenHex(entropy: 20);
+    return [
+      for (var i = 0; i < hexString.length; i += 2)
+        hexString.substring(i, i + 2),
+    ].join(':').toUpperCase();
+  }
 }
