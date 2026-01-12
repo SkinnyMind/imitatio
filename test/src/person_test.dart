@@ -322,6 +322,20 @@ void main() {
       expect(seededPerson.phoneNumber(), equals(seededPerson.phoneNumber()));
     });
 
+    test('returns phone number in E.164 format', () {
+      final result = person.phoneNumber(asE164: true);
+      final e164Regex = RegExp(r'^\+\d+$');
+      expect(result, matches(e164Regex));
+      expect(result.length, greaterThanOrEqualTo(8));
+
+      final maskedResult = person.phoneNumber(
+        mask: '+1-(###)-###-####',
+        asE164: true,
+      );
+      expect(maskedResult, matches(e164Regex));
+      expect(maskedResult.length, greaterThanOrEqualTo(8));
+    });
+
     test('returns identifier by mask', () {
       expect(person.identifier().length, equals(8));
 
