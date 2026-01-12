@@ -1,3 +1,8 @@
+## 1.4.0
+
+- feat(address): add secondaryAddress API method
+- feat(person): add ability to return phoneNumber in E.164 format
+
 ## 1.3.0
 
 - feat(cryptographic): add `certificateFingerprint` API method
