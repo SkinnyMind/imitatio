@@ -7652,4 +7652,23 @@ class EnGbAddressData extends AddressDataset {
       ],
     };
   }
+
+  @override
+  List<String> get secondaryAddressFormats {
+    return const [
+      "Apt. #",
+      "Apt. ##",
+      "Apt. ###",
+      "Apt. @",
+      "Suite ###",
+      "Suite ####",
+      "Unit #",
+      "Unit ##",
+      "Unit @",
+      "PO Box ###",
+      "PO Box ####",
+      "# @",
+      "## @",
+    ];
+  }
 }

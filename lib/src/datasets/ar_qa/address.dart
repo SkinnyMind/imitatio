@@ -414,4 +414,20 @@ class ArQaAddressData extends AddressDataset {
       ],
     };
   }
+
+  @override
+  List<String> get secondaryAddressFormats {
+    return const [
+      "شقة #",
+      "شقة ##",
+      "شقة ###",
+      "جناح #",
+      "جناح ##",
+      "وحدة #",
+      "وحدة ##",
+      "عمارة @",
+      "طابق #",
+      "طابق ##",
+    ];
+  }
 }

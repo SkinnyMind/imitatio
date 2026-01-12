@@ -1672,4 +1672,9 @@ class KkAddressData extends AddressDataset {
       ],
     };
   }
+
+  @override
+  List<String> get secondaryAddressFormats {
+    return const ["Пәтер #", "Пәтер ##", "Қабат #"];
+  }
 }

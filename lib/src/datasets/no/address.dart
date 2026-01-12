@@ -2816,4 +2816,9 @@ class NoAddressData extends AddressDataset {
       ],
     };
   }
+
+  @override
+  List<String> get secondaryAddressFormats {
+    return const ["Leil. #", "Leil. ##", "Leil. ###", "Etasje #"];
+  }
 }

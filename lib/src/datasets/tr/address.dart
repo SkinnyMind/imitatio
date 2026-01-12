@@ -1211,4 +1211,9 @@ class TrAddressData extends AddressDataset {
       ],
     };
   }
+
+  @override
+  List<String> get secondaryAddressFormats {
+    return const ["Daire #", "Daire ##", "Daire ###", "Kat #", "Blok @"];
+  }
 }

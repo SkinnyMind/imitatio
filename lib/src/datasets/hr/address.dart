@@ -474,4 +474,9 @@ class HrAddressData extends AddressDataset {
       ],
     };
   }
+
+  @override
+  List<String> get secondaryAddressFormats {
+    return const ["Stan #", "Stan ##", "Stan ###", "Kat #", "Zgrada @"];
+  }
 }

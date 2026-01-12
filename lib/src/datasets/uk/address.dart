@@ -2409,4 +2409,16 @@ class UkAddressData extends AddressDataset {
       ],
     };
   }
+
+  @override
+  List<String> get secondaryAddressFormats {
+    return const [
+      "Кв. #",
+      "Кв. ##",
+      "Кв. ###",
+      "Корпус #",
+      "Поверх #",
+      "Офіс ###",
+    ];
+  }
 }

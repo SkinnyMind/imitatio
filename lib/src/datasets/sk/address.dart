@@ -2216,4 +2216,9 @@ class SkAddressData extends AddressDataset {
       ],
     };
   }
+
+  @override
+  List<String> get secondaryAddressFormats {
+    return const ["Byt #", "Byt ##", "Byt ###", "Poschodie #", "Vchod @"];
+  }
 }

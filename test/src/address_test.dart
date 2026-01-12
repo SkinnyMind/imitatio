@@ -70,6 +70,14 @@ void main() {
       expect(jaAddress.address, equals(jaAddress.address));
     });
 
+    test('returns secondary address', () {
+      expect(address.secondaryAddress, isNotEmpty);
+      expect(
+        seededAddress.secondaryAddress,
+        equals(seededAddress.secondaryAddress),
+      );
+    });
+
     test('returns state', () {
       expect(
         AddressData.locale(.en).states(isAbbr: false),

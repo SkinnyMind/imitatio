@@ -861,4 +861,9 @@ class ZhAddressData extends AddressDataset {
       ],
     };
   }
+
+  @override
+  List<String> get secondaryAddressFormats {
+    return const ["###室", "####室", "#楼", "##楼", "@栋###室"];
+  }
 }

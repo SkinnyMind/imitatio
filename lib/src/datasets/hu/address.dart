@@ -1148,4 +1148,9 @@ class HuAddressData extends AddressDataset {
       ],
     };
   }
+
+  @override
+  List<String> get secondaryAddressFormats {
+    return const ["Lakás #", "Lakás ##", "Lakás ###", "Emelet #", "Épület @"];
+  }
 }

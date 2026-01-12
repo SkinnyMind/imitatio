@@ -1478,4 +1478,15 @@ class PtAddressData extends AddressDataset {
       ],
     };
   }
+
+  @override
+  List<String> get secondaryAddressFormats {
+    return const [
+      "Apartamento #",
+      "Apartamento ##",
+      "Apartamento ###",
+      "Andar #",
+      "Fração @",
+    ];
+  }
 }

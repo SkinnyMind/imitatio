@@ -4308,4 +4308,17 @@ class RuAddressData extends AddressDataset {
   }) {
     return "$suffix $name $number";
   }
+
+  @override
+  List<String> get secondaryAddressFormats {
+    return const [
+      "Кв. #",
+      "Кв. ##",
+      "Кв. ###",
+      "Корпус #",
+      "Подъезд #",
+      "Этаж #",
+      "Офис ###",
+    ];
+  }
 }

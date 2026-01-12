@@ -475,4 +475,9 @@ class FiAddressData extends AddressDataset {
       ],
     };
   }
+
+  @override
+  List<String> get secondaryAddressFormats {
+    return const ["Asunto #", "Asunto ##", "Asunto ###", "Huone #", "Kerros #"];
+  }
 }
