@@ -4340,4 +4340,9 @@ class ElAddressData extends AddressDataset {
       ],
     };
   }
+
+  @override
+  List<String> get secondaryAddressFormats {
+    return const ["Διαμέρισμα #", "Διαμέρισμα ##", "Όροφος #", "Πτέρυγα @"];
+  }
 }

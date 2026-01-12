@@ -4030,4 +4030,16 @@ class NlAddressData extends AddressDataset {
       ],
     };
   }
+
+  @override
+  List<String> get secondaryAddressFormats {
+    return const [
+      "App. #",
+      "App. ##",
+      "App. ###",
+      "Verdieping #",
+      "Kamer ##",
+      "Unit @",
+    ];
+  }
 }

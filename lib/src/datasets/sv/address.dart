@@ -6475,4 +6475,9 @@ class SvAddressData extends AddressDataset {
       ],
     };
   }
+
+  @override
+  List<String> get secondaryAddressFormats {
+    return const ["Lgh #", "Lgh ##", "Lgh ###", "Våning #", "Trappa @"];
+  }
 }

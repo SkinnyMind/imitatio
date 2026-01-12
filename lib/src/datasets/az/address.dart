@@ -698,4 +698,9 @@ class AzAddressData extends AddressDataset {
       ],
     };
   }
+
+  @override
+  List<String> get secondaryAddressFormats {
+    return const ["Mənzil #", "Mənzil ##", "Mənzil ###", "Blok @", "Mərtəbə #"];
+  }
 }

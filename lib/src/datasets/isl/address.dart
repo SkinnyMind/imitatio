@@ -8572,4 +8572,9 @@ class IslAddressData extends AddressDataset {
       ],
     };
   }
+
+  @override
+  List<String> get secondaryAddressFormats {
+    return const ["Íbúð #", "Íbúð ##", "Hæð #"];
+  }
 }

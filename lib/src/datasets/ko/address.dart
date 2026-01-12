@@ -2651,4 +2651,9 @@ class KoAddressData extends AddressDataset {
       ],
     };
   }
+
+  @override
+  List<String> get secondaryAddressFormats {
+    return const ["###호", "####호", "#층", "##층", "@동 ###호"];
+  }
 }

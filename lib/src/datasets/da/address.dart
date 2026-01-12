@@ -5741,4 +5741,9 @@ class DaAddressData extends AddressDataset {
       ],
     };
   }
+
+  @override
+  List<String> get secondaryAddressFormats {
+    return const ["Lejl. #", "Lejl. ##", "Etage #", "Sal @"];
+  }
 }

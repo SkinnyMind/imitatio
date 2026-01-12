@@ -4,6 +4,7 @@ abstract class AddressDataset {
     required String name,
     required int number,
   });
+  List<String> get secondaryAddressFormats;
   List<String> get cities;
   List<String> get countries;
   List<String> get continents;

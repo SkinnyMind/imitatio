@@ -78,6 +78,18 @@ class Address {
     );
   }
 
+  /// Returns a random secondary address.
+  ///
+  /// Example:
+  /// ```dart
+  /// Address().secondaryAddress; // "Suite 5961"
+  /// ```
+  String get secondaryAddress {
+    final data = AddressData.locale(locale).secondaryAddressFormats;
+    final mask = data[Random(seed).integer(max: data.length - 1)];
+    return Rng.customCode(mask: mask, seed: seed);
+  }
+
   /// Returns a random administrative district of the country.
   ///
   /// [isAbbr] determines whether to return ISO 3166-2 code or not

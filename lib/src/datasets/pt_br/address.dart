@@ -6380,4 +6380,24 @@ class PtBrAddressData extends AddressDataset {
       ],
     };
   }
+
+  @override
+  List<String> get secondaryAddressFormats {
+    return const [
+      "Apto. ###",
+      "Apto. ####",
+      "Apartamento ###",
+      "Bloco @",
+      "Bloco @ Apto. ###",
+      "Bloco @ Apto. ####",
+      "Quadra # Lote ##",
+      "Quadra ## Lote ##",
+      "Sala ###",
+      "Sala ####",
+      "Conjunto ###",
+      "Andar ##",
+      "Casa #",
+      "Casa ##",
+    ];
+  }
 }

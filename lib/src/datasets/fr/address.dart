@@ -2649,4 +2649,17 @@ class FrAddressData extends AddressDataset {
       ],
     };
   }
+
+  @override
+  List<String> get secondaryAddressFormats {
+    return const [
+      "Apt. #",
+      "Apt. ##",
+      "Apt. ###",
+      "Étage #",
+      "Bâtiment @",
+      "Bureau ###",
+      "Porte #",
+    ];
+  }
 }

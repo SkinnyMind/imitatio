@@ -1930,4 +1930,9 @@ class EtAddressData extends AddressDataset {
       ],
     };
   }
+
+  @override
+  List<String> get secondaryAddressFormats {
+    return const ["Korter #", "Korter ##", "Korter ###", "Maja @"];
+  }
 }

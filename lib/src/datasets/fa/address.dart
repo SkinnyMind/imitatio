@@ -878,4 +878,9 @@ class FaAddressData extends AddressDataset {
       ],
     };
   }
+
+  @override
+  List<String> get secondaryAddressFormats {
+    return const ["واحد #", "واحد ##", "طبقه #", "بلوک @"];
+  }
 }

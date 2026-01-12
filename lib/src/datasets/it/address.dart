@@ -9506,4 +9506,17 @@ class ItAddressData extends AddressDataset {
       ],
     };
   }
+
+  @override
+  List<String> get secondaryAddressFormats {
+    return const [
+      "App. #",
+      "App. ##",
+      "App. ###",
+      "Piano #",
+      "Scala @",
+      "Int. #",
+      "Interno ##",
+    ];
+  }
 }

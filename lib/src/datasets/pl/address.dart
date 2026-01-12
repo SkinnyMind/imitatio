@@ -5375,4 +5375,16 @@ class PlAddressData extends AddressDataset {
       ],
     };
   }
+
+  @override
+  List<String> get secondaryAddressFormats {
+    return const [
+      "Mieszkanie #",
+      "Mieszkanie ##",
+      "Mieszkanie ###",
+      "Lokal ##",
+      "Piętro #",
+      "Klatka @",
+    ];
+  }
 }

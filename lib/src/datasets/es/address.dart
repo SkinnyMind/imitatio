@@ -1271,4 +1271,20 @@ class EsAddressData extends AddressDataset {
       ],
     };
   }
+
+  @override
+  List<String> get secondaryAddressFormats {
+    return const [
+      "Apto. #",
+      "Apto. ##",
+      "Apto. ###",
+      "Piso #",
+      "Piso ##",
+      "Depto. ###",
+      "Depto. ####",
+      "Oficina ###",
+      "Local ##",
+      "Unidad @",
+    ];
+  }
 }

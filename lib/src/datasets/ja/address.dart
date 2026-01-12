@@ -787,4 +787,9 @@ class JaAddressData extends AddressDataset {
       ],
     };
   }
+
+  @override
+  List<String> get secondaryAddressFormats {
+    return const ["###号室", "####号室", "#階", "##階", "@棟 ###号室"];
+  }
 }

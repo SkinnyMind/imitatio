@@ -4540,4 +4540,18 @@ class DeAtAddressData extends AddressDataset {
       ],
     };
   }
+
+  @override
+  List<String> get secondaryAddressFormats {
+    return const [
+      "Wohnung #",
+      "Wohnung ##",
+      "Wohnung ###",
+      "Etage #",
+      "Etage ##",
+      "Einheit #",
+      "Einheit ##",
+      "Haus @",
+    ];
+  }
 }
