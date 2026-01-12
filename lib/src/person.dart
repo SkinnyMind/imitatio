@@ -452,15 +452,20 @@ class Person {
   /// "#" and will be changed to digit). Any provided digits or characters in
   /// mask will be left as is.
   ///
+  /// [asE164] determines whether returned string should be in E.164 format
+  /// (e.g. +14155552671). Dafault is `false`.
+  ///
   /// Example:
   /// ```dart
   /// Person().phoneNumber(); // "+1-912-450-5556"
   /// Person().phoneNumber(mask: "123#"); // "1232"
+  /// Person().phoneNumber(asE164: true)// "+17303825930"
   /// ```
-  String phoneNumber({String? mask}) {
+  String phoneNumber({String? mask, bool asE164 = false}) {
     final data = PersonData.locale(locale).telephoneFormats;
     mask ??= data[Random(seed).integer(max: data.length - 1)];
-    return Rng.customCode(mask: mask, seed: seed);
+    final result = Rng.customCode(mask: mask, seed: seed);
+    return asE164 ? '+${result.replaceAll(RegExp('[^0-9]'), '')}' : result;
   }
 
   /// Returns a random identifier by mask.
