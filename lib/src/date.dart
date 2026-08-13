@@ -98,9 +98,8 @@ class Date {
     );
     final paddedMonth = month.toString().padLeft(2, '0');
     final paddedDay = day.toString().padLeft(2, '0');
-    return DateData.locale(
-      locale,
-    ).formatDate(year: year.toString(), month: paddedMonth, day: paddedDay);
+    return DateData.locale(locale)
+        .formatDate(year: year.toString(), month: paddedMonth, day: paddedDay);
   }
 
   /// Returns a random time.
@@ -128,9 +127,8 @@ class Date {
     final hour = random.integer(max: 23).toString().padLeft(2, '0');
     final minute = random.integer(max: 59).toString().padLeft(2, '0');
     final second = random.integer(max: 59).toString().padLeft(2, '0');
-    return DateData.locale(
-      locale,
-    ).formatTime(hour: hour, minute: minute, second: second);
+    return DateData.locale(locale)
+        .formatTime(hour: hour, minute: minute, second: second);
   }
 
   /// Returns a random [DateTime].

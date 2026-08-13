@@ -161,9 +161,9 @@ class Cryptographic {
   String apiKey({String prefix = '', int length = 32, bool asHex = true}) {
     final key = asHex
         ? tokenHex(entropy: length ~/ 2)
-        : tokenUrlSafe(
-            entropy: length,
-          ).replaceAll('=', '').substring(0, length);
+        : tokenUrlSafe(entropy: length)
+              .replaceAll('=', '')
+              .substring(0, length);
     return '$prefix$key';
   }
 
