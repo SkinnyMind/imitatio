@@ -1,6 +1,6 @@
 import 'package:imitatio/src/datasets/models/text.dart';
 
-class KkTextData extends TextDataset {
+class KkTextData() extends TextDataset {
   @override
   List<String> alphabet({required bool isLowerCase}) {
     return switch (isLowerCase) {

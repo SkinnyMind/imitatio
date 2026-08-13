@@ -1,7 +1,5 @@
 /// Provides all the data related to the hardware.
-class IntHardwareData {
-  const IntHardwareData._();
-
+class const IntHardwareData() {
   static const resolutions = <String>[
     "1152x768",
     "1280x854",

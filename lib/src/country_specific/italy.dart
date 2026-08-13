@@ -5,15 +5,11 @@ import 'package:imitatio/src/extensions.dart';
 import 'package:imitatio/src/rng.dart';
 import 'package:imitatio/src/util.dart';
 
-class Italy {
-  /// Provides special data for Italy.
-  ///
-  /// [seed] is optional parameter to initialize the internal state of the
-  /// random generator.
-  const Italy({this.seed});
-
-  final int? seed;
-
+/// Provides special data for Italy.
+///
+/// [seed] is optional parameter to initialize the internal state of the
+/// random generator.
+class const Italy({final int? seed}) {
   /// Returns a random fiscal code.
   ///
   /// [gender] is optional [Gender].

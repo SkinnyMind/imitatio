@@ -1,8 +1,6 @@
 import 'package:imitatio/src/enums.dart';
 
-class IntDateData {
-  const IntDateData._();
-
+class const IntDateData() {
   static const romanNums = <String>[
     "I",
     "II",

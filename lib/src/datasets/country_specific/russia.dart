@@ -1,6 +1,6 @@
 import 'package:imitatio/src/enums.dart';
 
-class RussiaSpecificData {
+class RussiaSpecificData() {
   static const taxCodes = [
     "7700",
     "7800",

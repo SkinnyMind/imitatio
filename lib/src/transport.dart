@@ -5,15 +5,10 @@ import 'package:imitatio/src/enums.dart';
 import 'package:imitatio/src/extensions.dart';
 
 /// Provides data related to transports.
-class Transport {
-  /// Provides data related to transports.
-  ///
-  /// [seed] is optional parameter to initialize the internal state of the
-  /// random generator.
-  const Transport({this.seed});
-
-  final int? seed;
-
+///
+/// [seed] is optional parameter to initialize the internal state of the
+/// random generator.
+class const Transport({final int? seed}) {
   /// Returns a random vehicle manufacturer.
   ///
   /// Example:

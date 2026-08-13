@@ -8,15 +8,10 @@ import 'package:imitatio/src/extensions.dart';
 import 'package:imitatio/src/util.dart';
 
 /// Provides pseudo-cryptographic data.
-class Cryptographic {
-  /// Provides pseudo-cryptographic data.
-  ///
-  /// [seed] is optional parameter to initialize the internal state of the
-  /// random generator.
-  const Cryptographic({this.seed});
-
-  final int? seed;
-
+///
+/// [seed] is optional parameter to initialize the internal state of the
+/// random generator.
+class const Cryptographic({final int? seed}) {
   /// Returns UUIDv4 string.
   ///
   /// Example:

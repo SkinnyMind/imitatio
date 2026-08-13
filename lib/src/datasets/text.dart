@@ -50,9 +50,7 @@ import 'package:imitatio/src/datasets/zh/text.dart';
 import 'package:imitatio/src/enums.dart';
 
 /// Provides all data related to the text.
-class TextData {
-  const TextData._();
-
+class const TextData() {
   static TextDataset locale(Locale locale) {
     return switch (locale) {
       .ar_ae => ArAeTextData(),

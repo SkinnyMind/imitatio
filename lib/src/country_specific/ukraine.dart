@@ -4,15 +4,11 @@ import 'package:imitatio/src/datasets/country_specific/ukraine.dart';
 import 'package:imitatio/src/enums.dart';
 import 'package:imitatio/src/extensions.dart';
 
-class Ukraine {
-  /// Provides special data for Ukraine.
-  ///
-  /// [seed] is optional parameter to initialize the internal state of the
-  /// random generator.
-  const Ukraine({this.seed});
-
-  final int? seed;
-
+/// Provides special data for Ukraine.
+///
+/// [seed] is optional parameter to initialize the internal state of the
+/// random generator.
+class const Ukraine({final int? seed}) {
   /// Returns a random patronymic name.
   ///
   /// [gender] is optional [Gender].

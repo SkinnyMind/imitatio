@@ -5,9 +5,7 @@ import 'package:imitatio/src/extensions.dart';
 import 'package:imitatio/src/util.dart';
 
 /// Implements various helpers.
-class Rng {
-  const Rng._();
-
+class const Rng() {
   /// Returns a random string value.
   ///
   /// [unique] is optional flag to generate only unique values.

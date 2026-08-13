@@ -5,16 +5,11 @@ import 'package:imitatio/src/enums.dart';
 import 'package:imitatio/src/extensions.dart';
 import 'package:imitatio/src/util.dart';
 
-/// Provides data related to science.
-class Science {
-  /// Provides data related to food.
-  ///
-  /// [seed] is optional parameter to initialize the internal state of the
-  /// random generator.
-  const Science({this.seed});
-
-  final int? seed;
-
+/// Provides data related to food.
+///
+/// [seed] is optional parameter to initialize the internal state of the
+/// random generator.
+class const Science({final int? seed}) {
   /// Returns a random DNA sequence.
   ///
   /// [length] is optional length of block (default is 10).

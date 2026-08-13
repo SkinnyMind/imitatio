@@ -1,6 +1,6 @@
 import 'package:imitatio/src/datasets/models/finance.dart';
 
-class FiFinanceData extends FinanceDataset {
+class FiFinanceData() extends FinanceDataset {
   @override
   List<String> get banks {
     return const [

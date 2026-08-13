@@ -50,9 +50,7 @@ import 'package:imitatio/src/datasets/zh/date.dart';
 import 'package:imitatio/src/enums.dart';
 
 /// Provides all data related to the date.
-class DateData {
-  const DateData._();
-
+class const DateData() {
   static DateDataset locale(Locale locale) {
     return switch (locale) {
       .ar_ae => ArAeDateData(),

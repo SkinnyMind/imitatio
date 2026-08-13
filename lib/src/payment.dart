@@ -7,15 +7,10 @@ import 'package:imitatio/src/rng.dart';
 import 'package:imitatio/src/util.dart';
 
 /// Provides data related to payment.
-class Payment {
-  /// Provides data related to payment.
-  ///
-  /// [seed] is optional parameter to initialize the internal state of the
-  /// random generator.
-  const Payment({this.seed});
-
-  final int? seed;
-
+///
+/// [seed] is optional parameter to initialize the internal state of the
+/// random generator.
+class const Payment({final int? seed}) {
   /// Returns a random CID code.
   ///
   /// Example:

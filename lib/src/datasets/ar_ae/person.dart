@@ -1,7 +1,7 @@
 import 'package:imitatio/src/datasets/models/person.dart';
 import 'package:imitatio/src/enums.dart';
 
-class ArAePersonData extends PersonDataset {
+class ArAePersonData() extends PersonDataset {
   @override
   List<String> get academicDegrees {
     return const ["ليسانس", "ماستر", "دكتوراه"];

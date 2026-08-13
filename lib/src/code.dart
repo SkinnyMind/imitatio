@@ -7,15 +7,10 @@ import 'package:imitatio/src/rng.dart';
 import 'package:imitatio/src/util.dart';
 
 /// Provides data related to codes.
-class Code {
-  /// Provides data related to codes.
-  ///
-  /// [seed] is optional parameter to initialize the internal state of the
-  /// random generator.
-  const Code({this.seed});
-
-  final int? seed;
-
+///
+/// [seed] is optional parameter to initialize the internal state of the
+/// random generator.
+class const Code({final int? seed}) {
   /// Returns a random locale code (MS-LCID).
   ///
   /// Example:

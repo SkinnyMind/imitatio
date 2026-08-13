@@ -7,19 +7,12 @@ import 'package:imitatio/src/extensions.dart';
 import 'package:imitatio/src/util.dart';
 
 /// Provides data related to date and time.
-class Date {
-  /// Provides data related to date and time.
-  ///
-  /// [locale] is optional [Locale] (default is [Locale.en]).
-  ///
-  /// [seed] is optional parameter to initialize the internal state of the
-  /// random generator.
-  const Date({this.locale = Locale.en, this.seed});
-
-  final Locale locale;
-
-  final int? seed;
-
+///
+/// [locale] is optional [Locale] (default is [Locale.en]).
+///
+/// [seed] is optional parameter to initialize the internal state of the
+/// random generator.
+class const Date({final Locale locale = .en, final int? seed}) {
   /// Returns random date in the YYYY-MM-DD format.
   ///
   /// [start] is optional start year (default is 2000).

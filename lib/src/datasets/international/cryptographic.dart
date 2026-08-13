@@ -1,6 +1,4 @@
-class IntCryptographicData {
-  const IntCryptographicData._();
-
+class const IntCryptographicData() {
   static const List<String> wordlist = [
     "abandon",
     "ability",

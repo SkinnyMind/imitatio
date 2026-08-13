@@ -1,8 +1,6 @@
 import 'package:imitatio/src/enums.dart';
 
-class IntAddressData {
-  const IntAddressData._();
-
+class const IntAddressData() {
   static const continentCodes = <String>[
     "AF",
     "NA",

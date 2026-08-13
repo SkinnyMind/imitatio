@@ -1,7 +1,5 @@
 /// Provides all the generic data related to the personal information.
-class IntPersonData {
-  const IntPersonData._();
-
+class const IntPersonData() {
   static const bloodGroups = <String>[
     "O+",
     "A+",

@@ -3,15 +3,10 @@ import 'dart:math';
 import 'package:imitatio/src/extensions.dart';
 
 /// Provider of data related to generating numeric data.
-class Numeric {
-  /// Provider of data related to generating numeric data.
-  ///
-  /// [seed] is optional parameter to initialize the internal state of the
-  /// random generator.
-  const Numeric({this.seed});
-
-  final int? seed;
-
+///
+/// [seed] is optional parameter to initialize the internal state of the
+/// random generator.
+class const Numeric({final int? seed}) {
   /// Returns a random float number in range [`start`, `end`] (inclusive).
   ///
   /// [start] is optional range start value (default is -1000.0).

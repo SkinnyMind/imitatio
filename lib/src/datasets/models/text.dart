@@ -1,4 +1,4 @@
-abstract class TextDataset {
+abstract class TextDataset() {
   List<String> alphabet({required bool isLowerCase});
   List<String> get answers;
   List<String> get colors;

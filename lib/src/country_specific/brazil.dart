@@ -2,15 +2,11 @@ import 'dart:math';
 
 import 'package:imitatio/src/extensions.dart';
 
-class Brazil {
-  /// Provides special data for Brazil.
-  ///
-  /// [seed] is optional parameter to initialize the internal state of the
-  /// random generator.
-  const Brazil({this.seed});
-
-  final int? seed;
-
+/// Provides special data for Brazil.
+///
+/// [seed] is optional parameter to initialize the internal state of the
+/// random generator.
+class const Brazil({final int? seed}) {
   /// Returns a random CPF.
   ///
   /// [withMask] determines whether to use CPF mask (###.###.###-##)

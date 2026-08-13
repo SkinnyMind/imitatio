@@ -1,4 +1,4 @@
-abstract class FoodDataset {
+abstract class FoodDataset() {
   List<String> get dishes;
   List<String> get drinks;
   List<String> get fruits;

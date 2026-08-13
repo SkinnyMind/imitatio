@@ -1,8 +1,6 @@
 import 'package:imitatio/src/enums.dart';
 
-class IntTextData {
-  const IntTextData._();
-
+class const IntTextData() {
   static const safeColors = <String>[
     "#1abc9c",
     "#16a085",

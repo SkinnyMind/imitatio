@@ -1,7 +1,5 @@
 /// Provides all the generic data related to the payment.
-class IntPaymentData {
-  const IntPaymentData._();
-
+class const IntPaymentData() {
   static const creditCardNetworks = <String>[
     "Visa",
     "MasterCard",

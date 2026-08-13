@@ -50,9 +50,7 @@ import 'package:imitatio/src/datasets/zh/food.dart';
 import 'package:imitatio/src/enums.dart';
 
 /// Provides all data related to the food.
-class FoodData {
-  const FoodData._();
-
+class const FoodData() {
   static FoodDataset locale(Locale locale) {
     return switch (locale) {
       .ar_ae => ArAeFoodData(),

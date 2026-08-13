@@ -8,15 +8,10 @@ import 'package:imitatio/src/extensions.dart';
 import 'package:imitatio/src/util.dart';
 
 /// Provides data related to internet.
-class Internet {
-  /// Provides data related to internet.
-  ///
-  /// /// [seed] is optional parameter to initialize the internal state of the
-  /// random generator.
-  const Internet({this.seed});
-
-  final int? seed;
-
+///
+/// /// [seed] is optional parameter to initialize the internal state of the
+/// random generator.
+class const Internet({final int? seed}) {
   /// Returns a random HTTP content type.
   ///
   /// [mimeType] is optional [MimeType] group.

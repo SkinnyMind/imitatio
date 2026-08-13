@@ -1,4 +1,4 @@
-abstract class FinanceDataset {
+abstract class FinanceDataset() {
   List<String> get banks;
   List<String> get companies;
   List<String> companyTypes({required bool isAbbr});

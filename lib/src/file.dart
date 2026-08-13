@@ -5,15 +5,10 @@ import 'package:imitatio/src/datasets/international/file.dart';
 import 'package:imitatio/src/extensions.dart';
 
 /// Provides data related to file.
-class File {
-  /// Provides data related to file.
-  ///
-  /// [seed] is optional parameter to initialize the internal state of the
-  /// random generator.
-  const File({this.seed});
-
-  final int? seed;
-
+///
+/// [seed] is optional parameter to initialize the internal state of the
+/// random generator.
+class const File({final int? seed}) {
   /// Returns a random file extension.
   ///
   /// [fileType] is optional [FileType] group.
