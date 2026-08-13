@@ -4,15 +4,11 @@ import 'package:imitatio/src/date.dart';
 import 'package:imitatio/src/enums.dart';
 import 'package:imitatio/src/extensions.dart';
 
-class Poland {
-  /// Provides special data for Poland.
-  ///
-  /// [seed] is optional parameter to initialize the internal state of the
-  /// random generator.
-  const Poland({this.seed});
-
-  final int? seed;
-
+/// Provides special data for Poland.
+///
+/// [seed] is optional parameter to initialize the internal state of the
+/// random generator.
+class const Poland({final int? seed}) {
   /// Returns a random valid 10-digit NIP.
   ///
   /// Example:

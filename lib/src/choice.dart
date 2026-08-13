@@ -3,15 +3,10 @@ import 'dart:math';
 import 'package:imitatio/src/extensions.dart';
 
 /// Provides a random choice from items in a sequence.
-class Choice {
-  /// Provides a random choice from items in a sequence.
-  ///
-  /// [seed] is optional parameter to initialize the internal state of the
-  /// random generator.
-  const Choice({this.seed});
-
-  final int? seed;
-
+///
+/// [seed] is optional parameter to initialize the internal state of the
+/// random generator.
+class const Choice({final int? seed}) {
   /// Returns a randomly-chosen list of elements from provided [items].
   ///
   /// [length] is optional number of elements to return (default is 1).

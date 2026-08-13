@@ -50,9 +50,7 @@ import 'package:imitatio/src/datasets/zh/person.dart';
 import 'package:imitatio/src/enums.dart';
 
 /// Provides all data related to the person.
-class PersonData {
-  const PersonData._();
-
+class const PersonData() {
   static PersonDataset locale(Locale locale) {
     return switch (locale) {
       .ar_ae => ArAePersonData(),

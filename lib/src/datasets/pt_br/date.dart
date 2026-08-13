@@ -1,6 +1,6 @@
 import 'package:imitatio/src/datasets/models/date.dart';
 
-class PtBrDateData extends DateDataset {
+class PtBrDateData() extends DateDataset {
   @override
   List<String> days({required bool isAbbr}) {
     return switch (isAbbr) {

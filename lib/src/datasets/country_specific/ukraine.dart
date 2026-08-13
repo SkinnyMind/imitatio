@@ -1,6 +1,6 @@
 import 'package:imitatio/src/enums.dart';
 
-class UkraineSpecificData {
+class UkraineSpecificData() {
   List<String> patronymics({required Gender gender}) {
     return switch (gender) {
       .female => const [

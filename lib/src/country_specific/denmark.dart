@@ -4,15 +4,11 @@ import 'package:imitatio/src/date.dart';
 import 'package:imitatio/src/extensions.dart';
 import 'package:imitatio/src/util.dart';
 
-class Denmark {
-  /// Provides special data for Denmark.
-  ///
-  /// [seed] is optional parameter to initialize the internal state of the
-  /// random generator.
-  const Denmark({this.seed});
-
-  final int? seed;
-
+/// Provides special data for Denmark.
+///
+/// [seed] is optional parameter to initialize the internal state of the
+/// random generator.
+class const Denmark({final int? seed}) {
   /// Returns a random CPR number (Central Person Registry).
   ///
   /// Example:

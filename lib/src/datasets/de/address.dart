@@ -3,7 +3,7 @@
 
 import 'package:imitatio/src/datasets/models/address.dart';
 
-class DeAddressData extends AddressDataset {
+class DeAddressData() extends AddressDataset {
   @override
   List<String> get cities {
     return const [

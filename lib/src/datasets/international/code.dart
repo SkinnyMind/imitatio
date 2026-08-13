@@ -1,9 +1,7 @@
 import 'package:imitatio/src/enums.dart';
 
 /// Provides all data related to the codes.
-class IntCodeData {
-  const IntCodeData._();
-
+class const IntCodeData() {
   static const localeCodes = <String>[
     "af",
     "ar-ae",

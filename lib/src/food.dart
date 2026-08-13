@@ -5,18 +5,12 @@ import 'package:imitatio/src/datasets/food.dart';
 import 'package:imitatio/src/extensions.dart';
 
 /// Provides data related to food.
-class Food {
-  /// Provides data related to food.
-  ///
-  /// [locale] is optional [Locale] (default is [Locale.en]).
-  ///
-  /// [seed] is optional parameter to initialize the internal state of the
-  /// random generator.
-  const Food({this.locale = Locale.en, this.seed});
-
-  final Locale locale;
-  final int? seed;
-
+///
+/// [locale] is optional [Locale] (default is [Locale.en]).
+///
+/// [seed] is optional parameter to initialize the internal state of the
+/// random generator.
+class const Food({final Locale locale = .en, final int? seed}) {
   /// Returns a random vegetable name.
   ///
   /// Example:

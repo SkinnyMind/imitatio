@@ -1,7 +1,7 @@
 import 'package:imitatio/src/datasets/models/person.dart';
 import 'package:imitatio/src/enums.dart';
 
-class TrPersonData extends PersonDataset {
+class TrPersonData() extends PersonDataset {
   @override
   List<String> get academicDegrees {
     return const ["Ön Lisans", "Lisans", "Yüksek Lisans", "Doktora"];

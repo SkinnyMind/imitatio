@@ -1,6 +1,6 @@
 import 'package:imitatio/src/datasets/models/address.dart';
 
-class ArMaAddressData extends AddressDataset {
+class ArMaAddressData() extends AddressDataset {
   @override
   List<String> get cities {
     return const [

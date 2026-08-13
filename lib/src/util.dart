@@ -1,9 +1,7 @@
 import 'dart:math';
 import 'dart:typed_data';
 
-class Util {
-  const Util._();
-
+class const Util() {
   /// Returns a list of randomly picked strings.
   ///
   /// [list] is the list to pick from.

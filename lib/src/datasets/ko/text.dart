@@ -3,7 +3,7 @@
 
 import 'package:imitatio/src/datasets/models/text.dart';
 
-class KoTextData extends TextDataset {
+class KoTextData() extends TextDataset {
   @override
   List<String> alphabet({required bool isLowerCase}) {
     return switch (isLowerCase) {

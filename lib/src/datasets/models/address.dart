@@ -1,4 +1,4 @@
-abstract class AddressDataset {
+abstract class AddressDataset() {
   String formatAddress({
     required String suffix,
     required String name,

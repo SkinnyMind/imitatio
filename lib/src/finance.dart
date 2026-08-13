@@ -6,18 +6,12 @@ import 'package:imitatio/src/enums.dart';
 import 'package:imitatio/src/extensions.dart';
 
 /// Provides finance and business related data.
-class Finance {
-  /// Provides finance and business related data.
-  ///
-  /// [locale] is optional [Locale] (default is [Locale.en]).
-  ///
-  /// [seed] is optional parameter to initialize the internal state of the
-  /// random generator.
-  const Finance({this.locale = Locale.en, this.seed});
-
-  final Locale locale;
-  final int? seed;
-
+///
+/// [locale] is optional [Locale] (default is [Locale.en]).
+///
+/// [seed] is optional parameter to initialize the internal state of the
+/// random generator.
+class const Finance({final Locale locale = .en, final int? seed}) {
   /// Returns a random company name.
   ///
   /// Example:

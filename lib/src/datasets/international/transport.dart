@@ -1,9 +1,7 @@
 import 'package:imitatio/src/enums.dart';
 
 /// Provides all the data related to transports.
-class IntTransportData {
-  const IntTransportData._();
-
+class const IntTransportData() {
   static const cars = <String>[
     "Alfa Romeo 145",
     "Alfa Romeo 146",

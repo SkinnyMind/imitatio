@@ -1,6 +1,4 @@
-class IntFinanceData {
-  const IntFinanceData._();
-
+class const IntFinanceData() {
   static const currencyIsoCodes = <String>[
     "AED",
     "AFN",

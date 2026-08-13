@@ -8,9 +8,7 @@ import 'package:imitatio/src/country_specific/ukraine.dart';
 import 'package:imitatio/src/country_specific/usa.dart';
 
 /// Provides special data related to specific country.
-class CountrySpecific {
-  const CountrySpecific._();
-
+class const CountrySpecific() {
   /// Provides special data for Denmark.
   ///
   /// [seed] is optional parameter to initialize the internal state of the

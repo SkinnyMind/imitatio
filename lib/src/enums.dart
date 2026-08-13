@@ -2,25 +2,34 @@
 // ignore_for_file: constant_identifier_names
 
 /// Common mime types.
-enum MimeType { application, audio, image, message, text, video }
+enum MimeType() {
+  application,
+  audio,
+  image,
+  message,
+  text,
+  video
+}
 
 /// Top level domain types.
-enum TLDType { cctld, gtld, geotld, utld, stld }
+enum TLDType() {
+  cctld,
+  gtld,
+  geotld,
+  utld,
+  stld
+}
 
 /// Port ranges.
-enum PortRange {
+enum const PortRange({required final int min, required final int max}) {
   all(min: 1, max: 65535),
   wellKnown(min: 1, max: 1023),
   ephemeral(min: 49152, max: 65535),
   registered(min: 1024, max: 49151);
-
-  const PortRange({required this.min, required this.max});
-  final int min;
-  final int max;
 }
 
 /// IPv4 address ranges for different purposes.
-enum IPv4Purpose {
+enum const IPv4Purpose({required final int min, required final int max}) {
   thisNetwork(min: 0, max: 16777215),
   amt(min: 3224682752, max: 3224683007),
   loopback(min: 2130706432, max: 2147483647),
@@ -42,17 +51,20 @@ enum IPv4Purpose {
   portControlProtocolAnycast(min: 3221225481, max: 3221225481),
   ipv4ServiceContinuityPrefix(min: 3221225472, max: 3221225479),
   directDelegationAs112Service(min: 3232706560, max: 3232706815);
-
-  const IPv4Purpose({required this.min, required this.max});
-  final int min;
-  final int max;
 }
 
 /// URL schemes.
-enum URLScheme { ws, wss, ftp, sftp, http, https }
+enum URLScheme() {
+  ws,
+  wss,
+  ftp,
+  sftp,
+  http,
+  https
+}
 
 /// DSN types.
-enum DSNType {
+enum const DSNType({required final String scheme, required final int port}) {
   postgres(scheme: 'postgres', port: 5432),
   mysql(scheme: 'mysql', port: 3306),
   mongodb(scheme: 'mongodb', port: 27017),
@@ -60,14 +72,10 @@ enum DSNType {
   couchbase(scheme: 'couchbase', port: 8092),
   memcached(scheme: 'memcached', port: 11211),
   rabbitmq(scheme: 'rabbitmq', port: 5672);
-
-  const DSNType({required this.scheme, required this.port});
-  final String scheme;
-  final int port;
 }
 
 /// File types.
-enum FileType {
+enum FileType() {
   source,
   text,
   data,
@@ -75,32 +83,42 @@ enum FileType {
   video,
   image,
   executable,
-  compressed,
+  compressed
 }
 
 /// ISBN formats.
-enum ISBNFormat { isbn13, isbn10 }
+enum ISBNFormat() {
+  isbn13,
+  isbn10
+}
 
 /// EAN formats.
-enum EANFormat {
+enum const EANFormat(final String mask) {
   ean8('########'),
   ean13('#############');
-
-  const EANFormat(this.mask);
-  final String mask;
 }
 
 /// Credit card types.
-enum CardType { visa, masterCard, americanExpress }
+enum CardType() {
+  visa,
+  masterCard,
+  americanExpress
+}
 
 /// Genders.
-enum Gender { male, female }
+enum Gender() {
+  male,
+  female
+}
 
 /// Title types.
-enum TitleType { typical, academic }
+enum TitleType() {
+  typical,
+  academic
+}
 
 /// Regions of timezones.
-enum TimezoneRegion {
+enum TimezoneRegion() {
   africa,
   america,
   antarctica,
@@ -110,13 +128,19 @@ enum TimezoneRegion {
   australia,
   europe,
   indian,
-  pacific,
+  pacific
 }
 
-enum MetricPrefixSign { positive, negative }
+enum MetricPrefixSign() {
+  positive,
+  negative
+}
 
 /// Measure unit names and symbols.
-enum MeasureUnit {
+enum const MeasureUnit({
+  required final String name,
+  required final String symbol,
+}) {
   mass(name: 'gram', symbol: 'gr'),
   information(name: 'byte', symbol: 'b'),
   thermodynamicTemperature(name: 'kelvin', symbol: 'K'),
@@ -139,13 +163,9 @@ enum MeasureUnit {
   inductance(name: 'henry', symbol: 'H'),
   temperature(name: 'celcius', symbol: '°C'),
   radioactivity(name: 'becquerel', symbol: 'Bq');
-
-  const MeasureUnit({required this.name, required this.symbol});
-  final String name;
-  final String symbol;
 }
 
-enum EmojiCategory {
+enum EmojiCategory() {
   smileysAndEmotion,
   peopleAndBody,
   animalsAndNature,
@@ -154,22 +174,27 @@ enum EmojiCategory {
   activities,
   objects,
   symbols,
-  flags,
+  flags
 }
 
-enum CountryCode { a2, a3, numeric, ioc, fifa }
+enum CountryCode() {
+  a2,
+  a3,
+  numeric,
+  ioc,
+  fifa
+}
 
-enum PostalService {
+enum PostalService({
+  required final String name,
+  required final List<String> masks,
+}) {
   usps(name: 'USPS', masks: ["#### #### #### #### ####", "@@ ### ### ### US"]),
   fedex(name: 'FedEx', masks: ["#### #### ####", "#### #### #### ###"]),
   ups(name: 'UPS', masks: ["1Z@####@##########"]);
-
-  const PostalService({required this.name, required this.masks});
-  final String name;
-  final List<String> masks;
 }
 
-enum Locale {
+enum Locale() {
   az,
   ar_ae,
   ar_dz,
@@ -217,7 +242,14 @@ enum Locale {
   sv,
   tr,
   uk,
-  zh,
+  zh
 }
 
-enum Algorithm { md5, sha1, sha224, sha256, sha384, sha512 }
+enum Algorithm() {
+  md5,
+  sha1,
+  sha224,
+  sha256,
+  sha384,
+  sha512
+}

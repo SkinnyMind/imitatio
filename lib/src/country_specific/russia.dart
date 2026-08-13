@@ -4,15 +4,11 @@ import 'package:imitatio/src/datasets/country_specific/russia.dart';
 import 'package:imitatio/src/enums.dart';
 import 'package:imitatio/src/extensions.dart';
 
-class Russia {
-  /// Provides special data for Russia.
-  ///
-  /// [seed] is optional parameter to initialize the internal state of the
-  /// random generator.
-  const Russia({this.seed});
-
-  final int? seed;
-
+/// Provides special data for Russia.
+///
+/// [seed] is optional parameter to initialize the internal state of the
+/// random generator.
+class const Russia({final int? seed}) {
   /// Returns a random passport series and number.
   ///
   /// [year] is optional last 2 digits (i.e. 24 for 2024) of year of

@@ -1,6 +1,6 @@
 import 'package:imitatio/src/datasets/models/food.dart';
 
-class ArAeFoodData extends FoodDataset {
+class ArAeFoodData() extends FoodDataset {
   @override
   List<String> get dishes {
     return const [

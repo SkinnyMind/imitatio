@@ -50,9 +50,7 @@ import 'package:imitatio/src/datasets/zh/finance.dart';
 import 'package:imitatio/src/enums.dart';
 
 /// Provides all data related to the finance.
-class FinanceData {
-  const FinanceData._();
-
+class const FinanceData() {
   static FinanceDataset locale(Locale locale) {
     return switch (locale) {
       .ar_ae => ArAeFinanceData(),

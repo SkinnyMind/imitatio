@@ -10,18 +10,12 @@ import 'package:imitatio/src/extensions.dart';
 import 'package:imitatio/src/rng.dart';
 
 /// Provides personal data.
-class Person {
-  /// Provides personal data.
-  ///
-  /// [locale] is optional [Locale] (default is [Locale.en]).
-  ///
-  /// [seed] is optional parameter to initialize the internal state of the
-  /// random generator.
-  const Person({this.locale = Locale.en, this.seed});
-
-  final Locale locale;
-  final int? seed;
-
+///
+/// [locale] is optional [Locale] (default is [Locale.en]).
+///
+/// [seed] is optional parameter to initialize the internal state of the
+/// random generator.
+class const Person({final Locale locale = .en, final int? seed}) {
   /// Returns a random birthdate in the YYYY-MM-DD format.
   ///
   /// [minYear] is optional minimum birth year (default is 1980).

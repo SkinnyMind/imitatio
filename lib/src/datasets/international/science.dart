@@ -1,9 +1,7 @@
 import 'package:imitatio/src/enums.dart';
 
 /// Provides all the data related to science.
-class IntScienceData {
-  const IntScienceData._();
-
+class const IntScienceData() {
   static List<String> prefixes(MetricPrefixSign sign) {
     return switch (sign) {
       .negative => const [

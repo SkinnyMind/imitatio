@@ -50,9 +50,7 @@ import 'package:imitatio/src/datasets/zh/address.dart';
 import 'package:imitatio/src/enums.dart';
 
 /// Provides all data related to the address.
-class AddressData {
-  const AddressData._();
-
+class const AddressData() {
   static AddressDataset locale(Locale locale) {
     return switch (locale) {
       .ar_ae => ArAeAddressData(),

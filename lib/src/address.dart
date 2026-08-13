@@ -7,19 +7,12 @@ import 'package:imitatio/src/extensions.dart';
 import 'package:imitatio/src/rng.dart';
 
 /// Provides data related to geographical location.
-class Address {
-  /// Provides data related to geographical location.
-  ///
-  /// [locale] is optional [Locale] (default is [Locale.en]).
-  ///
-  /// [seed] is optional parameter to initialize the internal state of the
-  /// random generator.
-  const Address({this.locale = .en, this.seed});
-
-  final Locale locale;
-
-  final int? seed;
-
+///
+/// [locale] is optional [Locale] (default is [Locale.en]).
+///
+/// [seed] is optional parameter to initialize the internal state of the
+/// random generator.
+class const Address({final Locale locale = .en, final int? seed}) {
   /// Returns a random street number.
   ///
   /// [max] is optional maximum number (default is 1400).

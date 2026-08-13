@@ -4,15 +4,10 @@ import 'package:imitatio/src/datasets/international/development.dart';
 import 'package:imitatio/src/extensions.dart';
 
 /// Provides data related to the development.
-class Development {
-  /// Provides data related to the development.
-  ///
-  /// [seed] is optional parameter to initialize the internal state of the
-  /// random generator.
-  const Development({this.seed});
-
-  final int? seed;
-
+///
+/// [seed] is optional parameter to initialize the internal state of the
+/// random generator.
+class const Development({final int? seed}) {
   /// Returns a random software license.
   ///
   /// Example:

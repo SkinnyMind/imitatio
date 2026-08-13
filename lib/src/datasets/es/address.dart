@@ -1,6 +1,6 @@
 import 'package:imitatio/src/datasets/models/address.dart';
 
-class EsAddressData extends AddressDataset {
+class EsAddressData() extends AddressDataset {
   @override
   List<String> get cities {
     return const [

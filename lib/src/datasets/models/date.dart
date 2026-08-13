@@ -1,4 +1,4 @@
-abstract class DateDataset {
+abstract class DateDataset() {
   List<String> days({required bool isAbbr});
   List<String> months({required bool isAbbr});
   List<String> get periodicities;

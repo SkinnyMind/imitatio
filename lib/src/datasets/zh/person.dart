@@ -1,7 +1,7 @@
 import 'package:imitatio/src/datasets/models/person.dart';
 import 'package:imitatio/src/enums.dart';
 
-class ZhPersonData extends PersonDataset {
+class ZhPersonData() extends PersonDataset {
   @override
   List<String> get academicDegrees {
     return const ["学士", "研究生", "博士"];

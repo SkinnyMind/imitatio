@@ -1,6 +1,6 @@
 import 'package:imitatio/src/enums.dart';
 
-abstract class PersonDataset {
+abstract class PersonDataset() {
   List<String> get academicDegrees;
   List<String> get genders;
   List<String> get languages;

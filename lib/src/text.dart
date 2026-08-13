@@ -7,19 +7,12 @@ import 'package:imitatio/src/extensions.dart';
 import 'package:imitatio/src/util.dart';
 
 /// Provides data related to text.
-class Text {
-  /// Provides data related to text.
-  ///
-  /// [locale] is optional [Locale] (default is [Locale.en]).
-  ///
-  /// [seed] is optional parameter to initialize the internal state of the
-  /// random generator.
-  const Text({this.locale = Locale.en, this.seed});
-
-  final Locale locale;
-
-  final int? seed;
-
+///
+/// [locale] is optional [Locale] (default is [Locale.en]).
+///
+/// [seed] is optional parameter to initialize the internal state of the
+/// random generator.
+class const Text({final Locale locale = .en, final int? seed}) {
   /// Returns an alphabet for [locale].
   ///
   /// [isLowerCase] determines whether to return alphabet in lower case or not

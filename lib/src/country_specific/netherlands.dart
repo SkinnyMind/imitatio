@@ -2,15 +2,11 @@ import 'dart:math';
 
 import 'package:imitatio/src/extensions.dart';
 
-class Netherlands {
-  /// Provides special data for Netherlands.
-  ///
-  /// [seed] is optional parameter to initialize the internal state of the
-  /// random generator.
-  const Netherlands({this.seed});
-
-  final int? seed;
-
+/// Provides special data for Netherlands.
+///
+/// [seed] is optional parameter to initialize the internal state of the
+/// random generator.
+class const Netherlands({final int? seed}) {
   /// Returns a random, but valid Burgerservicenummer (BSN).
   ///
   /// Example:

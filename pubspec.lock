@@ -86,7 +86,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "87dbe2c9e39be0bfaf8f8a7c30af42370714bcec"
+      resolved-ref: d43651551bec10fab3a3ea839a76daec08f77129
       url: "https://github.com/SkinnyMind/custom_lints"
     source: git
     version: "1.0.1"

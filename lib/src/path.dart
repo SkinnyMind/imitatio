@@ -6,15 +6,14 @@ import 'package:imitatio/src/extensions.dart';
 import 'package:os_detect/os_detect.dart';
 
 /// Provides data related to paths.
-class Path {
-  /// Provides data related to paths.
-  ///
-  /// [platform] is optional platform (operating system). Possible values
-  /// are: `linux`, `macos`, `windows`, etc.
-  ///
-  /// [seed] is optional parameter to initialize the internal state of the
-  /// random generator.
-  Path({String? platform, this.seed})
+///
+/// [platform] is optional platform (operating system). Possible values
+/// are: `linux`, `macos`, `windows`, etc.
+///
+/// [seed] is optional parameter to initialize the internal state of the
+/// random generator.
+class Path({String? platform, final int? seed}) {
+  this
     : platform = platform ?? operatingSystem,
       _platformHome = _getPlatformHome(platform ?? operatingSystem),
       _pathSeparator = platform == 'windows' ? r'\' : '/';
@@ -22,7 +21,6 @@ class Path {
   final String platform;
   final String _platformHome;
   final String _pathSeparator;
-  final int? seed;
 
   static String _getPlatformHome(String platform) {
     return switch (platform) {

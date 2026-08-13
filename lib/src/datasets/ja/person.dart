@@ -1,7 +1,7 @@
 import 'package:imitatio/src/datasets/models/person.dart';
 import 'package:imitatio/src/enums.dart';
 
-class JaPersonData extends PersonDataset {
+class JaPersonData() extends PersonDataset {
   @override
   List<String> get academicDegrees {
     return const ["学士", "修士", "博士"];
