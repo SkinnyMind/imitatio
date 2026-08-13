@@ -106,9 +106,8 @@ void main() {
 
       final titleType = TitleType.academic;
       for (final gender in Gender.values) {
-        final data = PersonData.locale(
-          locale,
-        ).titles(gender: gender, titleType: titleType);
+        final data = PersonData.locale(locale)
+            .titles(gender: gender, titleType: titleType);
         final result = localePerson.title(gender: gender, titleType: titleType);
         expect(data, contains(result));
       }

@@ -151,9 +151,8 @@ class Person {
     final genders = Gender.values;
     gender ??= genders[random.integer(max: genders.length - 1)];
     titleType ??= TitleType.values[random.nextInt(TitleType.values.length)];
-    final data = PersonData.locale(
-      locale,
-    ).titles(gender: gender, titleType: titleType);
+    final data = PersonData.locale(locale)
+        .titles(gender: gender, titleType: titleType);
     return data[random.integer(max: data.length - 1)];
   }
 
@@ -259,9 +258,8 @@ class Person {
   /// Person().password(isHashed: true); // "42e8c2aba3368bcbe648e372e166fe410147420f2fe09d96fb7fe0a249c1c23d"
   /// ```
   String password({int length = 8, bool isHashed = false}) {
-    final chars =
-        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!"#\$%&\'()*+, -./:;<=>?@[\\]^_`{|}~'
-            .split('');
+    final chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!"#\$%&\'()*+, -./:;<=>?@[\\]^_`{|}~'
+        .split('');
     final random = Random(seed);
     final password = List.generate(
       length,
